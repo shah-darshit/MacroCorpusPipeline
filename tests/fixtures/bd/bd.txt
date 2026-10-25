@@ -1,0 +1,30 @@
+Business Employment Dynamics (BD)
+				     bd.txt
+
+Section Listing
+
+1. Database Definition
+2. FTP files listed in the database directory.
+3. Time series, series file, data file, & mapping file definitions and relationships
+4. Series file format and field definitions
+5. Data file format and field definitions
+6. Mapping file formats and field definitions
+7. Data Element Dictionary
+
+
+================================================================================
+Section 1
+================================================================================
+
+The following is a definition of:  BUSINESS EMPLOYMENT DYNAMICS
+
+Program Description:  Business Employment Dynamics statistics track changes
+in employment at the establishment level, revealing the dynamics underlying net
+changes in employment.
+
+Summary Data Available: Quarterly data on Business Employment Dynamics are
+derived from the Quarterly Census of Employment and Wages program.
+This program is the quarterly census of all establishments under State
+unemployment insurance programs, representing about 98 percent of employment on
+nonfarm payrolls.  The data include all establishments subject to the State
+unemployment insurance (UI) laws and Federal agencies subject to the

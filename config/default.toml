@@ -1,0 +1,27 @@
+# BLS LABSTAT corpus pipeline configuration.
+# CLI flags override these values; users should not need to edit Python source.
+
+[core]
+program = "BD"                                   # LABSTAT survey abbreviation (BD = Business Employment Dynamics)
+source_root = "https://download.bls.gov/pub/time.series"
+data_dir = "data"                                # contains raw/, processed/, manifests/
+user_agent = "Mozilla/5.0 (X11; Linux x86_64; BLS-Corpus-Research/1.0; +https://www.bls.gov/data/) bls-corpus/0.1"
+chunk_rows = 65536                               # TSV rows per parse batch (bounds memory)
+
+[download]
+concurrency = 2                                  # bounded; BLS is a shared public server
+min_interval_s = 0.35                            # pacing between request starts
+connect_timeout_s = 15.0
+read_timeout_s = 120.0
+max_retries = 5
+backoff_base_s = 1.0
+backoff_max_s = 60.0
+
+[output]
+format = "parquet"                               # parquet | csv (observations/catalog exports)
+
+[api_validation]
+enabled = false                                  # opt-in only; never part of bulk workflow
+base_url = "https://api.bls.gov/publicAPI/v2/timeseries/data"
+api_key_env = "BLS_API_KEY"                      # optional; unregistered limits are lower
+sample_size = 25

@@ -1,0 +1,41 @@
+series_id                     	seasonal	msa_code	state_code	county_code	industry_code	unitanalysis_code	dataelement_code	sizeclass_code	dataclass_code	ratelevel_code	periodicity_code	ownership_code	series_title	footnote_codes	begin_year	begin_period	end_year	end_period
+BDS0000000000000000110001LQ5  	S	00000	00	000	000000	1	1	00	01	L	Q	5	Quarterly gross job gains for the total private sector in the U.S. (rounded to the nearest thousands)	1	1992	Q03	2025	Q04
+BDS0000000000000000110001RQ5  	S	00000	00	000	000000	1	1	00	01	R	Q	5	Percent of gross job gains for the total private sector in the U.S. (as a percentage of employment in this sector)	1	1992	Q03	2025	Q04
+BDS0000000000000000110002LQ5  	S	00000	00	000	000000	1	1	00	02	L	Q	5	Employment gained from expansions for the total private sector in the U.S. (rounded to the nearest thousands)	1	1992	Q03	2025	Q04
+BDS0000000000000000110002RQ5  	S	00000	00	000	000000	1	1	00	02	R	Q	5	Percent of employment gained from expansions for the total private sector in the U.S. (as a percentage of employment in this sector)	1	1992	Q03	2025	Q04
+BDS0000000000000000110003LQ5  	S	00000	00	000	000000	1	1	00	03	L	Q	5	Employment gained from openings for the total private sector in the U.S. (rounded to the nearest thousands)	1	1992	Q03	2025	Q04
+BDS0000000000000000110003RQ5  	S	00000	00	000	000000	1	1	00	03	R	Q	5	Percent of employment gained from openings for the total private sector in the U.S. (as a percentage of employment in this sector)	1	1992	Q03	2025	Q04
+BDS0000000000000000110004LQ5  	S	00000	00	000	000000	1	1	00	04	L	Q	5	Gross job losses for the total private sector in the U.S. (rounded to the nearest thousands)	1	1992	Q03	2025	Q04
+BDS0000000000000000110004RQ5  	S	00000	00	000	000000	1	1	00	04	R	Q	5	Percent of gross job losses for the total private sector in the U.S. (as a percentage of employment in this sector)	1	1992	Q03	2025	Q04
+BDS0000000000000000110005LQ5  	S	00000	00	000	000000	1	1	00	05	L	Q	5	Employment lost from contractions for the total private sector in the U.S. (rounded to the nearest thousands)	1	1992	Q03	2025	Q04
+BDS0000000000000000110005RQ5  	S	00000	00	000	000000	1	1	00	05	R	Q	5	Percent of employment lost from contractions for the total private sector in the U.S. (as a percentage of employment in this sector)	1	1992	Q03	2025	Q04
+BDS0000000000000000110006LQ5  	S	00000	00	000	000000	1	1	00	06	L	Q	5	Employment lost from closings for the total private sector in the U.S. (rounded to the nearest thousands)	1	1992	Q03	2025	Q04
+BDS0000000000000000110006RQ5  	S	00000	00	000	000000	1	1	00	06	R	Q	5	Percent of employment lost from closings for the total private sector in the U.S. (as a percentage of employment in this sector)	1	1992	Q03	2025	Q04
+BDS0000000000000000110007LQ5  	S	00000	00	000	000000	1	1	00	07	L	Q	5	Employment gained from establishment births (a subset of openings) for the total private sector in the U.S. (rounded to the nearest thousands)	1	1992	Q03	2025	Q04
+BDS0000000000000000110007RQ5  	S	00000	00	000	000000	1	1	00	07	R	Q	5	Percent of employment gained from establishment births for the total private sector in the U.S. (as a percentage of employment in this sector)	1	1992	Q03	2025	Q04
+BDS0000000000000000110008LQ5  	S	00000	00	000	000000	1	1	00	08	L	Q	5	Employment lost from establishment deaths (a subset of closings) for the total private sector in the U.S. (rounded to the nearest thousands)	1	1992	Q03	2025	Q04
+BDS0000000000000000110008RQ5  	S	00000	00	000	000000	1	1	00	08	R	Q	5	Percent of employment lost from establishment deaths for the total private sector in the U.S. (as a percentage of employment in this sector)	1	1992	Q03	2025	Q04
+BDS0000000000000000110101LQ5  	S	00000	00	000	000000	1	1	01	01	L	Q	5	Gross job gains for firms with 1 to 4 employees (rounded to the nearest thousands)		1992	Q03	2025	Q04
+BDS0000000000000000110101RQ5  	S	00000	00	000	000000	1	1	01	01	R	Q	5	Percent of gross job gains for firms with 1 to 4 employees		1992	Q03	2025	Q04
+BDS0000000000000000110102LQ5  	S	00000	00	000	000000	1	1	01	02	L	Q	5	Employment gained from expansions by firms with 1 to 4 employees (rounded to the nearest thousands)		1992	Q03	2025	Q04
+BDS0000000000000000110102RQ5  	S	00000	00	000	000000	1	1	01	02	R	Q	5	Percent of employment gained from expansions by firms with 1 to 4 employees		1992	Q03	2025	Q04
+BDS0000000000000000110103LQ5  	S	00000	00	000	000000	1	1	01	03	L	Q	5	Employment gained from openings by firms with 1 to 4 employees (rounded to the nearest thousands)		1992	Q03	2025	Q04
+BDS0000000000000000110103RQ5  	S	00000	00	000	000000	1	1	01	03	R	Q	5	Percent of employment gained from openings by firms with 1 to 4 employees		1992	Q03	2025	Q04
+BDS0000000000000000110104LQ5  	S	00000	00	000	000000	1	1	01	04	L	Q	5	Gross job losses for firms with 1 to 4 employees (rounded to the nearest thousands)		1992	Q03	2025	Q04
+BDS0000000000000000110104RQ5  	S	00000	00	000	000000	1	1	01	04	R	Q	5	Percent of gross job losses for firms with 1 to 4 employees		1992	Q03	2025	Q04
+BDS0000000000000000110105LQ5  	S	00000	00	000	000000	1	1	01	05	L	Q	5	Employment lost from contractions by firms with 1 to 4 employees (rounded to the nearest thousands)		1992	Q03	2025	Q04
+BDS0000000000000000110105RQ5  	S	00000	00	000	000000	1	1	01	05	R	Q	5	Percent of employment lost from contractions by firms with 1 to 4 employees		1992	Q03	2025	Q04
+BDS0000000000000000110106LQ5  	S	00000	00	000	000000	1	1	01	06	L	Q	5	Employment lost from closings by firms with 1 to 4 employees (rounded to the nearest thousands)		1992	Q03	2025	Q04
+BDS0000000000000000110106RQ5  	S	00000	00	000	000000	1	1	01	06	R	Q	5	Percent of employment lost from closings by firms with 1 to 4 employees		1992	Q03	2025	Q04
+BDS0000000000000000110201LQ5  	S	00000	00	000	000000	1	1	02	01	L	Q	5	Gross job gains for firms with 5 to 9 employees (rounded to the nearest thousands)		1992	Q03	2025	Q04
+BDS0000000000000000110201RQ5  	S	00000	00	000	000000	1	1	02	01	R	Q	5	Percent of gross job gains for firms with 5 to 9 employees		1992	Q03	2025	Q04
+BDS0000000000000000110202LQ5  	S	00000	00	000	000000	1	1	02	02	L	Q	5	Employment gained from expansions by firms with 5 to 9 employees (rounded to the nearest thousands)		1992	Q03	2025	Q04
+BDS0000000000000000110202RQ5  	S	00000	00	000	000000	1	1	02	02	R	Q	5	Percent of employment gained from expansions by firms with 5 to 9 employees		1992	Q03	2025	Q04
+BDS0000000000000000110203LQ5  	S	00000	00	000	000000	1	1	02	03	L	Q	5	Employment gained from openings by firms with 5 to 9 employees (rounded to the nearest thousands)		1992	Q03	2025	Q04
+BDS0000000000000000110203RQ5  	S	00000	00	000	000000	1	1	02	03	R	Q	5	Percent of employment gained from openings by firms with 5 to 9 employees		1992	Q03	2025	Q04
+BDS0000000000000000110204LQ5  	S	00000	00	000	000000	1	1	02	04	L	Q	5	Gross job losses for firms with 5 to 9 employees (rounded to the nearest thousands)		1992	Q03	2025	Q04
+BDS0000000000000000110204RQ5  	S	00000	00	000	000000	1	1	02	04	R	Q	5	Percent of gross job losses for firms with 5 to 9 employees		1992	Q03	2025	Q04
+BDS0000000000000000110205LQ5  	S	00000	00	000	000000	1	1	02	05	L	Q	5	Employment lost from contractions by firms with 5 to 9 employees (rounded to the nearest thousands)		1992	Q03	2025	Q04
+BDS0000000000000000110205RQ5  	S	00000	00	000	000000	1	1	02	05	R	Q	5	Percent of employment lost from contractions by firms with 5 to 9 employees		1992	Q03	2025	Q04
+BDS0000000000000000110206LQ5  	S	00000	00	000	000000	1	1	02	06	L	Q	5	Employment lost from closings by firms with 5 to 9 employees (rounded to the nearest thousands)		1992	Q03	2025	Q04
+BDS0000000000000000110206RQ5  	S	00000	00	000	000000	1	1	02	06	R	Q	5	Percent of employment lost from closings by firms with 5 to 9 employees		1992	Q03	2025	Q04

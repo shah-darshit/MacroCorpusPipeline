@@ -1,0 +1,26 @@
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.venv/
+.DS_Store
+
+# Downloaded and generated data. Rebuild with the commands in README.md.
+data/raw/
+data/processed/
+data/manifests/
+data/tmp/
+logs/
+*.part
+*.duckdb
+.env
+BLS_API_KEY
+bd-snapshot-*.tar.gz
+SHA256SUMS
+README.txt
+
+# Sample-run outputs. samples/README.md stays tracked.
+samples/*
+!samples/README.md
+
+# Local CPI/CES scratch files. Not part of the pipeline.
+reference/
