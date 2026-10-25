@@ -1,0 +1,2875 @@
+case_code	category_code	category_text	display_level	selectable	sort_sequence
+0	00X	Ownership-- All	0	T	1
+0	AAX	Age group-- Under 16 years	0	T	7
+0	ABX	Age group-- 16 to 17 years	0	T	8
+0	ACX	Age group-- 18 to 19 years	0	T	9
+0	ADX	Age group-- 20 to 24 years	0	T	10
+0	AEX	Age group-- 25 to 34 years	0	T	11
+0	AFX	Age group-- 35 to 44 years	0	T	12
+0	AGX	Age group-- 45 to 54 years	0	T	13
+0	AHX	Age group-- 55 to 64 years	0	T	14
+0	AIX	Age group-- 65 years and over	0	T	15
+0	E11	Event or exposure-- Homicides (Violent acts by other person)	0	T	47
+0	E12	Event or exposure-- Suicides (Intentional self-harm)	0	T	49
+0	E1A	Event or exposure-- Shooting by other person	0	T	48
+0	E1B	Event or exposure-- Intentional self-harm-- shooting	0	T	50
+0	E1C	Event or exposure-- Intentional self-harm-- hanging, strangulation, asphyxiation	0	T	51
+0	E1D	Event or exposure-- Intentional self-harm-- poisoning, drug overdose	0	T	52
+0	E1X	Event or exposure-- VIOLENT ACTS	0	T	46
+0	E21	Event or exposure-- Aircraft incidents	0	T	54
+0	E22	Event or exposure-- Water vehicle incidents	0	T	55
+0	E23	Event or exposure-- Rail vehicle incidents	0	T	56
+0	E25	Event or exposure-- Pedestrian incidents involving motorized land vehicles	0	T	57
+0	E26	Event or exposure-- Roadway incidents involving motorized land vehicle	0	T	58
+0	E27	Event or exposure-- Nonroadway incidents involving motorized land vehicles	0	T	64
+0	E2A	Event or exposure-- Roadway collision with other vehicle(s)	0	T	59
+0	E2B	Event or exposure-- Collision with moving object or animal in roadway	0	T	60
+0	E2C	Event or exposure-- Collision with object or animal on side of roadway	0	T	61
+0	E2D	Event or exposure-- Roadway noncollision incident	0	T	62
+0	E2E	Event or exposure-- Roadway noncollision- vehicle overturn	0	T	63
+0	E2F	Event or exposure-- Nonroadway collision with other vehicle(s)	0	T	65
+0	E2G	Event or exposure-- Nonroadway noncollision incident	0	T	66
+0	E2H	Event or exposure-- Nonroadway noncollision- vehicle overturn	0	T	67
+0	E2X	Event or exposure-- Transportation incidents	0	T	53
+0	E3X	Event or exposure-- EXPLOSIONS AND FIRES	0	T	68
+0	E41	Event or exposure-- Fall to lower level	0	T	70
+0	E43	Event or exposure-- Slip, trip, stumble or fall on same level	0	T	79
+0	E4A	Event or exposure-- Fall to lower level from collapsing structure or equipment	0	T	71
+0	E4B	Event or exposure-- Fall to lower level resulting from exposure or contact	0	T	72
+0	E4C	Event or exposure-- Fall to lower level resulting in exposure or contact	0	T	73
+0	E4D	Event or exposure-- Other fall to lower level	0	T	74
+0	E4E	Event or exposure-- Fall to lower level, height less than 6 feet	0	T	75
+0	E4F	Event or exposure-- Fall to lower level, height 6 to 30 feet	0	T	76
+0	E4G	Event or exposure-- Fall to lower level, height more than 30 feet	0	T	77
+0	E4X	Event or exposure-- Falls, slips, trips	0	T	69
+0	E51	Event or exposure-- Exposure to electricity	0	T	81
+0	E53	Event or exposure-- Exposure to temperature extremes	0	T	82
+0	E55	Event or exposure-- Exposure to harmful substances	0	T	87
+0	E56	Event or exposure-- Exposure to oxygen deficiency	0	T	89
+0	E5A	Event or exposure-- Exposure to environmental heat	0	T	83
+0	E5B	Event or exposure-- Exposure to environmental heat -- indoor	0	T	84
+0	E5C	Event or exposure-- Exposure to environmental heat-- outdoor	0	T	85
+0	E5E	Event or exposure-- Drug, alcohol overdose	0	T	88
+0	E5F	Event or exposure-- Drowning, submersion without other event	0	T	90
+0	E5X	Event or exposure-- Exposure to harmful substances, environments	0	T	80
+0	E61	Event or exposure-- Contact with other person, nonviolent or intent unknown	0	T	93
+0	E62	Event or exposure-- Contact with animals	0	T	94
+0	E63	Event or exposure-- Collapse, engulfment	0	T	97
+0	E64	Event or exposure-- Struck by propelled, falling, or suspended object	0	T	98
+0	E65	Event or exposure-- Struck, caught, or compressed by running powered equipment	0	T	102
+0	E6A	Event or exposure-- Bitten or stung by animal	0	T	95
+0	E6B	Event or exposure-- Struck by animal	0	T	96
+0	E6C	Event or exposure-- Struck by propelled object or substance	0	T	99
+0	E6D	Event or exposure-- Struck by falling object	0	T	100
+0	E6E	Event or exposure-- Struck by suspended or swinging object	0	T	101
+0	E6X	Event or exposure-- CONTACT INCIDENTS	0	T	92
+0	GFX	Sex-- Women	0	T	18
+0	GMX	Sex-- Men	0	T	19
+0	I1X	Time of incident-- 12:00 midnight - 3:59 a.m.	0	T	304
+0	I2X	Time of incident-- 4:00 a.m. - 7:59 a.m.	0	T	305
+0	I3X	Time of incident-- 8:00 a.m. - 11:59 a.m.	0	T	306
+0	I4X	Time of incident-- 12:00 noon - 3:59 p.m.	0	T	307
+0	I5X	Time of incident-- 4:00 p.m. - 7:59 p.m.	0	T	308
+0	I6X	Time of incident-- 8:00 p.m. - 11:59 p.m.	0	T	309
+0	N1A	Nature-- Intracranial injuries	0	T	207
+0	N1X	Nature-- Injuries to the brain, spinal cord	0	T	206
+0	N2A	Nature-- Gunshot wounds	0	T	209
+0	N2B	Nature-- Injuries to internal organs and major blood vessels	0	T	210
+0	N2X	Nature-- Severe wounds, internal injuries	0	T	208
+0	N3X	Nature-- Surface and flesh wounds	0	T	211
+0	N4X	Nature-- Soft tissue injuries	0	T	212
+0	N5X	Nature-- Burns, corrosions, electrical injuries	0	T	213
+0	N6X	Nature-- Effects of poison, toxic, or allergenic exposure	0	T	215
+0	N7A	Nature-- Drowning, near drowning	0	T	217
+0	N7B	Nature-- Asphyxiation- except toxic or allergenic	0	T	218
+0	N7X	Nature-- Effects of environmental conditions and exposures	0	T	216
+0	N8B	Nature-- Burns and toxic effects (including smoke inhalation)	0	T	221
+0	N8X	Nature-- Multiple traumatic injuries and disorders	0	T	219
+0	O00	Occupation-- Management, Business, Science, and Arts Occupations	0	T	249
+0	O10	Occupation-- Management, Business, and Financial Occupations	0	T	248
+0	O11	Occupation-- Management Occupations	0	T	247
+0	O13	Occupation-- Business and Financial Operations Occupations	0	T	250
+0	O15	Occupation-- Computer and Mathematical Occupations	0	T	251
+0	O17	Occupation-- Architecture and Engineering Occupations	0	T	253
+0	O19	Occupation-- Life, Physical, and Social Science Occupations	0	T	254
+0	O20	Occupation-- Professional and Related Occupations	0	T	252
+0	O21	Occupation-- Community and Social Services Occupations	0	T	255
+0	O23	Occupation-- Legal Occupations	0	T	256
+0	O25	Occupation-- Educational Instruction and Library Occupations	0	T	257
+0	O27	Occupation-- Arts, Design, Entertainment, Sports, and Media Occupations	0	T	258
+0	O29	Occupation-- Healthcare Practitioner and Technical Occupations	0	T	259
+0	O30	Occupation-- Service Occupations	0	T	261
+0	O31	Occupation-- Healthcare Support Occupations	0	T	260
+0	O33	Occupation-- Protective Service Occupations	0	T	262
+0	O35	Occupation-- Food Preparation and Serving Related Occupations	0	T	263
+0	O37	Occupation-- Building and Grounds Cleaning and Maintenance Occupations	0	T	264
+0	O39	Occupation-- Personal Care and Service Occupations	0	T	265
+0	O40	Occupation-- Sales and Office Occupations	0	T	267
+0	O41	Occupation-- Sales and Related Occupations	0	T	266
+0	O43	Occupation-- Office and Administrative Support Occupations	0	T	268
+0	O44	Occupation-- Natural Resources, Construction, and Maintenance Occupations	0	T	239
+0	O45	Occupation-- Farming, Fishing, and Forestry Occupations	0	T	246
+0	O47	Occupation-- Construction and Extraction Occupations	0	T	240
+0	O49	Occupation-- Installation, Maintenance, and Repair Occupations	0	T	241
+0	O50	Occupation-- Production, Transportation, and Material Moving Occupations	0	T	243
+0	O51	Occupation-- Production Occupations	0	T	242
+0	O53	Occupation-- Transportation and Material Moving Occupations	0	T	244
+0	P1X	Part-- Head	0	T	222
+0	P2X	Part-- Neck	0	T	223
+0	P31	Part-- Chest- including ribs, internal organs	0	T	225
+0	P32	Part--Exterior and musculoskeletal structures of the back	0	T	226
+0	P33	Part-- Abdomen	0	T	227
+0	P34	Part-- Pelvic region	0	T	228
+0	P3X	Part-- Trunk	0	T	224
+0	P4X	Part-- Upper extremities	0	T	229
+0	P5X	Part-- Lower extremities	0	T	230
+0	P81	Part-- Head and other part(s) of body	0	T	233
+0	P82	Part-- Neck and other part(s) of body	0	T	234
+0	P83	Part-- Trunk and other part(s) of body	0	T	235
+0	P84	Part-- Upper and lower extremities	0	T	236
+0	P88	Part-- Other multiple parts of body	0	T	237
+0	P8A	Part-- Whole body	0	T	238
+0	P8X	Part-- Multiple body parts	0	T	232
+0	RAF	Race-- Asian, Foreign-born	0	T	20
+0	RAN	Race-- Asian, Native-born	0	T	21
+0	RAT	Race-- Asian, non-Hispanic, Total	0	T	22
+0	RBF	Race-- Black or African-American, Foreign-born	0	T	23
+0	RBN	Race-- Black or African-American, Native-born	0	T	24
+0	RBT	Race-- Black or African-American, non-Hispanic, Total	0	T	25
+0	RHF	Race-- Hispanic or Latino, Foreign-born	0	T	27
+0	RHN	Race-- Hispanic or Latino, Native-born	0	T	28
+0	RHT	Race-- Hispanic or Latino, Total	0	T	29
+0	RIN	Race-- American Indian or Alaska Native, Native-born	0	T	31
+0	RIT	Race-- American Indian or Alaska Native, non-Hispanic, Total	0	T	32
+0	RMF	Race-- Person of multiple races, Foreign-born	0	T	33
+0	RMN	Race-- Person of multiple races, Native-born	0	T	34
+0	RMT	Race-- Person of multiple races, non-Hispanic, Total	0	T	35
+0	ROF	Race-- Other or not reported, Foreign-born	0	T	37
+0	RON	Race-- Other or not reported, Native-born	0	T	38
+0	ROT	Race-- Other or not reported, non-Hispanic, Total	0	T	39
+0	RPF	Race-- Native Hawaiian or Pacific Islander, Foreign-born	0	T	40
+0	RPN	Race-- Native Hawaiian or Pacific Islander, Native-born	0	T	41
+0	RPT	Race-- Native Hawaiian or Pacific Islander, non-Hispanic, Total	0	T	42
+0	RWF	Race-- White, Foreign-born	0	T	43
+0	RWN	Race-- White, Native-born	0	T	44
+0	RWT	Race-- White, non-Hispanic, Total	0	T	45
+0	S1A	Primary source of injury-- Opioids	0	T	104
+0	S1B	Primary source of injury-- Multiple drugs, medications	0	T	105
+0	S1X	Primary source of injury-- CHEMICALS AND HAZARDOUS MATERIALS	0	T	103
+0	S2A	Primary source of injury-- Wheeled containers, material moving equipment	0	T	107
+0	S2X	Primary source of injury-- CONTAINERS, FURNITURE, FIXTURES	0	T	106
+0	S31	Primary source of injury-- Agricultural and garden machinery	0	T	109
+0	S32	Primary source of injury-- Construction, logging, and mining machinery	0	T	110
+0	S34	Primary source of injury-- Material and personnel handling machinery	0	T	112
+0	S3A	Primary source of injury-- Heavy earth-moving machinery	0	T	111
+0	S3X	Primary source of injury-- Machinery	0	T	108
+0	S41	Primary source of injury-- Raw and semi-finished materials and byproducts	0	T	114
+0	S42	Primary source of injury-- Building materials	0	T	116
+0	S46	Primary source of injury-- Vehicle and machine parts- power, mechanical, special process	0	T	117
+0	S4A	Primary source of injury-- Water, liquids-nonchemical	0	T	115
+0	S4X	Primary source of injury-- Parts and materials	0	T	113
+0	S51	Primary source of injury-- Animals	0	T	119
+0	S54	Primary source of injury-- Plants, trees, vegetation	0	T	120
+0	S56	Primary source of injury-- Activities and conditions of injured, ill worker	0	T	124
+0	S57	Primary source of injury-- Person--other than injured or ill worker	0	T	125
+0	S5A	Primary source of injury-- Trees, logs, limbs	0	T	121
+0	S5B	Primary source of injury-- Trees	0	T	122
+0	S5C	Primary source of injury-- Logs	0	T	123
+0	S5D	Primary source of injury-- Relative or domestic partner of injured or ill worker	0	T	126
+0	S5E	Primary source of injury-- Co-worker or work associate of injured or ill worker	0	T	127
+0	S5F	Primary source of injury-- Client or customer	0	T	128
+0	S5G	Primary source of injury-- Acquaintance	0	T	129
+0	S5H	Primary source of injury-- Criminal assailants	0	T	130
+0	S5J	Primary source of injury-- Suspect under pursuit or investigation	0	T	132
+0	S5K	Primary source of injury-- Robber	0	T	133
+0	S5X	Primary source of injury-- ANIMALS, PLANTS, PERSONS, ETC.	0	T	118
+0	S62	Primary source of injury-- Buildings	0	T	136
+0	S63	Primary source of injury-- Structures other than buildings	0	T	137
+0	S65	Primary source of injury-- Other structural elements	0	T	140
+0	S6A	Primary source of injury-- Elevator shafts	0	T	135
+0	S6B	Primary source of injury-- Scaffolds, staging	0	T	138
+0	S6C	Primary source of injury-- Towers, poles	0	T	139
+0	S6D	Primary source of injury-- Roofs	0	T	141
+0	S6E	Primary source of injury-- Stairs, multiple level surfaces	0	T	142
+0	S6F	Primary source of injury-- Natural surface	0	T	143
+0	S6X	Primary source of injury-- Structures and surfaces	0	T	134
+0	S73	Primary source of injury-- Portable ladders and stairs	0	T	145
+0	S7X	Primary source of injury-- Tools, instruments, and equipment	0	T	144
+0	S81	Primary source of injury-- Aircraft	0	T	147
+0	S82	Primary source of injury-- Rail vehicles	0	T	148
+0	S83	Primary source of injury-- Water vehicles	0	T	149
+0	S84	Primary source of injury-- Roadway vehicles--motorized	0	T	150
+0	S86	Primary source of injury-- Off-road and industrial vehicles--powered	0	T	162
+0	S8A	Primary source of injury-- Emergency and security vehicles	0	T	151
+0	S8B	Primary source of injury-- Trucks with mounted machinery, equipment	0	T	152
+0	S8C	Primary source of injury-- Dump trucks	0	T	153
+0	S8D	Primary source of injury-- Garbage trucks	0	T	154
+0	S8E	Primary source of injury-- Trucks	0	T	155
+0	S8F	Primary source of injury-- Straight trucks, box trucks	0	T	156
+0	S8G	Primary source of injury-- Tanker trucks	0	T	157
+0	S8H	Primary source of injury-- Other semi, tractor-trailer	0	T	158
+0	S8I	Primary source of injury-- Passenger vehicles	0	T	159
+0	S8J	Primary source of injury-- Automobile	0	T	160
+0	S8K	Primary source of injury-- Vans, passenger and utility	0	T	161
+0	S8L	Primary source of injury-- Industrial vehicles, material hauling and transport--powered	0	T	163
+0	S8M	Primary source of injury-- Forklift, order picker, platform truck--powered	0	T	164
+0	S8N	Primary source of injury-- Agricultural tractors	0	T	165
+0	S8X	Primary source of injury-- Vehicles	0	T	146
+0	S9A	Primary source of injury-- Heat--environmental	0	T	166
+0	T00	Secondary source of injury-- Not Applicable	0	T	205
+0	T15	Secondary source of injury-- Drugs, medications	0	T	169
+0	T1A	Secondary source of injury-- Petroleum and coal products	0	T	168
+0	T1X	Secondary source of injury-- CHEMICALS AND HAZARDOUS MATERIALS	0	T	167
+0	T2A	Secondary source of injury-- Wheeled containers, material moving equipment	0	T	171
+0	T2X	Secondary source of injury-- CONTAINERS, FURNITURE, FIXTURES	0	T	170
+0	T3X	Secondary source of injury-- Machinery	0	T	172
+0	T44	Secondary source of injury-- Fasteners, connectors, ropes, ties	0	T	174
+0	T46	Secondary source of injury-- Vehicle and machine parts- power, mechanical, special process	0	T	175
+0	T4X	Secondary source of injury-- Parts and materials	0	T	173
+0	T54	Secondary source of injury-- Plants, trees, vegetation	0	T	177
+0	T5A	Secondary source of injury-- Trees, logs, limbs	0	T	178
+0	T5X	Secondary source of injury-- ANIMALS, PLANTS, PERSONS, ETC.	0	T	176
+0	T61	Secondary source of injury-- Confined spaces	0	T	180
+0	T62	Secondary source of injury-- Buildings	0	T	181
+0	T63	Secondary source of injury-- Structures other than buildings	0	T	182
+0	T66	Secondary source of injury-- Ground, travel, and support surfaces	0	T	184
+0	T67	Secondary source of injury-- Bodies of water	0	T	188
+0	T6A	Secondary source of injury-- Guardrails, road dividers or barriers	0	T	183
+0	T6B	Secondary source of injury-- Stairs, steps	0	T	185
+0	T6C	Secondary source of injury-- Constructed surfaces	0	T	186
+0	T6D	Secondary source of injury-- Natural surface	0	T	187
+0	T6X	Secondary source of injury-- Structures and surfaces	0	T	179
+0	T7A	Secondary source of injury-- Knives	0	T	190
+0	T7B	Secondary source of injury-- Firearms, air-powered guns	0	T	191
+0	T7X	Secondary source of injury-- Tools, instruments, and equipment	0	T	189
+0	T81	Secondary source of injury-- Aircraft	0	T	193
+0	T82	Secondary source of injury-- Rail vehicles	0	T	194
+0	T83	Secondary source of injury-- Water vehicles	0	T	195
+0	T84	Secondary source of injury-- Roadway vehicles--motorized	0	T	196
+0	T86	Secondary source of injury-- Off-road and industrial vehicles--powered	0	T	199
+0	T8A	Secondary source of injury-- Trucks with mounted machinery, equipment	0	T	197
+0	T8B	Secondary source of injury-- Passenger vehicles	0	T	198
+0	T8C	Secondary source of injury-- Forklift, order picker, platform truck--powered	0	T	200
+0	T8X	Secondary source of injury-- Vehicles	0	T	192
+0	T91	Secondary source of injury-- Apparel, laundry, linens	0	T	202
+0	T95	Secondary source of injury-- Environmental and elemental conditions	0	T	203
+0	T9A	Secondary source of injury-- Weather, atmospheric conditions	0	T	204
+0	WAX	Worker status-- Wage and salary	0	T	16
+0	WBX	Worker status-- Self-employed	0	T	17
+0	X1X	Worker activity-- Emergency and security operations	0	T	269
+0	X2X	Worker Activity--Agriculture, landscaping, and animal activities	0	T	270
+0	X32	Worker activity-- Heavy and industrial earth moving and construction operations	0	T	272
+0	X33	Worker activity-- Heavy and industrial production and repair operations	0	T	273
+0	X34	Worker activity-- Heavy and industrial materials moving and warehousing operations	0	T	274
+0	X3X	Worker activity-- Heavy and industrial construction, production, and materials moving operations	0	T	271
+0	X4X	Worker activity--Other construction, production and maintenance activities	0	T	275
+0	X5X	Worker activity-- Personal care, service, and administrative activities	0	T	276
+0	X61	Worker activity-- Intentional risk taking activities	0	T	280
+0	X6X	Worker activity-- Miscellaneous activities	0	T	279
+0	X71	Worker activity-- Driving, piloting	0	T	282
+0	X72	Worker activity-- Passenger of vehicle in transport	0	T	283
+0	X74	Worker activity-- Transportation support activities	0	T	284
+0	X7X	Worker activity-- Transportation operations	0	T	281
+0	Y11	Worker location-- Road and bridge construction or maintenance	0	T	286
+0	Y15	Worker location-- Residential construction sites	0	T	287
+0	Y1X	Worker location-- Construction or maintenance sites	0	T	285
+0	Y2X	Worker location-- Farm, agricultural premises	0	T	288
+0	Y36	Worker location-- Factories and Production facilities	0	T	290
+0	Y3X	Worker location-- Industrial places and premises	0	T	289
+0	Y4X	Worker location-- Residence, housing	0	T	291
+0	Y55	Worker location-- Office buildings	0	T	293
+0	Y5X	Worker location-- Limited access public buildings	0	T	292
+0	Y62	Worker location-- Restaurants, cafes	0	T	295
+0	Y65	Worker location-- Retail or business areas	0	T	296
+0	Y6X	Worker location-- Business and communal areas	0	T	294
+0	Y72	Worker location-- Streets, highways, roads	0	T	298
+0	Y73	Worker location-- Airport infrastructure	0	T	302
+0	Y7A	Worker location-- Interstates, freeways, or expressways	0	T	299
+0	Y7B	Worker location-- Other State or U.S. highways	0	T	300
+0	Y7C	Worker location-- Local roads or streets	0	T	301
+0	Y7X	Worker location-- Transportation infrastructure	0	T	297
+1	00X	Total fatalities	0	T	310
+1	50X	Ownership-- Private	0	T	2
+1	AAX	Age group-- Under 16 years	0	T	311
+1	ABX	Age group-- 16 to 17 years	0	T	312
+1	ACX	Age group-- 18 to 19 years	0	T	313
+1	ADX	Age group-- 20 to 24 years	0	T	314
+1	AEX	Age group-- 25 to 34 years	0	T	315
+1	AFX	Age group-- 35 to 44 years	0	T	316
+1	AGX	Age group-- 45 to 54 years	0	T	317
+1	AHX	Age group-- 55 to 64 years	0	T	318
+1	AIX	Age group-- 65 years and over	0	T	319
+1	E11	Event or exposure-- Homicides (Violent acts by other person)	0	T	350
+1	E12	Event or exposure-- Suicides (Intentional self-harm)	0	T	352
+1	E1A	Event or exposure-- Shooting by other person	0	T	351
+1	E1B	Event or exposure-- Intentional self-harm-- shooting	0	T	353
+1	E1C	Event or exposure-- Intentional self-harm-- hanging, strangulation, asphyxiation	0	T	354
+1	E1D	Event or exposure-- Intentional self-harm-- poisoning, drug overdose	0	T	355
+1	E1X	Event or exposure-- VIOLENT ACTS	0	T	349
+1	E21	Event or exposure-- Aircraft incidents	0	T	357
+1	E22	Event or exposure-- Water vehicle incidents	0	T	358
+1	E23	Event or exposure-- Rail vehicle incidents	0	T	359
+1	E25	Event or exposure-- Pedestrian incidents involving motorized land vehicles	0	T	360
+1	E26	Event or exposure-- Roadway incidents involving motorized land vehicle	0	T	361
+1	E27	Event or exposure-- Nonroadway incidents involving motorized land vehicles	0	T	367
+1	E2A	Event or exposure-- Roadway collision with other vehicle(s)	0	T	362
+1	E2B	Event or exposure-- Collision with moving object or animal in roadway	0	T	363
+1	E2C	Event or exposure-- Collision with object or animal on side of roadway	0	T	364
+1	E2D	Event or exposure-- Roadway noncollision incident	0	T	365
+1	E2E	Event or exposure-- Roadway noncollision- vehicle overturn	0	T	366
+1	E2F	Event or exposure-- Nonroadway collision with other vehicle(s)	0	T	368
+1	E2G	Event or exposure-- Nonroadway noncollision incident	0	T	369
+1	E2H	Event or exposure-- Nonroadway noncollision- vehicle overturn	0	T	370
+1	E2X	Event or exposure-- Transportation incidents	0	T	356
+1	E3X	Event or exposure-- EXPLOSIONS AND FIRES	0	T	371
+1	E41	Event or exposure-- Fall to lower level	0	T	373
+1	E43	Event or exposure-- Slip, trip, stumble or fall on same level	0	T	382
+1	E4A	Event or exposure-- Fall to lower level from collapsing structure or equipment	0	T	374
+1	E4B	Event or exposure-- Fall to lower level resulting from exposure or contact	0	T	375
+1	E4C	Event or exposure-- Fall to lower level resulting in exposure or contact	0	T	376
+1	E4D	Event or exposure-- Other fall to lower level	0	T	377
+1	E4E	Event or exposure-- Fall to lower level, height less than 6 feet	0	T	378
+1	E4F	Event or exposure-- Fall to lower level, height 6 to 30 feet	0	T	379
+1	E4G	Event or exposure-- Fall to lower level, height more than 30 feet	0	T	380
+1	E4X	Event or exposure-- Falls, slips, trips	0	T	372
+1	E51	Event or exposure-- Exposure to electricity	0	T	384
+1	E53	Event or exposure-- Exposure to temperature extremes	0	T	385
+1	E55	Event or exposure-- Exposure to harmful substances	0	T	390
+1	E56	Event or exposure-- Exposure to oxygen deficiency	0	T	392
+1	E5A	Event or exposure-- Exposure to environmental heat	0	T	386
+1	E5B	Event or exposure-- Exposure to environmental heat -- indoor	0	T	387
+1	E5C	Event or exposure-- Exposure to environmental heat-- outdoor	0	T	388
+1	E5E	Event or exposure-- Drug, alcohol overdose	0	T	391
+1	E5F	Event or exposure-- Drowning, submersion without other event	0	T	393
+1	E5X	Event or exposure-- Exposure to harmful substances, environments	0	T	383
+1	E61	Event or exposure-- Contact with other person, nonviolent or intent unknown	0	T	396
+1	E62	Event or exposure-- Contact with animals	0	T	397
+1	E63	Event or exposure-- Collapse, engulfment	0	T	400
+1	E64	Event or exposure-- Struck by propelled, falling, or suspended object	0	T	401
+1	E65	Event or exposure-- Struck, caught, or compressed by running powered equipment	0	T	405
+1	E6A	Event or exposure-- Bitten or stung by animal	0	T	398
+1	E6B	Event or exposure-- Struck by animal	0	T	399
+1	E6C	Event or exposure-- Struck by propelled object or substance	0	T	402
+1	E6D	Event or exposure-- Struck by falling object	0	T	403
+1	E6E	Event or exposure-- Struck by suspended or swinging object	0	T	404
+1	E6X	Event or exposure-- CONTACT INCIDENTS	0	T	395
+1	GFX	Sex-- Women	0	T	322
+1	GMX	Sex-- Men	0	T	323
+1	I1X	Time of incident-- 12:00 midnight - 3:59 a.m.	0	T	607
+1	I2X	Time of incident-- 4:00 a.m. - 7:59 a.m.	0	T	608
+1	I3X	Time of incident-- 8:00 a.m. - 11:59 a.m.	0	T	609
+1	I4X	Time of incident-- 12:00 noon - 3:59 p.m.	0	T	610
+1	I5X	Time of incident-- 4:00 p.m. - 7:59 p.m.	0	T	611
+1	I6X	Time of incident-- 8:00 p.m. - 11:59 p.m.	0	T	612
+1	N1A	Nature-- Intracranial injuries	0	T	510
+1	N1X	Nature-- Injuries to the brain, spinal cord	0	T	509
+1	N2A	Nature-- Gunshot wounds	0	T	512
+1	N2B	Nature-- Injuries to internal organs and major blood vessels	0	T	513
+1	N2X	Nature-- Severe wounds, internal injuries	0	T	511
+1	N3X	Nature-- Surface and flesh wounds	0	T	514
+1	N4X	Nature-- Soft tissue injuries	0	T	515
+1	N5X	Nature-- Burns, corrosions, electrical injuries	0	T	516
+1	N6X	Nature-- Effects of poison, toxic, or allergenic exposure	0	T	518
+1	N7A	Nature-- Drowning, near drowning	0	T	520
+1	N7B	Nature-- Asphyxiation- except toxic or allergenic	0	T	521
+1	N7X	Nature-- Effects of environmental conditions and exposures	0	T	519
+1	N8B	Nature-- Burns and toxic effects (including smoke inhalation)	0	T	524
+1	N8X	Nature-- Multiple traumatic injuries and disorders	0	T	522
+1	O00	Occupation-- Management, Business, Science, and Arts Occupations	0	T	552
+1	O10	Occupation-- Management, Business, and Financial Occupations	0	T	551
+1	O11	Occupation-- Management Occupations	0	T	550
+1	O13	Occupation-- Business and Financial Operations Occupations	0	T	553
+1	O15	Occupation-- Computer and Mathematical Occupations	0	T	554
+1	O17	Occupation-- Architecture and Engineering Occupations	0	T	556
+1	O19	Occupation-- Life, Physical, and Social Science Occupations	0	T	557
+1	O20	Occupation-- Professional and Related Occupations	0	T	555
+1	O21	Occupation-- Community and Social Services Occupations	0	T	558
+1	O23	Occupation-- Legal Occupations	0	T	559
+1	O25	Occupation-- Educational Instruction and Library Occupations	0	T	560
+1	O27	Occupation-- Arts, Design, Entertainment, Sports, and Media Occupations	0	T	561
+1	O29	Occupation-- Healthcare Practitioner and Technical Occupations	0	T	562
+1	O30	Occupation-- Service Occupations	0	T	564
+1	O31	Occupation-- Healthcare Support Occupations	0	T	563
+1	O33	Occupation-- Protective Service Occupations	0	T	565
+1	O35	Occupation-- Food Preparation and Serving Related Occupations	0	T	566
+1	O37	Occupation-- Building and Grounds Cleaning and Maintenance Occupations	0	T	567
+1	O39	Occupation-- Personal Care and Service Occupations	0	T	568
+1	O40	Occupation-- Sales and Office Occupations	0	T	570
+1	O41	Occupation-- Sales and Related Occupations	0	T	569
+1	O43	Occupation-- Office and Administrative Support Occupations	0	T	571
+1	O44	Occupation-- Natural Resources, Construction, and Maintenance Occupations	0	T	542
+1	O45	Occupation-- Farming, Fishing, and Forestry Occupations	0	T	549
+1	O47	Occupation-- Construction and Extraction Occupations	0	T	543
+1	O49	Occupation-- Installation, Maintenance, and Repair Occupations	0	T	544
+1	O50	Occupation-- Production, Transportation, and Material Moving Occupations	0	T	546
+1	O51	Occupation-- Production Occupations	0	T	545
+1	O53	Occupation-- Transportation and Material Moving Occupations	0	T	547
+1	P1X	Part-- Head	0	T	525
+1	P2X	Part-- Neck	0	T	526
+1	P31	Part-- Chest- including ribs, internal organs	0	T	528
+1	P32	Part--Exterior and musculoskeletal structures of the back	0	T	529
+1	P33	Part-- Abdomen	0	T	530
+1	P34	Part-- Pelvic region	0	T	531
+1	P3X	Part-- Trunk	0	T	527
+1	P4X	Part-- Upper extremities	0	T	532
+1	P5X	Part-- Lower extremities	0	T	533
+1	P81	Part-- Head and other part(s) of body	0	T	536
+1	P82	Part-- Neck and other part(s) of body	0	T	537
+1	P83	Part-- Trunk and other part(s) of body	0	T	538
+1	P84	Part-- Upper and lower extremities	0	T	539
+1	P88	Part-- Other multiple parts of body	0	T	540
+1	P8A	Part-- Whole body	0	T	541
+1	P8X	Part-- Multiple body parts	0	T	535
+1	RAF	Race-- Asian, Foreign-born	0	T	324
+1	RAN	Race-- Asian, Native-born	0	T	325
+1	RAT	Race-- Asian, non-Hispanic, Total	0	T	326
+1	RBF	Race-- Black or African-American, Foreign-born	0	T	327
+1	RBN	Race-- Black or African-American, Native-born	0	T	328
+1	RBT	Race-- Black or African-American, non-Hispanic, Total	0	T	329
+1	RHF	Race-- Hispanic or Latino, Foreign-born	0	T	331
+1	RHN	Race-- Hispanic or Latino, Native-born	0	T	332
+1	RHT	Race-- Hispanic or Latino, Total	0	T	333
+1	RIN	Race-- American Indian or Alaska Native, Native-born	0	T	334
+1	RIT	Race-- American Indian or Alaska Native, non-Hispanic, Total	0	T	335
+1	RMF	Race-- Person of multiple races, Foreign-born	0	T	336
+1	RMN	Race-- Person of multiple races, Native-born	0	T	337
+1	RMT	Race-- Person of multiple races, non-Hispanic, Total	0	T	338
+1	ROF	Race-- Other or not reported, Foreign-born	0	T	340
+1	RON	Race-- Other or not reported, Native-born	0	T	341
+1	ROT	Race-- Other or not reported, non-Hispanic, Total	0	T	342
+1	RPF	Race-- Native Hawaiian or Pacific Islander, Foreign-born	0	T	343
+1	RPN	Race-- Native Hawaiian or Pacific Islander, Native-born	0	T	344
+1	RPT	Race-- Native Hawaiian or Pacific Islander, non-Hispanic, Total	0	T	345
+1	RWF	Race-- White, Foreign-born	0	T	346
+1	RWN	Race-- White, Native-born	0	T	347
+1	RWT	Race-- White, non-Hispanic, Total	0	T	348
+1	S1A	Primary source of injury-- Opioids	0	T	407
+1	S1B	Primary source of injury-- Multiple drugs, medications	0	T	408
+1	S1X	Primary source of injury-- CHEMICALS AND HAZARDOUS MATERIALS	0	T	406
+1	S2A	Primary source of injury-- Wheeled containers, material moving equipment	0	T	410
+1	S2X	Primary source of injury-- CONTAINERS, FURNITURE, FIXTURES	0	T	409
+1	S31	Primary source of injury-- Agricultural and garden machinery	0	T	412
+1	S32	Primary source of injury-- Construction, logging, and mining machinery	0	T	413
+1	S34	Primary source of injury-- Material and personnel handling machinery	0	T	415
+1	S3A	Primary source of injury-- Heavy earth-moving machinery	0	T	414
+1	S3X	Primary source of injury-- Machinery	0	T	411
+1	S41	Primary source of injury-- Raw and semi-finished materials and byproducts	0	T	417
+1	S42	Primary source of injury-- Building materials	0	T	419
+1	S46	Primary source of injury-- Vehicle and machine parts- power, mechanical, special process	0	T	420
+1	S4A	Primary source of injury-- Water, liquids-nonchemical	0	T	418
+1	S4X	Primary source of injury-- Parts and materials	0	T	416
+1	S51	Primary source of injury-- Animals	0	T	422
+1	S54	Primary source of injury-- Plants, trees, vegetation	0	T	423
+1	S56	Primary source of injury-- Activities and conditions of injured, ill worker	0	T	427
+1	S57	Primary source of injury-- Person--other than injured or ill worker	0	T	428
+1	S5A	Primary source of injury-- Trees, logs, limbs	0	T	424
+1	S5B	Primary source of injury-- Trees	0	T	425
+1	S5C	Primary source of injury-- Logs	0	T	426
+1	S5D	Primary source of injury-- Relative or domestic partner of injured or ill worker	0	T	429
+1	S5E	Primary source of injury-- Co-worker or work associate of injured or ill worker	0	T	430
+1	S5F	Primary source of injury-- Client or customer	0	T	431
+1	S5G	Primary source of injury-- Acquaintance	0	T	432
+1	S5H	Primary source of injury-- Criminal assailants	0	T	433
+1	S5J	Primary source of injury-- Suspect under pursuit or investigation	0	T	435
+1	S5K	Primary source of injury-- Robber	0	T	436
+1	S5X	Primary source of injury-- ANIMALS, PLANTS, PERSONS, ETC.	0	T	421
+1	S62	Primary source of injury-- Buildings	0	T	439
+1	S63	Primary source of injury-- Structures other than buildings	0	T	440
+1	S65	Primary source of injury-- Other structural elements	0	T	443
+1	S6A	Primary source of injury-- Elevator shafts	0	T	438
+1	S6B	Primary source of injury-- Scaffolds, staging	0	T	441
+1	S6C	Primary source of injury-- Towers, poles	0	T	442
+1	S6D	Primary source of injury-- Roofs	0	T	444
+1	S6E	Primary source of injury-- Stairs, multiple level surfaces	0	T	445
+1	S6F	Primary source of injury-- Natural surface	0	T	446
+1	S6X	Primary source of injury-- Structures and surfaces	0	T	437
+1	S73	Primary source of injury-- Portable ladders and stairs	0	T	448
+1	S7X	Primary source of injury-- Tools, instruments, and equipment	0	T	447
+1	S81	Primary source of injury-- Aircraft	0	T	450
+1	S82	Primary source of injury-- Rail vehicles	0	T	451
+1	S83	Primary source of injury-- Water vehicles	0	T	452
+1	S84	Primary source of injury-- Roadway vehicles--motorized	0	T	453
+1	S86	Primary source of injury-- Off-road and industrial vehicles--powered	0	T	465
+1	S8A	Primary source of injury-- Emergency and security vehicles	0	T	454
+1	S8B	Primary source of injury-- Trucks with mounted machinery, equipment	0	T	455
+1	S8C	Primary source of injury-- Dump trucks	0	T	456
+1	S8D	Primary source of injury-- Garbage trucks	0	T	457
+1	S8E	Primary source of injury-- Trucks	0	T	458
+1	S8F	Primary source of injury-- Straight trucks, box trucks	0	T	459
+1	S8G	Primary source of injury-- Tanker trucks	0	T	460
+1	S8H	Primary source of injury-- Other semi, tractor-trailer	0	T	461
+1	S8I	Primary source of injury-- Passenger vehicles	0	T	462
+1	S8J	Primary source of injury-- Automobile	0	T	463
+1	S8K	Primary source of injury-- Vans, passenger and utility	0	T	464
+1	S8L	Primary source of injury-- Industrial vehicles, material hauling and transport--powered	0	T	466
+1	S8M	Primary source of injury-- Forklift, order picker, platform truck--powered	0	T	467
+1	S8N	Primary source of injury-- Agricultural tractors	0	T	468
+1	S8X	Primary source of injury-- Vehicles	0	T	449
+1	S9A	Primary source of injury-- Heat--environmental	0	T	469
+1	T00	Secondary source of injury-- Not Applicable	0	T	508
+1	T15	Secondary source of injury-- Drugs, medications	0	T	472
+1	T1A	Secondary source of injury-- Petroleum and coal products	0	T	471
+1	T1X	Secondary source of injury-- CHEMICALS AND HAZARDOUS MATERIALS	0	T	470
+1	T2A	Secondary source of injury-- Wheeled containers, material moving equipment	0	T	474
+1	T2X	Secondary source of injury-- CONTAINERS, FURNITURE, FIXTURES	0	T	473
+1	T3X	Secondary source of injury-- Machinery	0	T	475
+1	T44	Secondary source of injury-- Fasteners, connectors, ropes, ties	0	T	477
+1	T46	Secondary source of injury-- Vehicle and machine parts- power, mechanical, special process	0	T	478
+1	T4X	Secondary source of injury-- Parts and materials	0	T	476
+1	T54	Secondary source of injury-- Plants, trees, vegetation	0	T	480
+1	T5A	Secondary source of injury-- Trees, logs, limbs	0	T	481
+1	T5X	Secondary source of injury-- ANIMALS, PLANTS, PERSONS, ETC.	0	T	479
+1	T61	Secondary source of injury-- Confined spaces	0	T	483
+1	T62	Secondary source of injury-- Buildings	0	T	484
+1	T63	Secondary source of injury-- Structures other than buildings	0	T	485
+1	T66	Secondary source of injury-- Ground, travel, and support surfaces	0	T	487
+1	T67	Secondary source of injury-- Bodies of water	0	T	491
+1	T6A	Secondary source of injury-- Guardrails, road dividers or barriers	0	T	486
+1	T6B	Secondary source of injury-- Stairs, steps	0	T	488
+1	T6C	Secondary source of injury-- Constructed surfaces	0	T	489
+1	T6D	Secondary source of injury-- Natural surface	0	T	490
+1	T6X	Secondary source of injury-- Structures and surfaces	0	T	482
+1	T7A	Secondary source of injury-- Knives	0	T	493
+1	T7B	Secondary source of injury-- Firearms, air-powered guns	0	T	494
+1	T7X	Secondary source of injury-- Tools, instruments, and equipment	0	T	492
+1	T81	Secondary source of injury-- Aircraft	0	T	496
+1	T82	Secondary source of injury-- Rail vehicles	0	T	497
+1	T83	Secondary source of injury-- Water vehicles	0	T	498
+1	T84	Secondary source of injury-- Roadway vehicles--motorized	0	T	499
+1	T86	Secondary source of injury-- Off-road and industrial vehicles--powered	0	T	502
+1	T8A	Secondary source of injury-- Trucks with mounted machinery, equipment	0	T	500
+1	T8B	Secondary source of injury-- Passenger vehicles	0	T	501
+1	T8C	Secondary source of injury-- Forklift, order picker, platform truck--powered	0	T	503
+1	T8X	Secondary source of injury-- Vehicles	0	T	495
+1	T91	Secondary source of injury-- Apparel, laundry, linens	0	T	505
+1	T95	Secondary source of injury-- Environmental and elemental conditions	0	T	506
+1	T9A	Secondary source of injury-- Weather, atmospheric conditions	0	T	507
+1	WAX	Worker status-- Wage and salary	0	T	320
+1	WBX	Worker status-- Self-employed	0	T	321
+1	X1X	Worker activity-- Emergency and security operations	0	T	572
+1	X2X	Worker Activity--Agriculture, landscaping, and animal activities	0	T	573
+1	X32	Worker activity-- Heavy and industrial earth moving and construction operations	0	T	575
+1	X33	Worker activity-- Heavy and industrial production and repair operations	0	T	576
+1	X34	Worker activity-- Heavy and industrial materials moving and warehousing operations	0	T	577
+1	X3X	Worker activity-- Heavy and industrial construction, production, and materials moving operations	0	T	574
+1	X4X	Worker activity--Other construction, production and maintenance activities	0	T	578
+1	X5X	Worker activity-- Personal care, service, and administrative activities	0	T	579
+1	X61	Worker activity-- Intentional risk taking activities	0	T	583
+1	X6X	Worker activity-- Miscellaneous activities	0	T	582
+1	X71	Worker activity-- Driving, piloting	0	T	585
+1	X72	Worker activity-- Passenger of vehicle in transport	0	T	586
+1	X74	Worker activity-- Transportation support activities	0	T	587
+1	X7X	Worker activity-- Transportation operations	0	T	584
+1	Y11	Worker location-- Road and bridge construction or maintenance	0	T	589
+1	Y15	Worker location-- Residential construction sites	0	T	590
+1	Y1X	Worker location-- Construction or maintenance sites	0	T	588
+1	Y2X	Worker location-- Farm, agricultural premises	0	T	591
+1	Y36	Worker location-- Factories and Production facilities	0	T	593
+1	Y3X	Worker location-- Industrial places and premises	0	T	592
+1	Y4X	Worker location-- Residence, housing	0	T	594
+1	Y55	Worker location-- Office buildings	0	T	596
+1	Y5X	Worker location-- Limited access public buildings	0	T	595
+1	Y62	Worker location-- Restaurants, cafes	0	T	598
+1	Y65	Worker location-- Retail or business areas	0	T	599
+1	Y6X	Worker location-- Business and communal areas	0	T	597
+1	Y72	Worker location-- Streets, highways, roads	0	T	601
+1	Y73	Worker location-- Airport infrastructure	0	T	605
+1	Y7A	Worker location-- Interstates, freeways, or expressways	0	T	602
+1	Y7B	Worker location-- Other State or U.S. highways	0	T	603
+1	Y7C	Worker location-- Local roads or streets	0	T	604
+1	Y7X	Worker location-- Transportation infrastructure	0	T	600
+6	00X	Total fatalities	0	T	613
+6	10X	Ownership-- Federal government	0	T	4
+6	ACX	Age group-- 18 to 19 years	0	T	616
+6	ADX	Age group-- 20 to 24 years	0	T	617
+6	AEX	Age group-- 25 to 34 years	0	T	618
+6	AFX	Age group-- 35 to 44 years	0	T	619
+6	AGX	Age group-- 45 to 54 years	0	T	620
+6	AHX	Age group-- 55 to 64 years	0	T	621
+6	AIX	Age group-- 65 years and over	0	T	622
+6	E11	Event or exposure-- Homicides (Violent acts by other person)	0	T	653
+6	E12	Event or exposure-- Suicides (Intentional self-harm)	0	T	655
+6	E1A	Event or exposure-- Shooting by other person	0	T	654
+6	E1B	Event or exposure-- Intentional self-harm-- shooting	0	T	656
+6	E1C	Event or exposure-- Intentional self-harm-- hanging, strangulation, asphyxiation	0	T	657
+6	E1X	Event or exposure-- VIOLENT ACTS	0	T	652
+6	E21	Event or exposure-- Aircraft incidents	0	T	660
+6	E22	Event or exposure-- Water vehicle incidents	0	T	661
+6	E25	Event or exposure-- Pedestrian incidents involving motorized land vehicles	0	T	663
+6	E26	Event or exposure-- Roadway incidents involving motorized land vehicle	0	T	664
+6	E27	Event or exposure-- Nonroadway incidents involving motorized land vehicles	0	T	670
+6	E2A	Event or exposure-- Roadway collision with other vehicle(s)	0	T	665
+6	E2C	Event or exposure-- Collision with object or animal on side of roadway	0	T	667
+6	E2D	Event or exposure-- Roadway noncollision incident	0	T	668
+6	E2E	Event or exposure-- Roadway noncollision- vehicle overturn	0	T	669
+6	E2G	Event or exposure-- Nonroadway noncollision incident	0	T	672
+6	E2X	Event or exposure-- Transportation incidents	0	T	659
+6	E3X	Event or exposure-- EXPLOSIONS AND FIRES	0	T	674
+6	E41	Event or exposure-- Fall to lower level	0	T	676
+6	E43	Event or exposure-- Slip, trip, stumble or fall on same level	0	T	685
+6	E4C	Event or exposure-- Fall to lower level resulting in exposure or contact	0	T	679
+6	E4E	Event or exposure-- Fall to lower level, height less than 6 feet	0	T	681
+6	E4X	Event or exposure-- Falls, slips, trips	0	T	675
+6	E55	Event or exposure-- Exposure to harmful substances	0	T	693
+6	E5E	Event or exposure-- Drug, alcohol overdose	0	T	694
+6	E5X	Event or exposure-- Exposure to harmful substances, environments	0	T	686
+6	E6X	Event or exposure-- CONTACT INCIDENTS	0	T	698
+6	GFX	Sex-- Women	0	T	625
+6	GMX	Sex-- Men	0	T	626
+6	I1X	Time of incident-- 12:00 midnight - 3:59 a.m.	0	T	910
+6	I2X	Time of incident-- 4:00 a.m. - 7:59 a.m.	0	T	911
+6	I3X	Time of incident-- 8:00 a.m. - 11:59 a.m.	0	T	912
+6	I4X	Time of incident-- 12:00 noon - 3:59 p.m.	0	T	913
+6	I5X	Time of incident-- 4:00 p.m. - 7:59 p.m.	0	T	914
+6	I6X	Time of incident-- 8:00 p.m. - 11:59 p.m.	0	T	915
+6	N1A	Nature-- Intracranial injuries	0	T	813
+6	N1X	Nature-- Injuries to the brain, spinal cord	0	T	812
+6	N2A	Nature-- Gunshot wounds	0	T	815
+6	N2B	Nature-- Injuries to internal organs and major blood vessels	0	T	816
+6	N2X	Nature-- Severe wounds, internal injuries	0	T	814
+6	N5X	Nature-- Burns, corrosions, electrical injuries	0	T	819
+6	N6X	Nature-- Effects of poison, toxic, or allergenic exposure	0	T	821
+6	N7A	Nature-- Drowning, near drowning	0	T	823
+6	N7B	Nature-- Asphyxiation- except toxic or allergenic	0	T	824
+6	N7X	Nature-- Effects of environmental conditions and exposures	0	T	822
+6	N8X	Nature-- Multiple traumatic injuries and disorders	0	T	825
+6	O00	Occupation-- Management, Business, Science, and Arts Occupations	0	T	855
+6	O10	Occupation-- Management, Business, and Financial Occupations	0	T	854
+6	O11	Occupation-- Management Occupations	0	T	853
+6	O13	Occupation-- Business and Financial Operations Occupations	0	T	856
+6	O30	Occupation-- Service Occupations	0	T	867
+6	O33	Occupation-- Protective Service Occupations	0	T	868
+6	O40	Occupation-- Sales and Office Occupations	0	T	873
+6	O43	Occupation-- Office and Administrative Support Occupations	0	T	874
+6	O44	Occupation-- Natural Resources, Construction, and Maintenance Occupations	0	T	845
+6	O45	Occupation-- Farming, Fishing, and Forestry Occupations	0	T	852
+6	O47	Occupation-- Construction and Extraction Occupations	0	T	846
+6	O50	Occupation-- Production, Transportation, and Material Moving Occupations	0	T	849
+6	O51	Occupation-- Production Occupations	0	T	848
+6	O53	Occupation-- Transportation and Material Moving Occupations	0	T	850
+6	O55	Occupation-- Military specific occupations	0	T	851
+6	P1X	Part-- Head	0	T	828
+6	P2X	Part-- Neck	0	T	829
+6	P31	Part-- Chest- including ribs, internal organs	0	T	831
+6	P33	Part-- Abdomen	0	T	833
+6	P3X	Part-- Trunk	0	T	830
+6	P5X	Part-- Lower extremities	0	T	836
+6	P81	Part-- Head and other part(s) of body	0	T	839
+6	P83	Part-- Trunk and other part(s) of body	0	T	841
+6	P88	Part-- Other multiple parts of body	0	T	843
+6	P8X	Part-- Multiple body parts	0	T	838
+6	RAF	Race-- Asian, Foreign-born	0	T	627
+6	RAT	Race-- Asian, non-Hispanic, Total	0	T	629
+6	RBN	Race-- Black or African-American, Native-born	0	T	631
+6	RBT	Race-- Black or African-American, non-Hispanic, Total	0	T	632
+6	RHF	Race-- Hispanic or Latino, Foreign-born	0	T	634
+6	RHN	Race-- Hispanic or Latino, Native-born	0	T	635
+6	RHT	Race-- Hispanic or Latino, Total	0	T	636
+6	RMN	Race-- Person of multiple races, Native-born	0	T	640
+6	RMT	Race-- Person of multiple races, non-Hispanic, Total	0	T	641
+6	RWT	Race-- White, non-Hispanic, Total	0	T	651
+6	S1X	Primary source of injury-- CHEMICALS AND HAZARDOUS MATERIALS	0	T	709
+6	S56	Primary source of injury-- Activities and conditions of injured, ill worker	0	T	730
+6	S57	Primary source of injury-- Person--other than injured or ill worker	0	T	731
+6	S5E	Primary source of injury-- Co-worker or work associate of injured or ill worker	0	T	733
+6	S5X	Primary source of injury-- ANIMALS, PLANTS, PERSONS, ETC.	0	T	724
+6	S6X	Primary source of injury-- Structures and surfaces	0	T	740
+6	S7X	Primary source of injury-- Tools, instruments, and equipment	0	T	750
+6	S81	Primary source of injury-- Aircraft	0	T	753
+6	S84	Primary source of injury-- Roadway vehicles--motorized	0	T	756
+6	S8A	Primary source of injury-- Emergency and security vehicles	0	T	757
+6	S8E	Primary source of injury-- Trucks	0	T	761
+6	S8F	Primary source of injury-- Straight trucks, box trucks	0	T	762
+6	S8I	Primary source of injury-- Passenger vehicles	0	T	765
+6	S8J	Primary source of injury-- Automobile	0	T	766
+6	S8K	Primary source of injury-- Vans, passenger and utility	0	T	767
+6	S8X	Primary source of injury-- Vehicles	0	T	752
+6	T00	Secondary source of injury-- Not Applicable	0	T	811
+6	T44	Secondary source of injury-- Fasteners, connectors, ropes, ties	0	T	780
+6	T4X	Secondary source of injury-- Parts and materials	0	T	779
+6	T54	Secondary source of injury-- Plants, trees, vegetation	0	T	783
+6	T5A	Secondary source of injury-- Trees, logs, limbs	0	T	784
+6	T5X	Secondary source of injury-- ANIMALS, PLANTS, PERSONS, ETC.	0	T	782
+6	T62	Secondary source of injury-- Buildings	0	T	787
+6	T63	Secondary source of injury-- Structures other than buildings	0	T	788
+6	T66	Secondary source of injury-- Ground, travel, and support surfaces	0	T	790
+6	T67	Secondary source of injury-- Bodies of water	0	T	794
+6	T6C	Secondary source of injury-- Constructed surfaces	0	T	792
+6	T6D	Secondary source of injury-- Natural surface	0	T	793
+6	T6X	Secondary source of injury-- Structures and surfaces	0	T	785
+6	T7B	Secondary source of injury-- Firearms, air-powered guns	0	T	797
+6	T7X	Secondary source of injury-- Tools, instruments, and equipment	0	T	795
+6	T81	Secondary source of injury-- Aircraft	0	T	799
+6	T84	Secondary source of injury-- Roadway vehicles--motorized	0	T	802
+6	T8B	Secondary source of injury-- Passenger vehicles	0	T	804
+6	T8X	Secondary source of injury-- Vehicles	0	T	798
+6	T91	Secondary source of injury-- Apparel, laundry, linens	0	T	808
+6	T95	Secondary source of injury-- Environmental and elemental conditions	0	T	809
+6	T9A	Secondary source of injury-- Weather, atmospheric conditions	0	T	810
+6	WAX	Worker status-- Wage and salary	0	T	623
+6	X1X	Worker activity-- Emergency and security operations	0	T	875
+6	X33	Worker activity-- Heavy and industrial production and repair operations	0	T	879
+6	X3X	Worker activity-- Heavy and industrial construction, production, and materials moving operations	0	T	877
+6	X4X	Worker activity--Other construction, production and maintenance activities	0	T	881
+6	X5X	Worker activity-- Personal care, service, and administrative activities	0	T	882
+6	X61	Worker activity-- Intentional risk taking activities	0	T	886
+6	X6X	Worker activity-- Miscellaneous activities	0	T	885
+6	X71	Worker activity-- Driving, piloting	0	T	888
+6	X72	Worker activity-- Passenger of vehicle in transport	0	T	889
+6	X74	Worker activity-- Transportation support activities	0	T	890
+6	X7X	Worker activity-- Transportation operations	0	T	887
+6	Y36	Worker location-- Factories and Production facilities	0	T	896
+6	Y3X	Worker location-- Industrial places and premises	0	T	895
+6	Y4X	Worker location-- Residence, housing	0	T	897
+6	Y55	Worker location-- Office buildings	0	T	899
+6	Y5X	Worker location-- Limited access public buildings	0	T	898
+6	Y72	Worker location-- Streets, highways, roads	0	T	904
+6	Y7A	Worker location-- Interstates, freeways, or expressways	0	T	905
+6	Y7B	Worker location-- Other State or U.S. highways	0	T	906
+6	Y7C	Worker location-- Local roads or streets	0	T	907
+6	Y7X	Worker location-- Transportation infrastructure	0	T	903
+7	00X	Total fatalities	0	T	916
+7	20X	Ownership-- State government	0	T	5
+7	ADX	Age group-- 20 to 24 years	0	T	920
+7	AEX	Age group-- 25 to 34 years	0	T	921
+7	AFX	Age group-- 35 to 44 years	0	T	922
+7	AGX	Age group-- 45 to 54 years	0	T	923
+7	AHX	Age group-- 55 to 64 years	0	T	924
+7	AIX	Age group-- 65 years and over	0	T	925
+7	E11	Event or exposure-- Homicides (Violent acts by other person)	0	T	956
+7	E12	Event or exposure-- Suicides (Intentional self-harm)	0	T	958
+7	E1A	Event or exposure-- Shooting by other person	0	T	957
+7	E1B	Event or exposure-- Intentional self-harm-- shooting	0	T	959
+7	E1C	Event or exposure-- Intentional self-harm-- hanging, strangulation, asphyxiation	0	T	960
+7	E1X	Event or exposure-- VIOLENT ACTS	0	T	955
+7	E21	Event or exposure-- Aircraft incidents	0	T	963
+7	E25	Event or exposure-- Pedestrian incidents involving motorized land vehicles	0	T	966
+7	E26	Event or exposure-- Roadway incidents involving motorized land vehicle	0	T	967
+7	E2A	Event or exposure-- Roadway collision with other vehicle(s)	0	T	968
+7	E2X	Event or exposure-- Transportation incidents	0	T	962
+7	E3X	Event or exposure-- EXPLOSIONS AND FIRES	0	T	977
+7	E41	Event or exposure-- Fall to lower level	0	T	979
+7	E43	Event or exposure-- Slip, trip, stumble or fall on same level	0	T	988
+7	E4D	Event or exposure-- Other fall to lower level	0	T	983
+7	E4X	Event or exposure-- Falls, slips, trips	0	T	978
+7	E56	Event or exposure-- Exposure to oxygen deficiency	0	T	998
+7	E5F	Event or exposure-- Drowning, submersion without other event	0	T	999
+7	E5X	Event or exposure-- Exposure to harmful substances, environments	0	T	989
+7	E64	Event or exposure-- Struck by propelled, falling, or suspended object	0	T	1007
+7	E6X	Event or exposure-- CONTACT INCIDENTS	0	T	1001
+7	GFX	Sex-- Women	0	T	928
+7	GMX	Sex-- Men	0	T	929
+7	I1X	Time of incident-- 12:00 midnight - 3:59 a.m.	0	T	1213
+7	I2X	Time of incident-- 4:00 a.m. - 7:59 a.m.	0	T	1214
+7	I3X	Time of incident-- 8:00 a.m. - 11:59 a.m.	0	T	1215
+7	I4X	Time of incident-- 12:00 noon - 3:59 p.m.	0	T	1216
+7	I5X	Time of incident-- 4:00 p.m. - 7:59 p.m.	0	T	1217
+7	I6X	Time of incident-- 8:00 p.m. - 11:59 p.m.	0	T	1218
+7	N1A	Nature-- Intracranial injuries	0	T	1116
+7	N1X	Nature-- Injuries to the brain, spinal cord	0	T	1115
+7	N2A	Nature-- Gunshot wounds	0	T	1118
+7	N2B	Nature-- Injuries to internal organs and major blood vessels	0	T	1119
+7	N2X	Nature-- Severe wounds, internal injuries	0	T	1117
+7	N3X	Nature-- Surface and flesh wounds	0	T	1120
+7	N7A	Nature-- Drowning, near drowning	0	T	1126
+7	N7B	Nature-- Asphyxiation- except toxic or allergenic	0	T	1127
+7	N7X	Nature-- Effects of environmental conditions and exposures	0	T	1125
+7	N8X	Nature-- Multiple traumatic injuries and disorders	0	T	1128
+7	O00	Occupation-- Management, Business, Science, and Arts Occupations	0	T	1158
+7	O19	Occupation-- Life, Physical, and Social Science Occupations	0	T	1163
+7	O20	Occupation-- Professional and Related Occupations	0	T	1161
+7	O21	Occupation-- Community and Social Services Occupations	0	T	1164
+7	O25	Occupation-- Educational Instruction and Library Occupations	0	T	1166
+7	O30	Occupation-- Service Occupations	0	T	1170
+7	O33	Occupation-- Protective Service Occupations	0	T	1171
+7	O37	Occupation-- Building and Grounds Cleaning and Maintenance Occupations	0	T	1173
+7	O40	Occupation-- Sales and Office Occupations	0	T	1176
+7	O43	Occupation-- Office and Administrative Support Occupations	0	T	1177
+7	O44	Occupation-- Natural Resources, Construction, and Maintenance Occupations	0	T	1148
+7	O47	Occupation-- Construction and Extraction Occupations	0	T	1149
+7	O49	Occupation-- Installation, Maintenance, and Repair Occupations	0	T	1150
+7	O50	Occupation-- Production, Transportation, and Material Moving Occupations	0	T	1152
+7	O51	Occupation-- Production Occupations	0	T	1151
+7	O53	Occupation-- Transportation and Material Moving Occupations	0	T	1153
+7	P1X	Part-- Head	0	T	1131
+7	P2X	Part-- Neck	0	T	1132
+7	P31	Part-- Chest- including ribs, internal organs	0	T	1134
+7	P3X	Part-- Trunk	0	T	1133
+7	P5X	Part-- Lower extremities	0	T	1139
+7	P81	Part-- Head and other part(s) of body	0	T	1142
+7	P83	Part-- Trunk and other part(s) of body	0	T	1144
+7	P88	Part-- Other multiple parts of body	0	T	1146
+7	P8X	Part-- Multiple body parts	0	T	1141
+7	RAT	Race-- Asian, non-Hispanic, Total	0	T	932
+7	RBN	Race-- Black or African-American, Native-born	0	T	934
+7	RBT	Race-- Black or African-American, non-Hispanic, Total	0	T	935
+7	RHF	Race-- Hispanic or Latino, Foreign-born	0	T	937
+7	RHN	Race-- Hispanic or Latino, Native-born	0	T	938
+7	RHT	Race-- Hispanic or Latino, Total	0	T	939
+7	ROT	Race-- Other or not reported, non-Hispanic, Total	0	T	948
+7	RWN	Race-- White, Native-born	0	T	953
+7	RWT	Race-- White, non-Hispanic, Total	0	T	954
+7	S1A	Primary source of injury-- Opioids	0	T	1013
+7	S1X	Primary source of injury-- CHEMICALS AND HAZARDOUS MATERIALS	0	T	1012
+7	S2X	Primary source of injury-- CONTAINERS, FURNITURE, FIXTURES	0	T	1015
+7	S32	Primary source of injury-- Construction, logging, and mining machinery	0	T	1019
+7	S34	Primary source of injury-- Material and personnel handling machinery	0	T	1021
+7	S3A	Primary source of injury-- Heavy earth-moving machinery	0	T	1020
+7	S3X	Primary source of injury-- Machinery	0	T	1017
+7	S41	Primary source of injury-- Raw and semi-finished materials and byproducts	0	T	1023
+7	S4A	Primary source of injury-- Water, liquids-nonchemical	0	T	1024
+7	S4X	Primary source of injury-- Parts and materials	0	T	1022
+7	S54	Primary source of injury-- Plants, trees, vegetation	0	T	1029
+7	S56	Primary source of injury-- Activities and conditions of injured, ill worker	0	T	1033
+7	S57	Primary source of injury-- Person--other than injured or ill worker	0	T	1034
+7	S5A	Primary source of injury-- Trees, logs, limbs	0	T	1030
+7	S5E	Primary source of injury-- Co-worker or work associate of injured or ill worker	0	T	1036
+7	S5F	Primary source of injury-- Client or customer	0	T	1037
+7	S5H	Primary source of injury-- Criminal assailants	0	T	1039
+7	S5I	Primary source of injury-- Criminal inmate or detainee in custody	0	T	1040
+7	S5J	Primary source of injury-- Suspect under pursuit or investigation	0	T	1041
+7	S5X	Primary source of injury-- ANIMALS, PLANTS, PERSONS, ETC.	0	T	1027
+7	S6X	Primary source of injury-- Structures and surfaces	0	T	1043
+7	S7X	Primary source of injury-- Tools, instruments, and equipment	0	T	1053
+7	S81	Primary source of injury-- Aircraft	0	T	1056
+7	S84	Primary source of injury-- Roadway vehicles--motorized	0	T	1059
+7	S86	Primary source of injury-- Off-road and industrial vehicles--powered	0	T	1071
+7	S8A	Primary source of injury-- Emergency and security vehicles	0	T	1060
+7	S8B	Primary source of injury-- Trucks with mounted machinery, equipment	0	T	1061
+7	S8C	Primary source of injury-- Dump trucks	0	T	1062
+7	S8E	Primary source of injury-- Trucks	0	T	1064
+7	S8F	Primary source of injury-- Straight trucks, box trucks	0	T	1065
+7	S8I	Primary source of injury-- Passenger vehicles	0	T	1068
+7	S8J	Primary source of injury-- Automobile	0	T	1069
+7	S8X	Primary source of injury-- Vehicles	0	T	1055
+7	T00	Secondary source of injury-- Not Applicable	0	T	1114
+7	T1A	Secondary source of injury-- Petroleum and coal products	0	T	1077
+7	T1X	Secondary source of injury-- CHEMICALS AND HAZARDOUS MATERIALS	0	T	1076
+7	T2X	Secondary source of injury-- CONTAINERS, FURNITURE, FIXTURES	0	T	1079
+7	T3X	Secondary source of injury-- Machinery	0	T	1081
+7	T4X	Secondary source of injury-- Parts and materials	0	T	1082
+7	T54	Secondary source of injury-- Plants, trees, vegetation	0	T	1086
+7	T5A	Secondary source of injury-- Trees, logs, limbs	0	T	1087
+7	T5X	Secondary source of injury-- ANIMALS, PLANTS, PERSONS, ETC.	0	T	1085
+7	T63	Secondary source of injury-- Structures other than buildings	0	T	1091
+7	T66	Secondary source of injury-- Ground, travel, and support surfaces	0	T	1093
+7	T6C	Secondary source of injury-- Constructed surfaces	0	T	1095
+7	T6D	Secondary source of injury-- Natural surface	0	T	1096
+7	T6X	Secondary source of injury-- Structures and surfaces	0	T	1088
+7	T7A	Secondary source of injury-- Knives	0	T	1099
+7	T7B	Secondary source of injury-- Firearms, air-powered guns	0	T	1100
+7	T7X	Secondary source of injury-- Tools, instruments, and equipment	0	T	1098
+7	T84	Secondary source of injury-- Roadway vehicles--motorized	0	T	1105
+7	T8B	Secondary source of injury-- Passenger vehicles	0	T	1107
+7	T8X	Secondary source of injury-- Vehicles	0	T	1101
+7	T95	Secondary source of injury-- Environmental and elemental conditions	0	T	1112
+7	T9A	Secondary source of injury-- Weather, atmospheric conditions	0	T	1113
+7	WAX	Worker status-- Wage and salary	0	T	926
+7	X1X	Worker activity-- Emergency and security operations	0	T	1178
+7	X2X	Worker Activity--Agriculture, landscaping, and animal activities	0	T	1179
+7	X32	Worker activity-- Heavy and industrial earth moving and construction operations	0	T	1181
+7	X33	Worker activity-- Heavy and industrial production and repair operations	0	T	1182
+7	X3X	Worker activity-- Heavy and industrial construction, production, and materials moving operations	0	T	1180
+7	X4X	Worker activity--Other construction, production and maintenance activities	0	T	1184
+7	X5X	Worker activity-- Personal care, service, and administrative activities	0	T	1185
+7	X61	Worker activity-- Intentional risk taking activities	0	T	1189
+7	X6X	Worker activity-- Miscellaneous activities	0	T	1188
+7	X71	Worker activity-- Driving, piloting	0	T	1191
+7	X72	Worker activity-- Passenger of vehicle in transport	0	T	1192
+7	X74	Worker activity-- Transportation support activities	0	T	1193
+7	X7X	Worker activity-- Transportation operations	0	T	1190
+7	Y11	Worker location-- Road and bridge construction or maintenance	0	T	1195
+7	Y1X	Worker location-- Construction or maintenance sites	0	T	1194
+7	Y2X	Worker location-- Farm, agricultural premises	0	T	1197
+7	Y36	Worker location-- Factories and Production facilities	0	T	1199
+7	Y3X	Worker location-- Industrial places and premises	0	T	1198
+7	Y4X	Worker location-- Residence, housing	0	T	1200
+7	Y55	Worker location-- Office buildings	0	T	1202
+7	Y5X	Worker location-- Limited access public buildings	0	T	1201
+7	Y6X	Worker location-- Business and communal areas	0	T	1203
+7	Y72	Worker location-- Streets, highways, roads	0	T	1207
+7	Y7A	Worker location-- Interstates, freeways, or expressways	0	T	1208
+7	Y7B	Worker location-- Other State or U.S. highways	0	T	1209
+7	Y7C	Worker location-- Local roads or streets	0	T	1210
+7	Y7X	Worker location-- Transportation infrastructure	0	T	1206
+8	00X	Total fatalities	0	T	1219
+8	30X	Ownership-- Local government	0	T	6
+8	ADX	Age group-- 20 to 24 years	0	T	1223
+8	AEX	Age group-- 25 to 34 years	0	T	1224
+8	AFX	Age group-- 35 to 44 years	0	T	1225
+8	AGX	Age group-- 45 to 54 years	0	T	1226
+8	AHX	Age group-- 55 to 64 years	0	T	1227
+8	AIX	Age group-- 65 years and over	0	T	1228
+8	E11	Event or exposure-- Homicides (Violent acts by other person)	0	T	1259
+8	E12	Event or exposure-- Suicides (Intentional self-harm)	0	T	1261
+8	E1A	Event or exposure-- Shooting by other person	0	T	1260
+8	E1B	Event or exposure-- Intentional self-harm-- shooting	0	T	1262
+8	E1X	Event or exposure-- VIOLENT ACTS	0	T	1258
+8	E21	Event or exposure-- Aircraft incidents	0	T	1266
+8	E25	Event or exposure-- Pedestrian incidents involving motorized land vehicles	0	T	1269
+8	E26	Event or exposure-- Roadway incidents involving motorized land vehicle	0	T	1270
+8	E27	Event or exposure-- Nonroadway incidents involving motorized land vehicles	0	T	1276
+8	E2A	Event or exposure-- Roadway collision with other vehicle(s)	0	T	1271
+8	E2B	Event or exposure-- Collision with moving object or animal in roadway	0	T	1272
+8	E2C	Event or exposure-- Collision with object or animal on side of roadway	0	T	1273
+8	E2D	Event or exposure-- Roadway noncollision incident	0	T	1274
+8	E2E	Event or exposure-- Roadway noncollision- vehicle overturn	0	T	1275
+8	E2G	Event or exposure-- Nonroadway noncollision incident	0	T	1278
+8	E2X	Event or exposure-- Transportation incidents	0	T	1265
+8	E3X	Event or exposure-- EXPLOSIONS AND FIRES	0	T	1280
+8	E41	Event or exposure-- Fall to lower level	0	T	1282
+8	E43	Event or exposure-- Slip, trip, stumble or fall on same level	0	T	1291
+8	E4C	Event or exposure-- Fall to lower level resulting in exposure or contact	0	T	1285
+8	E4D	Event or exposure-- Other fall to lower level	0	T	1286
+8	E4E	Event or exposure-- Fall to lower level, height less than 6 feet	0	T	1287
+8	E4F	Event or exposure-- Fall to lower level, height 6 to 30 feet	0	T	1288
+8	E4X	Event or exposure-- Falls, slips, trips	0	T	1281
+8	E51	Event or exposure-- Exposure to electricity	0	T	1293
+8	E53	Event or exposure-- Exposure to temperature extremes	0	T	1294
+8	E55	Event or exposure-- Exposure to harmful substances	0	T	1299
+8	E56	Event or exposure-- Exposure to oxygen deficiency	0	T	1301
+8	E5A	Event or exposure-- Exposure to environmental heat	0	T	1295
+8	E5C	Event or exposure-- Exposure to environmental heat-- outdoor	0	T	1297
+8	E5E	Event or exposure-- Drug, alcohol overdose	0	T	1300
+8	E5X	Event or exposure-- Exposure to harmful substances, environments	0	T	1292
+8	E62	Event or exposure-- Contact with animals	0	T	1306
+8	E63	Event or exposure-- Collapse, engulfment	0	T	1309
+8	E64	Event or exposure-- Struck by propelled, falling, or suspended object	0	T	1310
+8	E65	Event or exposure-- Struck, caught, or compressed by running powered equipment	0	T	1314
+8	E6A	Event or exposure-- Bitten or stung by animal	0	T	1307
+8	E6D	Event or exposure-- Struck by falling object	0	T	1312
+8	E6X	Event or exposure-- CONTACT INCIDENTS	0	T	1304
+8	GFX	Sex-- Women	0	T	1231
+8	GMX	Sex-- Men	0	T	1232
+8	I1X	Time of incident-- 12:00 midnight - 3:59 a.m.	0	T	1516
+8	I2X	Time of incident-- 4:00 a.m. - 7:59 a.m.	0	T	1517
+8	I3X	Time of incident-- 8:00 a.m. - 11:59 a.m.	0	T	1518
+8	I4X	Time of incident-- 12:00 noon - 3:59 p.m.	0	T	1519
+8	I5X	Time of incident-- 4:00 p.m. - 7:59 p.m.	0	T	1520
+8	I6X	Time of incident-- 8:00 p.m. - 11:59 p.m.	0	T	1521
+8	N1A	Nature-- Intracranial injuries	0	T	1419
+8	N1X	Nature-- Injuries to the brain, spinal cord	0	T	1418
+8	N2A	Nature-- Gunshot wounds	0	T	1421
+8	N2B	Nature-- Injuries to internal organs and major blood vessels	0	T	1422
+8	N2X	Nature-- Severe wounds, internal injuries	0	T	1420
+8	N5X	Nature-- Burns, corrosions, electrical injuries	0	T	1425
+8	N6X	Nature-- Effects of poison, toxic, or allergenic exposure	0	T	1427
+8	N7A	Nature-- Drowning, near drowning	0	T	1429
+8	N7B	Nature-- Asphyxiation- except toxic or allergenic	0	T	1430
+8	N7X	Nature-- Effects of environmental conditions and exposures	0	T	1428
+8	N8X	Nature-- Multiple traumatic injuries and disorders	0	T	1431
+8	O00	Occupation-- Management, Business, Science, and Arts Occupations	0	T	1461
+8	O10	Occupation-- Management, Business, and Financial Occupations	0	T	1460
+8	O11	Occupation-- Management Occupations	0	T	1459
+8	O13	Occupation-- Business and Financial Operations Occupations	0	T	1462
+8	O17	Occupation-- Architecture and Engineering Occupations	0	T	1465
+8	O20	Occupation-- Professional and Related Occupations	0	T	1464
+8	O21	Occupation-- Community and Social Services Occupations	0	T	1467
+8	O23	Occupation-- Legal Occupations	0	T	1468
+8	O25	Occupation-- Educational Instruction and Library Occupations	0	T	1469
+8	O27	Occupation-- Arts, Design, Entertainment, Sports, and Media Occupations	0	T	1470
+8	O29	Occupation-- Healthcare Practitioner and Technical Occupations	0	T	1471
+8	O30	Occupation-- Service Occupations	0	T	1473
+8	O31	Occupation-- Healthcare Support Occupations	0	T	1472
+8	O33	Occupation-- Protective Service Occupations	0	T	1474
+8	O37	Occupation-- Building and Grounds Cleaning and Maintenance Occupations	0	T	1476
+8	O40	Occupation-- Sales and Office Occupations	0	T	1479
+8	O41	Occupation-- Sales and Related Occupations	0	T	1478
+8	O43	Occupation-- Office and Administrative Support Occupations	0	T	1480
+8	O44	Occupation-- Natural Resources, Construction, and Maintenance Occupations	0	T	1451
+8	O47	Occupation-- Construction and Extraction Occupations	0	T	1452
+8	O49	Occupation-- Installation, Maintenance, and Repair Occupations	0	T	1453
+8	O50	Occupation-- Production, Transportation, and Material Moving Occupations	0	T	1455
+8	O51	Occupation-- Production Occupations	0	T	1454
+8	O53	Occupation-- Transportation and Material Moving Occupations	0	T	1456
+8	P1X	Part-- Head	0	T	1434
+8	P2X	Part-- Neck	0	T	1435
+8	P31	Part-- Chest- including ribs, internal organs	0	T	1437
+8	P32	Part--Exterior and musculoskeletal structures of the back	0	T	1438
+8	P3X	Part-- Trunk	0	T	1436
+8	P4X	Part-- Upper extremities	0	T	1441
+8	P5X	Part-- Lower extremities	0	T	1442
+8	P81	Part-- Head and other part(s) of body	0	T	1445
+8	P83	Part-- Trunk and other part(s) of body	0	T	1447
+8	P88	Part-- Other multiple parts of body	0	T	1449
+8	P8X	Part-- Multiple body parts	0	T	1444
+8	RBT	Race-- Black or African-American, non-Hispanic, Total	0	T	1238
+8	RHF	Race-- Hispanic or Latino, Foreign-born	0	T	1240
+8	RHN	Race-- Hispanic or Latino, Native-born	0	T	1241
+8	RHT	Race-- Hispanic or Latino, Total	0	T	1242
+8	RIN	Race-- American Indian or Alaska Native, Native-born	0	T	1243
+8	RIT	Race-- American Indian or Alaska Native, non-Hispanic, Total	0	T	1244
+8	RON	Race-- Other or not reported, Native-born	0	T	1250
+8	ROT	Race-- Other or not reported, non-Hispanic, Total	0	T	1251
+8	RWF	Race-- White, Foreign-born	0	T	1255
+8	RWN	Race-- White, Native-born	0	T	1256
+8	RWT	Race-- White, non-Hispanic, Total	0	T	1257
+8	S1X	Primary source of injury-- CHEMICALS AND HAZARDOUS MATERIALS	0	T	1315
+8	S31	Primary source of injury-- Agricultural and garden machinery	0	T	1321
+8	S32	Primary source of injury-- Construction, logging, and mining machinery	0	T	1322
+8	S3A	Primary source of injury-- Heavy earth-moving machinery	0	T	1323
+8	S3X	Primary source of injury-- Machinery	0	T	1320
+8	S41	Primary source of injury-- Raw and semi-finished materials and byproducts	0	T	1326
+8	S46	Primary source of injury-- Vehicle and machine parts- power, mechanical, special process	0	T	1329
+8	S4A	Primary source of injury-- Water, liquids-nonchemical	0	T	1327
+8	S4X	Primary source of injury-- Parts and materials	0	T	1325
+8	S54	Primary source of injury-- Plants, trees, vegetation	0	T	1332
+8	S56	Primary source of injury-- Activities and conditions of injured, ill worker	0	T	1336
+8	S57	Primary source of injury-- Person--other than injured or ill worker	0	T	1337
+8	S5A	Primary source of injury-- Trees, logs, limbs	0	T	1333
+8	S5D	Primary source of injury-- Relative or domestic partner of injured or ill worker	0	T	1338
+8	S5E	Primary source of injury-- Co-worker or work associate of injured or ill worker	0	T	1339
+8	S5H	Primary source of injury-- Criminal assailants	0	T	1342
+8	S5I	Primary source of injury-- Criminal inmate or detainee in custody	0	T	1343
+8	S5J	Primary source of injury-- Suspect under pursuit or investigation	0	T	1344
+8	S5K	Primary source of injury-- Robber	0	T	1345
+8	S5X	Primary source of injury-- ANIMALS, PLANTS, PERSONS, ETC.	0	T	1330
+8	S62	Primary source of injury-- Buildings	0	T	1348
+8	S63	Primary source of injury-- Structures other than buildings	0	T	1349
+8	S65	Primary source of injury-- Other structural elements	0	T	1352
+8	S6D	Primary source of injury-- Roofs	0	T	1353
+8	S6E	Primary source of injury-- Stairs, multiple level surfaces	0	T	1354
+8	S6F	Primary source of injury-- Natural surface	0	T	1355
+8	S6X	Primary source of injury-- Structures and surfaces	0	T	1346
+8	S73	Primary source of injury-- Portable ladders and stairs	0	T	1357
+8	S7X	Primary source of injury-- Tools, instruments, and equipment	0	T	1356
+8	S81	Primary source of injury-- Aircraft	0	T	1359
+8	S82	Primary source of injury-- Rail vehicles	0	T	1360
+8	S84	Primary source of injury-- Roadway vehicles--motorized	0	T	1362
+8	S86	Primary source of injury-- Off-road and industrial vehicles--powered	0	T	1374
+8	S8A	Primary source of injury-- Emergency and security vehicles	0	T	1363
+8	S8B	Primary source of injury-- Trucks with mounted machinery, equipment	0	T	1364
+8	S8C	Primary source of injury-- Dump trucks	0	T	1365
+8	S8D	Primary source of injury-- Garbage trucks	0	T	1366
+8	S8E	Primary source of injury-- Trucks	0	T	1367
+8	S8G	Primary source of injury-- Tanker trucks	0	T	1369
+8	S8H	Primary source of injury-- Other semi, tractor-trailer	0	T	1370
+8	S8I	Primary source of injury-- Passenger vehicles	0	T	1371
+8	S8J	Primary source of injury-- Automobile	0	T	1372
+8	S8K	Primary source of injury-- Vans, passenger and utility	0	T	1373
+8	S8X	Primary source of injury-- Vehicles	0	T	1358
+8	S9A	Primary source of injury-- Heat--environmental	0	T	1378
+8	T00	Secondary source of injury-- Not Applicable	0	T	1417
+8	T1A	Secondary source of injury-- Petroleum and coal products	0	T	1380
+8	T1X	Secondary source of injury-- CHEMICALS AND HAZARDOUS MATERIALS	0	T	1379
+8	T2X	Secondary source of injury-- CONTAINERS, FURNITURE, FIXTURES	0	T	1382
+8	T3X	Secondary source of injury-- Machinery	0	T	1384
+8	T44	Secondary source of injury-- Fasteners, connectors, ropes, ties	0	T	1386
+8	T46	Secondary source of injury-- Vehicle and machine parts- power, mechanical, special process	0	T	1387
+8	T4X	Secondary source of injury-- Parts and materials	0	T	1385
+8	T54	Secondary source of injury-- Plants, trees, vegetation	0	T	1389
+8	T5A	Secondary source of injury-- Trees, logs, limbs	0	T	1390
+8	T5X	Secondary source of injury-- ANIMALS, PLANTS, PERSONS, ETC.	0	T	1388
+8	T61	Secondary source of injury-- Confined spaces	0	T	1392
+8	T62	Secondary source of injury-- Buildings	0	T	1393
+8	T63	Secondary source of injury-- Structures other than buildings	0	T	1394
+8	T66	Secondary source of injury-- Ground, travel, and support surfaces	0	T	1396
+8	T6A	Secondary source of injury-- Guardrails, road dividers or barriers	0	T	1395
+8	T6C	Secondary source of injury-- Constructed surfaces	0	T	1398
+8	T6D	Secondary source of injury-- Natural surface	0	T	1399
+8	T6X	Secondary source of injury-- Structures and surfaces	0	T	1391
+8	T7B	Secondary source of injury-- Firearms, air-powered guns	0	T	1403
+8	T7X	Secondary source of injury-- Tools, instruments, and equipment	0	T	1401
+8	T84	Secondary source of injury-- Roadway vehicles--motorized	0	T	1408
+8	T8B	Secondary source of injury-- Passenger vehicles	0	T	1410
+8	T8X	Secondary source of injury-- Vehicles	0	T	1404
+8	T95	Secondary source of injury-- Environmental and elemental conditions	0	T	1415
+8	T9A	Secondary source of injury-- Weather, atmospheric conditions	0	T	1416
+8	WAX	Worker status-- Wage and salary	0	T	1229
+8	X1X	Worker activity-- Emergency and security operations	0	T	1481
+8	X2X	Worker Activity--Agriculture, landscaping, and animal activities	0	T	1482
+8	X32	Worker activity-- Heavy and industrial earth moving and construction operations	0	T	1484
+8	X33	Worker activity-- Heavy and industrial production and repair operations	0	T	1485
+8	X34	Worker activity-- Heavy and industrial materials moving and warehousing operations	0	T	1486
+8	X3X	Worker activity-- Heavy and industrial construction, production, and materials moving operations	0	T	1483
+8	X4X	Worker activity--Other construction, production and maintenance activities	0	T	1487
+8	X5X	Worker activity-- Personal care, service, and administrative activities	0	T	1488
+8	X61	Worker activity-- Intentional risk taking activities	0	T	1492
+8	X6X	Worker activity-- Miscellaneous activities	0	T	1491
+8	X71	Worker activity-- Driving, piloting	0	T	1494
+8	X72	Worker activity-- Passenger of vehicle in transport	0	T	1495
+8	X74	Worker activity-- Transportation support activities	0	T	1496
+8	X7X	Worker activity-- Transportation operations	0	T	1493
+8	Y11	Worker location-- Road and bridge construction or maintenance	0	T	1498
+8	Y1X	Worker location-- Construction or maintenance sites	0	T	1497
+8	Y2X	Worker location-- Farm, agricultural premises	0	T	1500
+8	Y3X	Worker location-- Industrial places and premises	0	T	1501
+8	Y4X	Worker location-- Residence, housing	0	T	1503
+8	Y55	Worker location-- Office buildings	0	T	1505
+8	Y5X	Worker location-- Limited access public buildings	0	T	1504
+8	Y65	Worker location-- Retail or business areas	0	T	1508
+8	Y6X	Worker location-- Business and communal areas	0	T	1506
+8	Y72	Worker location-- Streets, highways, roads	0	T	1510
+8	Y7A	Worker location-- Interstates, freeways, or expressways	0	T	1511
+8	Y7B	Worker location-- Other State or U.S. highways	0	T	1512
+8	Y7C	Worker location-- Local roads or streets	0	T	1513
+8	Y7X	Worker location-- Transportation infrastructure	0	T	1509
+9	00X	Total fatalities	0	T	1522
+9	05X	Ownership-- All government	0	T	3
+9	ACX	Age group-- 18 to 19 years	0	T	1525
+9	ADX	Age group-- 20 to 24 years	0	T	1526
+9	AEX	Age group-- 25 to 34 years	0	T	1527
+9	AFX	Age group-- 35 to 44 years	0	T	1528
+9	AGX	Age group-- 45 to 54 years	0	T	1529
+9	AHX	Age group-- 55 to 64 years	0	T	1530
+9	AIX	Age group-- 65 years and over	0	T	1531
+9	E11	Event or exposure-- Homicides (Violent acts by other person)	0	T	1562
+9	E12	Event or exposure-- Suicides (Intentional self-harm)	0	T	1564
+9	E1A	Event or exposure-- Shooting by other person	0	T	1563
+9	E1B	Event or exposure-- Intentional self-harm-- shooting	0	T	1565
+9	E1C	Event or exposure-- Intentional self-harm-- hanging, strangulation, asphyxiation	0	T	1566
+9	E1X	Event or exposure-- VIOLENT ACTS	0	T	1561
+9	E21	Event or exposure-- Aircraft incidents	0	T	1569
+9	E22	Event or exposure-- Water vehicle incidents	0	T	1570
+9	E23	Event or exposure-- Rail vehicle incidents	0	T	1571
+9	E25	Event or exposure-- Pedestrian incidents involving motorized land vehicles	0	T	1572
+9	E26	Event or exposure-- Roadway incidents involving motorized land vehicle	0	T	1573
+9	E27	Event or exposure-- Nonroadway incidents involving motorized land vehicles	0	T	1579
+9	E2A	Event or exposure-- Roadway collision with other vehicle(s)	0	T	1574
+9	E2B	Event or exposure-- Collision with moving object or animal in roadway	0	T	1575
+9	E2C	Event or exposure-- Collision with object or animal on side of roadway	0	T	1576
+9	E2D	Event or exposure-- Roadway noncollision incident	0	T	1577
+9	E2E	Event or exposure-- Roadway noncollision- vehicle overturn	0	T	1578
+9	E2G	Event or exposure-- Nonroadway noncollision incident	0	T	1581
+9	E2H	Event or exposure-- Nonroadway noncollision- vehicle overturn	0	T	1582
+9	E2X	Event or exposure-- Transportation incidents	0	T	1568
+9	E3X	Event or exposure-- EXPLOSIONS AND FIRES	0	T	1583
+9	E41	Event or exposure-- Fall to lower level	0	T	1585
+9	E43	Event or exposure-- Slip, trip, stumble or fall on same level	0	T	1594
+9	E4A	Event or exposure-- Fall to lower level from collapsing structure or equipment	0	T	1586
+9	E4C	Event or exposure-- Fall to lower level resulting in exposure or contact	0	T	1588
+9	E4D	Event or exposure-- Other fall to lower level	0	T	1589
+9	E4E	Event or exposure-- Fall to lower level, height less than 6 feet	0	T	1590
+9	E4F	Event or exposure-- Fall to lower level, height 6 to 30 feet	0	T	1591
+9	E4G	Event or exposure-- Fall to lower level, height more than 30 feet	0	T	1592
+9	E4X	Event or exposure-- Falls, slips, trips	0	T	1584
+9	E51	Event or exposure-- Exposure to electricity	0	T	1596
+9	E53	Event or exposure-- Exposure to temperature extremes	0	T	1597
+9	E55	Event or exposure-- Exposure to harmful substances	0	T	1602
+9	E56	Event or exposure-- Exposure to oxygen deficiency	0	T	1604
+9	E5A	Event or exposure-- Exposure to environmental heat	0	T	1598
+9	E5C	Event or exposure-- Exposure to environmental heat-- outdoor	0	T	1600
+9	E5E	Event or exposure-- Drug, alcohol overdose	0	T	1603
+9	E5F	Event or exposure-- Drowning, submersion without other event	0	T	1605
+9	E5X	Event or exposure-- Exposure to harmful substances, environments	0	T	1595
+9	E61	Event or exposure-- Contact with other person, nonviolent or intent unknown	0	T	1608
+9	E62	Event or exposure-- Contact with animals	0	T	1609
+9	E63	Event or exposure-- Collapse, engulfment	0	T	1612
+9	E64	Event or exposure-- Struck by propelled, falling, or suspended object	0	T	1613
+9	E65	Event or exposure-- Struck, caught, or compressed by running powered equipment	0	T	1617
+9	E6A	Event or exposure-- Bitten or stung by animal	0	T	1610
+9	E6C	Event or exposure-- Struck by propelled object or substance	0	T	1614
+9	E6D	Event or exposure-- Struck by falling object	0	T	1615
+9	E6X	Event or exposure-- CONTACT INCIDENTS	0	T	1607
+9	GFX	Sex-- Women	0	T	1534
+9	GMX	Sex-- Men	0	T	1535
+9	I1X	Time of incident-- 12:00 midnight - 3:59 a.m.	0	T	1819
+9	I2X	Time of incident-- 4:00 a.m. - 7:59 a.m.	0	T	1820
+9	I3X	Time of incident-- 8:00 a.m. - 11:59 a.m.	0	T	1821
+9	I4X	Time of incident-- 12:00 noon - 3:59 p.m.	0	T	1822
+9	I5X	Time of incident-- 4:00 p.m. - 7:59 p.m.	0	T	1823
+9	I6X	Time of incident-- 8:00 p.m. - 11:59 p.m.	0	T	1824
+9	N1A	Nature-- Intracranial injuries	0	T	1722
+9	N1X	Nature-- Injuries to the brain, spinal cord	0	T	1721
+9	N2A	Nature-- Gunshot wounds	0	T	1724
+9	N2B	Nature-- Injuries to internal organs and major blood vessels	0	T	1725
+9	N2X	Nature-- Severe wounds, internal injuries	0	T	1723
+9	N3X	Nature-- Surface and flesh wounds	0	T	1726
+9	N5X	Nature-- Burns, corrosions, electrical injuries	0	T	1728
+9	N6X	Nature-- Effects of poison, toxic, or allergenic exposure	0	T	1730
+9	N7A	Nature-- Drowning, near drowning	0	T	1732
+9	N7B	Nature-- Asphyxiation- except toxic or allergenic	0	T	1733
+9	N7X	Nature-- Effects of environmental conditions and exposures	0	T	1731
+9	N8X	Nature-- Multiple traumatic injuries and disorders	0	T	1734
+9	O00	Occupation-- Management, Business, Science, and Arts Occupations	0	T	1764
+9	O10	Occupation-- Management, Business, and Financial Occupations	0	T	1763
+9	O11	Occupation-- Management Occupations	0	T	1762
+9	O13	Occupation-- Business and Financial Operations Occupations	0	T	1765
+9	O17	Occupation-- Architecture and Engineering Occupations	0	T	1768
+9	O19	Occupation-- Life, Physical, and Social Science Occupations	0	T	1769
+9	O20	Occupation-- Professional and Related Occupations	0	T	1767
+9	O21	Occupation-- Community and Social Services Occupations	0	T	1770
+9	O23	Occupation-- Legal Occupations	0	T	1771
+9	O25	Occupation-- Educational Instruction and Library Occupations	0	T	1772
+9	O27	Occupation-- Arts, Design, Entertainment, Sports, and Media Occupations	0	T	1773
+9	O29	Occupation-- Healthcare Practitioner and Technical Occupations	0	T	1774
+9	O30	Occupation-- Service Occupations	0	T	1776
+9	O31	Occupation-- Healthcare Support Occupations	0	T	1775
+9	O33	Occupation-- Protective Service Occupations	0	T	1777
+9	O35	Occupation-- Food Preparation and Serving Related Occupations	0	T	1778
+9	O37	Occupation-- Building and Grounds Cleaning and Maintenance Occupations	0	T	1779
+9	O39	Occupation-- Personal Care and Service Occupations	0	T	1780
+9	O40	Occupation-- Sales and Office Occupations	0	T	1782
+9	O41	Occupation-- Sales and Related Occupations	0	T	1781
+9	O43	Occupation-- Office and Administrative Support Occupations	0	T	1783
+9	O44	Occupation-- Natural Resources, Construction, and Maintenance Occupations	0	T	1754
+9	O45	Occupation-- Farming, Fishing, and Forestry Occupations	0	T	1761
+9	O47	Occupation-- Construction and Extraction Occupations	0	T	1755
+9	O49	Occupation-- Installation, Maintenance, and Repair Occupations	0	T	1756
+9	O50	Occupation-- Production, Transportation, and Material Moving Occupations	0	T	1758
+9	O51	Occupation-- Production Occupations	0	T	1757
+9	O53	Occupation-- Transportation and Material Moving Occupations	0	T	1759
+9	O55	Occupation-- Military specific occupations	0	T	1760
+9	P1X	Part-- Head	0	T	1737
+9	P2X	Part-- Neck	0	T	1738
+9	P31	Part-- Chest- including ribs, internal organs	0	T	1740
+9	P32	Part--Exterior and musculoskeletal structures of the back	0	T	1741
+9	P33	Part-- Abdomen	0	T	1742
+9	P3X	Part-- Trunk	0	T	1739
+9	P4X	Part-- Upper extremities	0	T	1744
+9	P5X	Part-- Lower extremities	0	T	1745
+9	P81	Part-- Head and other part(s) of body	0	T	1748
+9	P83	Part-- Trunk and other part(s) of body	0	T	1750
+9	P88	Part-- Other multiple parts of body	0	T	1752
+9	P8A	Part-- Whole body	0	T	1753
+9	P8X	Part-- Multiple body parts	0	T	1747
+9	RAF	Race-- Asian, Foreign-born	0	T	1536
+9	RAN	Race-- Asian, Native-born	0	T	1537
+9	RAT	Race-- Asian, non-Hispanic, Total	0	T	1538
+9	RBF	Race-- Black or African-American, Foreign-born	0	T	1539
+9	RBN	Race-- Black or African-American, Native-born	0	T	1540
+9	RBT	Race-- Black or African-American, non-Hispanic, Total	0	T	1541
+9	RHF	Race-- Hispanic or Latino, Foreign-born	0	T	1543
+9	RHN	Race-- Hispanic or Latino, Native-born	0	T	1544
+9	RHT	Race-- Hispanic or Latino, Total	0	T	1545
+9	RIN	Race-- American Indian or Alaska Native, Native-born	0	T	1546
+9	RIT	Race-- American Indian or Alaska Native, non-Hispanic, Total	0	T	1547
+9	RMN	Race-- Person of multiple races, Native-born	0	T	1549
+9	RMT	Race-- Person of multiple races, non-Hispanic, Total	0	T	1550
+9	RON	Race-- Other or not reported, Native-born	0	T	1553
+9	ROT	Race-- Other or not reported, non-Hispanic, Total	0	T	1554
+9	RPN	Race-- Native Hawaiian or Pacific Islander, Native-born	0	T	1556
+9	RPT	Race-- Native Hawaiian or Pacific Islander, non-Hispanic, Total	0	T	1557
+9	RWF	Race-- White, Foreign-born	0	T	1558
+9	RWN	Race-- White, Native-born	0	T	1559
+9	RWT	Race-- White, non-Hispanic, Total	0	T	1560
+9	S1A	Primary source of injury-- Opioids	0	T	1619
+9	S1B	Primary source of injury-- Multiple drugs, medications	0	T	1620
+9	S1X	Primary source of injury-- CHEMICALS AND HAZARDOUS MATERIALS	0	T	1618
+9	S2X	Primary source of injury-- CONTAINERS, FURNITURE, FIXTURES	0	T	1621
+9	S31	Primary source of injury-- Agricultural and garden machinery	0	T	1624
+9	S32	Primary source of injury-- Construction, logging, and mining machinery	0	T	1625
+9	S34	Primary source of injury-- Material and personnel handling machinery	0	T	1627
+9	S3A	Primary source of injury-- Heavy earth-moving machinery	0	T	1626
+9	S3X	Primary source of injury-- Machinery	0	T	1623
+9	S41	Primary source of injury-- Raw and semi-finished materials and byproducts	0	T	1629
+9	S42	Primary source of injury-- Building materials	0	T	1631
+9	S46	Primary source of injury-- Vehicle and machine parts- power, mechanical, special process	0	T	1632
+9	S4A	Primary source of injury-- Water, liquids-nonchemical	0	T	1630
+9	S4X	Primary source of injury-- Parts and materials	0	T	1628
+9	S51	Primary source of injury-- Animals	0	T	1634
+9	S54	Primary source of injury-- Plants, trees, vegetation	0	T	1635
+9	S56	Primary source of injury-- Activities and conditions of injured, ill worker	0	T	1639
+9	S57	Primary source of injury-- Person--other than injured or ill worker	0	T	1640
+9	S5A	Primary source of injury-- Trees, logs, limbs	0	T	1636
+9	S5B	Primary source of injury-- Trees	0	T	1637
+9	S5D	Primary source of injury-- Relative or domestic partner of injured or ill worker	0	T	1641
+9	S5E	Primary source of injury-- Co-worker or work associate of injured or ill worker	0	T	1642
+9	S5F	Primary source of injury-- Client or customer	0	T	1643
+9	S5H	Primary source of injury-- Criminal assailants	0	T	1645
+9	S5I	Primary source of injury-- Criminal inmate or detainee in custody	0	T	1646
+9	S5J	Primary source of injury-- Suspect under pursuit or investigation	0	T	1647
+9	S5K	Primary source of injury-- Robber	0	T	1648
+9	S5X	Primary source of injury-- ANIMALS, PLANTS, PERSONS, ETC.	0	T	1633
+9	S62	Primary source of injury-- Buildings	0	T	1651
+9	S63	Primary source of injury-- Structures other than buildings	0	T	1652
+9	S65	Primary source of injury-- Other structural elements	0	T	1655
+9	S6D	Primary source of injury-- Roofs	0	T	1656
+9	S6E	Primary source of injury-- Stairs, multiple level surfaces	0	T	1657
+9	S6F	Primary source of injury-- Natural surface	0	T	1658
+9	S6X	Primary source of injury-- Structures and surfaces	0	T	1649
+9	S73	Primary source of injury-- Portable ladders and stairs	0	T	1660
+9	S7X	Primary source of injury-- Tools, instruments, and equipment	0	T	1659
+9	S81	Primary source of injury-- Aircraft	0	T	1662
+9	S82	Primary source of injury-- Rail vehicles	0	T	1663
+9	S83	Primary source of injury-- Water vehicles	0	T	1664
+9	S84	Primary source of injury-- Roadway vehicles--motorized	0	T	1665
+9	S86	Primary source of injury-- Off-road and industrial vehicles--powered	0	T	1677
+9	S8A	Primary source of injury-- Emergency and security vehicles	0	T	1666
+9	S8B	Primary source of injury-- Trucks with mounted machinery, equipment	0	T	1667
+9	S8C	Primary source of injury-- Dump trucks	0	T	1668
+9	S8D	Primary source of injury-- Garbage trucks	0	T	1669
+9	S8E	Primary source of injury-- Trucks	0	T	1670
+9	S8F	Primary source of injury-- Straight trucks, box trucks	0	T	1671
+9	S8G	Primary source of injury-- Tanker trucks	0	T	1672
+9	S8H	Primary source of injury-- Other semi, tractor-trailer	0	T	1673
+9	S8I	Primary source of injury-- Passenger vehicles	0	T	1674
+9	S8J	Primary source of injury-- Automobile	0	T	1675
+9	S8K	Primary source of injury-- Vans, passenger and utility	0	T	1676
+9	S8X	Primary source of injury-- Vehicles	0	T	1661
+9	S9A	Primary source of injury-- Heat--environmental	0	T	1681
+9	T00	Secondary source of injury-- Not Applicable	0	T	1720
+9	T15	Secondary source of injury-- Drugs, medications	0	T	1684
+9	T1A	Secondary source of injury-- Petroleum and coal products	0	T	1683
+9	T1X	Secondary source of injury-- CHEMICALS AND HAZARDOUS MATERIALS	0	T	1682
+9	T2A	Secondary source of injury-- Wheeled containers, material moving equipment	0	T	1686
+9	T2X	Secondary source of injury-- CONTAINERS, FURNITURE, FIXTURES	0	T	1685
+9	T3X	Secondary source of injury-- Machinery	0	T	1687
+9	T44	Secondary source of injury-- Fasteners, connectors, ropes, ties	0	T	1689
+9	T46	Secondary source of injury-- Vehicle and machine parts- power, mechanical, special process	0	T	1690
+9	T4X	Secondary source of injury-- Parts and materials	0	T	1688
+9	T54	Secondary source of injury-- Plants, trees, vegetation	0	T	1692
+9	T5A	Secondary source of injury-- Trees, logs, limbs	0	T	1693
+9	T5X	Secondary source of injury-- ANIMALS, PLANTS, PERSONS, ETC.	0	T	1691
+9	T61	Secondary source of injury-- Confined spaces	0	T	1695
+9	T62	Secondary source of injury-- Buildings	0	T	1696
+9	T63	Secondary source of injury-- Structures other than buildings	0	T	1697
+9	T66	Secondary source of injury-- Ground, travel, and support surfaces	0	T	1699
+9	T67	Secondary source of injury-- Bodies of water	0	T	1703
+9	T6A	Secondary source of injury-- Guardrails, road dividers or barriers	0	T	1698
+9	T6B	Secondary source of injury-- Stairs, steps	0	T	1700
+9	T6C	Secondary source of injury-- Constructed surfaces	0	T	1701
+9	T6D	Secondary source of injury-- Natural surface	0	T	1702
+9	T6X	Secondary source of injury-- Structures and surfaces	0	T	1694
+9	T7A	Secondary source of injury-- Knives	0	T	1705
+9	T7B	Secondary source of injury-- Firearms, air-powered guns	0	T	1706
+9	T7X	Secondary source of injury-- Tools, instruments, and equipment	0	T	1704
+9	T81	Secondary source of injury-- Aircraft	0	T	1708
+9	T84	Secondary source of injury-- Roadway vehicles--motorized	0	T	1711
+9	T8A	Secondary source of injury-- Trucks with mounted machinery, equipment	0	T	1712
+9	T8B	Secondary source of injury-- Passenger vehicles	0	T	1713
+9	T8X	Secondary source of injury-- Vehicles	0	T	1707
+9	T91	Secondary source of injury-- Apparel, laundry, linens	0	T	1717
+9	T95	Secondary source of injury-- Environmental and elemental conditions	0	T	1718
+9	T9A	Secondary source of injury-- Weather, atmospheric conditions	0	T	1719
+9	WAX	Worker status-- Wage and salary	0	T	1532
+9	X1X	Worker activity-- Emergency and security operations	0	T	1784
+9	X2X	Worker Activity--Agriculture, landscaping, and animal activities	0	T	1785
+9	X32	Worker activity-- Heavy and industrial earth moving and construction operations	0	T	1787
+9	X33	Worker activity-- Heavy and industrial production and repair operations	0	T	1788
+9	X34	Worker activity-- Heavy and industrial materials moving and warehousing operations	0	T	1789
+9	X3X	Worker activity-- Heavy and industrial construction, production, and materials moving operations	0	T	1786
+9	X4X	Worker activity--Other construction, production and maintenance activities	0	T	1790
+9	X5X	Worker activity-- Personal care, service, and administrative activities	0	T	1791
+9	X61	Worker activity-- Intentional risk taking activities	0	T	1795
+9	X6X	Worker activity-- Miscellaneous activities	0	T	1794
+9	X71	Worker activity-- Driving, piloting	0	T	1797
+9	X72	Worker activity-- Passenger of vehicle in transport	0	T	1798
+9	X74	Worker activity-- Transportation support activities	0	T	1799
+9	X7X	Worker activity-- Transportation operations	0	T	1796
+9	Y11	Worker location-- Road and bridge construction or maintenance	0	T	1801
+9	Y1X	Worker location-- Construction or maintenance sites	0	T	1800
+9	Y2X	Worker location-- Farm, agricultural premises	0	T	1803
+9	Y36	Worker location-- Factories and Production facilities	0	T	1805
+9	Y3X	Worker location-- Industrial places and premises	0	T	1804
+9	Y4X	Worker location-- Residence, housing	0	T	1806
+9	Y55	Worker location-- Office buildings	0	T	1808
+9	Y5X	Worker location-- Limited access public buildings	0	T	1807
+9	Y65	Worker location-- Retail or business areas	0	T	1811
+9	Y6X	Worker location-- Business and communal areas	0	T	1809
+9	Y72	Worker location-- Streets, highways, roads	0	T	1813
+9	Y73	Worker location-- Airport infrastructure	0	T	1817
+9	Y7A	Worker location-- Interstates, freeways, or expressways	0	T	1814
+9	Y7B	Worker location-- Other State or U.S. highways	0	T	1815
+9	Y7C	Worker location-- Local roads or streets	0	T	1816
+9	Y7X	Worker location-- Transportation infrastructure	0	T	1812
+E	00X	Ownership-- All	0	T	1825
+E	05X	Ownership-- All government	0	T	1827
+E	10X	Ownership-- Federal government	0	T	1828
+E	20X	Ownership-- State government	0	T	1829
+E	30X	Ownership-- Local government	0	T	1830
+E	50X	Ownership-- Private	0	T	1826
+E	AAX	Age group-- Under 16 years	0	T	1831
+E	ABX	Age group-- 16 to 17 years	0	T	1832
+E	ACX	Age group-- 18 to 19 years	0	T	1833
+E	ADW	Private industry-- Administrative and support and waste management and remediation services	0	T	2054
+E	ADX	Age group-- 20 to 24 years	0	T	1834
+E	AER	Private industry-- Arts, entertainment, and recreation	0	T	2058
+E	AEX	Age group-- 25 to 34 years	0	T	1835
+E	AFH	Private industry-- Agriculture, forestry, fishing and hunting	0	T	2035
+E	AFS	Private industry-- Accommodation and food services	0	T	2060
+E	AFX	Age group-- 35 to 44 years	0	T	1836
+E	AGX	Age group-- 45 to 54 years	0	T	1837
+E	AHX	Age group-- 55 to 64 years	0	T	1838
+E	AIX	Age group-- 65 years and over	0	T	1839
+E	CON	Private industry-- Construction	0	T	2041
+E	EDS	Private industry-- Educational services	0	T	2055
+E	EHS	Private industry-- Educational and health services	0	T	2056
+E	FIA	Private industry-- Financial activities	0	T	2049
+E	FIN	Private industry-- Finance and insurance	0	T	2048
+E	GFX	Sex-- Women	0	T	1842
+E	GMX	Sex-- Men	0	T	1843
+E	HSA	Private industry-- Health care and social assistance	0	T	2057
+E	I1X	Time of incident-- 12:00 midnight - 3:59 a.m.	0	T	2097
+E	I2X	Time of incident-- 4:00 a.m. - 7:59 a.m.	0	T	2098
+E	I3X	Time of incident-- 8:00 a.m. - 11:59 a.m.	0	T	2099
+E	I4X	Time of incident-- 12:00 noon - 3:59 p.m.	0	T	2100
+E	I5X	Time of incident-- 4:00 p.m. - 7:59 p.m.	0	T	2101
+E	I6X	Time of incident-- 8:00 p.m. - 11:59 p.m.	0	T	2102
+E	INF	Private industry-- Information	0	T	2047
+E	LEH	Private industry-- Leisure and hospitality	0	T	2059
+E	MCE	Private industry-- Management of companies and enterprises	0	T	2053
+E	MFG	Private industry-- Manufacturing	0	T	2042
+E	MIN	Private industry-- Mining, quarrying, and oil and gas extraction	0	T	2038
+E	N1A	Nature-- Intracranial injuries	0	T	1973
+E	N1X	Nature-- Injuries to the brain, spinal cord	0	T	1972
+E	N2A	Nature-- Gunshot wounds	0	T	1975
+E	N2B	Nature-- Injuries to internal organs and major blood vessels	0	T	1976
+E	N2X	Nature-- Severe wounds, internal injuries	0	T	1974
+E	N3X	Nature-- Surface and flesh wounds	0	T	1977
+E	N4X	Nature-- Soft tissue injuries	0	T	1978
+E	N5X	Nature-- Burns, corrosions, electrical injuries	0	T	1979
+E	N6X	Nature-- Effects of poison, toxic, or allergenic exposure	0	T	1981
+E	N7A	Nature-- Drowning, near drowning	0	T	1983
+E	N7B	Nature-- Asphyxiation- except toxic or allergenic	0	T	1984
+E	N7X	Nature-- Effects of environmental conditions and exposures	0	T	1982
+E	N8B	Nature-- Burns and toxic effects (including smoke inhalation)	0	T	1987
+E	N8X	Nature-- Multiple traumatic injuries and disorders	0	T	1985
+E	NRM	Private industry-- Natural resources and mining	0	T	2036
+E	O00	Occupation-- Management, Business, Science, and Arts Occupations	0	T	2015
+E	O10	Occupation-- Management, Business, and Financial Occupations	0	T	2014
+E	O11	Occupation-- Management Occupations	0	T	2013
+E	O13	Occupation-- Business and Financial Operations Occupations	0	T	2016
+E	O15	Occupation-- Computer and Mathematical Occupations	0	T	2017
+E	O17	Occupation-- Architecture and Engineering Occupations	0	T	2019
+E	O19	Occupation-- Life, Physical, and Social Science Occupations	0	T	2020
+E	O20	Occupation-- Professional and Related Occupations	0	T	2018
+E	O21	Occupation-- Community and Social Services Occupations	0	T	2021
+E	O23	Occupation-- Legal Occupations	0	T	2022
+E	O25	Occupation-- Educational Instruction and Library Occupations	0	T	2023
+E	O27	Occupation-- Arts, Design, Entertainment, Sports, and Media Occupations	0	T	2024
+E	O29	Occupation-- Healthcare Practitioner and Technical Occupations	0	T	2025
+E	O30	Occupation-- Service Occupations	0	T	2027
+E	O31	Occupation-- Healthcare Support Occupations	0	T	2026
+E	O33	Occupation-- Protective Service Occupations	0	T	2028
+E	O35	Occupation-- Food Preparation and Serving Related Occupations	0	T	2029
+E	O37	Occupation-- Building and Grounds Cleaning and Maintenance Occupations	0	T	2030
+E	O39	Occupation-- Personal Care and Service Occupations	0	T	2031
+E	O40	Occupation-- Sales and Office Occupations	0	T	2033
+E	O41	Occupation-- Sales and Related Occupations	0	T	2032
+E	O43	Occupation-- Office and Administrative Support Occupations	0	T	2034
+E	O44	Occupation-- Natural Resources, Construction, and Maintenance Occupations	0	T	2005
+E	O45	Occupation-- Farming, Fishing, and Forestry Occupations	0	T	2012
+E	O47	Occupation-- Construction and Extraction Occupations	0	T	2006
+E	O49	Occupation-- Installation, Maintenance, and Repair Occupations	0	T	2007
+E	O50	Occupation-- Production, Transportation, and Material Moving Occupations	0	T	2009
+E	O51	Occupation-- Production Occupations	0	T	2008
+E	O53	Occupation-- Transportation and Material Moving Occupations	0	T	2010
+E	OTS	Private industry-- Other services, except public administration	0	T	2061
+E	P1X	Part-- Head	0	T	1988
+E	P2X	Part-- Neck	0	T	1989
+E	P31	Part-- Chest- including ribs, internal organs	0	T	1991
+E	P32	Part--Exterior and musculoskeletal structures of the back	0	T	1992
+E	P33	Part-- Abdomen	0	T	1993
+E	P34	Part-- Pelvic region	0	T	1994
+E	P3X	Part-- Trunk	0	T	1990
+E	P4X	Part-- Upper extremities	0	T	1995
+E	P5X	Part-- Lower extremities	0	T	1996
+E	P81	Part-- Head and other part(s) of body	0	T	1999
+E	P82	Part-- Neck and other part(s) of body	0	T	2000
+E	P83	Part-- Trunk and other part(s) of body	0	T	2001
+E	P84	Part-- Upper and lower extremities	0	T	2002
+E	P88	Part-- Other multiple parts of body	0	T	2003
+E	P8A	Part-- Whole body	0	T	2004
+E	P8X	Part-- Multiple body parts	0	T	1998
+E	PBS	Private industry-- Professional and business services	0	T	2052
+E	PST	Private industry-- Professional, scientific, and technical services	0	T	2051
+E	RAF	Race-- Asian, Foreign-born	0	T	1844
+E	RAN	Race-- Asian, Native-born	0	T	1845
+E	RAT	Race-- Asian, non-Hispanic, Total	0	T	1846
+E	RBF	Race-- Black or African-American, Foreign-born	0	T	1847
+E	RBN	Race-- Black or African-American, Native-born	0	T	1848
+E	RBT	Race-- Black or African-American, non-Hispanic, Total	0	T	1849
+E	RET	Private industry-- Retail trade	0	T	2045
+E	RHF	Race-- Hispanic or Latino, Foreign-born	0	T	1851
+E	RHN	Race-- Hispanic or Latino, Native-born	0	T	1852
+E	RHT	Race-- Hispanic or Latino, Total	0	T	1853
+E	RIN	Race-- American Indian or Alaska Native, Native-born	0	T	1854
+E	RIT	Race-- American Indian or Alaska Native, non-Hispanic, Total	0	T	1855
+E	RMF	Race-- Person of multiple races, Foreign-born	0	T	1856
+E	RMN	Race-- Person of multiple races, Native-born	0	T	1857
+E	RMT	Race-- Person of multiple races, non-Hispanic, Total	0	T	1858
+E	ROF	Race-- Other or not reported, Foreign-born	0	T	1860
+E	RON	Race-- Other or not reported, Native-born	0	T	1861
+E	ROT	Race-- Other or not reported, non-Hispanic, Total	0	T	1862
+E	RPF	Race-- Native Hawaiian or Pacific Islander, Foreign-born	0	T	1863
+E	RPN	Race-- Native Hawaiian or Pacific Islander, Native-born	0	T	1864
+E	RPT	Race-- Native Hawaiian or Pacific Islander, non-Hispanic, Total	0	T	1865
+E	RRL	Private industry-- Real estate and rental and leasing	0	T	2050
+E	RWF	Race-- White, Foreign-born	0	T	1866
+E	RWN	Race-- White, Native-born	0	T	1867
+E	RWT	Race-- White, non-Hispanic, Total	0	T	1868
+E	S1A	Primary source of injury-- Opioids	0	T	1870
+E	S1B	Primary source of injury-- Multiple drugs, medications	0	T	1871
+E	S1X	Primary source of injury-- CHEMICALS AND HAZARDOUS MATERIALS	0	T	1869
+E	S2A	Primary source of injury-- Wheeled containers, material moving equipment	0	T	1873
+E	S2X	Primary source of injury-- CONTAINERS, FURNITURE, FIXTURES	0	T	1872
+E	S31	Primary source of injury-- Agricultural and garden machinery	0	T	1875
+E	S32	Primary source of injury-- Construction, logging, and mining machinery	0	T	1876
+E	S34	Primary source of injury-- Material and personnel handling machinery	0	T	1878
+E	S3A	Primary source of injury-- Heavy earth-moving machinery	0	T	1877
+E	S3X	Primary source of injury-- Machinery	0	T	1874
+E	S41	Primary source of injury-- Raw and semi-finished materials and byproducts	0	T	1880
+E	S42	Primary source of injury-- Building materials	0	T	1882
+E	S46	Primary source of injury-- Vehicle and machine parts- power, mechanical, special process	0	T	1883
+E	S4A	Primary source of injury-- Water, liquids-nonchemical	0	T	1881
+E	S4X	Primary source of injury-- Parts and materials	0	T	1879
+E	S51	Primary source of injury-- Animals	0	T	1885
+E	S54	Primary source of injury-- Plants, trees, vegetation	0	T	1886
+E	S56	Primary source of injury-- Activities and conditions of injured, ill worker	0	T	1890
+E	S57	Primary source of injury-- Person--other than injured or ill worker	0	T	1891
+E	S5A	Primary source of injury-- Trees, logs, limbs	0	T	1887
+E	S5B	Primary source of injury-- Trees	0	T	1888
+E	S5C	Primary source of injury-- Logs	0	T	1889
+E	S5D	Primary source of injury-- Relative or domestic partner of injured or ill worker	0	T	1892
+E	S5E	Primary source of injury-- Co-worker or work associate of injured or ill worker	0	T	1893
+E	S5F	Primary source of injury-- Client or customer	0	T	1894
+E	S5G	Primary source of injury-- Acquaintance	0	T	1895
+E	S5H	Primary source of injury-- Criminal assailants	0	T	1896
+E	S5I	Primary source of injury-- Criminal inmate or detainee in custody	0	T	1897
+E	S5J	Primary source of injury-- Suspect under pursuit or investigation	0	T	1898
+E	S5K	Primary source of injury-- Robber	0	T	1899
+E	S5X	Primary source of injury-- ANIMALS, PLANTS, PERSONS, ETC.	0	T	1884
+E	S62	Primary source of injury-- Buildings	0	T	1902
+E	S63	Primary source of injury-- Structures other than buildings	0	T	1903
+E	S65	Primary source of injury-- Other structural elements	0	T	1906
+E	S6A	Primary source of injury-- Elevator shafts	0	T	1901
+E	S6B	Primary source of injury-- Scaffolds, staging	0	T	1904
+E	S6C	Primary source of injury-- Towers, poles	0	T	1905
+E	S6D	Primary source of injury-- Roofs	0	T	1907
+E	S6E	Primary source of injury-- Stairs, multiple level surfaces	0	T	1908
+E	S6F	Primary source of injury-- Natural surface	0	T	1909
+E	S6X	Primary source of injury-- Structures and surfaces	0	T	1900
+E	S73	Primary source of injury-- Portable ladders and stairs	0	T	1911
+E	S7X	Primary source of injury-- Tools, instruments, and equipment	0	T	1910
+E	S81	Primary source of injury-- Aircraft	0	T	1913
+E	S82	Primary source of injury-- Rail vehicles	0	T	1914
+E	S83	Primary source of injury-- Water vehicles	0	T	1915
+E	S84	Primary source of injury-- Roadway vehicles--motorized	0	T	1916
+E	S86	Primary source of injury-- Off-road and industrial vehicles--powered	0	T	1928
+E	S8A	Primary source of injury-- Emergency and security vehicles	0	T	1917
+E	S8B	Primary source of injury-- Trucks with mounted machinery, equipment	0	T	1918
+E	S8C	Primary source of injury-- Dump trucks	0	T	1919
+E	S8D	Primary source of injury-- Garbage trucks	0	T	1920
+E	S8E	Primary source of injury-- Trucks	0	T	1921
+E	S8F	Primary source of injury-- Straight trucks, box trucks	0	T	1922
+E	S8G	Primary source of injury-- Tanker trucks	0	T	1923
+E	S8H	Primary source of injury-- Other semi, tractor-trailer	0	T	1924
+E	S8I	Primary source of injury-- Passenger vehicles	0	T	1925
+E	S8J	Primary source of injury-- Automobile	0	T	1926
+E	S8K	Primary source of injury-- Vans, passenger and utility	0	T	1927
+E	S8L	Primary source of injury-- Industrial vehicles, material hauling and transport--powered	0	T	1929
+E	S8M	Primary source of injury-- Forklift, order picker, platform truck--powered	0	T	1930
+E	S8N	Primary source of injury-- Agricultural tractors	0	T	1931
+E	S8X	Primary source of injury-- Vehicles	0	T	1912
+E	S9A	Primary source of injury-- Heat--environmental	0	T	1932
+E	T00	Secondary source of injury-- Not Applicable	0	T	1971
+E	T15	Secondary source of injury-- Drugs, medications	0	T	1935
+E	T1A	Secondary source of injury-- Petroleum and coal products	0	T	1934
+E	T1X	Secondary source of injury-- CHEMICALS AND HAZARDOUS MATERIALS	0	T	1933
+E	T2A	Secondary source of injury-- Wheeled containers, material moving equipment	0	T	1937
+E	T2X	Secondary source of injury-- CONTAINERS, FURNITURE, FIXTURES	0	T	1936
+E	T3X	Secondary source of injury-- Machinery	0	T	1938
+E	T44	Secondary source of injury-- Fasteners, connectors, ropes, ties	0	T	1940
+E	T46	Secondary source of injury-- Vehicle and machine parts- power, mechanical, special process	0	T	1941
+E	T4X	Secondary source of injury-- Parts and materials	0	T	1939
+E	T54	Secondary source of injury-- Plants, trees, vegetation	0	T	1943
+E	T5A	Secondary source of injury-- Trees, logs, limbs	0	T	1944
+E	T5X	Secondary source of injury-- ANIMALS, PLANTS, PERSONS, ETC.	0	T	1942
+E	T61	Secondary source of injury-- Confined spaces	0	T	1946
+E	T62	Secondary source of injury-- Buildings	0	T	1947
+E	T63	Secondary source of injury-- Structures other than buildings	0	T	1948
+E	T66	Secondary source of injury-- Ground, travel, and support surfaces	0	T	1950
+E	T67	Secondary source of injury-- Bodies of water	0	T	1954
+E	T6A	Secondary source of injury-- Guardrails, road dividers or barriers	0	T	1949
+E	T6B	Secondary source of injury-- Stairs, steps	0	T	1951
+E	T6C	Secondary source of injury-- Constructed surfaces	0	T	1952
+E	T6D	Secondary source of injury-- Natural surface	0	T	1953
+E	T6X	Secondary source of injury-- Structures and surfaces	0	T	1945
+E	T7A	Secondary source of injury-- Knives	0	T	1956
+E	T7B	Secondary source of injury-- Firearms, air-powered guns	0	T	1957
+E	T7X	Secondary source of injury-- Tools, instruments, and equipment	0	T	1955
+E	T81	Secondary source of injury-- Aircraft	0	T	1959
+E	T82	Secondary source of injury-- Rail vehicles	0	T	1960
+E	T83	Secondary source of injury-- Water vehicles	0	T	1961
+E	T84	Secondary source of injury-- Roadway vehicles--motorized	0	T	1962
+E	T86	Secondary source of injury-- Off-road and industrial vehicles--powered	0	T	1965
+E	T8A	Secondary source of injury-- Trucks with mounted machinery, equipment	0	T	1963
+E	T8B	Secondary source of injury-- Passenger vehicles	0	T	1964
+E	T8C	Secondary source of injury-- Forklift, order picker, platform truck--powered	0	T	1966
+E	T8X	Secondary source of injury-- Vehicles	0	T	1958
+E	T91	Secondary source of injury-- Apparel, laundry, linens	0	T	1968
+E	T95	Secondary source of injury-- Environmental and elemental conditions	0	T	1969
+E	T9A	Secondary source of injury-- Weather, atmospheric conditions	0	T	1970
+E	TRW	Private industry-- Transportation and warehousing	0	T	2046
+E	TTU	Private industry-- Trade, transportation, and utilities	0	T	2044
+E	UTL	Private industry-- Utilities	0	T	2039
+E	WAX	Worker status-- Wage and salary	0	T	1840
+E	WBX	Worker status-- Self-employed	0	T	1841
+E	WHT	Private industry-- Wholesale trade	0	T	2043
+E	X1X	Worker activity-- Emergency and security operations	0	T	2062
+E	X2X	Worker Activity--Agriculture, landscaping, and animal activities	0	T	2063
+E	X32	Worker activity-- Heavy and industrial earth moving and construction operations	0	T	2065
+E	X33	Worker activity-- Heavy and industrial production and repair operations	0	T	2066
+E	X34	Worker activity-- Heavy and industrial materials moving and warehousing operations	0	T	2067
+E	X3X	Worker activity-- Heavy and industrial construction, production, and materials moving operations	0	T	2064
+E	X4X	Worker activity--Other construction, production and maintenance activities	0	T	2068
+E	X5X	Worker activity-- Personal care, service, and administrative activities	0	T	2069
+E	X61	Worker activity-- Intentional risk taking activities	0	T	2073
+E	X6X	Worker activity-- Miscellaneous activities	0	T	2072
+E	X71	Worker activity-- Driving, piloting	0	T	2075
+E	X72	Worker activity-- Passenger of vehicle in transport	0	T	2076
+E	X74	Worker activity-- Transportation support activities	0	T	2077
+E	X7X	Worker activity-- Transportation operations	0	T	2074
+E	Y11	Worker location-- Road and bridge construction or maintenance	0	T	2079
+E	Y15	Worker location-- Residential construction sites	0	T	2080
+E	Y1X	Worker location-- Construction or maintenance sites	0	T	2078
+E	Y2X	Worker location-- Farm, agricultural premises	0	T	2081
+E	Y36	Worker location-- Factories and Production facilities	0	T	2083
+E	Y3X	Worker location-- Industrial places and premises	0	T	2082
+E	Y4X	Worker location-- Residence, housing	0	T	2084
+E	Y55	Worker location-- Office buildings	0	T	2086
+E	Y5X	Worker location-- Limited access public buildings	0	T	2085
+E	Y62	Worker location-- Restaurants, cafes	0	T	2088
+E	Y65	Worker location-- Retail or business areas	0	T	2089
+E	Y6X	Worker location-- Business and communal areas	0	T	2087
+E	Y72	Worker location-- Streets, highways, roads	0	T	2091
+E	Y73	Worker location-- Airport infrastructure	0	T	2095
+E	Y7A	Worker location-- Interstates, freeways, or expressways	0	T	2092
+E	Y7B	Worker location-- Other State or U.S. highways	0	T	2093
+E	Y7C	Worker location-- Local roads or streets	0	T	2094
+E	Y7X	Worker location-- Transportation infrastructure	0	T	2090
+G	00X	Ownership-- All	0	T	2103
+G	05X	Ownership-- All government	0	T	2104
+G	10X	Ownership-- Federal government	0	T	2105
+G	20X	Ownership-- State government	0	T	2106
+G	30X	Ownership-- Local government	0	T	2107
+G	ACX	Age group-- 18 to 19 years	0	T	2110
+G	ADX	Age group-- 20 to 24 years	0	T	2111
+G	AEX	Age group-- 25 to 34 years	0	T	2112
+G	AFX	Age group-- 35 to 44 years	0	T	2113
+G	AGX	Age group-- 45 to 54 years	0	T	2114
+G	AHX	Age group-- 55 to 64 years	0	T	2115
+G	AIX	Age group-- 65 years and over	0	T	2116
+G	E11	Event or exposure-- Homicides (Violent acts by other person)	0	T	2147
+G	E12	Event or exposure-- Suicides (Intentional self-harm)	0	T	2149
+G	E1A	Event or exposure-- Shooting by other person	0	T	2148
+G	E1B	Event or exposure-- Intentional self-harm-- shooting	0	T	2150
+G	E1C	Event or exposure-- Intentional self-harm-- hanging, strangulation, asphyxiation	0	T	2151
+G	E1X	Event or exposure-- VIOLENT ACTS	0	T	2146
+G	E21	Event or exposure-- Aircraft incidents	0	T	2154
+G	E22	Event or exposure-- Water vehicle incidents	0	T	2155
+G	E23	Event or exposure-- Rail vehicle incidents	0	T	2156
+G	E25	Event or exposure-- Pedestrian incidents involving motorized land vehicles	0	T	2157
+G	E26	Event or exposure-- Roadway incidents involving motorized land vehicle	0	T	2158
+G	E27	Event or exposure-- Nonroadway incidents involving motorized land vehicles	0	T	2164
+G	E2A	Event or exposure-- Roadway collision with other vehicle(s)	0	T	2159
+G	E2B	Event or exposure-- Collision with moving object or animal in roadway	0	T	2160
+G	E2C	Event or exposure-- Collision with object or animal on side of roadway	0	T	2161
+G	E2D	Event or exposure-- Roadway noncollision incident	0	T	2162
+G	E2E	Event or exposure-- Roadway noncollision- vehicle overturn	0	T	2163
+G	E2G	Event or exposure-- Nonroadway noncollision incident	0	T	2166
+G	E2H	Event or exposure-- Nonroadway noncollision- vehicle overturn	0	T	2167
+G	E2X	Event or exposure-- Transportation incidents	0	T	2153
+G	E3X	Event or exposure-- EXPLOSIONS AND FIRES	0	T	2168
+G	E41	Event or exposure-- Fall to lower level	0	T	2170
+G	E43	Event or exposure-- Slip, trip, stumble or fall on same level	0	T	2179
+G	E4A	Event or exposure-- Fall to lower level from collapsing structure or equipment	0	T	2171
+G	E4C	Event or exposure-- Fall to lower level resulting in exposure or contact	0	T	2173
+G	E4D	Event or exposure-- Other fall to lower level	0	T	2174
+G	E4E	Event or exposure-- Fall to lower level, height less than 6 feet	0	T	2175
+G	E4F	Event or exposure-- Fall to lower level, height 6 to 30 feet	0	T	2176
+G	E4G	Event or exposure-- Fall to lower level, height more than 30 feet	0	T	2177
+G	E4X	Event or exposure-- Falls, slips, trips	0	T	2169
+G	E51	Event or exposure-- Exposure to electricity	0	T	2181
+G	E53	Event or exposure-- Exposure to temperature extremes	0	T	2182
+G	E55	Event or exposure-- Exposure to harmful substances	0	T	2187
+G	E56	Event or exposure-- Exposure to oxygen deficiency	0	T	2189
+G	E5A	Event or exposure-- Exposure to environmental heat	0	T	2183
+G	E5C	Event or exposure-- Exposure to environmental heat-- outdoor	0	T	2185
+G	E5E	Event or exposure-- Drug, alcohol overdose	0	T	2188
+G	E5F	Event or exposure-- Drowning, submersion without other event	0	T	2190
+G	E5X	Event or exposure-- Exposure to harmful substances, environments	0	T	2180
+G	E61	Event or exposure-- Contact with other person, nonviolent or intent unknown	0	T	2193
+G	E62	Event or exposure-- Contact with animals	0	T	2194
+G	E63	Event or exposure-- Collapse, engulfment	0	T	2197
+G	E64	Event or exposure-- Struck by propelled, falling, or suspended object	0	T	2198
+G	E65	Event or exposure-- Struck, caught, or compressed by running powered equipment	0	T	2202
+G	E6A	Event or exposure-- Bitten or stung by animal	0	T	2195
+G	E6C	Event or exposure-- Struck by propelled object or substance	0	T	2199
+G	E6D	Event or exposure-- Struck by falling object	0	T	2200
+G	E6X	Event or exposure-- CONTACT INCIDENTS	0	T	2192
+G	GFX	Sex-- Women	0	T	2119
+G	GMX	Sex-- Men	0	T	2120
+G	I1X	Time of incident-- 12:00 midnight - 3:59 a.m.	0	T	2374
+G	I2X	Time of incident-- 4:00 a.m. - 7:59 a.m.	0	T	2375
+G	I3X	Time of incident-- 8:00 a.m. - 11:59 a.m.	0	T	2376
+G	I4X	Time of incident-- 12:00 noon - 3:59 p.m.	0	T	2377
+G	I5X	Time of incident-- 4:00 p.m. - 7:59 p.m.	0	T	2378
+G	I6X	Time of incident-- 8:00 p.m. - 11:59 p.m.	0	T	2379
+G	N1A	Nature-- Intracranial injuries	0	T	2307
+G	N1X	Nature-- Injuries to the brain, spinal cord	0	T	2306
+G	N2A	Nature-- Gunshot wounds	0	T	2309
+G	N2B	Nature-- Injuries to internal organs and major blood vessels	0	T	2310
+G	N2X	Nature-- Severe wounds, internal injuries	0	T	2308
+G	N3X	Nature-- Surface and flesh wounds	0	T	2311
+G	N5X	Nature-- Burns, corrosions, electrical injuries	0	T	2313
+G	N6X	Nature-- Effects of poison, toxic, or allergenic exposure	0	T	2315
+G	N7A	Nature-- Drowning, near drowning	0	T	2317
+G	N7B	Nature-- Asphyxiation- except toxic or allergenic	0	T	2318
+G	N7X	Nature-- Effects of environmental conditions and exposures	0	T	2316
+G	N8X	Nature-- Multiple traumatic injuries and disorders	0	T	2319
+G	P1X	Part-- Head	0	T	2322
+G	P2X	Part-- Neck	0	T	2323
+G	P31	Part-- Chest- including ribs, internal organs	0	T	2325
+G	P32	Part--Exterior and musculoskeletal structures of the back	0	T	2326
+G	P33	Part-- Abdomen	0	T	2327
+G	P3X	Part-- Trunk	0	T	2324
+G	P4X	Part-- Upper extremities	0	T	2329
+G	P5X	Part-- Lower extremities	0	T	2330
+G	P81	Part-- Head and other part(s) of body	0	T	2333
+G	P82	Part-- Neck and other part(s) of body	0	T	2334
+G	P83	Part-- Trunk and other part(s) of body	0	T	2335
+G	P88	Part-- Other multiple parts of body	0	T	2337
+G	P8A	Part-- Whole body	0	T	2338
+G	P8X	Part-- Multiple body parts	0	T	2332
+G	RAF	Race-- Asian, Foreign-born	0	T	2121
+G	RAN	Race-- Asian, Native-born	0	T	2122
+G	RAT	Race-- Asian, non-Hispanic, Total	0	T	2123
+G	RBF	Race-- Black or African-American, Foreign-born	0	T	2124
+G	RBN	Race-- Black or African-American, Native-born	0	T	2125
+G	RBT	Race-- Black or African-American, non-Hispanic, Total	0	T	2126
+G	RHF	Race-- Hispanic or Latino, Foreign-born	0	T	2128
+G	RHN	Race-- Hispanic or Latino, Native-born	0	T	2129
+G	RHT	Race-- Hispanic or Latino, Total	0	T	2130
+G	RIN	Race-- American Indian or Alaska Native, Native-born	0	T	2131
+G	RIT	Race-- American Indian or Alaska Native, non-Hispanic, Total	0	T	2132
+G	RMN	Race-- Person of multiple races, Native-born	0	T	2134
+G	RMT	Race-- Person of multiple races, non-Hispanic, Total	0	T	2135
+G	RON	Race-- Other or not reported, Native-born	0	T	2138
+G	ROT	Race-- Other or not reported, non-Hispanic, Total	0	T	2139
+G	RPN	Race-- Native Hawaiian or Pacific Islander, Native-born	0	T	2141
+G	RPT	Race-- Native Hawaiian or Pacific Islander, non-Hispanic, Total	0	T	2142
+G	RWF	Race-- White, Foreign-born	0	T	2143
+G	RWN	Race-- White, Native-born	0	T	2144
+G	RWT	Race-- White, non-Hispanic, Total	0	T	2145
+G	S1A	Primary source of injury-- Opioids	0	T	2204
+G	S1B	Primary source of injury-- Multiple drugs, medications	0	T	2205
+G	S1X	Primary source of injury-- CHEMICALS AND HAZARDOUS MATERIALS	0	T	2203
+G	S2X	Primary source of injury-- CONTAINERS, FURNITURE, FIXTURES	0	T	2206
+G	S31	Primary source of injury-- Agricultural and garden machinery	0	T	2209
+G	S32	Primary source of injury-- Construction, logging, and mining machinery	0	T	2210
+G	S34	Primary source of injury-- Material and personnel handling machinery	0	T	2212
+G	S3A	Primary source of injury-- Heavy earth-moving machinery	0	T	2211
+G	S3X	Primary source of injury-- Machinery	0	T	2208
+G	S41	Primary source of injury-- Raw and semi-finished materials and byproducts	0	T	2214
+G	S46	Primary source of injury-- Vehicle and machine parts- power, mechanical, special process	0	T	2217
+G	S4A	Primary source of injury-- Water, liquids-nonchemical	0	T	2215
+G	S4X	Primary source of injury-- Parts and materials	0	T	2213
+G	S51	Primary source of injury-- Animals	0	T	2219
+G	S54	Primary source of injury-- Plants, trees, vegetation	0	T	2220
+G	S56	Primary source of injury-- Activities and conditions of injured, ill worker	0	T	2224
+G	S57	Primary source of injury-- Person--other than injured or ill worker	0	T	2225
+G	S5A	Primary source of injury-- Trees, logs, limbs	0	T	2221
+G	S5B	Primary source of injury-- Trees	0	T	2222
+G	S5D	Primary source of injury-- Relative or domestic partner of injured or ill worker	0	T	2226
+G	S5E	Primary source of injury-- Co-worker or work associate of injured or ill worker	0	T	2227
+G	S5F	Primary source of injury-- Client or customer	0	T	2228
+G	S5H	Primary source of injury-- Criminal assailants	0	T	2230
+G	S5I	Primary source of injury-- Criminal inmate or detainee in custody	0	T	2231
+G	S5J	Primary source of injury-- Suspect under pursuit or investigation	0	T	2232
+G	S5K	Primary source of injury-- Robber	0	T	2233
+G	S5X	Primary source of injury-- ANIMALS, PLANTS, PERSONS, ETC.	0	T	2218
+G	S62	Primary source of injury-- Buildings	0	T	2236
+G	S65	Primary source of injury-- Other structural elements	0	T	2240
+G	S6D	Primary source of injury-- Roofs	0	T	2241
+G	S6E	Primary source of injury-- Stairs, multiple level surfaces	0	T	2242
+G	S6F	Primary source of injury-- Natural surface	0	T	2243
+G	S6X	Primary source of injury-- Structures and surfaces	0	T	2234
+G	S73	Primary source of injury-- Portable ladders and stairs	0	T	2245
+G	S7X	Primary source of injury-- Tools, instruments, and equipment	0	T	2244
+G	S81	Primary source of injury-- Aircraft	0	T	2247
+G	S82	Primary source of injury-- Rail vehicles	0	T	2248
+G	S83	Primary source of injury-- Water vehicles	0	T	2249
+G	S84	Primary source of injury-- Roadway vehicles--motorized	0	T	2250
+G	S86	Primary source of injury-- Off-road and industrial vehicles--powered	0	T	2262
+G	S8A	Primary source of injury-- Emergency and security vehicles	0	T	2251
+G	S8B	Primary source of injury-- Trucks with mounted machinery, equipment	0	T	2252
+G	S8C	Primary source of injury-- Dump trucks	0	T	2253
+G	S8D	Primary source of injury-- Garbage trucks	0	T	2254
+G	S8E	Primary source of injury-- Trucks	0	T	2255
+G	S8F	Primary source of injury-- Straight trucks, box trucks	0	T	2256
+G	S8G	Primary source of injury-- Tanker trucks	0	T	2257
+G	S8H	Primary source of injury-- Other semi, tractor-trailer	0	T	2258
+G	S8I	Primary source of injury-- Passenger vehicles	0	T	2259
+G	S8J	Primary source of injury-- Automobile	0	T	2260
+G	S8K	Primary source of injury-- Vans, passenger and utility	0	T	2261
+G	S8X	Primary source of injury-- Vehicles	0	T	2246
+G	S9A	Primary source of injury-- Heat--environmental	0	T	2266
+G	T00	Secondary source of injury-- Not Applicable	0	T	2305
+G	T15	Secondary source of injury-- Drugs, medications	0	T	2269
+G	T1A	Secondary source of injury-- Petroleum and coal products	0	T	2268
+G	T1X	Secondary source of injury-- CHEMICALS AND HAZARDOUS MATERIALS	0	T	2267
+G	T2A	Secondary source of injury-- Wheeled containers, material moving equipment	0	T	2271
+G	T2X	Secondary source of injury-- CONTAINERS, FURNITURE, FIXTURES	0	T	2270
+G	T3X	Secondary source of injury-- Machinery	0	T	2272
+G	T44	Secondary source of injury-- Fasteners, connectors, ropes, ties	0	T	2274
+G	T46	Secondary source of injury-- Vehicle and machine parts- power, mechanical, special process	0	T	2275
+G	T4X	Secondary source of injury-- Parts and materials	0	T	2273
+G	T54	Secondary source of injury-- Plants, trees, vegetation	0	T	2277
+G	T5A	Secondary source of injury-- Trees, logs, limbs	0	T	2278
+G	T5X	Secondary source of injury-- ANIMALS, PLANTS, PERSONS, ETC.	0	T	2276
+G	T61	Secondary source of injury-- Confined spaces	0	T	2280
+G	T62	Secondary source of injury-- Buildings	0	T	2281
+G	T63	Secondary source of injury-- Structures other than buildings	0	T	2282
+G	T66	Secondary source of injury-- Ground, travel, and support surfaces	0	T	2284
+G	T67	Secondary source of injury-- Bodies of water	0	T	2288
+G	T6A	Secondary source of injury-- Guardrails, road dividers or barriers	0	T	2283
+G	T6B	Secondary source of injury-- Stairs, steps	0	T	2285
+G	T6C	Secondary source of injury-- Constructed surfaces	0	T	2286
+G	T6D	Secondary source of injury-- Natural surface	0	T	2287
+G	T6X	Secondary source of injury-- Structures and surfaces	0	T	2279
+G	T7A	Secondary source of injury-- Knives	0	T	2290
+G	T7B	Secondary source of injury-- Firearms, air-powered guns	0	T	2291
+G	T7X	Secondary source of injury-- Tools, instruments, and equipment	0	T	2289
+G	T81	Secondary source of injury-- Aircraft	0	T	2293
+G	T84	Secondary source of injury-- Roadway vehicles--motorized	0	T	2296
+G	T8A	Secondary source of injury-- Trucks with mounted machinery, equipment	0	T	2297
+G	T8B	Secondary source of injury-- Passenger vehicles	0	T	2298
+G	T8X	Secondary source of injury-- Vehicles	0	T	2292
+G	T91	Secondary source of injury-- Apparel, laundry, linens	0	T	2302
+G	T95	Secondary source of injury-- Environmental and elemental conditions	0	T	2303
+G	T9A	Secondary source of injury-- Weather, atmospheric conditions	0	T	2304
+G	WAX	Worker status-- Wage and salary	0	T	2117
+G	X1X	Worker activity-- Emergency and security operations	0	T	2339
+G	X2X	Worker Activity--Agriculture, landscaping, and animal activities	0	T	2340
+G	X32	Worker activity-- Heavy and industrial earth moving and construction operations	0	T	2342
+G	X33	Worker activity-- Heavy and industrial production and repair operations	0	T	2343
+G	X34	Worker activity-- Heavy and industrial materials moving and warehousing operations	0	T	2344
+G	X3X	Worker activity-- Heavy and industrial construction, production, and materials moving operations	0	T	2341
+G	X4X	Worker activity--Other construction, production and maintenance activities	0	T	2345
+G	X5X	Worker activity-- Personal care, service, and administrative activities	0	T	2346
+G	X61	Worker activity-- Intentional risk taking activities	0	T	2350
+G	X6X	Worker activity-- Miscellaneous activities	0	T	2349
+G	X71	Worker activity-- Driving, piloting	0	T	2352
+G	X72	Worker activity-- Passenger of vehicle in transport	0	T	2353
+G	X74	Worker activity-- Transportation support activities	0	T	2354
+G	X7X	Worker activity-- Transportation operations	0	T	2351
+G	Y11	Worker location-- Road and bridge construction or maintenance	0	T	2356
+G	Y1X	Worker location-- Construction or maintenance sites	0	T	2355
+G	Y2X	Worker location-- Farm, agricultural premises	0	T	2358
+G	Y36	Worker location-- Factories and Production facilities	0	T	2360
+G	Y3X	Worker location-- Industrial places and premises	0	T	2359
+G	Y4X	Worker location-- Residence, housing	0	T	2361
+G	Y55	Worker location-- Office buildings	0	T	2363
+G	Y5X	Worker location-- Limited access public buildings	0	T	2362
+G	Y65	Worker location-- Retail or business areas	0	T	2366
+G	Y6X	Worker location-- Business and communal areas	0	T	2364
+G	Y72	Worker location-- Streets, highways, roads	0	T	2368
+G	Y73	Worker location-- Airport infrastructure	0	T	2372
+G	Y7A	Worker location-- Interstates, freeways, or expressways	0	T	2369
+G	Y7B	Worker location-- Other State or U.S. highways	0	T	2370
+G	Y7C	Worker location-- Local roads or streets	0	T	2371
+G	Y7X	Worker location-- Transportation infrastructure	0	T	2367
+O	00X	Ownership-- All	0	T	2380
+O	05X	Ownership-- All government	0	T	2382
+O	10X	Ownership-- Federal government	0	T	2383
+O	20X	Ownership-- State government	0	T	2384
+O	30X	Ownership-- Local government	0	T	2385
+O	50X	Ownership-- Private	0	T	2381
+O	AAX	Age group-- Under 16 years	0	T	2386
+O	ABX	Age group-- 16 to 17 years	0	T	2387
+O	ACX	Age group-- 18 to 19 years	0	T	2388
+O	ADW	Private industry-- Administrative and support and waste management and remediation services	0	T	2636
+O	ADX	Age group-- 20 to 24 years	0	T	2389
+O	AER	Private industry-- Arts, entertainment, and recreation	0	T	2640
+O	AEX	Age group-- 25 to 34 years	0	T	2390
+O	AFH	Private industry-- Agriculture, forestry, fishing and hunting	0	T	2617
+O	AFS	Private industry-- Accommodation and food services	0	T	2642
+O	AFX	Age group-- 35 to 44 years	0	T	2391
+O	AGX	Age group-- 45 to 54 years	0	T	2392
+O	AHX	Age group-- 55 to 64 years	0	T	2393
+O	AIX	Age group-- 65 years and over	0	T	2394
+O	CON	Private industry-- Construction	0	T	2623
+O	E11	Event or exposure-- Homicides (Violent acts by other person)	0	T	2425
+O	E12	Event or exposure-- Suicides (Intentional self-harm)	0	T	2427
+O	E1A	Event or exposure-- Shooting by other person	0	T	2426
+O	E1B	Event or exposure-- Intentional self-harm-- shooting	0	T	2428
+O	E1C	Event or exposure-- Intentional self-harm-- hanging, strangulation, asphyxiation	0	T	2429
+O	E1D	Event or exposure-- Intentional self-harm-- poisoning, drug overdose	0	T	2430
+O	E1X	Event or exposure-- VIOLENT ACTS	0	T	2424
+O	E21	Event or exposure-- Aircraft incidents	0	T	2432
+O	E22	Event or exposure-- Water vehicle incidents	0	T	2433
+O	E23	Event or exposure-- Rail vehicle incidents	0	T	2434
+O	E25	Event or exposure-- Pedestrian incidents involving motorized land vehicles	0	T	2435
+O	E26	Event or exposure-- Roadway incidents involving motorized land vehicle	0	T	2436
+O	E27	Event or exposure-- Nonroadway incidents involving motorized land vehicles	0	T	2442
+O	E2A	Event or exposure-- Roadway collision with other vehicle(s)	0	T	2437
+O	E2B	Event or exposure-- Collision with moving object or animal in roadway	0	T	2438
+O	E2C	Event or exposure-- Collision with object or animal on side of roadway	0	T	2439
+O	E2D	Event or exposure-- Roadway noncollision incident	0	T	2440
+O	E2E	Event or exposure-- Roadway noncollision- vehicle overturn	0	T	2441
+O	E2F	Event or exposure-- Nonroadway collision with other vehicle(s)	0	T	2443
+O	E2G	Event or exposure-- Nonroadway noncollision incident	0	T	2444
+O	E2H	Event or exposure-- Nonroadway noncollision- vehicle overturn	0	T	2445
+O	E2X	Event or exposure-- Transportation incidents	0	T	2431
+O	E3X	Event or exposure-- EXPLOSIONS AND FIRES	0	T	2446
+O	E41	Event or exposure-- Fall to lower level	0	T	2448
+O	E43	Event or exposure-- Slip, trip, stumble or fall on same level	0	T	2457
+O	E4A	Event or exposure-- Fall to lower level from collapsing structure or equipment	0	T	2449
+O	E4B	Event or exposure-- Fall to lower level resulting from exposure or contact	0	T	2450
+O	E4C	Event or exposure-- Fall to lower level resulting in exposure or contact	0	T	2451
+O	E4D	Event or exposure-- Other fall to lower level	0	T	2452
+O	E4E	Event or exposure-- Fall to lower level, height less than 6 feet	0	T	2453
+O	E4F	Event or exposure-- Fall to lower level, height 6 to 30 feet	0	T	2454
+O	E4G	Event or exposure-- Fall to lower level, height more than 30 feet	0	T	2455
+O	E4X	Event or exposure-- Falls, slips, trips	0	T	2447
+O	E51	Event or exposure-- Exposure to electricity	0	T	2459
+O	E53	Event or exposure-- Exposure to temperature extremes	0	T	2460
+O	E55	Event or exposure-- Exposure to harmful substances	0	T	2465
+O	E56	Event or exposure-- Exposure to oxygen deficiency	0	T	2467
+O	E5A	Event or exposure-- Exposure to environmental heat	0	T	2461
+O	E5B	Event or exposure-- Exposure to environmental heat -- indoor	0	T	2462
+O	E5C	Event or exposure-- Exposure to environmental heat-- outdoor	0	T	2463
+O	E5E	Event or exposure-- Drug, alcohol overdose	0	T	2466
+O	E5F	Event or exposure-- Drowning, submersion without other event	0	T	2468
+O	E5X	Event or exposure-- Exposure to harmful substances, environments	0	T	2458
+O	E61	Event or exposure-- Contact with other person, nonviolent or intent unknown	0	T	2471
+O	E62	Event or exposure-- Contact with animals	0	T	2472
+O	E63	Event or exposure-- Collapse, engulfment	0	T	2475
+O	E64	Event or exposure-- Struck by propelled, falling, or suspended object	0	T	2476
+O	E65	Event or exposure-- Struck, caught, or compressed by running powered equipment	0	T	2480
+O	E6A	Event or exposure-- Bitten or stung by animal	0	T	2473
+O	E6B	Event or exposure-- Struck by animal	0	T	2474
+O	E6C	Event or exposure-- Struck by propelled object or substance	0	T	2477
+O	E6D	Event or exposure-- Struck by falling object	0	T	2478
+O	E6E	Event or exposure-- Struck by suspended or swinging object	0	T	2479
+O	E6X	Event or exposure-- CONTACT INCIDENTS	0	T	2470
+O	EDS	Private industry-- Educational services	0	T	2637
+O	EHS	Private industry-- Educational and health services	0	T	2638
+O	FIA	Private industry-- Financial activities	0	T	2631
+O	FIN	Private industry-- Finance and insurance	0	T	2630
+O	GFX	Sex-- Women	0	T	2397
+O	GMX	Sex-- Men	0	T	2398
+O	HSA	Private industry-- Health care and social assistance	0	T	2639
+O	I1X	Time of incident-- 12:00 midnight - 3:59 a.m.	0	T	2679
+O	I2X	Time of incident-- 4:00 a.m. - 7:59 a.m.	0	T	2680
+O	I3X	Time of incident-- 8:00 a.m. - 11:59 a.m.	0	T	2681
+O	I4X	Time of incident-- 12:00 noon - 3:59 p.m.	0	T	2682
+O	I5X	Time of incident-- 4:00 p.m. - 7:59 p.m.	0	T	2683
+O	I6X	Time of incident-- 8:00 p.m. - 11:59 p.m.	0	T	2684
+O	INF	Private industry-- Information	0	T	2629
+O	LEH	Private industry-- Leisure and hospitality	0	T	2641
+O	MCE	Private industry-- Management of companies and enterprises	0	T	2635
+O	MFG	Private industry-- Manufacturing	0	T	2624
+O	MIN	Private industry-- Mining, quarrying, and oil and gas extraction	0	T	2620
+O	N1A	Nature-- Intracranial injuries	0	T	2585
+O	N1X	Nature-- Injuries to the brain, spinal cord	0	T	2584
+O	N2A	Nature-- Gunshot wounds	0	T	2587
+O	N2B	Nature-- Injuries to internal organs and major blood vessels	0	T	2588
+O	N2X	Nature-- Severe wounds, internal injuries	0	T	2586
+O	N3X	Nature-- Surface and flesh wounds	0	T	2589
+O	N4X	Nature-- Soft tissue injuries	0	T	2590
+O	N5X	Nature-- Burns, corrosions, electrical injuries	0	T	2591
+O	N6X	Nature-- Effects of poison, toxic, or allergenic exposure	0	T	2593
+O	N7A	Nature-- Drowning, near drowning	0	T	2595
+O	N7B	Nature-- Asphyxiation- except toxic or allergenic	0	T	2596
+O	N7X	Nature-- Effects of environmental conditions and exposures	0	T	2594
+O	N8B	Nature-- Burns and toxic effects (including smoke inhalation)	0	T	2599
+O	N8X	Nature-- Multiple traumatic injuries and disorders	0	T	2597
+O	NRM	Private industry-- Natural resources and mining	0	T	2618
+O	OTS	Private industry-- Other services, except public administration	0	T	2643
+O	P1X	Part-- Head	0	T	2600
+O	P2X	Part-- Neck	0	T	2601
+O	P31	Part-- Chest- including ribs, internal organs	0	T	2603
+O	P32	Part--Exterior and musculoskeletal structures of the back	0	T	2604
+O	P33	Part-- Abdomen	0	T	2605
+O	P34	Part-- Pelvic region	0	T	2606
+O	P3X	Part-- Trunk	0	T	2602
+O	P4X	Part-- Upper extremities	0	T	2607
+O	P5X	Part-- Lower extremities	0	T	2608
+O	P81	Part-- Head and other part(s) of body	0	T	2611
+O	P82	Part-- Neck and other part(s) of body	0	T	2612
+O	P83	Part-- Trunk and other part(s) of body	0	T	2613
+O	P84	Part-- Upper and lower extremities	0	T	2614
+O	P88	Part-- Other multiple parts of body	0	T	2615
+O	P8A	Part-- Whole body	0	T	2616
+O	P8X	Part-- Multiple body parts	0	T	2610
+O	PBS	Private industry-- Professional and business services	0	T	2634
+O	PST	Private industry-- Professional, scientific, and technical services	0	T	2633
+O	RAF	Race-- Asian, Foreign-born	0	T	2399
+O	RAN	Race-- Asian, Native-born	0	T	2400
+O	RAT	Race-- Asian, non-Hispanic, Total	0	T	2401
+O	RBF	Race-- Black or African-American, Foreign-born	0	T	2402
+O	RBN	Race-- Black or African-American, Native-born	0	T	2403
+O	RBT	Race-- Black or African-American, non-Hispanic, Total	0	T	2404
+O	RET	Private industry-- Retail trade	0	T	2627
+O	RHF	Race-- Hispanic or Latino, Foreign-born	0	T	2406
+O	RHN	Race-- Hispanic or Latino, Native-born	0	T	2407
+O	RHT	Race-- Hispanic or Latino, Total	0	T	2408
+O	RIN	Race-- American Indian or Alaska Native, Native-born	0	T	2409
+O	RIT	Race-- American Indian or Alaska Native, non-Hispanic, Total	0	T	2410
+O	RMF	Race-- Person of multiple races, Foreign-born	0	T	2411
+O	RMN	Race-- Person of multiple races, Native-born	0	T	2412
+O	RMT	Race-- Person of multiple races, non-Hispanic, Total	0	T	2413
+O	ROF	Race-- Other or not reported, Foreign-born	0	T	2415
+O	RON	Race-- Other or not reported, Native-born	0	T	2416
+O	ROT	Race-- Other or not reported, non-Hispanic, Total	0	T	2417
+O	RPF	Race-- Native Hawaiian or Pacific Islander, Foreign-born	0	T	2418
+O	RPN	Race-- Native Hawaiian or Pacific Islander, Native-born	0	T	2419
+O	RPT	Race-- Native Hawaiian or Pacific Islander, non-Hispanic, Total	0	T	2420
+O	RRL	Private industry-- Real estate and rental and leasing	0	T	2632
+O	RWF	Race-- White, Foreign-born	0	T	2421
+O	RWN	Race-- White, Native-born	0	T	2422
+O	RWT	Race-- White, non-Hispanic, Total	0	T	2423
+O	S1A	Primary source of injury-- Opioids	0	T	2482
+O	S1B	Primary source of injury-- Multiple drugs, medications	0	T	2483
+O	S1X	Primary source of injury-- CHEMICALS AND HAZARDOUS MATERIALS	0	T	2481
+O	S2A	Primary source of injury-- Wheeled containers, material moving equipment	0	T	2485
+O	S2X	Primary source of injury-- CONTAINERS, FURNITURE, FIXTURES	0	T	2484
+O	S31	Primary source of injury-- Agricultural and garden machinery	0	T	2487
+O	S32	Primary source of injury-- Construction, logging, and mining machinery	0	T	2488
+O	S34	Primary source of injury-- Material and personnel handling machinery	0	T	2490
+O	S3A	Primary source of injury-- Heavy earth-moving machinery	0	T	2489
+O	S3X	Primary source of injury-- Machinery	0	T	2486
+O	S41	Primary source of injury-- Raw and semi-finished materials and byproducts	0	T	2492
+O	S42	Primary source of injury-- Building materials	0	T	2494
+O	S46	Primary source of injury-- Vehicle and machine parts- power, mechanical, special process	0	T	2495
+O	S4A	Primary source of injury-- Water, liquids-nonchemical	0	T	2493
+O	S4X	Primary source of injury-- Parts and materials	0	T	2491
+O	S51	Primary source of injury-- Animals	0	T	2497
+O	S54	Primary source of injury-- Plants, trees, vegetation	0	T	2498
+O	S56	Primary source of injury-- Activities and conditions of injured, ill worker	0	T	2502
+O	S57	Primary source of injury-- Person--other than injured or ill worker	0	T	2503
+O	S5A	Primary source of injury-- Trees, logs, limbs	0	T	2499
+O	S5B	Primary source of injury-- Trees	0	T	2500
+O	S5C	Primary source of injury-- Logs	0	T	2501
+O	S5D	Primary source of injury-- Relative or domestic partner of injured or ill worker	0	T	2504
+O	S5E	Primary source of injury-- Co-worker or work associate of injured or ill worker	0	T	2505
+O	S5F	Primary source of injury-- Client or customer	0	T	2506
+O	S5G	Primary source of injury-- Acquaintance	0	T	2507
+O	S5H	Primary source of injury-- Criminal assailants	0	T	2508
+O	S5J	Primary source of injury-- Suspect under pursuit or investigation	0	T	2510
+O	S5K	Primary source of injury-- Robber	0	T	2511
+O	S5X	Primary source of injury-- ANIMALS, PLANTS, PERSONS, ETC.	0	T	2496
+O	S62	Primary source of injury-- Buildings	0	T	2514
+O	S63	Primary source of injury-- Structures other than buildings	0	T	2515
+O	S65	Primary source of injury-- Other structural elements	0	T	2518
+O	S6A	Primary source of injury-- Elevator shafts	0	T	2513
+O	S6B	Primary source of injury-- Scaffolds, staging	0	T	2516
+O	S6C	Primary source of injury-- Towers, poles	0	T	2517
+O	S6D	Primary source of injury-- Roofs	0	T	2519
+O	S6E	Primary source of injury-- Stairs, multiple level surfaces	0	T	2520
+O	S6F	Primary source of injury-- Natural surface	0	T	2521
+O	S6X	Primary source of injury-- Structures and surfaces	0	T	2512
+O	S73	Primary source of injury-- Portable ladders and stairs	0	T	2523
+O	S7X	Primary source of injury-- Tools, instruments, and equipment	0	T	2522
+O	S81	Primary source of injury-- Aircraft	0	T	2525
+O	S82	Primary source of injury-- Rail vehicles	0	T	2526
+O	S83	Primary source of injury-- Water vehicles	0	T	2527
+O	S84	Primary source of injury-- Roadway vehicles--motorized	0	T	2528
+O	S86	Primary source of injury-- Off-road and industrial vehicles--powered	0	T	2540
+O	S8A	Primary source of injury-- Emergency and security vehicles	0	T	2529
+O	S8B	Primary source of injury-- Trucks with mounted machinery, equipment	0	T	2530
+O	S8C	Primary source of injury-- Dump trucks	0	T	2531
+O	S8D	Primary source of injury-- Garbage trucks	0	T	2532
+O	S8E	Primary source of injury-- Trucks	0	T	2533
+O	S8F	Primary source of injury-- Straight trucks, box trucks	0	T	2534
+O	S8G	Primary source of injury-- Tanker trucks	0	T	2535
+O	S8H	Primary source of injury-- Other semi, tractor-trailer	0	T	2536
+O	S8I	Primary source of injury-- Passenger vehicles	0	T	2537
+O	S8J	Primary source of injury-- Automobile	0	T	2538
+O	S8K	Primary source of injury-- Vans, passenger and utility	0	T	2539
+O	S8L	Primary source of injury-- Industrial vehicles, material hauling and transport--powered	0	T	2541
+O	S8M	Primary source of injury-- Forklift, order picker, platform truck--powered	0	T	2542
+O	S8N	Primary source of injury-- Agricultural tractors	0	T	2543
+O	S8X	Primary source of injury-- Vehicles	0	T	2524
+O	S9A	Primary source of injury-- Heat--environmental	0	T	2544
+O	T00	Secondary source of injury-- Not Applicable	0	T	2583
+O	T15	Secondary source of injury-- Drugs, medications	0	T	2547
+O	T1A	Secondary source of injury-- Petroleum and coal products	0	T	2546
+O	T1X	Secondary source of injury-- CHEMICALS AND HAZARDOUS MATERIALS	0	T	2545
+O	T2A	Secondary source of injury-- Wheeled containers, material moving equipment	0	T	2549
+O	T2X	Secondary source of injury-- CONTAINERS, FURNITURE, FIXTURES	0	T	2548
+O	T3X	Secondary source of injury-- Machinery	0	T	2550
+O	T44	Secondary source of injury-- Fasteners, connectors, ropes, ties	0	T	2552
+O	T46	Secondary source of injury-- Vehicle and machine parts- power, mechanical, special process	0	T	2553
+O	T4X	Secondary source of injury-- Parts and materials	0	T	2551
+O	T54	Secondary source of injury-- Plants, trees, vegetation	0	T	2555
+O	T5A	Secondary source of injury-- Trees, logs, limbs	0	T	2556
+O	T5X	Secondary source of injury-- ANIMALS, PLANTS, PERSONS, ETC.	0	T	2554
+O	T61	Secondary source of injury-- Confined spaces	0	T	2558
+O	T62	Secondary source of injury-- Buildings	0	T	2559
+O	T63	Secondary source of injury-- Structures other than buildings	0	T	2560
+O	T66	Secondary source of injury-- Ground, travel, and support surfaces	0	T	2562
+O	T67	Secondary source of injury-- Bodies of water	0	T	2566
+O	T6A	Secondary source of injury-- Guardrails, road dividers or barriers	0	T	2561
+O	T6B	Secondary source of injury-- Stairs, steps	0	T	2563
+O	T6C	Secondary source of injury-- Constructed surfaces	0	T	2564
+O	T6D	Secondary source of injury-- Natural surface	0	T	2565
+O	T6X	Secondary source of injury-- Structures and surfaces	0	T	2557
+O	T7A	Secondary source of injury-- Knives	0	T	2568
+O	T7B	Secondary source of injury-- Firearms, air-powered guns	0	T	2569
+O	T7X	Secondary source of injury-- Tools, instruments, and equipment	0	T	2567
+O	T81	Secondary source of injury-- Aircraft	0	T	2571
+O	T82	Secondary source of injury-- Rail vehicles	0	T	2572
+O	T83	Secondary source of injury-- Water vehicles	0	T	2573
+O	T84	Secondary source of injury-- Roadway vehicles--motorized	0	T	2574
+O	T86	Secondary source of injury-- Off-road and industrial vehicles--powered	0	T	2577
+O	T8A	Secondary source of injury-- Trucks with mounted machinery, equipment	0	T	2575
+O	T8B	Secondary source of injury-- Passenger vehicles	0	T	2576
+O	T8C	Secondary source of injury-- Forklift, order picker, platform truck--powered	0	T	2578
+O	T8X	Secondary source of injury-- Vehicles	0	T	2570
+O	T91	Secondary source of injury-- Apparel, laundry, linens	0	T	2580
+O	T95	Secondary source of injury-- Environmental and elemental conditions	0	T	2581
+O	T9A	Secondary source of injury-- Weather, atmospheric conditions	0	T	2582
+O	TRW	Private industry-- Transportation and warehousing	0	T	2628
+O	TTU	Private industry-- Trade, transportation, and utilities	0	T	2626
+O	UTL	Private industry-- Utilities	0	T	2621
+O	WAX	Worker status-- Wage and salary	0	T	2395
+O	WBX	Worker status-- Self-employed	0	T	2396
+O	WHT	Private industry-- Wholesale trade	0	T	2625
+O	X1X	Worker activity-- Emergency and security operations	0	T	2644
+O	X2X	Worker Activity--Agriculture, landscaping, and animal activities	0	T	2645
+O	X32	Worker activity-- Heavy and industrial earth moving and construction operations	0	T	2647
+O	X33	Worker activity-- Heavy and industrial production and repair operations	0	T	2648
+O	X34	Worker activity-- Heavy and industrial materials moving and warehousing operations	0	T	2649
+O	X3X	Worker activity-- Heavy and industrial construction, production, and materials moving operations	0	T	2646
+O	X4X	Worker activity--Other construction, production and maintenance activities	0	T	2650
+O	X5X	Worker activity-- Personal care, service, and administrative activities	0	T	2651
+O	X61	Worker activity-- Intentional risk taking activities	0	T	2655
+O	X6X	Worker activity-- Miscellaneous activities	0	T	2654
+O	X71	Worker activity-- Driving, piloting	0	T	2657
+O	X72	Worker activity-- Passenger of vehicle in transport	0	T	2658
+O	X74	Worker activity-- Transportation support activities	0	T	2659
+O	X7X	Worker activity-- Transportation operations	0	T	2656
+O	Y11	Worker location-- Road and bridge construction or maintenance	0	T	2661
+O	Y15	Worker location-- Residential construction sites	0	T	2662
+O	Y1X	Worker location-- Construction or maintenance sites	0	T	2660
+O	Y2X	Worker location-- Farm, agricultural premises	0	T	2663
+O	Y36	Worker location-- Factories and Production facilities	0	T	2665
+O	Y3X	Worker location-- Industrial places and premises	0	T	2664
+O	Y4X	Worker location-- Residence, housing	0	T	2666
+O	Y55	Worker location-- Office buildings	0	T	2668
+O	Y5X	Worker location-- Limited access public buildings	0	T	2667
+O	Y62	Worker location-- Restaurants, cafes	0	T	2670
+O	Y65	Worker location-- Retail or business areas	0	T	2671
+O	Y6X	Worker location-- Business and communal areas	0	T	2669
+O	Y72	Worker location-- Streets, highways, roads	0	T	2673
+O	Y73	Worker location-- Airport infrastructure	0	T	2677
+O	Y7A	Worker location-- Interstates, freeways, or expressways	0	T	2674
+O	Y7B	Worker location-- Other State or U.S. highways	0	T	2675
+O	Y7C	Worker location-- Local roads or streets	0	T	2676
+O	Y7X	Worker location-- Transportation infrastructure	0	T	2672
+P	00X	Ownership-- All	0	T	2685
+P	50X	Ownership-- Private	0	T	2686
+P	AAX	Age group-- Under 16 years	0	T	2687
+P	ABX	Age group-- 16 to 17 years	0	T	2688
+P	ACX	Age group-- 18 to 19 years	0	T	2689
+P	ADW	Private industry-- Administrative and support and waste management and remediation services	0	T	2937
+P	ADX	Age group-- 20 to 24 years	0	T	2690
+P	AER	Private industry-- Arts, entertainment, and recreation	0	T	2941
+P	AEX	Age group-- 25 to 34 years	0	T	2691
+P	AFH	Private industry-- Agriculture, forestry, fishing and hunting	0	T	2918
+P	AFS	Private industry-- Accommodation and food services	0	T	2943
+P	AFX	Age group-- 35 to 44 years	0	T	2692
+P	AGX	Age group-- 45 to 54 years	0	T	2693
+P	AHX	Age group-- 55 to 64 years	0	T	2694
+P	AIX	Age group-- 65 years and over	0	T	2695
+P	CON	Private industry-- Construction	0	T	2924
+P	E11	Event or exposure-- Homicides (Violent acts by other person)	0	T	2726
+P	E12	Event or exposure-- Suicides (Intentional self-harm)	0	T	2728
+P	E1A	Event or exposure-- Shooting by other person	0	T	2727
+P	E1B	Event or exposure-- Intentional self-harm-- shooting	0	T	2729
+P	E1C	Event or exposure-- Intentional self-harm-- hanging, strangulation, asphyxiation	0	T	2730
+P	E1D	Event or exposure-- Intentional self-harm-- poisoning, drug overdose	0	T	2731
+P	E1X	Event or exposure-- VIOLENT ACTS	0	T	2725
+P	E21	Event or exposure-- Aircraft incidents	0	T	2733
+P	E22	Event or exposure-- Water vehicle incidents	0	T	2734
+P	E23	Event or exposure-- Rail vehicle incidents	0	T	2735
+P	E25	Event or exposure-- Pedestrian incidents involving motorized land vehicles	0	T	2736
+P	E26	Event or exposure-- Roadway incidents involving motorized land vehicle	0	T	2737
+P	E27	Event or exposure-- Nonroadway incidents involving motorized land vehicles	0	T	2743
+P	E2A	Event or exposure-- Roadway collision with other vehicle(s)	0	T	2738
+P	E2B	Event or exposure-- Collision with moving object or animal in roadway	0	T	2739
+P	E2C	Event or exposure-- Collision with object or animal on side of roadway	0	T	2740
+P	E2D	Event or exposure-- Roadway noncollision incident	0	T	2741
+P	E2E	Event or exposure-- Roadway noncollision- vehicle overturn	0	T	2742
+P	E2F	Event or exposure-- Nonroadway collision with other vehicle(s)	0	T	2744
+P	E2G	Event or exposure-- Nonroadway noncollision incident	0	T	2745
+P	E2H	Event or exposure-- Nonroadway noncollision- vehicle overturn	0	T	2746
+P	E2X	Event or exposure-- Transportation incidents	0	T	2732
+P	E3X	Event or exposure-- EXPLOSIONS AND FIRES	0	T	2747
+P	E41	Event or exposure-- Fall to lower level	0	T	2749
+P	E43	Event or exposure-- Slip, trip, stumble or fall on same level	0	T	2758
+P	E4A	Event or exposure-- Fall to lower level from collapsing structure or equipment	0	T	2750
+P	E4B	Event or exposure-- Fall to lower level resulting from exposure or contact	0	T	2751
+P	E4C	Event or exposure-- Fall to lower level resulting in exposure or contact	0	T	2752
+P	E4D	Event or exposure-- Other fall to lower level	0	T	2753
+P	E4E	Event or exposure-- Fall to lower level, height less than 6 feet	0	T	2754
+P	E4F	Event or exposure-- Fall to lower level, height 6 to 30 feet	0	T	2755
+P	E4G	Event or exposure-- Fall to lower level, height more than 30 feet	0	T	2756
+P	E4X	Event or exposure-- Falls, slips, trips	0	T	2748
+P	E51	Event or exposure-- Exposure to electricity	0	T	2760
+P	E53	Event or exposure-- Exposure to temperature extremes	0	T	2761
+P	E55	Event or exposure-- Exposure to harmful substances	0	T	2766
+P	E56	Event or exposure-- Exposure to oxygen deficiency	0	T	2768
+P	E5A	Event or exposure-- Exposure to environmental heat	0	T	2762
+P	E5B	Event or exposure-- Exposure to environmental heat -- indoor	0	T	2763
+P	E5C	Event or exposure-- Exposure to environmental heat-- outdoor	0	T	2764
+P	E5E	Event or exposure-- Drug, alcohol overdose	0	T	2767
+P	E5F	Event or exposure-- Drowning, submersion without other event	0	T	2769
+P	E5X	Event or exposure-- Exposure to harmful substances, environments	0	T	2759
+P	E61	Event or exposure-- Contact with other person, nonviolent or intent unknown	0	T	2772
+P	E62	Event or exposure-- Contact with animals	0	T	2773
+P	E63	Event or exposure-- Collapse, engulfment	0	T	2776
+P	E64	Event or exposure-- Struck by propelled, falling, or suspended object	0	T	2777
+P	E65	Event or exposure-- Struck, caught, or compressed by running powered equipment	0	T	2781
+P	E6A	Event or exposure-- Bitten or stung by animal	0	T	2774
+P	E6B	Event or exposure-- Struck by animal	0	T	2775
+P	E6C	Event or exposure-- Struck by propelled object or substance	0	T	2778
+P	E6D	Event or exposure-- Struck by falling object	0	T	2779
+P	E6E	Event or exposure-- Struck by suspended or swinging object	0	T	2780
+P	E6X	Event or exposure-- CONTACT INCIDENTS	0	T	2771
+P	EDS	Private industry-- Educational services	0	T	2938
+P	EHS	Private industry-- Educational and health services	0	T	2939
+P	FIA	Private industry-- Financial activities	0	T	2932
+P	FIN	Private industry-- Finance and insurance	0	T	2931
+P	GFX	Sex-- Women	0	T	2698
+P	GMX	Sex-- Men	0	T	2699
+P	HSA	Private industry-- Health care and social assistance	0	T	2940
+P	I1X	Time of incident-- 12:00 midnight - 3:59 a.m.	0	T	2980
+P	I2X	Time of incident-- 4:00 a.m. - 7:59 a.m.	0	T	2981
+P	I3X	Time of incident-- 8:00 a.m. - 11:59 a.m.	0	T	2982
+P	I4X	Time of incident-- 12:00 noon - 3:59 p.m.	0	T	2983
+P	I5X	Time of incident-- 4:00 p.m. - 7:59 p.m.	0	T	2984
+P	I6X	Time of incident-- 8:00 p.m. - 11:59 p.m.	0	T	2985
+P	INF	Private industry-- Information	0	T	2930
+P	LEH	Private industry-- Leisure and hospitality	0	T	2942
+P	MCE	Private industry-- Management of companies and enterprises	0	T	2936
+P	MFG	Private industry-- Manufacturing	0	T	2925
+P	MIN	Private industry-- Mining, quarrying, and oil and gas extraction	0	T	2921
+P	N1A	Nature-- Intracranial injuries	0	T	2886
+P	N1X	Nature-- Injuries to the brain, spinal cord	0	T	2885
+P	N2A	Nature-- Gunshot wounds	0	T	2888
+P	N2B	Nature-- Injuries to internal organs and major blood vessels	0	T	2889
+P	N2X	Nature-- Severe wounds, internal injuries	0	T	2887
+P	N3X	Nature-- Surface and flesh wounds	0	T	2890
+P	N4X	Nature-- Soft tissue injuries	0	T	2891
+P	N5X	Nature-- Burns, corrosions, electrical injuries	0	T	2892
+P	N6X	Nature-- Effects of poison, toxic, or allergenic exposure	0	T	2894
+P	N7A	Nature-- Drowning, near drowning	0	T	2896
+P	N7B	Nature-- Asphyxiation- except toxic or allergenic	0	T	2897
+P	N7X	Nature-- Effects of environmental conditions and exposures	0	T	2895
+P	N8B	Nature-- Burns and toxic effects (including smoke inhalation)	0	T	2900
+P	N8X	Nature-- Multiple traumatic injuries and disorders	0	T	2898
+P	NRM	Private industry-- Natural resources and mining	0	T	2919
+P	OTS	Private industry-- Other services, except public administration	0	T	2944
+P	P1X	Part-- Head	0	T	2901
+P	P2X	Part-- Neck	0	T	2902
+P	P31	Part-- Chest- including ribs, internal organs	0	T	2904
+P	P32	Part--Exterior and musculoskeletal structures of the back	0	T	2905
+P	P33	Part-- Abdomen	0	T	2906
+P	P34	Part-- Pelvic region	0	T	2907
+P	P3X	Part-- Trunk	0	T	2903
+P	P4X	Part-- Upper extremities	0	T	2908
+P	P5X	Part-- Lower extremities	0	T	2909
+P	P81	Part-- Head and other part(s) of body	0	T	2912
+P	P82	Part-- Neck and other part(s) of body	0	T	2913
+P	P83	Part-- Trunk and other part(s) of body	0	T	2914
+P	P84	Part-- Upper and lower extremities	0	T	2915
+P	P88	Part-- Other multiple parts of body	0	T	2916
+P	P8A	Part-- Whole body	0	T	2917
+P	P8X	Part-- Multiple body parts	0	T	2911
+P	PBS	Private industry-- Professional and business services	0	T	2935
+P	PST	Private industry-- Professional, scientific, and technical services	0	T	2934
+P	RAF	Race-- Asian, Foreign-born	0	T	2700
+P	RAN	Race-- Asian, Native-born	0	T	2701
+P	RAT	Race-- Asian, non-Hispanic, Total	0	T	2702
+P	RBF	Race-- Black or African-American, Foreign-born	0	T	2703
+P	RBN	Race-- Black or African-American, Native-born	0	T	2704
+P	RBT	Race-- Black or African-American, non-Hispanic, Total	0	T	2705
+P	RET	Private industry-- Retail trade	0	T	2928
+P	RHF	Race-- Hispanic or Latino, Foreign-born	0	T	2707
+P	RHN	Race-- Hispanic or Latino, Native-born	0	T	2708
+P	RHT	Race-- Hispanic or Latino, Total	0	T	2709
+P	RIN	Race-- American Indian or Alaska Native, Native-born	0	T	2710
+P	RIT	Race-- American Indian or Alaska Native, non-Hispanic, Total	0	T	2711
+P	RMF	Race-- Person of multiple races, Foreign-born	0	T	2712
+P	RMN	Race-- Person of multiple races, Native-born	0	T	2713
+P	RMT	Race-- Person of multiple races, non-Hispanic, Total	0	T	2714
+P	ROF	Race-- Other or not reported, Foreign-born	0	T	2716
+P	RON	Race-- Other or not reported, Native-born	0	T	2717
+P	ROT	Race-- Other or not reported, non-Hispanic, Total	0	T	2718
+P	RPF	Race-- Native Hawaiian or Pacific Islander, Foreign-born	0	T	2719
+P	RPN	Race-- Native Hawaiian or Pacific Islander, Native-born	0	T	2720
+P	RPT	Race-- Native Hawaiian or Pacific Islander, non-Hispanic, Total	0	T	2721
+P	RRL	Private industry-- Real estate and rental and leasing	0	T	2933
+P	RWF	Race-- White, Foreign-born	0	T	2722
+P	RWN	Race-- White, Native-born	0	T	2723
+P	RWT	Race-- White, non-Hispanic, Total	0	T	2724
+P	S1A	Primary source of injury-- Opioids	0	T	2783
+P	S1B	Primary source of injury-- Multiple drugs, medications	0	T	2784
+P	S1X	Primary source of injury-- CHEMICALS AND HAZARDOUS MATERIALS	0	T	2782
+P	S2A	Primary source of injury-- Wheeled containers, material moving equipment	0	T	2786
+P	S2X	Primary source of injury-- CONTAINERS, FURNITURE, FIXTURES	0	T	2785
+P	S31	Primary source of injury-- Agricultural and garden machinery	0	T	2788
+P	S32	Primary source of injury-- Construction, logging, and mining machinery	0	T	2789
+P	S34	Primary source of injury-- Material and personnel handling machinery	0	T	2791
+P	S3A	Primary source of injury-- Heavy earth-moving machinery	0	T	2790
+P	S3X	Primary source of injury-- Machinery	0	T	2787
+P	S41	Primary source of injury-- Raw and semi-finished materials and byproducts	0	T	2793
+P	S42	Primary source of injury-- Building materials	0	T	2795
+P	S46	Primary source of injury-- Vehicle and machine parts- power, mechanical, special process	0	T	2796
+P	S4A	Primary source of injury-- Water, liquids-nonchemical	0	T	2794
+P	S4X	Primary source of injury-- Parts and materials	0	T	2792
+P	S51	Primary source of injury-- Animals	0	T	2798
+P	S54	Primary source of injury-- Plants, trees, vegetation	0	T	2799
+P	S56	Primary source of injury-- Activities and conditions of injured, ill worker	0	T	2803
+P	S57	Primary source of injury-- Person--other than injured or ill worker	0	T	2804
+P	S5A	Primary source of injury-- Trees, logs, limbs	0	T	2800
+P	S5B	Primary source of injury-- Trees	0	T	2801
+P	S5C	Primary source of injury-- Logs	0	T	2802
+P	S5D	Primary source of injury-- Relative or domestic partner of injured or ill worker	0	T	2805
+P	S5E	Primary source of injury-- Co-worker or work associate of injured or ill worker	0	T	2806
+P	S5F	Primary source of injury-- Client or customer	0	T	2807
+P	S5G	Primary source of injury-- Acquaintance	0	T	2808
+P	S5H	Primary source of injury-- Criminal assailants	0	T	2809
+P	S5J	Primary source of injury-- Suspect under pursuit or investigation	0	T	2811
+P	S5K	Primary source of injury-- Robber	0	T	2812
+P	S5X	Primary source of injury-- ANIMALS, PLANTS, PERSONS, ETC.	0	T	2797
+P	S62	Primary source of injury-- Buildings	0	T	2815
+P	S63	Primary source of injury-- Structures other than buildings	0	T	2816
+P	S65	Primary source of injury-- Other structural elements	0	T	2819
+P	S6A	Primary source of injury-- Elevator shafts	0	T	2814
+P	S6B	Primary source of injury-- Scaffolds, staging	0	T	2817
+P	S6C	Primary source of injury-- Towers, poles	0	T	2818
+P	S6D	Primary source of injury-- Roofs	0	T	2820
+P	S6E	Primary source of injury-- Stairs, multiple level surfaces	0	T	2821
+P	S6F	Primary source of injury-- Natural surface	0	T	2822
+P	S6X	Primary source of injury-- Structures and surfaces	0	T	2813
+P	S73	Primary source of injury-- Portable ladders and stairs	0	T	2824
+P	S7X	Primary source of injury-- Tools, instruments, and equipment	0	T	2823
+P	S81	Primary source of injury-- Aircraft	0	T	2826
+P	S82	Primary source of injury-- Rail vehicles	0	T	2827
+P	S83	Primary source of injury-- Water vehicles	0	T	2828
+P	S84	Primary source of injury-- Roadway vehicles--motorized	0	T	2829
+P	S86	Primary source of injury-- Off-road and industrial vehicles--powered	0	T	2841
+P	S8A	Primary source of injury-- Emergency and security vehicles	0	T	2830
+P	S8B	Primary source of injury-- Trucks with mounted machinery, equipment	0	T	2831
+P	S8C	Primary source of injury-- Dump trucks	0	T	2832
+P	S8D	Primary source of injury-- Garbage trucks	0	T	2833
+P	S8E	Primary source of injury-- Trucks	0	T	2834
+P	S8F	Primary source of injury-- Straight trucks, box trucks	0	T	2835
+P	S8G	Primary source of injury-- Tanker trucks	0	T	2836
+P	S8H	Primary source of injury-- Other semi, tractor-trailer	0	T	2837
+P	S8I	Primary source of injury-- Passenger vehicles	0	T	2838
+P	S8J	Primary source of injury-- Automobile	0	T	2839
+P	S8K	Primary source of injury-- Vans, passenger and utility	0	T	2840
+P	S8L	Primary source of injury-- Industrial vehicles, material hauling and transport--powered	0	T	2842
+P	S8M	Primary source of injury-- Forklift, order picker, platform truck--powered	0	T	2843
+P	S8N	Primary source of injury-- Agricultural tractors	0	T	2844
+P	S8X	Primary source of injury-- Vehicles	0	T	2825
+P	S9A	Primary source of injury-- Heat--environmental	0	T	2845
+P	T00	Secondary source of injury-- Not Applicable	0	T	2884
+P	T15	Secondary source of injury-- Drugs, medications	0	T	2848
+P	T1A	Secondary source of injury-- Petroleum and coal products	0	T	2847
+P	T1X	Secondary source of injury-- CHEMICALS AND HAZARDOUS MATERIALS	0	T	2846
+P	T2A	Secondary source of injury-- Wheeled containers, material moving equipment	0	T	2850
+P	T2X	Secondary source of injury-- CONTAINERS, FURNITURE, FIXTURES	0	T	2849
+P	T3X	Secondary source of injury-- Machinery	0	T	2851
+P	T44	Secondary source of injury-- Fasteners, connectors, ropes, ties	0	T	2853
+P	T46	Secondary source of injury-- Vehicle and machine parts- power, mechanical, special process	0	T	2854
+P	T4X	Secondary source of injury-- Parts and materials	0	T	2852
+P	T54	Secondary source of injury-- Plants, trees, vegetation	0	T	2856
+P	T5A	Secondary source of injury-- Trees, logs, limbs	0	T	2857
+P	T5X	Secondary source of injury-- ANIMALS, PLANTS, PERSONS, ETC.	0	T	2855
+P	T61	Secondary source of injury-- Confined spaces	0	T	2859
+P	T62	Secondary source of injury-- Buildings	0	T	2860
+P	T63	Secondary source of injury-- Structures other than buildings	0	T	2861
+P	T66	Secondary source of injury-- Ground, travel, and support surfaces	0	T	2863
+P	T67	Secondary source of injury-- Bodies of water	0	T	2867
+P	T6A	Secondary source of injury-- Guardrails, road dividers or barriers	0	T	2862
+P	T6B	Secondary source of injury-- Stairs, steps	0	T	2864
+P	T6C	Secondary source of injury-- Constructed surfaces	0	T	2865
+P	T6D	Secondary source of injury-- Natural surface	0	T	2866
+P	T6X	Secondary source of injury-- Structures and surfaces	0	T	2858
+P	T7A	Secondary source of injury-- Knives	0	T	2869
+P	T7B	Secondary source of injury-- Firearms, air-powered guns	0	T	2870
+P	T7X	Secondary source of injury-- Tools, instruments, and equipment	0	T	2868
+P	T81	Secondary source of injury-- Aircraft	0	T	2872
+P	T82	Secondary source of injury-- Rail vehicles	0	T	2873
+P	T83	Secondary source of injury-- Water vehicles	0	T	2874
+P	T84	Secondary source of injury-- Roadway vehicles--motorized	0	T	2875
+P	T86	Secondary source of injury-- Off-road and industrial vehicles--powered	0	T	2878
+P	T8A	Secondary source of injury-- Trucks with mounted machinery, equipment	0	T	2876
+P	T8B	Secondary source of injury-- Passenger vehicles	0	T	2877
+P	T8C	Secondary source of injury-- Forklift, order picker, platform truck--powered	0	T	2879
+P	T8X	Secondary source of injury-- Vehicles	0	T	2871
+P	T91	Secondary source of injury-- Apparel, laundry, linens	0	T	2881
+P	T95	Secondary source of injury-- Environmental and elemental conditions	0	T	2882
+P	T9A	Secondary source of injury-- Weather, atmospheric conditions	0	T	2883
+P	TRW	Private industry-- Transportation and warehousing	0	T	2929
+P	TTU	Private industry-- Trade, transportation, and utilities	0	T	2927
+P	UTL	Private industry-- Utilities	0	T	2922
+P	WAX	Worker status-- Wage and salary	0	T	2696
+P	WBX	Worker status-- Self-employed	0	T	2697
+P	WHT	Private industry-- Wholesale trade	0	T	2926
+P	X1X	Worker activity-- Emergency and security operations	0	T	2945
+P	X2X	Worker Activity--Agriculture, landscaping, and animal activities	0	T	2946
+P	X32	Worker activity-- Heavy and industrial earth moving and construction operations	0	T	2948
+P	X33	Worker activity-- Heavy and industrial production and repair operations	0	T	2949
+P	X34	Worker activity-- Heavy and industrial materials moving and warehousing operations	0	T	2950
+P	X3X	Worker activity-- Heavy and industrial construction, production, and materials moving operations	0	T	2947
+P	X4X	Worker activity--Other construction, production and maintenance activities	0	T	2951
+P	X5X	Worker activity-- Personal care, service, and administrative activities	0	T	2952
+P	X61	Worker activity-- Intentional risk taking activities	0	T	2956
+P	X6X	Worker activity-- Miscellaneous activities	0	T	2955
+P	X71	Worker activity-- Driving, piloting	0	T	2958
+P	X72	Worker activity-- Passenger of vehicle in transport	0	T	2959
+P	X74	Worker activity-- Transportation support activities	0	T	2960
+P	X7X	Worker activity-- Transportation operations	0	T	2957
+P	Y11	Worker location-- Road and bridge construction or maintenance	0	T	2962
+P	Y15	Worker location-- Residential construction sites	0	T	2963
+P	Y1X	Worker location-- Construction or maintenance sites	0	T	2961
+P	Y2X	Worker location-- Farm, agricultural premises	0	T	2964
+P	Y36	Worker location-- Factories and Production facilities	0	T	2966
+P	Y3X	Worker location-- Industrial places and premises	0	T	2965
+P	Y4X	Worker location-- Residence, housing	0	T	2967
+P	Y55	Worker location-- Office buildings	0	T	2969
+P	Y5X	Worker location-- Limited access public buildings	0	T	2968
+P	Y62	Worker location-- Restaurants, cafes	0	T	2971
+P	Y65	Worker location-- Retail or business areas	0	T	2972
+P	Y6X	Worker location-- Business and communal areas	0	T	2970
+P	Y72	Worker location-- Streets, highways, roads	0	T	2974
+P	Y73	Worker location-- Airport infrastructure	0	T	2978
+P	Y7A	Worker location-- Interstates, freeways, or expressways	0	T	2975
+P	Y7B	Worker location-- Other State or U.S. highways	0	T	2976
+P	Y7C	Worker location-- Local roads or streets	0	T	2977
+P	Y7X	Worker location-- Transportation infrastructure	0	T	2973
+S	00X	Ownership-- All	0	T	2986
+S	05X	Ownership-- All government	0	T	2988
+S	10X	Ownership-- Federal government	0	T	2989
+S	20X	Ownership-- State government	0	T	2990
+S	30X	Ownership-- Local government	0	T	2991
+S	50X	Ownership-- Private	0	T	2987
+S	AAX	Age group-- Under 16 years	0	T	2992
+S	ABX	Age group-- 16 to 17 years	0	T	2993
+S	ACX	Age group-- 18 to 19 years	0	T	2994
+S	ADW	Private industry-- Administrative and support and waste management and remediation services	0	T	3169
+S	ADX	Age group-- 20 to 24 years	0	T	2995
+S	AER	Private industry-- Arts, entertainment, and recreation	0	T	3173
+S	AEX	Age group-- 25 to 34 years	0	T	2996
+S	AFH	Private industry-- Agriculture, forestry, fishing and hunting	0	T	3150
+S	AFS	Private industry-- Accommodation and food services	0	T	3175
+S	AFX	Age group-- 35 to 44 years	0	T	2997
+S	AGX	Age group-- 45 to 54 years	0	T	2998
+S	AHX	Age group-- 55 to 64 years	0	T	2999
+S	AIX	Age group-- 65 years and over	0	T	3000
+S	CON	Private industry-- Construction	0	T	3156
+S	E11	Event or exposure-- Homicides (Violent acts by other person)	0	T	3031
+S	E12	Event or exposure-- Suicides (Intentional self-harm)	0	T	3033
+S	E1A	Event or exposure-- Shooting by other person	0	T	3032
+S	E1B	Event or exposure-- Intentional self-harm-- shooting	0	T	3034
+S	E1C	Event or exposure-- Intentional self-harm-- hanging, strangulation, asphyxiation	0	T	3035
+S	E1D	Event or exposure-- Intentional self-harm-- poisoning, drug overdose	0	T	3036
+S	E1X	Event or exposure-- VIOLENT ACTS	0	T	3030
+S	E21	Event or exposure-- Aircraft incidents	0	T	3038
+S	E22	Event or exposure-- Water vehicle incidents	0	T	3039
+S	E23	Event or exposure-- Rail vehicle incidents	0	T	3040
+S	E25	Event or exposure-- Pedestrian incidents involving motorized land vehicles	0	T	3041
+S	E26	Event or exposure-- Roadway incidents involving motorized land vehicle	0	T	3042
+S	E27	Event or exposure-- Nonroadway incidents involving motorized land vehicles	0	T	3048
+S	E2A	Event or exposure-- Roadway collision with other vehicle(s)	0	T	3043
+S	E2B	Event or exposure-- Collision with moving object or animal in roadway	0	T	3044
+S	E2C	Event or exposure-- Collision with object or animal on side of roadway	0	T	3045
+S	E2D	Event or exposure-- Roadway noncollision incident	0	T	3046
+S	E2E	Event or exposure-- Roadway noncollision- vehicle overturn	0	T	3047
+S	E2F	Event or exposure-- Nonroadway collision with other vehicle(s)	0	T	3049
+S	E2G	Event or exposure-- Nonroadway noncollision incident	0	T	3050
+S	E2H	Event or exposure-- Nonroadway noncollision- vehicle overturn	0	T	3051
+S	E2X	Event or exposure-- Transportation incidents	0	T	3037
+S	E3X	Event or exposure-- EXPLOSIONS AND FIRES	0	T	3052
+S	E41	Event or exposure-- Fall to lower level	0	T	3054
+S	E43	Event or exposure-- Slip, trip, stumble or fall on same level	0	T	3063
+S	E4A	Event or exposure-- Fall to lower level from collapsing structure or equipment	0	T	3055
+S	E4B	Event or exposure-- Fall to lower level resulting from exposure or contact	0	T	3056
+S	E4C	Event or exposure-- Fall to lower level resulting in exposure or contact	0	T	3057
+S	E4D	Event or exposure-- Other fall to lower level	0	T	3058
+S	E4E	Event or exposure-- Fall to lower level, height less than 6 feet	0	T	3059
+S	E4F	Event or exposure-- Fall to lower level, height 6 to 30 feet	0	T	3060
+S	E4G	Event or exposure-- Fall to lower level, height more than 30 feet	0	T	3061
+S	E4X	Event or exposure-- Falls, slips, trips	0	T	3053
+S	E51	Event or exposure-- Exposure to electricity	0	T	3065
+S	E53	Event or exposure-- Exposure to temperature extremes	0	T	3066
+S	E55	Event or exposure-- Exposure to harmful substances	0	T	3071
+S	E56	Event or exposure-- Exposure to oxygen deficiency	0	T	3073
+S	E5A	Event or exposure-- Exposure to environmental heat	0	T	3067
+S	E5B	Event or exposure-- Exposure to environmental heat -- indoor	0	T	3068
+S	E5C	Event or exposure-- Exposure to environmental heat-- outdoor	0	T	3069
+S	E5E	Event or exposure-- Drug, alcohol overdose	0	T	3072
+S	E5F	Event or exposure-- Drowning, submersion without other event	0	T	3074
+S	E5X	Event or exposure-- Exposure to harmful substances, environments	0	T	3064
+S	E61	Event or exposure-- Contact with other person, nonviolent or intent unknown	0	T	3077
+S	E62	Event or exposure-- Contact with animals	0	T	3078
+S	E63	Event or exposure-- Collapse, engulfment	0	T	3081
+S	E64	Event or exposure-- Struck by propelled, falling, or suspended object	0	T	3082
+S	E65	Event or exposure-- Struck, caught, or compressed by running powered equipment	0	T	3086
+S	E6A	Event or exposure-- Bitten or stung by animal	0	T	3079
+S	E6B	Event or exposure-- Struck by animal	0	T	3080
+S	E6C	Event or exposure-- Struck by propelled object or substance	0	T	3083
+S	E6D	Event or exposure-- Struck by falling object	0	T	3084
+S	E6E	Event or exposure-- Struck by suspended or swinging object	0	T	3085
+S	E6X	Event or exposure-- CONTACT INCIDENTS	0	T	3076
+S	EDS	Private industry-- Educational services	0	T	3170
+S	EHS	Private industry-- Educational and health services	0	T	3171
+S	FIA	Private industry-- Financial activities	0	T	3164
+S	FIN	Private industry-- Finance and insurance	0	T	3163
+S	GFX	Sex-- Women	0	T	3003
+S	GMX	Sex-- Men	0	T	3004
+S	HSA	Private industry-- Health care and social assistance	0	T	3172
+S	I1X	Time of incident-- 12:00 midnight - 3:59 a.m.	0	T	3212
+S	I2X	Time of incident-- 4:00 a.m. - 7:59 a.m.	0	T	3213
+S	I3X	Time of incident-- 8:00 a.m. - 11:59 a.m.	0	T	3214
+S	I4X	Time of incident-- 12:00 noon - 3:59 p.m.	0	T	3215
+S	I5X	Time of incident-- 4:00 p.m. - 7:59 p.m.	0	T	3216
+S	I6X	Time of incident-- 8:00 p.m. - 11:59 p.m.	0	T	3217
+S	INF	Private industry-- Information	0	T	3162
+S	LEH	Private industry-- Leisure and hospitality	0	T	3174
+S	MCE	Private industry-- Management of companies and enterprises	0	T	3168
+S	MFG	Private industry-- Manufacturing	0	T	3157
+S	MIN	Private industry-- Mining, quarrying, and oil and gas extraction	0	T	3153
+S	N1A	Nature-- Intracranial injuries	0	T	3088
+S	N1X	Nature-- Injuries to the brain, spinal cord	0	T	3087
+S	N2A	Nature-- Gunshot wounds	0	T	3090
+S	N2B	Nature-- Injuries to internal organs and major blood vessels	0	T	3091
+S	N2X	Nature-- Severe wounds, internal injuries	0	T	3089
+S	N3X	Nature-- Surface and flesh wounds	0	T	3092
+S	N4X	Nature-- Soft tissue injuries	0	T	3093
+S	N5X	Nature-- Burns, corrosions, electrical injuries	0	T	3094
+S	N6X	Nature-- Effects of poison, toxic, or allergenic exposure	0	T	3096
+S	N7A	Nature-- Drowning, near drowning	0	T	3098
+S	N7B	Nature-- Asphyxiation- except toxic or allergenic	0	T	3099
+S	N7X	Nature-- Effects of environmental conditions and exposures	0	T	3097
+S	N8B	Nature-- Burns and toxic effects (including smoke inhalation)	0	T	3102
+S	N8X	Nature-- Multiple traumatic injuries and disorders	0	T	3100
+S	NRM	Private industry-- Natural resources and mining	0	T	3151
+S	O00	Occupation-- Management, Business, Science, and Arts Occupations	0	T	3130
+S	O10	Occupation-- Management, Business, and Financial Occupations	0	T	3129
+S	O11	Occupation-- Management Occupations	0	T	3128
+S	O13	Occupation-- Business and Financial Operations Occupations	0	T	3131
+S	O15	Occupation-- Computer and Mathematical Occupations	0	T	3132
+S	O17	Occupation-- Architecture and Engineering Occupations	0	T	3134
+S	O19	Occupation-- Life, Physical, and Social Science Occupations	0	T	3135
+S	O20	Occupation-- Professional and Related Occupations	0	T	3133
+S	O21	Occupation-- Community and Social Services Occupations	0	T	3136
+S	O23	Occupation-- Legal Occupations	0	T	3137
+S	O25	Occupation-- Educational Instruction and Library Occupations	0	T	3138
+S	O27	Occupation-- Arts, Design, Entertainment, Sports, and Media Occupations	0	T	3139
+S	O29	Occupation-- Healthcare Practitioner and Technical Occupations	0	T	3140
+S	O30	Occupation-- Service Occupations	0	T	3142
+S	O31	Occupation-- Healthcare Support Occupations	0	T	3141
+S	O33	Occupation-- Protective Service Occupations	0	T	3143
+S	O35	Occupation-- Food Preparation and Serving Related Occupations	0	T	3144
+S	O37	Occupation-- Building and Grounds Cleaning and Maintenance Occupations	0	T	3145
+S	O39	Occupation-- Personal Care and Service Occupations	0	T	3146
+S	O40	Occupation-- Sales and Office Occupations	0	T	3148
+S	O41	Occupation-- Sales and Related Occupations	0	T	3147
+S	O43	Occupation-- Office and Administrative Support Occupations	0	T	3149
+S	O44	Occupation-- Natural Resources, Construction, and Maintenance Occupations	0	T	3120
+S	O45	Occupation-- Farming, Fishing, and Forestry Occupations	0	T	3127
+S	O47	Occupation-- Construction and Extraction Occupations	0	T	3121
+S	O49	Occupation-- Installation, Maintenance, and Repair Occupations	0	T	3122
+S	O50	Occupation-- Production, Transportation, and Material Moving Occupations	0	T	3124
+S	O51	Occupation-- Production Occupations	0	T	3123
+S	O53	Occupation-- Transportation and Material Moving Occupations	0	T	3125
+S	OTS	Private industry-- Other services, except public administration	0	T	3176
+S	P1X	Part-- Head	0	T	3103
+S	P2X	Part-- Neck	0	T	3104
+S	P31	Part-- Chest- including ribs, internal organs	0	T	3106
+S	P32	Part--Exterior and musculoskeletal structures of the back	0	T	3107
+S	P33	Part-- Abdomen	0	T	3108
+S	P34	Part-- Pelvic region	0	T	3109
+S	P3X	Part-- Trunk	0	T	3105
+S	P4X	Part-- Upper extremities	0	T	3110
+S	P5X	Part-- Lower extremities	0	T	3111
+S	P81	Part-- Head and other part(s) of body	0	T	3114
+S	P82	Part-- Neck and other part(s) of body	0	T	3115
+S	P83	Part-- Trunk and other part(s) of body	0	T	3116
+S	P84	Part-- Upper and lower extremities	0	T	3117
+S	P88	Part-- Other multiple parts of body	0	T	3118
+S	P8A	Part-- Whole body	0	T	3119
+S	P8X	Part-- Multiple body parts	0	T	3113
+S	PBS	Private industry-- Professional and business services	0	T	3167
+S	PST	Private industry-- Professional, scientific, and technical services	0	T	3166
+S	RAF	Race-- Asian, Foreign-born	0	T	3005
+S	RAN	Race-- Asian, Native-born	0	T	3006
+S	RAT	Race-- Asian, non-Hispanic, Total	0	T	3007
+S	RBF	Race-- Black or African-American, Foreign-born	0	T	3008
+S	RBN	Race-- Black or African-American, Native-born	0	T	3009
+S	RBT	Race-- Black or African-American, non-Hispanic, Total	0	T	3010
+S	RET	Private industry-- Retail trade	0	T	3160
+S	RHF	Race-- Hispanic or Latino, Foreign-born	0	T	3012
+S	RHN	Race-- Hispanic or Latino, Native-born	0	T	3013
+S	RHT	Race-- Hispanic or Latino, Total	0	T	3014
+S	RIN	Race-- American Indian or Alaska Native, Native-born	0	T	3015
+S	RIT	Race-- American Indian or Alaska Native, non-Hispanic, Total	0	T	3016
+S	RMF	Race-- Person of multiple races, Foreign-born	0	T	3017
+S	RMN	Race-- Person of multiple races, Native-born	0	T	3018
+S	RMT	Race-- Person of multiple races, non-Hispanic, Total	0	T	3019
+S	ROF	Race-- Other or not reported, Foreign-born	0	T	3021
+S	RON	Race-- Other or not reported, Native-born	0	T	3022
+S	ROT	Race-- Other or not reported, non-Hispanic, Total	0	T	3023
+S	RPF	Race-- Native Hawaiian or Pacific Islander, Foreign-born	0	T	3024
+S	RPN	Race-- Native Hawaiian or Pacific Islander, Native-born	0	T	3025
+S	RPT	Race-- Native Hawaiian or Pacific Islander, non-Hispanic, Total	0	T	3026
+S	RRL	Private industry-- Real estate and rental and leasing	0	T	3165
+S	RWF	Race-- White, Foreign-born	0	T	3027
+S	RWN	Race-- White, Native-born	0	T	3028
+S	RWT	Race-- White, non-Hispanic, Total	0	T	3029
+S	TRW	Private industry-- Transportation and warehousing	0	T	3161
+S	TTU	Private industry-- Trade, transportation, and utilities	0	T	3159
+S	UTL	Private industry-- Utilities	0	T	3154
+S	WAX	Worker status-- Wage and salary	0	T	3001
+S	WBX	Worker status-- Self-employed	0	T	3002
+S	WHT	Private industry-- Wholesale trade	0	T	3158
+S	X1X	Worker activity-- Emergency and security operations	0	T	3177
+S	X2X	Worker Activity--Agriculture, landscaping, and animal activities	0	T	3178
+S	X32	Worker activity-- Heavy and industrial earth moving and construction operations	0	T	3180
+S	X33	Worker activity-- Heavy and industrial production and repair operations	0	T	3181
+S	X34	Worker activity-- Heavy and industrial materials moving and warehousing operations	0	T	3182
+S	X3X	Worker activity-- Heavy and industrial construction, production, and materials moving operations	0	T	3179
+S	X4X	Worker activity--Other construction, production and maintenance activities	0	T	3183
+S	X5X	Worker activity-- Personal care, service, and administrative activities	0	T	3184
+S	X61	Worker activity-- Intentional risk taking activities	0	T	3188
+S	X6X	Worker activity-- Miscellaneous activities	0	T	3187
+S	X71	Worker activity-- Driving, piloting	0	T	3190
+S	X72	Worker activity-- Passenger of vehicle in transport	0	T	3191
+S	X74	Worker activity-- Transportation support activities	0	T	3192
+S	X7X	Worker activity-- Transportation operations	0	T	3189
+S	Y11	Worker location-- Road and bridge construction or maintenance	0	T	3194
+S	Y15	Worker location-- Residential construction sites	0	T	3195
+S	Y1X	Worker location-- Construction or maintenance sites	0	T	3193
+S	Y2X	Worker location-- Farm, agricultural premises	0	T	3196
+S	Y36	Worker location-- Factories and Production facilities	0	T	3198
+S	Y3X	Worker location-- Industrial places and premises	0	T	3197
+S	Y4X	Worker location-- Residence, housing	0	T	3199
+S	Y55	Worker location-- Office buildings	0	T	3201
+S	Y5X	Worker location-- Limited access public buildings	0	T	3200
+S	Y62	Worker location-- Restaurants, cafes	0	T	3203
+S	Y65	Worker location-- Retail or business areas	0	T	3204
+S	Y6X	Worker location-- Business and communal areas	0	T	3202
+S	Y72	Worker location-- Streets, highways, roads	0	T	3206
+S	Y73	Worker location-- Airport infrastructure	0	T	3210
+S	Y7A	Worker location-- Interstates, freeways, or expressways	0	T	3207
+S	Y7B	Worker location-- Other State or U.S. highways	0	T	3208
+S	Y7C	Worker location-- Local roads or streets	0	T	3209
+S	Y7X	Worker location-- Transportation infrastructure	0	T	3205
+T	00X	Ownership-- All	0	T	3218
+T	05X	Ownership-- All government	0	T	3220
+T	10X	Ownership-- Federal government	0	T	3221
+T	20X	Ownership-- State government	0	T	3222
+T	30X	Ownership-- Local government	0	T	3223
+T	50X	Ownership-- Private	0	T	3219
+T	AAX	Age group-- Under 16 years	0	T	3224
+T	ABX	Age group-- 16 to 17 years	0	T	3225
+T	ACX	Age group-- 18 to 19 years	0	T	3226
+T	ADW	Private industry-- Administrative and support and waste management and remediation services	0	T	3401
+T	ADX	Age group-- 20 to 24 years	0	T	3227
+T	AER	Private industry-- Arts, entertainment, and recreation	0	T	3405
+T	AEX	Age group-- 25 to 34 years	0	T	3228
+T	AFH	Private industry-- Agriculture, forestry, fishing and hunting	0	T	3382
+T	AFS	Private industry-- Accommodation and food services	0	T	3407
+T	AFX	Age group-- 35 to 44 years	0	T	3229
+T	AGX	Age group-- 45 to 54 years	0	T	3230
+T	AHX	Age group-- 55 to 64 years	0	T	3231
+T	AIX	Age group-- 65 years and over	0	T	3232
+T	CON	Private industry-- Construction	0	T	3388
+T	E11	Event or exposure-- Homicides (Violent acts by other person)	0	T	3263
+T	E12	Event or exposure-- Suicides (Intentional self-harm)	0	T	3265
+T	E1A	Event or exposure-- Shooting by other person	0	T	3264
+T	E1B	Event or exposure-- Intentional self-harm-- shooting	0	T	3266
+T	E1C	Event or exposure-- Intentional self-harm-- hanging, strangulation, asphyxiation	0	T	3267
+T	E1D	Event or exposure-- Intentional self-harm-- poisoning, drug overdose	0	T	3268
+T	E1X	Event or exposure-- VIOLENT ACTS	0	T	3262
+T	E21	Event or exposure-- Aircraft incidents	0	T	3270
+T	E22	Event or exposure-- Water vehicle incidents	0	T	3271
+T	E23	Event or exposure-- Rail vehicle incidents	0	T	3272
+T	E25	Event or exposure-- Pedestrian incidents involving motorized land vehicles	0	T	3273
+T	E26	Event or exposure-- Roadway incidents involving motorized land vehicle	0	T	3274
+T	E27	Event or exposure-- Nonroadway incidents involving motorized land vehicles	0	T	3280
+T	E2A	Event or exposure-- Roadway collision with other vehicle(s)	0	T	3275
+T	E2B	Event or exposure-- Collision with moving object or animal in roadway	0	T	3276
+T	E2C	Event or exposure-- Collision with object or animal on side of roadway	0	T	3277
+T	E2D	Event or exposure-- Roadway noncollision incident	0	T	3278
+T	E2E	Event or exposure-- Roadway noncollision- vehicle overturn	0	T	3279
+T	E2F	Event or exposure-- Nonroadway collision with other vehicle(s)	0	T	3281
+T	E2G	Event or exposure-- Nonroadway noncollision incident	0	T	3282
+T	E2H	Event or exposure-- Nonroadway noncollision- vehicle overturn	0	T	3283
+T	E2X	Event or exposure-- Transportation incidents	0	T	3269
+T	E3X	Event or exposure-- EXPLOSIONS AND FIRES	0	T	3284
+T	E41	Event or exposure-- Fall to lower level	0	T	3286
+T	E43	Event or exposure-- Slip, trip, stumble or fall on same level	0	T	3295
+T	E4A	Event or exposure-- Fall to lower level from collapsing structure or equipment	0	T	3287
+T	E4B	Event or exposure-- Fall to lower level resulting from exposure or contact	0	T	3288
+T	E4C	Event or exposure-- Fall to lower level resulting in exposure or contact	0	T	3289
+T	E4D	Event or exposure-- Other fall to lower level	0	T	3290
+T	E4E	Event or exposure-- Fall to lower level, height less than 6 feet	0	T	3291
+T	E4F	Event or exposure-- Fall to lower level, height 6 to 30 feet	0	T	3292
+T	E4G	Event or exposure-- Fall to lower level, height more than 30 feet	0	T	3293
+T	E4X	Event or exposure-- Falls, slips, trips	0	T	3285
+T	E51	Event or exposure-- Exposure to electricity	0	T	3297
+T	E53	Event or exposure-- Exposure to temperature extremes	0	T	3298
+T	E55	Event or exposure-- Exposure to harmful substances	0	T	3303
+T	E56	Event or exposure-- Exposure to oxygen deficiency	0	T	3305
+T	E5A	Event or exposure-- Exposure to environmental heat	0	T	3299
+T	E5B	Event or exposure-- Exposure to environmental heat -- indoor	0	T	3300
+T	E5C	Event or exposure-- Exposure to environmental heat-- outdoor	0	T	3301
+T	E5E	Event or exposure-- Drug, alcohol overdose	0	T	3304
+T	E5F	Event or exposure-- Drowning, submersion without other event	0	T	3306
+T	E5X	Event or exposure-- Exposure to harmful substances, environments	0	T	3296
+T	E61	Event or exposure-- Contact with other person, nonviolent or intent unknown	0	T	3309
+T	E62	Event or exposure-- Contact with animals	0	T	3310
+T	E63	Event or exposure-- Collapse, engulfment	0	T	3313
+T	E64	Event or exposure-- Struck by propelled, falling, or suspended object	0	T	3314
+T	E65	Event or exposure-- Struck, caught, or compressed by running powered equipment	0	T	3318
+T	E6A	Event or exposure-- Bitten or stung by animal	0	T	3311
+T	E6B	Event or exposure-- Struck by animal	0	T	3312
+T	E6C	Event or exposure-- Struck by propelled object or substance	0	T	3315
+T	E6D	Event or exposure-- Struck by falling object	0	T	3316
+T	E6E	Event or exposure-- Struck by suspended or swinging object	0	T	3317
+T	E6X	Event or exposure-- CONTACT INCIDENTS	0	T	3308
+T	EDS	Private industry-- Educational services	0	T	3402
+T	EHS	Private industry-- Educational and health services	0	T	3403
+T	FIA	Private industry-- Financial activities	0	T	3396
+T	FIN	Private industry-- Finance and insurance	0	T	3395
+T	GFX	Sex-- Women	0	T	3235
+T	GMX	Sex-- Men	0	T	3236
+T	HSA	Private industry-- Health care and social assistance	0	T	3404
+T	I1X	Time of incident-- 12:00 midnight - 3:59 a.m.	0	T	3444
+T	I2X	Time of incident-- 4:00 a.m. - 7:59 a.m.	0	T	3445
+T	I3X	Time of incident-- 8:00 a.m. - 11:59 a.m.	0	T	3446
+T	I4X	Time of incident-- 12:00 noon - 3:59 p.m.	0	T	3447
+T	I5X	Time of incident-- 4:00 p.m. - 7:59 p.m.	0	T	3448
+T	I6X	Time of incident-- 8:00 p.m. - 11:59 p.m.	0	T	3449
+T	INF	Private industry-- Information	0	T	3394
+T	LEH	Private industry-- Leisure and hospitality	0	T	3406
+T	MCE	Private industry-- Management of companies and enterprises	0	T	3400
+T	MFG	Private industry-- Manufacturing	0	T	3389
+T	MIN	Private industry-- Mining, quarrying, and oil and gas extraction	0	T	3385
+T	N1A	Nature-- Intracranial injuries	0	T	3320
+T	N1X	Nature-- Injuries to the brain, spinal cord	0	T	3319
+T	N2A	Nature-- Gunshot wounds	0	T	3322
+T	N2B	Nature-- Injuries to internal organs and major blood vessels	0	T	3323
+T	N2X	Nature-- Severe wounds, internal injuries	0	T	3321
+T	N3X	Nature-- Surface and flesh wounds	0	T	3324
+T	N4X	Nature-- Soft tissue injuries	0	T	3325
+T	N5X	Nature-- Burns, corrosions, electrical injuries	0	T	3326
+T	N6X	Nature-- Effects of poison, toxic, or allergenic exposure	0	T	3328
+T	N7A	Nature-- Drowning, near drowning	0	T	3330
+T	N7B	Nature-- Asphyxiation- except toxic or allergenic	0	T	3331
+T	N7X	Nature-- Effects of environmental conditions and exposures	0	T	3329
+T	N8B	Nature-- Burns and toxic effects (including smoke inhalation)	0	T	3334
+T	N8X	Nature-- Multiple traumatic injuries and disorders	0	T	3332
+T	NRM	Private industry-- Natural resources and mining	0	T	3383
+T	O00	Occupation-- Management, Business, Science, and Arts Occupations	0	T	3362
+T	O10	Occupation-- Management, Business, and Financial Occupations	0	T	3361
+T	O11	Occupation-- Management Occupations	0	T	3360
+T	O13	Occupation-- Business and Financial Operations Occupations	0	T	3363
+T	O15	Occupation-- Computer and Mathematical Occupations	0	T	3364
+T	O17	Occupation-- Architecture and Engineering Occupations	0	T	3366
+T	O19	Occupation-- Life, Physical, and Social Science Occupations	0	T	3367
+T	O20	Occupation-- Professional and Related Occupations	0	T	3365
+T	O21	Occupation-- Community and Social Services Occupations	0	T	3368
+T	O23	Occupation-- Legal Occupations	0	T	3369
+T	O25	Occupation-- Educational Instruction and Library Occupations	0	T	3370
+T	O27	Occupation-- Arts, Design, Entertainment, Sports, and Media Occupations	0	T	3371
+T	O29	Occupation-- Healthcare Practitioner and Technical Occupations	0	T	3372
+T	O30	Occupation-- Service Occupations	0	T	3374
+T	O31	Occupation-- Healthcare Support Occupations	0	T	3373
+T	O33	Occupation-- Protective Service Occupations	0	T	3375
+T	O35	Occupation-- Food Preparation and Serving Related Occupations	0	T	3376
+T	O37	Occupation-- Building and Grounds Cleaning and Maintenance Occupations	0	T	3377
+T	O39	Occupation-- Personal Care and Service Occupations	0	T	3378
+T	O40	Occupation-- Sales and Office Occupations	0	T	3380
+T	O41	Occupation-- Sales and Related Occupations	0	T	3379
+T	O43	Occupation-- Office and Administrative Support Occupations	0	T	3381
+T	O44	Occupation-- Natural Resources, Construction, and Maintenance Occupations	0	T	3352
+T	O45	Occupation-- Farming, Fishing, and Forestry Occupations	0	T	3359
+T	O47	Occupation-- Construction and Extraction Occupations	0	T	3353
+T	O49	Occupation-- Installation, Maintenance, and Repair Occupations	0	T	3354
+T	O50	Occupation-- Production, Transportation, and Material Moving Occupations	0	T	3356
+T	O51	Occupation-- Production Occupations	0	T	3355
+T	O53	Occupation-- Transportation and Material Moving Occupations	0	T	3357
+T	OTS	Private industry-- Other services, except public administration	0	T	3408
+T	P1X	Part-- Head	0	T	3335
+T	P2X	Part-- Neck	0	T	3336
+T	P31	Part-- Chest- including ribs, internal organs	0	T	3338
+T	P32	Part--Exterior and musculoskeletal structures of the back	0	T	3339
+T	P33	Part-- Abdomen	0	T	3340
+T	P34	Part-- Pelvic region	0	T	3341
+T	P3X	Part-- Trunk	0	T	3337
+T	P4X	Part-- Upper extremities	0	T	3342
+T	P5X	Part-- Lower extremities	0	T	3343
+T	P81	Part-- Head and other part(s) of body	0	T	3346
+T	P82	Part-- Neck and other part(s) of body	0	T	3347
+T	P83	Part-- Trunk and other part(s) of body	0	T	3348
+T	P84	Part-- Upper and lower extremities	0	T	3349
+T	P88	Part-- Other multiple parts of body	0	T	3350
+T	P8A	Part-- Whole body	0	T	3351
+T	P8X	Part-- Multiple body parts	0	T	3345
+T	PBS	Private industry-- Professional and business services	0	T	3399
+T	PST	Private industry-- Professional, scientific, and technical services	0	T	3398
+T	RAF	Race-- Asian, Foreign-born	0	T	3237
+T	RAN	Race-- Asian, Native-born	0	T	3238
+T	RAT	Race-- Asian, non-Hispanic, Total	0	T	3239
+T	RBF	Race-- Black or African-American, Foreign-born	0	T	3240
+T	RBN	Race-- Black or African-American, Native-born	0	T	3241
+T	RBT	Race-- Black or African-American, non-Hispanic, Total	0	T	3242
+T	RET	Private industry-- Retail trade	0	T	3392
+T	RHF	Race-- Hispanic or Latino, Foreign-born	0	T	3244
+T	RHN	Race-- Hispanic or Latino, Native-born	0	T	3245
+T	RHT	Race-- Hispanic or Latino, Total	0	T	3246
+T	RIN	Race-- American Indian or Alaska Native, Native-born	0	T	3247
+T	RIT	Race-- American Indian or Alaska Native, non-Hispanic, Total	0	T	3248
+T	RMF	Race-- Person of multiple races, Foreign-born	0	T	3249
+T	RMN	Race-- Person of multiple races, Native-born	0	T	3250
+T	RMT	Race-- Person of multiple races, non-Hispanic, Total	0	T	3251
+T	ROF	Race-- Other or not reported, Foreign-born	0	T	3253
+T	RON	Race-- Other or not reported, Native-born	0	T	3254
+T	ROT	Race-- Other or not reported, non-Hispanic, Total	0	T	3255
+T	RPF	Race-- Native Hawaiian or Pacific Islander, Foreign-born	0	T	3256
+T	RPN	Race-- Native Hawaiian or Pacific Islander, Native-born	0	T	3257
+T	RPT	Race-- Native Hawaiian or Pacific Islander, non-Hispanic, Total	0	T	3258
+T	RRL	Private industry-- Real estate and rental and leasing	0	T	3397
+T	RWF	Race-- White, Foreign-born	0	T	3259
+T	RWN	Race-- White, Native-born	0	T	3260
+T	RWT	Race-- White, non-Hispanic, Total	0	T	3261
+T	TRW	Private industry-- Transportation and warehousing	0	T	3393
+T	TTU	Private industry-- Trade, transportation, and utilities	0	T	3391
+T	UTL	Private industry-- Utilities	0	T	3386
+T	WAX	Worker status-- Wage and salary	0	T	3233
+T	WBX	Worker status-- Self-employed	0	T	3234
+T	WHT	Private industry-- Wholesale trade	0	T	3390
+T	X1X	Worker activity-- Emergency and security operations	0	T	3409
+T	X2X	Worker Activity-- Agriculture, landscaping, and animal activities	0	T	3410
+T	X32	Worker activity-- Heavy and industrial earth moving and construction operations	0	T	3412
+T	X33	Worker activity-- Heavy and industrial production and repair operations	0	T	3413
+T	X34	Worker activity-- Heavy and industrial materials moving and warehousing operations	0	T	3414
+T	X3X	Worker activity-- Heavy and industrial construction, production, and materials moving operations	0	T	3411
+T	X4X	Worker activity-- Other construction, production and maintenance activities	0	T	3415
+T	X5X	Worker activity-- Personal care, service, and administrative activities	0	T	3416
+T	X61	Worker activity-- Intentional risk taking activities	0	T	3420
+T	X6X	Worker activity-- Miscellaneous activities	0	T	3419
+T	X71	Worker activity-- Driving, piloting	0	T	3422
+T	X72	Worker activity-- Passenger of vehicle in transport	0	T	3423
+T	X74	Worker activity-- Transportation support activities	0	T	3424
+T	X7X	Worker activity-- Transportation operations	0	T	3421
+T	Y11	Worker location-- Road and bridge construction or maintenance	0	T	3426
+T	Y15	Worker location-- Residential construction sites	0	T	3427
+T	Y1X	Worker location-- Construction or maintenance sites	0	T	3425
+T	Y2X	Worker location-- Farm, agricultural premises	0	T	3428
+T	Y36	Worker location-- Factories and Production facilities	0	T	3430
+T	Y3X	Worker location-- Industrial places and premises	0	T	3429
+T	Y4X	Worker location-- Residence, housing	0	T	3431
+T	Y55	Worker location-- Office buildings	0	T	3433
+T	Y5X	Worker location-- Limited access public buildings	0	T	3432
+T	Y62	Worker location-- Restaurants, cafes	0	T	3435
+T	Y65	Worker location-- Retail or business areas	0	T	3436
+T	Y6X	Worker location-- Business and communal areas	0	T	3434
+T	Y72	Worker location-- Streets, highways, roads	0	T	3438
+T	Y73	Worker location-- Airport infrastructure	0	T	3442
+T	Y7A	Worker location-- Interstates, freeways, or expressways	0	T	3439
+T	Y7B	Worker location-- Other State or U.S. highways	0	T	3440
+T	Y7C	Worker location-- Local roads or streets	0	T	3441
+T	Y7X	Worker location-- Transportation infrastructure	0	T	3437

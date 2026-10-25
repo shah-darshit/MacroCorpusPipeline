@@ -1,0 +1,33 @@
+sizeclass_code	sizeclass_name
+00	All size classes
+01	1 to 4 employees
+02	5 to 9 employees
+03	10 to 19 employees
+04	20 to 49 employees
+05	50 to 99 employees
+06	100 to 249 employees
+07	250 to 499 employees
+08	500 to 999 employees
+09	1,000 or more employees
+10	1 job
+11	2 jobs
+12	3 jobs
+13	4 jobs
+14	5 jobs
+15	6 jobs
+16	7 jobs
+17	8 jobs
+18	9 jobs
+19	10 jobs
+20	11-14 jobs
+21	15-19 jobs
+22	20-24 jobs
+23	25-29 jobs
+24	30-39 jobs
+25	40-49 jobs
+26	50-74 jobs
+27	75-99 jobs
+28	100 or more jobs
+31	1 to 4 jobs
+32	5 to 19 jobs
+33	20 or more jobs

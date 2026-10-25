@@ -1,0 +1,197 @@
+[
+  {
+    "series_id": "FAU00X00000080N00",
+    "seasonal": "U",
+    "category_code": "00X",
+    "datatype_code": "8",
+    "case_code": "0",
+    "industry_code": "000000",
+    "event_code": "",
+    "source_code": "",
+    "occupation_code": "",
+    "area_code": "N00",
+    "footnote_codes": "",
+    "begin_year": "2023",
+    "begin_period": "A01",
+    "end_year": "2024",
+    "end_period": "A01",
+    "area_text": "All U.S.",
+    "case_text": "Fatalities in all sectors",
+    "category_text": "Total fatalities",
+    "datatype_text": "Fatal injuries (count)",
+    "event_text": "",
+    "industry_text": "All workers",
+    "occupation_text": "",
+    "source_text": "",
+    "observations": [
+      {
+        "year": "2023",
+        "period": "A01",
+        "value": "5283",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2024",
+        "period": "A01",
+        "value": "5070",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "FAU00X00000080S01",
+    "seasonal": "U",
+    "category_code": "00X",
+    "datatype_code": "8",
+    "case_code": "0",
+    "industry_code": "000000",
+    "event_code": "",
+    "source_code": "",
+    "occupation_code": "",
+    "area_code": "S01",
+    "footnote_codes": "",
+    "begin_year": "2023",
+    "begin_period": "A01",
+    "end_year": "2024",
+    "end_period": "A01",
+    "area_text": "Alabama",
+    "case_text": "Fatalities in all sectors",
+    "category_text": "Total fatalities",
+    "datatype_text": "Fatal injuries (count)",
+    "event_text": "",
+    "industry_text": "All workers",
+    "occupation_text": "",
+    "source_text": "",
+    "observations": [
+      {
+        "year": "2023",
+        "period": "A01",
+        "value": "75",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2024",
+        "period": "A01",
+        "value": "75",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "FAU00X00000080S02",
+    "seasonal": "U",
+    "category_code": "00X",
+    "datatype_code": "8",
+    "case_code": "0",
+    "industry_code": "000000",
+    "event_code": "",
+    "source_code": "",
+    "occupation_code": "",
+    "area_code": "S02",
+    "footnote_codes": "",
+    "begin_year": "2023",
+    "begin_period": "A01",
+    "end_year": "2024",
+    "end_period": "A01",
+    "area_text": "Alaska",
+    "case_text": "Fatalities in all sectors",
+    "category_text": "Total fatalities",
+    "datatype_text": "Fatal injuries (count)",
+    "event_text": "",
+    "industry_text": "All workers",
+    "occupation_text": "",
+    "source_text": "",
+    "observations": [
+      {
+        "year": "2023",
+        "period": "A01",
+        "value": "29",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2024",
+        "period": "A01",
+        "value": "24",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "FAU00X00000080S04",
+    "seasonal": "U",
+    "category_code": "00X",
+    "datatype_code": "8",
+    "case_code": "0",
+    "industry_code": "000000",
+    "event_code": "",
+    "source_code": "",
+    "occupation_code": "",
+    "area_code": "S04",
+    "footnote_codes": "",
+    "begin_year": "2023",
+    "begin_period": "A01",
+    "end_year": "2024",
+    "end_period": "A01",
+    "area_text": "Arizona",
+    "case_text": "Fatalities in all sectors",
+    "category_text": "Total fatalities",
+    "datatype_text": "Fatal injuries (count)",
+    "event_text": "",
+    "industry_text": "All workers",
+    "occupation_text": "",
+    "source_text": "",
+    "observations": [
+      {
+        "year": "2023",
+        "period": "A01",
+        "value": "103",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2024",
+        "period": "A01",
+        "value": "94",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "FAU00X00000080S05",
+    "seasonal": "U",
+    "category_code": "00X",
+    "datatype_code": "8",
+    "case_code": "0",
+    "industry_code": "000000",
+    "event_code": "",
+    "source_code": "",
+    "occupation_code": "",
+    "area_code": "S05",
+    "footnote_codes": "",
+    "begin_year": "2023",
+    "begin_period": "A01",
+    "end_year": "2024",
+    "end_period": "A01",
+    "area_text": "Arkansas",
+    "case_text": "Fatalities in all sectors",
+    "category_text": "Total fatalities",
+    "datatype_text": "Fatal injuries (count)",
+    "event_text": "",
+    "industry_text": "All workers",
+    "occupation_text": "",
+    "source_text": "",
+    "observations": [
+      {
+        "year": "2023",
+        "period": "A01",
+        "value": "92",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2024",
+        "period": "A01",
+        "value": "79",
+        "footnote_codes": ""
+      }
+    ]
+  }
+]

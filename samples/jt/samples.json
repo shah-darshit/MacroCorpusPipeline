@@ -1,0 +1,842 @@
+[
+  {
+    "series_id": "JTS000000000000000HIL",
+    "seasonal": "S",
+    "industry_code": "000000",
+    "state_code": "00",
+    "area_code": "00000",
+    "sizeclass_code": "00",
+    "dataelement_code": "HI",
+    "ratelevel_code": "L",
+    "footnote_codes": "",
+    "begin_year": "2000",
+    "begin_period": "M12",
+    "end_year": "2026",
+    "end_period": "M08",
+    "area_text": "All areas",
+    "dataelement_text": "Hires",
+    "industry_text": "Total nonfarm",
+    "ratelevel_text": "Level - In Thousands",
+    "seasonal_text": "Seasonally Adjusted",
+    "sizeclass_text": "All size classes",
+    "state_text": "Total US",
+    "observations": [
+      {
+        "year": "2011",
+        "period": "M01",
+        "value": "4000",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M02",
+        "value": "4231",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M03",
+        "value": "4430",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M04",
+        "value": "4296",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M05",
+        "value": "4261",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M06",
+        "value": "4366",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M07",
+        "value": "4261",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M08",
+        "value": "4298",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M09",
+        "value": "4429",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M10",
+        "value": "4370",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M11",
+        "value": "4365",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M12",
+        "value": "4356",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M01",
+        "value": "4457",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M02",
+        "value": "4560",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M03",
+        "value": "4575",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M04",
+        "value": "4389",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M05",
+        "value": "4533",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M06",
+        "value": "4440",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M07",
+        "value": "4327",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M08",
+        "value": "4450",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M09",
+        "value": "4302",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M10",
+        "value": "4389",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M11",
+        "value": "4489",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M12",
+        "value": "4452",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "JTS000000000000000HIR",
+    "seasonal": "S",
+    "industry_code": "000000",
+    "state_code": "00",
+    "area_code": "00000",
+    "sizeclass_code": "00",
+    "dataelement_code": "HI",
+    "ratelevel_code": "R",
+    "footnote_codes": "",
+    "begin_year": "2000",
+    "begin_period": "M12",
+    "end_year": "2026",
+    "end_period": "M08",
+    "area_text": "All areas",
+    "dataelement_text": "Hires",
+    "industry_text": "Total nonfarm",
+    "ratelevel_text": "Rate",
+    "seasonal_text": "Seasonally Adjusted",
+    "sizeclass_text": "All size classes",
+    "state_text": "Total US",
+    "observations": [
+      {
+        "year": "2011",
+        "period": "M01",
+        "value": "3.1",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M02",
+        "value": "3.2",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M03",
+        "value": "3.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M04",
+        "value": "3.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M05",
+        "value": "3.2",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M06",
+        "value": "3.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M07",
+        "value": "3.2",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M08",
+        "value": "3.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M09",
+        "value": "3.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M10",
+        "value": "3.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M11",
+        "value": "3.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M12",
+        "value": "3.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M01",
+        "value": "3.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M02",
+        "value": "3.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M03",
+        "value": "3.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M04",
+        "value": "3.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M05",
+        "value": "3.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M06",
+        "value": "3.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M07",
+        "value": "3.2",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M08",
+        "value": "3.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M09",
+        "value": "3.2",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M10",
+        "value": "3.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M11",
+        "value": "3.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M12",
+        "value": "3.3",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "JTS000000000000000JOL",
+    "seasonal": "S",
+    "industry_code": "000000",
+    "state_code": "00",
+    "area_code": "00000",
+    "sizeclass_code": "00",
+    "dataelement_code": "JO",
+    "ratelevel_code": "L",
+    "footnote_codes": "",
+    "begin_year": "2000",
+    "begin_period": "M12",
+    "end_year": "2026",
+    "end_period": "M08",
+    "area_text": "All areas",
+    "dataelement_text": "Job openings",
+    "industry_text": "Total nonfarm",
+    "ratelevel_text": "Level - In Thousands",
+    "seasonal_text": "Seasonally Adjusted",
+    "sizeclass_text": "All size classes",
+    "state_text": "Total US",
+    "observations": [
+      {
+        "year": "2011",
+        "period": "M01",
+        "value": "3104",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M02",
+        "value": "3226",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M03",
+        "value": "3261",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M04",
+        "value": "3259",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M05",
+        "value": "3179",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M06",
+        "value": "3455",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M07",
+        "value": "3623",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M08",
+        "value": "3329",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M09",
+        "value": "3774",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M10",
+        "value": "3619",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M11",
+        "value": "3565",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M12",
+        "value": "3768",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M01",
+        "value": "3909",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M02",
+        "value": "3616",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M03",
+        "value": "3979",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M04",
+        "value": "3793",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M05",
+        "value": "3835",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M06",
+        "value": "3911",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M07",
+        "value": "3735",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M08",
+        "value": "3809",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M09",
+        "value": "3882",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M10",
+        "value": "3775",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M11",
+        "value": "3878",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M12",
+        "value": "3970",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "JTS000000000000000JOR",
+    "seasonal": "S",
+    "industry_code": "000000",
+    "state_code": "00",
+    "area_code": "00000",
+    "sizeclass_code": "00",
+    "dataelement_code": "JO",
+    "ratelevel_code": "R",
+    "footnote_codes": "",
+    "begin_year": "2000",
+    "begin_period": "M12",
+    "end_year": "2026",
+    "end_period": "M08",
+    "area_text": "All areas",
+    "dataelement_text": "Job openings",
+    "industry_text": "Total nonfarm",
+    "ratelevel_text": "Rate",
+    "seasonal_text": "Seasonally Adjusted",
+    "sizeclass_text": "All size classes",
+    "state_text": "Total US",
+    "observations": [
+      {
+        "year": "2011",
+        "period": "M01",
+        "value": "2.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M02",
+        "value": "2.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M03",
+        "value": "2.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M04",
+        "value": "2.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M05",
+        "value": "2.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M06",
+        "value": "2.6",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M07",
+        "value": "2.7",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M08",
+        "value": "2.5",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M09",
+        "value": "2.8",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M10",
+        "value": "2.7",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M11",
+        "value": "2.6",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M12",
+        "value": "2.8",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M01",
+        "value": "2.8",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M02",
+        "value": "2.6",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M03",
+        "value": "2.9",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M04",
+        "value": "2.8",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M05",
+        "value": "2.8",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M06",
+        "value": "2.8",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M07",
+        "value": "2.7",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M08",
+        "value": "2.8",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M09",
+        "value": "2.8",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M10",
+        "value": "2.7",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M11",
+        "value": "2.8",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M12",
+        "value": "2.9",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "JTS000000000000000LDL",
+    "seasonal": "S",
+    "industry_code": "000000",
+    "state_code": "00",
+    "area_code": "00000",
+    "sizeclass_code": "00",
+    "dataelement_code": "LD",
+    "ratelevel_code": "L",
+    "footnote_codes": "",
+    "begin_year": "2000",
+    "begin_period": "M12",
+    "end_year": "2026",
+    "end_period": "M08",
+    "area_text": "All areas",
+    "dataelement_text": "Layoffs and discharges",
+    "industry_text": "Total nonfarm",
+    "ratelevel_text": "Level - In Thousands",
+    "seasonal_text": "Seasonally Adjusted",
+    "sizeclass_text": "All size classes",
+    "state_text": "Total US",
+    "observations": [
+      {
+        "year": "2011",
+        "period": "M01",
+        "value": "1827",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M02",
+        "value": "1755",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M03",
+        "value": "1794",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M04",
+        "value": "1792",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M05",
+        "value": "1904",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M06",
+        "value": "1942",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M07",
+        "value": "1845",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M08",
+        "value": "1845",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M09",
+        "value": "1872",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M10",
+        "value": "1794",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M11",
+        "value": "1912",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2011",
+        "period": "M12",
+        "value": "1801",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M01",
+        "value": "1797",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M02",
+        "value": "1903",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M03",
+        "value": "1784",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M04",
+        "value": "1880",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M05",
+        "value": "1969",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M06",
+        "value": "1892",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M07",
+        "value": "1722",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M08",
+        "value": "1894",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M09",
+        "value": "1805",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M10",
+        "value": "1891",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M11",
+        "value": "1921",
+        "footnote_codes": ""
+      },
+      {
+        "year": "2012",
+        "period": "M12",
+        "value": "1700",
+        "footnote_codes": ""
+      }
+    ]
+  }
+]

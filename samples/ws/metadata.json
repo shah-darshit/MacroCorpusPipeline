@@ -1,0 +1,80 @@
+[
+  {
+    "series_id": "WSU001",
+    "measure_code": "001",
+    "seasonal": "U",
+    "series_title": "Days of idleness (in 1,000s) from all work stoppages in effect in the period",
+    "footnote_codes": "",
+    "begin_year": "1947",
+    "begin_period": "M13",
+    "end_year": "2026",
+    "end_period": "M09",
+    "measure_text": "Days of idleness (in 1,000s) from all work stoppages in effect in the period",
+    "seasonal_text": "Not Seasonally Adjusted"
+  },
+  {
+    "series_id": "WSU002",
+    "measure_code": "002",
+    "seasonal": "U",
+    "series_title": "Days of idleness (as % of total estimated working time) from work stoppages in effect in the period",
+    "footnote_codes": "D",
+    "begin_year": "1947",
+    "begin_period": "M13",
+    "end_year": "2024",
+    "end_period": "M04",
+    "measure_text": "Days of idleness (as % of total estimated working time) from work stoppages in effect in the period",
+    "seasonal_text": "Not Seasonally Adjusted"
+  },
+  {
+    "series_id": "WSU010",
+    "measure_code": "010",
+    "seasonal": "U",
+    "series_title": "Number of workers (in 1,000s) involved in all work stoppages beginning in the period",
+    "footnote_codes": "",
+    "begin_year": "1947",
+    "begin_period": "M13",
+    "end_year": "2026",
+    "end_period": "M09",
+    "measure_text": "Number of workers (in 1,000s) involved in all work stoppages beginning in the period",
+    "seasonal_text": "Not Seasonally Adjusted"
+  },
+  {
+    "series_id": "WSU020",
+    "measure_code": "020",
+    "seasonal": "U",
+    "series_title": "Number of workers (in 1,000s) involved in all work stoppages in effect in the period",
+    "footnote_codes": "",
+    "begin_year": "1981",
+    "begin_period": "M01",
+    "end_year": "2026",
+    "end_period": "M09",
+    "measure_text": "Number of workers (in 1,000s) involved in all work stoppages in effect in the period",
+    "seasonal_text": "Not Seasonally Adjusted"
+  },
+  {
+    "series_id": "WSU100",
+    "measure_code": "100",
+    "seasonal": "U",
+    "series_title": "Number of work stoppages involving 1,000 workers or more beginning in the period",
+    "footnote_codes": "",
+    "begin_year": "1947",
+    "begin_period": "M13",
+    "end_year": "2026",
+    "end_period": "M09",
+    "measure_text": "Number of work stoppages involving 1,000 workers or more beginning in the period",
+    "seasonal_text": "Not Seasonally Adjusted"
+  },
+  {
+    "series_id": "WSU200",
+    "measure_code": "200",
+    "seasonal": "U",
+    "series_title": "Number of work stoppages involving 1,000 workers or more in effect in the period",
+    "footnote_codes": "",
+    "begin_year": "1981",
+    "begin_period": "M01",
+    "end_year": "2026",
+    "end_period": "M09",
+    "measure_text": "Number of work stoppages involving 1,000 workers or more in effect in the period",
+    "seasonal_text": "Not Seasonally Adjusted"
+  }
+]

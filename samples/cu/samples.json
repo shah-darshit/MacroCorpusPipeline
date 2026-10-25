@@ -1,0 +1,832 @@
+[
+  {
+    "series_id": "CUSR0000SA0",
+    "area_code": "0000",
+    "item_code": "SA0",
+    "seasonal": "S",
+    "periodicity_code": "R",
+    "base_code": "S",
+    "base_period": "1982-84=100",
+    "series_title": "All items in U.S. city average, all urban consumers, seasonally adjusted",
+    "footnote_codes": "",
+    "begin_year": "1947",
+    "begin_period": "M01",
+    "end_year": "2026",
+    "end_period": "M09",
+    "area_name": "U.S. city average",
+    "base_name": "Current",
+    "item_name": "All items",
+    "periodicity_name": "Monthly",
+    "seasonal_text": "Seasonally Adjusted",
+    "observations": [
+      {
+        "year": "1997",
+        "period": "M01",
+        "value": "159.40",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M02",
+        "value": "159.70",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M03",
+        "value": "159.80",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M04",
+        "value": "159.90",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M05",
+        "value": "159.90",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M06",
+        "value": "160.20",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M07",
+        "value": "160.40",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M08",
+        "value": "160.80",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M09",
+        "value": "161.20",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M10",
+        "value": "161.50",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M11",
+        "value": "161.70",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M12",
+        "value": "161.80",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M01",
+        "value": "162.00",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M02",
+        "value": "162.00",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M03",
+        "value": "162.00",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M04",
+        "value": "162.20",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M05",
+        "value": "162.60",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M06",
+        "value": "162.80",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M07",
+        "value": "163.20",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M08",
+        "value": "163.40",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M09",
+        "value": "163.50",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M10",
+        "value": "163.90",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M11",
+        "value": "164.10",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M12",
+        "value": "164.40",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "CUSR0000SA0E",
+    "area_code": "0000",
+    "item_code": "SA0E",
+    "seasonal": "S",
+    "periodicity_code": "R",
+    "base_code": "S",
+    "base_period": "1982-84=100",
+    "series_title": "Energy in U.S. city average, all urban consumers, seasonally adjusted",
+    "footnote_codes": "",
+    "begin_year": "1957",
+    "begin_period": "M01",
+    "end_year": "2026",
+    "end_period": "M09",
+    "area_name": "U.S. city average",
+    "base_name": "Current",
+    "item_name": "Energy",
+    "periodicity_name": "Monthly",
+    "seasonal_text": "Seasonally Adjusted",
+    "observations": [
+      {
+        "year": "1997",
+        "period": "M01",
+        "value": "115.2",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M02",
+        "value": "115.0",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M03",
+        "value": "113.0",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M04",
+        "value": "111.0",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M05",
+        "value": "108.8",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M06",
+        "value": "110.0",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M07",
+        "value": "109.1",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M08",
+        "value": "110.9",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M09",
+        "value": "112.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M10",
+        "value": "111.8",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M11",
+        "value": "111.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M12",
+        "value": "109.8",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M01",
+        "value": "107.5",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M02",
+        "value": "105.1",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M03",
+        "value": "103.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M04",
+        "value": "102.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M05",
+        "value": "103.2",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M06",
+        "value": "103.6",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M07",
+        "value": "103.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M08",
+        "value": "102.1",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M09",
+        "value": "101.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M10",
+        "value": "101.5",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M11",
+        "value": "101.1",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M12",
+        "value": "100.1",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "CUSR0000SA0L1",
+    "area_code": "0000",
+    "item_code": "SA0L1",
+    "seasonal": "S",
+    "periodicity_code": "R",
+    "base_code": "S",
+    "base_period": "1982-84=100",
+    "series_title": "All items less food in U.S. city average, all urban consumers, seasonally adjusted",
+    "footnote_codes": "",
+    "begin_year": "1947",
+    "begin_period": "M01",
+    "end_year": "2026",
+    "end_period": "M09",
+    "area_name": "U.S. city average",
+    "base_name": "Current",
+    "item_name": "All items less food",
+    "periodicity_name": "Monthly",
+    "seasonal_text": "Seasonally Adjusted",
+    "observations": [
+      {
+        "year": "1997",
+        "period": "M01",
+        "value": "160.0",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M02",
+        "value": "160.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M03",
+        "value": "160.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M04",
+        "value": "160.5",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M05",
+        "value": "160.5",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M06",
+        "value": "160.8",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M07",
+        "value": "161.0",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M08",
+        "value": "161.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M09",
+        "value": "161.8",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M10",
+        "value": "162.1",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M11",
+        "value": "162.2",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M12",
+        "value": "162.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M01",
+        "value": "162.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M02",
+        "value": "162.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M03",
+        "value": "162.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M04",
+        "value": "162.6",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M05",
+        "value": "163.1",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M06",
+        "value": "163.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M07",
+        "value": "163.6",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M08",
+        "value": "163.9",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M09",
+        "value": "163.9",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M10",
+        "value": "164.2",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M11",
+        "value": "164.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M12",
+        "value": "164.8",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "CUSR0000SA0L12",
+    "area_code": "0000",
+    "item_code": "SA0L12",
+    "seasonal": "S",
+    "periodicity_code": "R",
+    "base_code": "S",
+    "base_period": "1982-84=100",
+    "series_title": "All items less food and shelter in U.S. city average, all urban consumers, seasonally adjusted",
+    "footnote_codes": "",
+    "begin_year": "1967",
+    "begin_period": "M01",
+    "end_year": "2026",
+    "end_period": "M09",
+    "area_name": "U.S. city average",
+    "base_name": "Current",
+    "item_name": "All items less food and shelter",
+    "periodicity_name": "Monthly",
+    "seasonal_text": "Seasonally Adjusted",
+    "observations": [
+      {
+        "year": "1997",
+        "period": "M01",
+        "value": "155.0",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M02",
+        "value": "155.2",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M03",
+        "value": "155.1",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M04",
+        "value": "155.1",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M05",
+        "value": "154.9",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M06",
+        "value": "155.2",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M07",
+        "value": "155.2",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M08",
+        "value": "155.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M09",
+        "value": "155.9",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M10",
+        "value": "156.1",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M11",
+        "value": "156.1",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M12",
+        "value": "156.1",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M01",
+        "value": "155.9",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M02",
+        "value": "155.8",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M03",
+        "value": "155.5",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M04",
+        "value": "155.6",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M05",
+        "value": "156.0",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M06",
+        "value": "156.1",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M07",
+        "value": "156.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M08",
+        "value": "156.5",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M09",
+        "value": "156.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M10",
+        "value": "156.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M11",
+        "value": "156.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M12",
+        "value": "156.8",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "CUSR0000SA0L12E",
+    "area_code": "0000",
+    "item_code": "SA0L12E",
+    "seasonal": "S",
+    "periodicity_code": "R",
+    "base_code": "S",
+    "base_period": "1982-84=100",
+    "series_title": "All items less food, shelter, and energy in U.S. city average, all urban consumers, seasonally adjusted",
+    "footnote_codes": "",
+    "begin_year": "1967",
+    "begin_period": "M01",
+    "end_year": "2026",
+    "end_period": "M09",
+    "area_name": "U.S. city average",
+    "base_name": "Current",
+    "item_name": "All items less food, shelter, and energy",
+    "periodicity_name": "Monthly",
+    "seasonal_text": "Seasonally Adjusted",
+    "observations": [
+      {
+        "year": "1997",
+        "period": "M01",
+        "value": "165.1",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M02",
+        "value": "165.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M03",
+        "value": "165.7",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M04",
+        "value": "166.1",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M05",
+        "value": "166.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M06",
+        "value": "166.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M07",
+        "value": "166.6",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M08",
+        "value": "166.5",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M09",
+        "value": "166.8",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M10",
+        "value": "167.2",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M11",
+        "value": "167.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M12",
+        "value": "167.5",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M01",
+        "value": "167.9",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M02",
+        "value": "168.2",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M03",
+        "value": "168.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M04",
+        "value": "168.6",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M05",
+        "value": "168.9",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M06",
+        "value": "169.0",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M07",
+        "value": "169.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M08",
+        "value": "169.8",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M09",
+        "value": "169.7",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M10",
+        "value": "169.8",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M11",
+        "value": "170.0",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1998",
+        "period": "M12",
+        "value": "170.6",
+        "footnote_codes": ""
+      }
+    ]
+  }
+]

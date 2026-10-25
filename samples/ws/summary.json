@@ -1,0 +1,40 @@
+{
+  "program": "WS",
+  "series_count": 6,
+  "catalog_fields": [
+    "series_id",
+    "measure_code",
+    "seasonal",
+    "series_title",
+    "footnote_codes",
+    "begin_year",
+    "begin_period",
+    "end_year",
+    "end_period"
+  ],
+  "joins": [
+    {
+      "file": "ws.measure",
+      "catalog_column": "measure_code",
+      "label_column": "measure_text",
+      "matched": 6,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    },
+    {
+      "file": "ws.seasonal",
+      "catalog_column": "seasonal",
+      "label_column": "seasonal_text",
+      "matched": 6,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    }
+  ],
+  "data_file_sampled": "ws.data.1.AllData",
+  "data_lines_read": 3077,
+  "sample_series": 5,
+  "sample_observations": 120,
+  "skipped": "full observation files were not downloaded"
+}

@@ -1,0 +1,897 @@
+[
+  {
+    "series_id": "BDS0000000000000000110001LQ5",
+    "seasonal": "S",
+    "msa_code": "00000",
+    "state_code": "00",
+    "county_code": "000",
+    "industry_code": "000000",
+    "unitanalysis_code": "1",
+    "dataelement_code": "1",
+    "sizeclass_code": "00",
+    "dataclass_code": "01",
+    "ratelevel_code": "L",
+    "periodicity_code": "Q",
+    "ownership_code": "5",
+    "series_title": "Quarterly gross job gains for the total private sector in the U.S. (rounded to the nearest thousands)",
+    "footnote_codes": "1",
+    "begin_year": "1992",
+    "begin_period": "Q03",
+    "end_year": "2025",
+    "end_period": "Q04",
+    "county_name": "National",
+    "dataclass_name": "Gross Job Gains",
+    "dataelement_name": "Employment",
+    "industry_name": "Total private",
+    "msa_name": "National",
+    "ownership_name": "Private Sector",
+    "periodicity_name": "Quarterly",
+    "ratelevel_name": "Level",
+    "seasonal_text": "Seasonally adjusted",
+    "sizeclass_name": "All size classes",
+    "state_name": "U.S. totals",
+    "unitanalysis_name": "Establishment",
+    "observations": [
+      {
+        "year": "2000",
+        "period": "Q01",
+        "value": "9004",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2000",
+        "period": "Q02",
+        "value": "8439",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2000",
+        "period": "Q03",
+        "value": "8566",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2000",
+        "period": "Q04",
+        "value": "8345",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2001",
+        "period": "Q01",
+        "value": "8659",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2001",
+        "period": "Q02",
+        "value": "7961",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2001",
+        "period": "Q03",
+        "value": "7668",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2001",
+        "period": "Q04",
+        "value": "7546",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2002",
+        "period": "Q01",
+        "value": "8225",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2002",
+        "period": "Q02",
+        "value": "7844",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2002",
+        "period": "Q03",
+        "value": "7681",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2002",
+        "period": "Q04",
+        "value": "7486",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2003",
+        "period": "Q01",
+        "value": "7626",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2003",
+        "period": "Q02",
+        "value": "7381",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2003",
+        "period": "Q03",
+        "value": "7434",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2003",
+        "period": "Q04",
+        "value": "7531",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2004",
+        "period": "Q01",
+        "value": "7870",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2004",
+        "period": "Q02",
+        "value": "7722",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2004",
+        "period": "Q03",
+        "value": "7683",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2004",
+        "period": "Q04",
+        "value": "7848",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2005",
+        "period": "Q01",
+        "value": "7779",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2005",
+        "period": "Q02",
+        "value": "7753",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2005",
+        "period": "Q03",
+        "value": "8023",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2005",
+        "period": "Q04",
+        "value": "7812",
+        "footnote_codes": "1"
+      }
+    ]
+  },
+  {
+    "series_id": "BDS0000000000000000110001RQ5",
+    "seasonal": "S",
+    "msa_code": "00000",
+    "state_code": "00",
+    "county_code": "000",
+    "industry_code": "000000",
+    "unitanalysis_code": "1",
+    "dataelement_code": "1",
+    "sizeclass_code": "00",
+    "dataclass_code": "01",
+    "ratelevel_code": "R",
+    "periodicity_code": "Q",
+    "ownership_code": "5",
+    "series_title": "Percent of gross job gains for the total private sector in the U.S. (as a percentage of employment in this sector)",
+    "footnote_codes": "1",
+    "begin_year": "1992",
+    "begin_period": "Q03",
+    "end_year": "2025",
+    "end_period": "Q04",
+    "county_name": "National",
+    "dataclass_name": "Gross Job Gains",
+    "dataelement_name": "Employment",
+    "industry_name": "Total private",
+    "msa_name": "National",
+    "ownership_name": "Private Sector",
+    "periodicity_name": "Quarterly",
+    "ratelevel_name": "Rate",
+    "seasonal_text": "Seasonally adjusted",
+    "sizeclass_name": "All size classes",
+    "state_name": "U.S. totals",
+    "unitanalysis_name": "Establishment",
+    "observations": [
+      {
+        "year": "2000",
+        "period": "Q01",
+        "value": "8.3",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2000",
+        "period": "Q02",
+        "value": "7.6",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2000",
+        "period": "Q03",
+        "value": "7.7",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2000",
+        "period": "Q04",
+        "value": "7.5",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2001",
+        "period": "Q01",
+        "value": "7.9",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2001",
+        "period": "Q02",
+        "value": "7.2",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2001",
+        "period": "Q03",
+        "value": "7.1",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2001",
+        "period": "Q04",
+        "value": "6.9",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2002",
+        "period": "Q01",
+        "value": "7.6",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2002",
+        "period": "Q02",
+        "value": "7.3",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2002",
+        "period": "Q03",
+        "value": "7.1",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2002",
+        "period": "Q04",
+        "value": "7.0",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2003",
+        "period": "Q01",
+        "value": "7.1",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2003",
+        "period": "Q02",
+        "value": "6.9",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2003",
+        "period": "Q03",
+        "value": "7.0",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2003",
+        "period": "Q04",
+        "value": "7.0",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2004",
+        "period": "Q01",
+        "value": "7.3",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2004",
+        "period": "Q02",
+        "value": "7.1",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2004",
+        "period": "Q03",
+        "value": "7.1",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2004",
+        "period": "Q04",
+        "value": "7.2",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2005",
+        "period": "Q01",
+        "value": "7.1",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2005",
+        "period": "Q02",
+        "value": "7.0",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2005",
+        "period": "Q03",
+        "value": "7.3",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2005",
+        "period": "Q04",
+        "value": "7.0",
+        "footnote_codes": "1"
+      }
+    ]
+  },
+  {
+    "series_id": "BDS0000000000000000110002LQ5",
+    "seasonal": "S",
+    "msa_code": "00000",
+    "state_code": "00",
+    "county_code": "000",
+    "industry_code": "000000",
+    "unitanalysis_code": "1",
+    "dataelement_code": "1",
+    "sizeclass_code": "00",
+    "dataclass_code": "02",
+    "ratelevel_code": "L",
+    "periodicity_code": "Q",
+    "ownership_code": "5",
+    "series_title": "Employment gained from expansions for the total private sector in the U.S. (rounded to the nearest thousands)",
+    "footnote_codes": "1",
+    "begin_year": "1992",
+    "begin_period": "Q03",
+    "end_year": "2025",
+    "end_period": "Q04",
+    "county_name": "National",
+    "dataclass_name": "Expansions",
+    "dataelement_name": "Employment",
+    "industry_name": "Total private",
+    "msa_name": "National",
+    "ownership_name": "Private Sector",
+    "periodicity_name": "Quarterly",
+    "ratelevel_name": "Level",
+    "seasonal_text": "Seasonally adjusted",
+    "sizeclass_name": "All size classes",
+    "state_name": "U.S. totals",
+    "unitanalysis_name": "Establishment",
+    "observations": [
+      {
+        "year": "2000",
+        "period": "Q01",
+        "value": "7062",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2000",
+        "period": "Q02",
+        "value": "6740",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2000",
+        "period": "Q03",
+        "value": "6777",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2000",
+        "period": "Q04",
+        "value": "6662",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2001",
+        "period": "Q01",
+        "value": "6831",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2001",
+        "period": "Q02",
+        "value": "6255",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2001",
+        "period": "Q03",
+        "value": "5963",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2001",
+        "period": "Q04",
+        "value": "5897",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2002",
+        "period": "Q01",
+        "value": "6388",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2002",
+        "period": "Q02",
+        "value": "6100",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2002",
+        "period": "Q03",
+        "value": "6062",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2002",
+        "period": "Q04",
+        "value": "5922",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2003",
+        "period": "Q01",
+        "value": "6017",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2003",
+        "period": "Q02",
+        "value": "5885",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2003",
+        "period": "Q03",
+        "value": "5942",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2003",
+        "period": "Q04",
+        "value": "5992",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2004",
+        "period": "Q01",
+        "value": "6297",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2004",
+        "period": "Q02",
+        "value": "6187",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2004",
+        "period": "Q03",
+        "value": "6082",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2004",
+        "period": "Q04",
+        "value": "6227",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2005",
+        "period": "Q01",
+        "value": "6222",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2005",
+        "period": "Q02",
+        "value": "6183",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2005",
+        "period": "Q03",
+        "value": "6412",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2005",
+        "period": "Q04",
+        "value": "6239",
+        "footnote_codes": "1"
+      }
+    ]
+  },
+  {
+    "series_id": "BDS0000000000000000110002RQ5",
+    "seasonal": "S",
+    "msa_code": "00000",
+    "state_code": "00",
+    "county_code": "000",
+    "industry_code": "000000",
+    "unitanalysis_code": "1",
+    "dataelement_code": "1",
+    "sizeclass_code": "00",
+    "dataclass_code": "02",
+    "ratelevel_code": "R",
+    "periodicity_code": "Q",
+    "ownership_code": "5",
+    "series_title": "Percent of employment gained from expansions for the total private sector in the U.S. (as a percentage of employment in this sector)",
+    "footnote_codes": "1",
+    "begin_year": "1992",
+    "begin_period": "Q03",
+    "end_year": "2025",
+    "end_period": "Q04",
+    "county_name": "National",
+    "dataclass_name": "Expansions",
+    "dataelement_name": "Employment",
+    "industry_name": "Total private",
+    "msa_name": "National",
+    "ownership_name": "Private Sector",
+    "periodicity_name": "Quarterly",
+    "ratelevel_name": "Rate",
+    "seasonal_text": "Seasonally adjusted",
+    "sizeclass_name": "All size classes",
+    "state_name": "U.S. totals",
+    "unitanalysis_name": "Establishment",
+    "observations": [
+      {
+        "year": "2000",
+        "period": "Q01",
+        "value": "6.5",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2000",
+        "period": "Q02",
+        "value": "6.1",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2000",
+        "period": "Q03",
+        "value": "6.1",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2000",
+        "period": "Q04",
+        "value": "6.0",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2001",
+        "period": "Q01",
+        "value": "6.2",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2001",
+        "period": "Q02",
+        "value": "5.7",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2001",
+        "period": "Q03",
+        "value": "5.5",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2001",
+        "period": "Q04",
+        "value": "5.4",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2002",
+        "period": "Q01",
+        "value": "5.9",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2002",
+        "period": "Q02",
+        "value": "5.7",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2002",
+        "period": "Q03",
+        "value": "5.6",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2002",
+        "period": "Q04",
+        "value": "5.5",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2003",
+        "period": "Q01",
+        "value": "5.6",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2003",
+        "period": "Q02",
+        "value": "5.5",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2003",
+        "period": "Q03",
+        "value": "5.6",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2003",
+        "period": "Q04",
+        "value": "5.6",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2004",
+        "period": "Q01",
+        "value": "5.8",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2004",
+        "period": "Q02",
+        "value": "5.7",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2004",
+        "period": "Q03",
+        "value": "5.6",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2004",
+        "period": "Q04",
+        "value": "5.7",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2005",
+        "period": "Q01",
+        "value": "5.7",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2005",
+        "period": "Q02",
+        "value": "5.6",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2005",
+        "period": "Q03",
+        "value": "5.8",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2005",
+        "period": "Q04",
+        "value": "5.6",
+        "footnote_codes": "1"
+      }
+    ]
+  },
+  {
+    "series_id": "BDS0000000000000000110003LQ5",
+    "seasonal": "S",
+    "msa_code": "00000",
+    "state_code": "00",
+    "county_code": "000",
+    "industry_code": "000000",
+    "unitanalysis_code": "1",
+    "dataelement_code": "1",
+    "sizeclass_code": "00",
+    "dataclass_code": "03",
+    "ratelevel_code": "L",
+    "periodicity_code": "Q",
+    "ownership_code": "5",
+    "series_title": "Employment gained from openings for the total private sector in the U.S. (rounded to the nearest thousands)",
+    "footnote_codes": "1",
+    "begin_year": "1992",
+    "begin_period": "Q03",
+    "end_year": "2025",
+    "end_period": "Q04",
+    "county_name": "National",
+    "dataclass_name": "Openings",
+    "dataelement_name": "Employment",
+    "industry_name": "Total private",
+    "msa_name": "National",
+    "ownership_name": "Private Sector",
+    "periodicity_name": "Quarterly",
+    "ratelevel_name": "Level",
+    "seasonal_text": "Seasonally adjusted",
+    "sizeclass_name": "All size classes",
+    "state_name": "U.S. totals",
+    "unitanalysis_name": "Establishment",
+    "observations": [
+      {
+        "year": "2000",
+        "period": "Q01",
+        "value": "1942",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2000",
+        "period": "Q02",
+        "value": "1699",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2000",
+        "period": "Q03",
+        "value": "1789",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2000",
+        "period": "Q04",
+        "value": "1683",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2001",
+        "period": "Q01",
+        "value": "1828",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2001",
+        "period": "Q02",
+        "value": "1706",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2001",
+        "period": "Q03",
+        "value": "1705",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2001",
+        "period": "Q04",
+        "value": "1649",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2002",
+        "period": "Q01",
+        "value": "1837",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2002",
+        "period": "Q02",
+        "value": "1744",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2002",
+        "period": "Q03",
+        "value": "1619",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2002",
+        "period": "Q04",
+        "value": "1564",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2003",
+        "period": "Q01",
+        "value": "1609",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2003",
+        "period": "Q02",
+        "value": "1496",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2003",
+        "period": "Q03",
+        "value": "1492",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2003",
+        "period": "Q04",
+        "value": "1539",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2004",
+        "period": "Q01",
+        "value": "1573",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2004",
+        "period": "Q02",
+        "value": "1535",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2004",
+        "period": "Q03",
+        "value": "1601",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2004",
+        "period": "Q04",
+        "value": "1621",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2005",
+        "period": "Q01",
+        "value": "1557",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2005",
+        "period": "Q02",
+        "value": "1570",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2005",
+        "period": "Q03",
+        "value": "1611",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "2005",
+        "period": "Q04",
+        "value": "1573",
+        "footnote_codes": "1"
+      }
+    ]
+  }
+]

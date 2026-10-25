@@ -1,0 +1,797 @@
+[
+  {
+    "series_id": "APU0000701111",
+    "area_code": "0000",
+    "item_code": "701111",
+    "series_title": "Flour, white, all purpose, per lb. (453.6 gm) in U.S. city average, average price, not seasonally adjusted",
+    "footnote_codes": "",
+    "begin_year": "1980",
+    "begin_period": "M01",
+    "end_year": "2026",
+    "end_period": "M09",
+    "area_name": "U.S. city average",
+    "item_name": "Flour, white, all purpose, per lb. (453.6 gm)",
+    "observations": [
+      {
+        "year": "1995",
+        "period": "M01",
+        "value": "0.238",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M02",
+        "value": "0.242",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M03",
+        "value": "0.242",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M04",
+        "value": "0.236",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M05",
+        "value": "0.244",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M06",
+        "value": "0.244",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M07",
+        "value": "0.248",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M08",
+        "value": "0.255",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M09",
+        "value": "0.256",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M10",
+        "value": "0.254",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M11",
+        "value": "0.243",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M12",
+        "value": "0.243",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M01",
+        "value": "0.262",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M02",
+        "value": "0.262",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M03",
+        "value": "0.274",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M04",
+        "value": "0.266",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M05",
+        "value": "0.281",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M06",
+        "value": "0.297",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M07",
+        "value": "0.308",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M08",
+        "value": "0.314",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M09",
+        "value": "0.308",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M10",
+        "value": "0.293",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M11",
+        "value": "0.295",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M12",
+        "value": "0.292",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "APU0000701312",
+    "area_code": "0000",
+    "item_code": "701312",
+    "series_title": "Rice, white, long grain, uncooked, per lb. (453.6 gm) in U.S. city average, average price, not seasonally adjusted",
+    "footnote_codes": "",
+    "begin_year": "1980",
+    "begin_period": "M01",
+    "end_year": "2026",
+    "end_period": "M09",
+    "area_name": "U.S. city average",
+    "item_name": "Rice, white, long grain, uncooked, per lb. (453.6 gm)",
+    "observations": [
+      {
+        "year": "1995",
+        "period": "M01",
+        "value": "0.523",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M02",
+        "value": "0.518",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M03",
+        "value": "0.511",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M04",
+        "value": "0.515",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M05",
+        "value": "0.518",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M06",
+        "value": "0.518",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M07",
+        "value": "0.519",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M08",
+        "value": "0.526",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M09",
+        "value": "0.523",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M10",
+        "value": "0.535",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M11",
+        "value": "0.535",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M12",
+        "value": "0.553",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M01",
+        "value": "0.552",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M02",
+        "value": "0.552",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M03",
+        "value": "0.556",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M04",
+        "value": "0.538",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M05",
+        "value": "0.548",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M06",
+        "value": "0.537",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M07",
+        "value": "0.537",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M08",
+        "value": "0.541",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M09",
+        "value": "0.540",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M10",
+        "value": "0.555",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M11",
+        "value": "0.552",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M12",
+        "value": "0.546",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "APU0000701322",
+    "area_code": "0000",
+    "item_code": "701322",
+    "series_title": "Spaghetti and macaroni, per lb. (453.6 gm) in U.S. city average, average price, not seasonally adjusted",
+    "footnote_codes": "",
+    "begin_year": "1984",
+    "begin_period": "M01",
+    "end_year": "2026",
+    "end_period": "M09",
+    "area_name": "U.S. city average",
+    "item_name": "Spaghetti and macaroni, per lb. (453.6 gm)",
+    "observations": [
+      {
+        "year": "1995",
+        "period": "M01",
+        "value": "0.852",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M02",
+        "value": "0.868",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M03",
+        "value": "0.904",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M04",
+        "value": "0.859",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M05",
+        "value": "0.856",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M06",
+        "value": "0.870",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M07",
+        "value": "0.852",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M08",
+        "value": "0.847",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M09",
+        "value": "0.876",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M10",
+        "value": "0.824",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M11",
+        "value": "0.842",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M12",
+        "value": "0.878",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M01",
+        "value": "0.871",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M02",
+        "value": "0.854",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M03",
+        "value": "0.863",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M04",
+        "value": "0.866",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M05",
+        "value": "0.848",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M06",
+        "value": "0.887",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M07",
+        "value": "0.882",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M08",
+        "value": "0.877",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M09",
+        "value": "0.884",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M10",
+        "value": "0.850",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M11",
+        "value": "0.848",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M12",
+        "value": "0.845",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "APU0000702111",
+    "area_code": "0000",
+    "item_code": "702111",
+    "series_title": "Bread, white, pan, per lb. (453.6 gm) in U.S. city average, average price, not seasonally adjusted",
+    "footnote_codes": "",
+    "begin_year": "1980",
+    "begin_period": "M01",
+    "end_year": "2026",
+    "end_period": "M09",
+    "area_name": "U.S. city average",
+    "item_name": "Bread, white, pan, per lb. (453.6 gm)",
+    "observations": [
+      {
+        "year": "1995",
+        "period": "M01",
+        "value": "0.767",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M02",
+        "value": "0.767",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M03",
+        "value": "0.775",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M04",
+        "value": "0.776",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M05",
+        "value": "0.768",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M06",
+        "value": "0.781",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M07",
+        "value": "0.789",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M08",
+        "value": "0.797",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M09",
+        "value": "0.808",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M10",
+        "value": "0.809",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M11",
+        "value": "0.821",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M12",
+        "value": "0.837",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M01",
+        "value": "0.860",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M02",
+        "value": "0.858",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M03",
+        "value": "0.852",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M04",
+        "value": "0.865",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M05",
+        "value": "0.869",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M06",
+        "value": "0.886",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M07",
+        "value": "0.889",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M08",
+        "value": "0.915",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M09",
+        "value": "0.886",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M10",
+        "value": "0.873",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M11",
+        "value": "0.880",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M12",
+        "value": "0.875",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "APU0000702112",
+    "area_code": "0000",
+    "item_code": "702112",
+    "series_title": "Bread, French, per lb. (453.6 gm) in U.S. city average, average price, not seasonally adjusted",
+    "footnote_codes": "",
+    "begin_year": "1980",
+    "begin_period": "M01",
+    "end_year": "2025",
+    "end_period": "M10",
+    "area_name": "U.S. city average",
+    "item_name": "Bread, French, per lb. (453.6 gm)",
+    "observations": [
+      {
+        "year": "1995",
+        "period": "M01",
+        "value": "1.538",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M02",
+        "value": "1.508",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M03",
+        "value": "1.539",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1995",
+        "period": "M04",
+        "value": "1.520",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M02",
+        "value": "1.496",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M03",
+        "value": "1.484",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M04",
+        "value": "1.491",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M05",
+        "value": "1.469",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M06",
+        "value": "1.507",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M07",
+        "value": "1.495",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M08",
+        "value": "1.517",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M09",
+        "value": "1.560",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M10",
+        "value": "1.493",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M11",
+        "value": "1.490",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1996",
+        "period": "M12",
+        "value": "1.515",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M01",
+        "value": "1.492",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M02",
+        "value": "1.519",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M03",
+        "value": "1.507",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M04",
+        "value": "1.500",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M05",
+        "value": "1.543",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M06",
+        "value": "1.540",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M07",
+        "value": "1.535",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M08",
+        "value": "1.545",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1997",
+        "period": "M09",
+        "value": "1.552",
+        "footnote_codes": ""
+      }
+    ]
+  }
+]

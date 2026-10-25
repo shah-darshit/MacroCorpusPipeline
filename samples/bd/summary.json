@@ -1,0 +1,140 @@
+{
+  "program": "BD",
+  "series_count": 34464,
+  "catalog_fields": [
+    "series_id",
+    "seasonal",
+    "msa_code",
+    "state_code",
+    "county_code",
+    "industry_code",
+    "unitanalysis_code",
+    "dataelement_code",
+    "sizeclass_code",
+    "dataclass_code",
+    "ratelevel_code",
+    "periodicity_code",
+    "ownership_code",
+    "series_title",
+    "footnote_codes",
+    "begin_year",
+    "begin_period",
+    "end_year",
+    "end_period"
+  ],
+  "joins": [
+    {
+      "file": "bd.county",
+      "catalog_column": "county_code",
+      "label_column": "county_name",
+      "matched": 34464,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    },
+    {
+      "file": "bd.dataclass",
+      "catalog_column": "dataclass_code",
+      "label_column": "dataclass_name",
+      "matched": 34464,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    },
+    {
+      "file": "bd.dataelement",
+      "catalog_column": "dataelement_code",
+      "label_column": "dataelement_name",
+      "matched": 34464,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    },
+    {
+      "file": "bd.industry",
+      "catalog_column": "industry_code",
+      "label_column": "industry_name",
+      "matched": 34464,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    },
+    {
+      "file": "bd.msa",
+      "catalog_column": "msa_code",
+      "label_column": "msa_name",
+      "matched": 34464,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    },
+    {
+      "file": "bd.ownership",
+      "catalog_column": "ownership_code",
+      "label_column": "ownership_name",
+      "matched": 34464,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    },
+    {
+      "file": "bd.periodicity",
+      "catalog_column": "periodicity_code",
+      "label_column": "periodicity_name",
+      "matched": 34464,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    },
+    {
+      "file": "bd.ratelevel",
+      "catalog_column": "ratelevel_code",
+      "label_column": "ratelevel_name",
+      "matched": 34464,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    },
+    {
+      "file": "bd.seasonal",
+      "catalog_column": "seasonal",
+      "label_column": "seasonal_text",
+      "matched": 34464,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    },
+    {
+      "file": "bd.sizeclass",
+      "catalog_column": "sizeclass_code",
+      "label_column": "sizeclass_name",
+      "matched": 34464,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    },
+    {
+      "file": "bd.state",
+      "catalog_column": "state_code",
+      "label_column": "state_name",
+      "matched": 34464,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    },
+    {
+      "file": "bd.unitanalysis",
+      "catalog_column": "unitanalysis_code",
+      "label_column": "unitanalysis_name",
+      "matched": 34464,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    }
+  ],
+  "data_file_sampled": "bd.data.0.Current",
+  "data_lines_read": 522,
+  "sample_series": 5,
+  "sample_observations": 120,
+  "skipped": "full observation files were not downloaded"
+}

@@ -1,0 +1,100 @@
+{
+  "program": "FA",
+  "series_count": 492217,
+  "catalog_fields": [
+    "series_id",
+    "seasonal",
+    "category_code",
+    "datatype_code",
+    "case_code",
+    "industry_code",
+    "event_code",
+    "source_code",
+    "occupation_code",
+    "area_code",
+    "footnote_codes",
+    "begin_year",
+    "begin_period",
+    "end_year",
+    "end_period"
+  ],
+  "joins": [
+    {
+      "file": "fa.area",
+      "catalog_column": "area_code",
+      "label_column": "area_text",
+      "matched": 492217,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    },
+    {
+      "file": "fa.case",
+      "catalog_column": "case_code",
+      "label_column": "case_text",
+      "matched": 492217,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    },
+    {
+      "file": "fa.category2",
+      "catalog_column": "category_code",
+      "label_column": "category_text",
+      "matched": 492217,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    },
+    {
+      "file": "fa.datatype",
+      "catalog_column": "datatype_code",
+      "label_column": "datatype_text",
+      "matched": 492217,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    },
+    {
+      "file": "fa.event",
+      "catalog_column": "event_code",
+      "label_column": "event_text",
+      "matched": 43163,
+      "unmatched": 0,
+      "blank": 449054,
+      "unmatched_examples": []
+    },
+    {
+      "file": "fa.industry",
+      "catalog_column": "industry_code",
+      "label_column": "industry_text",
+      "matched": 207765,
+      "unmatched": 0,
+      "blank": 284452,
+      "unmatched_examples": []
+    },
+    {
+      "file": "fa.occupation",
+      "catalog_column": "occupation_code",
+      "label_column": "occupation_text",
+      "matched": 138740,
+      "unmatched": 0,
+      "blank": 353477,
+      "unmatched_examples": []
+    },
+    {
+      "file": "fa.source",
+      "catalog_column": "source_code",
+      "label_column": "source_text",
+      "matched": 102549,
+      "unmatched": 0,
+      "blank": 389668,
+      "unmatched_examples": []
+    }
+  ],
+  "data_file_sampled": "fa.data.0.Current",
+  "data_lines_read": 12,
+  "sample_series": 5,
+  "sample_observations": 10,
+  "skipped": "full observation files were not downloaded"
+}

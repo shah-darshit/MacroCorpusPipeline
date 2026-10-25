@@ -1,0 +1,71 @@
+{
+  "program": "CU",
+  "series_count": 8104,
+  "catalog_fields": [
+    "series_id",
+    "area_code",
+    "item_code",
+    "seasonal",
+    "periodicity_code",
+    "base_code",
+    "base_period",
+    "series_title",
+    "footnote_codes",
+    "begin_year",
+    "begin_period",
+    "end_year",
+    "end_period"
+  ],
+  "joins": [
+    {
+      "file": "cu.area",
+      "catalog_column": "area_code",
+      "label_column": "area_name",
+      "matched": 8104,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    },
+    {
+      "file": "cu.base",
+      "catalog_column": "base_code",
+      "label_column": "base_name",
+      "matched": 8104,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    },
+    {
+      "file": "cu.item",
+      "catalog_column": "item_code",
+      "label_column": "item_name",
+      "matched": 8104,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    },
+    {
+      "file": "cu.periodicity",
+      "catalog_column": "periodicity_code",
+      "label_column": "periodicity_name",
+      "matched": 8104,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    },
+    {
+      "file": "cu.seasonal",
+      "catalog_column": "seasonal",
+      "label_column": "seasonal_text",
+      "matched": 8104,
+      "unmatched": 0,
+      "blank": 0,
+      "unmatched_examples": []
+    }
+  ],
+  "data_file_sampled": "cu.data.0.Current",
+  "data_lines_read": 1787,
+  "sample_series": 5,
+  "sample_observations": 120,
+  "skipped": "full observation files were not downloaded"
+}

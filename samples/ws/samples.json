@@ -1,0 +1,797 @@
+[
+  {
+    "series_id": "WSU001",
+    "measure_code": "001",
+    "seasonal": "U",
+    "series_title": "Days of idleness (in 1,000s) from all work stoppages in effect in the period",
+    "footnote_codes": "",
+    "begin_year": "1947",
+    "begin_period": "M13",
+    "end_year": "2026",
+    "end_period": "M09",
+    "measure_text": "Days of idleness (in 1,000s) from all work stoppages in effect in the period",
+    "seasonal_text": "Not Seasonally Adjusted",
+    "observations": [
+      {
+        "year": "1947",
+        "period": "M13",
+        "value": "25720",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1948",
+        "period": "M13",
+        "value": "26127",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1949",
+        "period": "M13",
+        "value": "43420",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1950",
+        "period": "M13",
+        "value": "30390",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1951",
+        "period": "M13",
+        "value": "15070",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1952",
+        "period": "M13",
+        "value": "48820",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1953",
+        "period": "M13",
+        "value": "18130",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1954",
+        "period": "M13",
+        "value": "16630",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1955",
+        "period": "M13",
+        "value": "21180",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1956",
+        "period": "M13",
+        "value": "26840",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1957",
+        "period": "M13",
+        "value": "10340",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1958",
+        "period": "M13",
+        "value": "17900",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1959",
+        "period": "M13",
+        "value": "60850",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1960",
+        "period": "M13",
+        "value": "13260",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1961",
+        "period": "M13",
+        "value": "10140",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1962",
+        "period": "M13",
+        "value": "11760",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1963",
+        "period": "M13",
+        "value": "10020",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1964",
+        "period": "M13",
+        "value": "16220",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1965",
+        "period": "M13",
+        "value": "15140",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1966",
+        "period": "M13",
+        "value": "16000",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1967",
+        "period": "M13",
+        "value": "31320",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1968",
+        "period": "M13",
+        "value": "35367",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1969",
+        "period": "M13",
+        "value": "29397",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1970",
+        "period": "M13",
+        "value": "52761",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "WSU002",
+    "measure_code": "002",
+    "seasonal": "U",
+    "series_title": "Days of idleness (as % of total estimated working time) from work stoppages in effect in the period",
+    "footnote_codes": "D",
+    "begin_year": "1947",
+    "begin_period": "M13",
+    "end_year": "2024",
+    "end_period": "M04",
+    "measure_text": "Days of idleness (as % of total estimated working time) from work stoppages in effect in the period",
+    "seasonal_text": "Not Seasonally Adjusted",
+    "observations": [
+      {
+        "year": "1947",
+        "period": "M13",
+        "value": "-",
+        "footnote_codes": "1"
+      },
+      {
+        "year": "1948",
+        "period": "M13",
+        "value": "0.22",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1949",
+        "period": "M13",
+        "value": "0.38",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1950",
+        "period": "M13",
+        "value": "0.26",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1951",
+        "period": "M13",
+        "value": "0.12",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1952",
+        "period": "M13",
+        "value": "0.38",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1953",
+        "period": "M13",
+        "value": "0.14",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1954",
+        "period": "M13",
+        "value": "0.13",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1955",
+        "period": "M13",
+        "value": "0.16",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1956",
+        "period": "M13",
+        "value": "0.20",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1957",
+        "period": "M13",
+        "value": "0.07",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1958",
+        "period": "M13",
+        "value": "0.13",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1959",
+        "period": "M13",
+        "value": "0.43",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1960",
+        "period": "M13",
+        "value": "0.09",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1961",
+        "period": "M13",
+        "value": "0.07",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1962",
+        "period": "M13",
+        "value": "0.08",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1963",
+        "period": "M13",
+        "value": "0.07",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1964",
+        "period": "M13",
+        "value": "0.11",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1965",
+        "period": "M13",
+        "value": "0.10",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1966",
+        "period": "M13",
+        "value": "0.10",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1967",
+        "period": "M13",
+        "value": "0.18",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1968",
+        "period": "M13",
+        "value": "0.20",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1969",
+        "period": "M13",
+        "value": "0.16",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1970",
+        "period": "M13",
+        "value": "0.29",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "WSU010",
+    "measure_code": "010",
+    "seasonal": "U",
+    "series_title": "Number of workers (in 1,000s) involved in all work stoppages beginning in the period",
+    "footnote_codes": "",
+    "begin_year": "1947",
+    "begin_period": "M13",
+    "end_year": "2026",
+    "end_period": "M09",
+    "measure_text": "Number of workers (in 1,000s) involved in all work stoppages beginning in the period",
+    "seasonal_text": "Not Seasonally Adjusted",
+    "observations": [
+      {
+        "year": "1947",
+        "period": "M13",
+        "value": "1629",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1948",
+        "period": "M13",
+        "value": "1435",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1949",
+        "period": "M13",
+        "value": "2537",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1950",
+        "period": "M13",
+        "value": "1698",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1951",
+        "period": "M13",
+        "value": "1462",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1952",
+        "period": "M13",
+        "value": "2746",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1953",
+        "period": "M13",
+        "value": "1623",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1954",
+        "period": "M13",
+        "value": "1075",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1955",
+        "period": "M13",
+        "value": "2055",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1956",
+        "period": "M13",
+        "value": "1370",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1957",
+        "period": "M13",
+        "value": "887",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1958",
+        "period": "M13",
+        "value": "1587",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1959",
+        "period": "M13",
+        "value": "1381",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1960",
+        "period": "M13",
+        "value": "896",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1961",
+        "period": "M13",
+        "value": "1031",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1962",
+        "period": "M13",
+        "value": "793",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1963",
+        "period": "M13",
+        "value": "512",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1964",
+        "period": "M13",
+        "value": "1183",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1965",
+        "period": "M13",
+        "value": "999",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1966",
+        "period": "M13",
+        "value": "1300",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1967",
+        "period": "M13",
+        "value": "2192",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1968",
+        "period": "M13",
+        "value": "1855",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1969",
+        "period": "M13",
+        "value": "1576",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1970",
+        "period": "M13",
+        "value": "2468",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "WSU020",
+    "measure_code": "020",
+    "seasonal": "U",
+    "series_title": "Number of workers (in 1,000s) involved in all work stoppages in effect in the period",
+    "footnote_codes": "",
+    "begin_year": "1981",
+    "begin_period": "M01",
+    "end_year": "2026",
+    "end_period": "M09",
+    "measure_text": "Number of workers (in 1,000s) involved in all work stoppages in effect in the period",
+    "seasonal_text": "Not Seasonally Adjusted",
+    "observations": [
+      {
+        "year": "1981",
+        "period": "M01",
+        "value": "29.6",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1981",
+        "period": "M02",
+        "value": "20.9",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1981",
+        "period": "M03",
+        "value": "207.8",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1981",
+        "period": "M04",
+        "value": "223.5",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1981",
+        "period": "M05",
+        "value": "259.0",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1981",
+        "period": "M06",
+        "value": "415.1",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1981",
+        "period": "M07",
+        "value": "125.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1981",
+        "period": "M08",
+        "value": "86.6",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1981",
+        "period": "M09",
+        "value": "65.2",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1981",
+        "period": "M10",
+        "value": "48.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1981",
+        "period": "M11",
+        "value": "13.5",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1981",
+        "period": "M12",
+        "value": "8.8",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1981",
+        "period": "M13",
+        "value": "746.5",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1982",
+        "period": "M01",
+        "value": "11.4",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1982",
+        "period": "M02",
+        "value": "15.3",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1982",
+        "period": "M03",
+        "value": "26.1",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1982",
+        "period": "M04",
+        "value": "79.1",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1982",
+        "period": "M05",
+        "value": "66.1",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1982",
+        "period": "M06",
+        "value": "66.9",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1982",
+        "period": "M07",
+        "value": "65.9",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1982",
+        "period": "M08",
+        "value": "58.0",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1982",
+        "period": "M09",
+        "value": "427.0",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1982",
+        "period": "M10",
+        "value": "67.6",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1982",
+        "period": "M11",
+        "value": "43.7",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "WSU100",
+    "measure_code": "100",
+    "seasonal": "U",
+    "series_title": "Number of work stoppages involving 1,000 workers or more beginning in the period",
+    "footnote_codes": "",
+    "begin_year": "1947",
+    "begin_period": "M13",
+    "end_year": "2026",
+    "end_period": "M09",
+    "measure_text": "Number of work stoppages involving 1,000 workers or more beginning in the period",
+    "seasonal_text": "Not Seasonally Adjusted",
+    "observations": [
+      {
+        "year": "1947",
+        "period": "M13",
+        "value": "270",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1948",
+        "period": "M13",
+        "value": "245",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1949",
+        "period": "M13",
+        "value": "262",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1950",
+        "period": "M13",
+        "value": "424",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1951",
+        "period": "M13",
+        "value": "415",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1952",
+        "period": "M13",
+        "value": "470",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1953",
+        "period": "M13",
+        "value": "437",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1954",
+        "period": "M13",
+        "value": "265",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1955",
+        "period": "M13",
+        "value": "363",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1956",
+        "period": "M13",
+        "value": "287",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1957",
+        "period": "M13",
+        "value": "279",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1958",
+        "period": "M13",
+        "value": "332",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1959",
+        "period": "M13",
+        "value": "245",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1960",
+        "period": "M13",
+        "value": "222",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1961",
+        "period": "M13",
+        "value": "195",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1962",
+        "period": "M13",
+        "value": "211",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1963",
+        "period": "M13",
+        "value": "181",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1964",
+        "period": "M13",
+        "value": "246",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1965",
+        "period": "M13",
+        "value": "268",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1966",
+        "period": "M13",
+        "value": "321",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1967",
+        "period": "M13",
+        "value": "381",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1968",
+        "period": "M13",
+        "value": "392",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1969",
+        "period": "M13",
+        "value": "412",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1970",
+        "period": "M13",
+        "value": "381",
+        "footnote_codes": ""
+      }
+    ]
+  }
+]

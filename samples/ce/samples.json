@@ -1,0 +1,817 @@
+[
+  {
+    "series_id": "CES0000000001",
+    "supersector_code": "00",
+    "industry_code": "00000000",
+    "data_type_code": "01",
+    "seasonal": "S",
+    "series_title": "All employees, thousands, total nonfarm, seasonally adjusted",
+    "footnote_codes": "",
+    "begin_year": "1939",
+    "begin_period": "M01",
+    "end_year": "2026",
+    "end_period": "M09",
+    "data_type_text": "ALL EMPLOYEES, THOUSANDS",
+    "industry_name": "Total nonfarm",
+    "seasonal_text": "Seasonally Adjusted",
+    "supersector_name": "Total nonfarm",
+    "observations": [
+      {
+        "year": "1939",
+        "period": "M01",
+        "value": "29923",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M02",
+        "value": "30100",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M03",
+        "value": "30280",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M04",
+        "value": "30094",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M05",
+        "value": "30299",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M06",
+        "value": "30502",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M07",
+        "value": "30419",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M08",
+        "value": "30663",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M09",
+        "value": "31031",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M10",
+        "value": "31411",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M11",
+        "value": "31470",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M12",
+        "value": "31542",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M01",
+        "value": "31603",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M02",
+        "value": "31715",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M03",
+        "value": "31825",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M04",
+        "value": "31701",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M05",
+        "value": "31879",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M06",
+        "value": "31977",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M07",
+        "value": "31942",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M08",
+        "value": "32352",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M09",
+        "value": "32810",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M10",
+        "value": "33267",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M11",
+        "value": "33669",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M12",
+        "value": "34174",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "CES0500000001",
+    "supersector_code": "05",
+    "industry_code": "05000000",
+    "data_type_code": "01",
+    "seasonal": "S",
+    "series_title": "All employees, thousands, total private, seasonally adjusted",
+    "footnote_codes": "",
+    "begin_year": "1939",
+    "begin_period": "M01",
+    "end_year": "2026",
+    "end_period": "M09",
+    "data_type_text": "ALL EMPLOYEES, THOUSANDS",
+    "industry_name": "Total private",
+    "seasonal_text": "Seasonally Adjusted",
+    "supersector_name": "Total private",
+    "observations": [
+      {
+        "year": "1939",
+        "period": "M01",
+        "value": "25935",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M02",
+        "value": "26099",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M03",
+        "value": "26278",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M04",
+        "value": "26092",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M05",
+        "value": "26293",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M06",
+        "value": "26499",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M07",
+        "value": "26400",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M08",
+        "value": "26617",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M09",
+        "value": "26955",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M10",
+        "value": "27322",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M11",
+        "value": "27361",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M12",
+        "value": "27408",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M01",
+        "value": "27453",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M02",
+        "value": "27565",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M03",
+        "value": "27674",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M04",
+        "value": "27549",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M05",
+        "value": "27707",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M06",
+        "value": "27759",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M07",
+        "value": "27681",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M08",
+        "value": "28070",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M09",
+        "value": "28498",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M10",
+        "value": "28914",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M11",
+        "value": "29273",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M12",
+        "value": "29759",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "CES0600000001",
+    "supersector_code": "06",
+    "industry_code": "06000000",
+    "data_type_code": "01",
+    "seasonal": "S",
+    "series_title": "All employees, thousands, goods-producing, seasonally adjusted",
+    "footnote_codes": "",
+    "begin_year": "1939",
+    "begin_period": "M01",
+    "end_year": "2026",
+    "end_period": "M09",
+    "data_type_text": "ALL EMPLOYEES, THOUSANDS",
+    "industry_name": "Goods-producing",
+    "seasonal_text": "Seasonally Adjusted",
+    "supersector_name": "Goods-producing",
+    "observations": [
+      {
+        "year": "1939",
+        "period": "M01",
+        "value": "11098",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M02",
+        "value": "11221",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M03",
+        "value": "11383",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M04",
+        "value": "11182",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M05",
+        "value": "11298",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M06",
+        "value": "11447",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M07",
+        "value": "11304",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M08",
+        "value": "11495",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M09",
+        "value": "11692",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M10",
+        "value": "11984",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M11",
+        "value": "12007",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M12",
+        "value": "12021",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M01",
+        "value": "11973",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M02",
+        "value": "12023",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M03",
+        "value": "12024",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M04",
+        "value": "12013",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M05",
+        "value": "12038",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M06",
+        "value": "12040",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M07",
+        "value": "11958",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M08",
+        "value": "12257",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M09",
+        "value": "12565",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M10",
+        "value": "12909",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M11",
+        "value": "13206",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M12",
+        "value": "13563",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "CES0700000001",
+    "supersector_code": "07",
+    "industry_code": "07000000",
+    "data_type_code": "01",
+    "seasonal": "S",
+    "series_title": "All employees, thousands, service-providing, seasonally adjusted",
+    "footnote_codes": "",
+    "begin_year": "1939",
+    "begin_period": "M01",
+    "end_year": "2026",
+    "end_period": "M09",
+    "data_type_text": "ALL EMPLOYEES, THOUSANDS",
+    "industry_name": "Service-providing",
+    "seasonal_text": "Seasonally Adjusted",
+    "supersector_name": "Service-providing",
+    "observations": [
+      {
+        "year": "1939",
+        "period": "M01",
+        "value": "18825",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M02",
+        "value": "18879",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M03",
+        "value": "18897",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M04",
+        "value": "18912",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M05",
+        "value": "19001",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M06",
+        "value": "19055",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M07",
+        "value": "19115",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M08",
+        "value": "19168",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M09",
+        "value": "19339",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M10",
+        "value": "19427",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M11",
+        "value": "19463",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M12",
+        "value": "19521",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M01",
+        "value": "19630",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M02",
+        "value": "19692",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M03",
+        "value": "19801",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M04",
+        "value": "19688",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M05",
+        "value": "19841",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M06",
+        "value": "19937",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M07",
+        "value": "19984",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M08",
+        "value": "20095",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M09",
+        "value": "20245",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M10",
+        "value": "20358",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M11",
+        "value": "20463",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M12",
+        "value": "20611",
+        "footnote_codes": ""
+      }
+    ]
+  },
+  {
+    "series_id": "CES0800000001",
+    "supersector_code": "08",
+    "industry_code": "08000000",
+    "data_type_code": "01",
+    "seasonal": "S",
+    "series_title": "All employees, thousands, private service-providing, seasonally adjusted",
+    "footnote_codes": "",
+    "begin_year": "1939",
+    "begin_period": "M01",
+    "end_year": "2026",
+    "end_period": "M09",
+    "data_type_text": "ALL EMPLOYEES, THOUSANDS",
+    "industry_name": "Private service-providing",
+    "seasonal_text": "Seasonally Adjusted",
+    "supersector_name": "Private service-providing",
+    "observations": [
+      {
+        "year": "1939",
+        "period": "M01",
+        "value": "14837",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M02",
+        "value": "14878",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M03",
+        "value": "14895",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M04",
+        "value": "14910",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M05",
+        "value": "14995",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M06",
+        "value": "15052",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M07",
+        "value": "15096",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M08",
+        "value": "15122",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M09",
+        "value": "15263",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M10",
+        "value": "15338",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M11",
+        "value": "15354",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1939",
+        "period": "M12",
+        "value": "15387",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M01",
+        "value": "15480",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M02",
+        "value": "15542",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M03",
+        "value": "15650",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M04",
+        "value": "15536",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M05",
+        "value": "15669",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M06",
+        "value": "15719",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M07",
+        "value": "15723",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M08",
+        "value": "15813",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M09",
+        "value": "15933",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M10",
+        "value": "16005",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M11",
+        "value": "16067",
+        "footnote_codes": ""
+      },
+      {
+        "year": "1940",
+        "period": "M12",
+        "value": "16196",
+        "footnote_codes": ""
+      }
+    ]
+  }
+]

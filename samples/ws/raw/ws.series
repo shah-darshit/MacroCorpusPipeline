@@ -1,0 +1,7 @@
+series_id        	measure_code	seasonal	series_title	footnote_codes	begin_year	begin_period	end_year	end_period
+WSU001           	001	U	Days of idleness (in 1,000s) from all work stoppages in effect in the period		1947	M13	2026	M09
+WSU002           	002	U	Days of idleness (as % of total estimated working time) from work stoppages in effect in the period	D	1947	M13	2024	M04
+WSU010           	010	U	Number of workers (in 1,000s) involved in all work stoppages beginning in the period		1947	M13	2026	M09
+WSU020           	020	U	Number of workers (in 1,000s) involved in all work stoppages in effect in the period		1981	M01	2026	M09
+WSU100           	100	U	Number of work stoppages involving 1,000 workers or more beginning in the period		1947	M13	2026	M09
+WSU200           	200	U	Number of work stoppages involving 1,000 workers or more in effect in the period		1981	M01	2026	M09

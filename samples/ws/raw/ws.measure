@@ -1,0 +1,7 @@
+measure_code	measure_text
+001	Days of idleness (in 1,000s) from all work stoppages in effect in the period
+002	Days of idleness (as % of total estimated working time) from work stoppages in effect in the period
+010	Number of workers (in 1,000s) involved in all work stoppages beginning in the period
+020	Number of workers (in 1,000s) involved in all work stoppages in effect in the period
+100	Number of work stoppages involving 1,000 workers or more beginning in the period
+200	Number of work stoppages involving 1,000 workers or more in effect in the period

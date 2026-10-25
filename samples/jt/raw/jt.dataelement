@@ -1,0 +1,11 @@
+dataelement_code	dataelement_text	display_level	selectable	sort_sequence
+HI	Hires	0	T	2
+JO	Job openings	0	T	1
+LD	Layoffs and discharges	1	T	5
+OS	Other separations	1	T	6
+QU	Quits	1	T	4
+R1	First closing response rate	0	T	8
+R2	Second closing response rate	0	T	9
+TS	Total separations	0	T	3
+UN	Unemployment rate	0	F	10
+UO	Unemployed persons per job opening ratio	0	T	7
