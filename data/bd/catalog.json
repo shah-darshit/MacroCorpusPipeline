@@ -1,0 +1,268 @@
+{
+  "program": "BD",
+  "listing_sha256": "03175ce45b6ab8ec0793eaa3891b5fb19fccaae3738b3f77626a622d6ac78628",
+  "files": [
+    {
+      "name": "bd.contacts",
+      "sha256": "2f8854add0c693e3a97e9929009790b1db59a97147922bd9782ef1dbf5d62f1c",
+      "size": 209,
+      "role": "documentation",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bd.county",
+      "sha256": "f3369f01c5d35e2e2d12dedccfada7258f46cd2593d594d0bbbdd361dc3bb38c",
+      "size": 39,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bd.data.0.Current",
+      "sha256": "e3e7676de895ef9af5e9cec8084381cd8aa96cf1d8d80e5c55b6e9126e90d799",
+      "size": 199205140,
+      "role": "observations",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bd.data.1.AllItems",
+      "sha256": "8fd11308f099f6a1b8b89661b3696e895ad464fb1f452098ea8960a865ed159e",
+      "size": 255021672,
+      "role": "observations",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bd.dataclass",
+      "sha256": "1a912fc027b2679e4dd5da5ebdfc37657ce0aa1b6c12fbf42191d7c3692cd7ba",
+      "size": 267,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bd.dataelement",
+      "sha256": "438cbe097ee57146acce647246630cec7de708f3baac3984a191d5555faed089",
+      "size": 77,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bd.footnote",
+      "sha256": "a1cb15857931e89ce0e0e6a8f202d3070a3474dbe39f79ea869e0b5cc1db83a7",
+      "size": 153,
+      "role": "footnotes",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bd.industry",
+      "sha256": "6dec181f5061346f6e45b95912e99953e3b78c33709d2768fede2362e7d7c144",
+      "size": 4452,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bd.msa",
+      "sha256": "3ceb8ed49928c550aafd5cea7a5b075209ae0bed4a59037b1264eb59a3e1e771",
+      "size": 35,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bd.ownership",
+      "sha256": "019754faeb0675d78afbf2af62b08923e1fb32a6ffff56dfb3587b2853b5b226",
+      "size": 49,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bd.periodicity",
+      "sha256": "be7f0c34d8f8f8b4d2e00b6755cfea054230e1f80512912e8a73a3a7e2ef9dca",
+      "size": 58,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bd.ratelevel",
+      "sha256": "27373d532ac5c5b292d7d26b3d79db42f36a189d9ea8a4e89d7f31e57f83e156",
+      "size": 48,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bd.seasonal",
+      "sha256": "9593252368e2787a16be26d8883593e91d3104f8213326274f5fce90a0f86788",
+      "size": 79,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bd.series",
+      "sha256": "5a7f48dd14eecfe53bdf0772a6b33260cd9f3bf90778f599d5a9b5577f0087c2",
+      "size": 5603877,
+      "role": "series_catalog",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bd.sizeclass",
+      "sha256": "43fc953375071a7d1d4235bb576b1c5eb5868182139ae98deeb5a37b3919f20f",
+      "size": 570,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bd.state",
+      "sha256": "c9ac6e75f4767c84ae18c19faaf7f172c9008a0bc689d7863783563af76a2c83",
+      "size": 771,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bd.txt",
+      "sha256": "a1bed72aac85050643c952bda1f5ea51db25c769e28459ccc2c99eaf40ce35f1",
+      "size": 17479,
+      "role": "documentation",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bd.unitanalysis",
+      "sha256": "b7abecb7a52e68ea65308ace9701c9adb5bacdeef090e31826806b19db57a78a",
+      "size": 54,
+      "role": "mapping",
+      "download_status": "downloaded"
+    }
+  ],
+  "catalog_fields": [
+    "series_id",
+    "seasonal",
+    "msa_code",
+    "state_code",
+    "county_code",
+    "industry_code",
+    "unitanalysis_code",
+    "dataelement_code",
+    "sizeclass_code",
+    "dataclass_code",
+    "ratelevel_code",
+    "periodicity_code",
+    "ownership_code",
+    "series_title",
+    "footnote_codes",
+    "begin_year",
+    "begin_period",
+    "end_year",
+    "end_period"
+  ],
+  "joins": [
+    {
+      "file": "bd.county",
+      "catalog_column": "county_code",
+      "label_column": "county_name",
+      "matched": 34416,
+      "blank": 0,
+      "unmatched": 0
+    },
+    {
+      "file": "bd.dataclass",
+      "catalog_column": "dataclass_code",
+      "label_column": "dataclass_name",
+      "matched": 34416,
+      "blank": 0,
+      "unmatched": 0
+    },
+    {
+      "file": "bd.dataelement",
+      "catalog_column": "dataelement_code",
+      "label_column": "dataelement_name",
+      "matched": 34416,
+      "blank": 0,
+      "unmatched": 0
+    },
+    {
+      "file": "bd.industry",
+      "catalog_column": "industry_code",
+      "label_column": "industry_name",
+      "matched": 34416,
+      "blank": 0,
+      "unmatched": 0
+    },
+    {
+      "file": "bd.msa",
+      "catalog_column": "msa_code",
+      "label_column": "msa_name",
+      "matched": 34416,
+      "blank": 0,
+      "unmatched": 0
+    },
+    {
+      "file": "bd.ownership",
+      "catalog_column": "ownership_code",
+      "label_column": "ownership_name",
+      "matched": 34416,
+      "blank": 0,
+      "unmatched": 0
+    },
+    {
+      "file": "bd.periodicity",
+      "catalog_column": "periodicity_code",
+      "label_column": "periodicity_name",
+      "matched": 34416,
+      "blank": 0,
+      "unmatched": 0
+    },
+    {
+      "file": "bd.ratelevel",
+      "catalog_column": "ratelevel_code",
+      "label_column": "ratelevel_name",
+      "matched": 34416,
+      "blank": 0,
+      "unmatched": 0
+    },
+    {
+      "file": "bd.seasonal",
+      "catalog_column": "seasonal",
+      "label_column": "seasonal_text",
+      "matched": 34416,
+      "blank": 0,
+      "unmatched": 0
+    },
+    {
+      "file": "bd.sizeclass",
+      "catalog_column": "sizeclass_code",
+      "label_column": "sizeclass_name",
+      "matched": 34416,
+      "blank": 0,
+      "unmatched": 0
+    },
+    {
+      "file": "bd.state",
+      "catalog_column": "state_code",
+      "label_column": "state_name",
+      "matched": 34416,
+      "blank": 0,
+      "unmatched": 0
+    },
+    {
+      "file": "bd.unitanalysis",
+      "catalog_column": "unitanalysis_code",
+      "label_column": "unitanalysis_name",
+      "matched": 34416,
+      "blank": 0,
+      "unmatched": 0
+    }
+  ],
+  "coverage": {
+    "series": 34416,
+    "observations": 4626528,
+    "catalog_without_observations": 0,
+    "year_min": 1992,
+    "year_max": 2026
+  },
+  "validation": {
+    "rows_in": 8240208,
+    "rows_written": 4626528,
+    "malformed_rows": 0,
+    "non_numeric_values": 0,
+    "missing_values": 3288,
+    "unknown_periods": 0,
+    "duplicate_identical": 3613680,
+    "duplicate_conflicts": 0
+  }
+}

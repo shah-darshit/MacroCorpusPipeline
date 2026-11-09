@@ -1,0 +1,136 @@
+{
+  "program": "AP",
+  "listing_sha256": "20c39bfdf272e796b07b37c27efc47f83233790b3a8994c2856c3a9532472c1e",
+  "files": [
+    {
+      "name": "ap.area",
+      "sha256": "1137036146970cc9320065ed0f94902f710709b6693ca0abf82c9fda3cf51042",
+      "size": 2114,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "ap.contacts",
+      "sha256": "e6bf19bed5382472c2d397111995d39a8dfb012091cffee0fadadb9b778c0157",
+      "size": 987,
+      "role": "documentation",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "ap.data.0.Current",
+      "sha256": "957044dea3350ef95023c3577b10a8c5c6aaad1c3f2452062901761cec2080eb",
+      "size": 8976664,
+      "role": "observations",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "ap.data.1.HouseholdFuels",
+      "sha256": "060ad6eb6bf1217945c2de8a032dab2c03d4877ce2ea9b19ba7b2602a228e64b",
+      "size": 4493170,
+      "role": "observations",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "ap.data.2.Gasoline",
+      "sha256": "79792810628db0e7c89a16401fb1e5357a31cfb8920a6e4ffe626fd721814f60",
+      "size": 4180138,
+      "role": "observations",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "ap.data.3.Food",
+      "sha256": "5f58bb7fb30dd805dbd4eb167c6070947777e73eb701846901b18e5b8c2f1c54",
+      "size": 6302544,
+      "role": "observations",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "ap.footnote",
+      "sha256": "ee0ad4fc6d5ca98c10b0a9b9cdd343ad9a56438c6d3534cc4c82f20505cac6f9",
+      "size": 89,
+      "role": "footnotes",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "ap.item",
+      "sha256": "4e96f3bca741f65692971fdec8053a44f7ee20f47a02eace4c4d3d9a1dd148f6",
+      "size": 9242,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "ap.period",
+      "sha256": "3a6636301c03a15da1cfa37522aeaccda45fa2bf92d325677d7b6c258ab0cd7d",
+      "size": 252,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "ap.seasonal",
+      "sha256": "801baddf3511b8d9b03c0dbd1a9d9365c668b911a2228c6c594ea8a684ace5d7",
+      "size": 79,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "ap.series",
+      "sha256": "9b3ad0b00e10b7872e76c09c620b655f24e76220f4ac5730069449979fc08eee",
+      "size": 231046,
+      "role": "series_catalog",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "ap.txt",
+      "sha256": "c83886f9a54f113a093c4251d5893233854407e382ae0d5209ffb09f791e7864",
+      "size": 10417,
+      "role": "documentation",
+      "download_status": "downloaded"
+    }
+  ],
+  "catalog_fields": [
+    "series_id",
+    "area_code",
+    "item_code",
+    "series_title",
+    "footnote_codes",
+    "begin_year",
+    "begin_period",
+    "end_year",
+    "end_period"
+  ],
+  "joins": [
+    {
+      "file": "ap.area",
+      "catalog_column": "area_code",
+      "label_column": "area_name",
+      "matched": 1483,
+      "blank": 0,
+      "unmatched": 0
+    },
+    {
+      "file": "ap.item",
+      "catalog_column": "item_code",
+      "label_column": "item_name",
+      "matched": 1483,
+      "blank": 0,
+      "unmatched": 0
+    }
+  ],
+  "coverage": {
+    "series": 1483,
+    "observations": 356553,
+    "catalog_without_observations": 0,
+    "year_min": 1973,
+    "year_max": 2026
+  },
+  "validation": {
+    "rows_in": 570271,
+    "rows_written": 356553,
+    "malformed_rows": 0,
+    "non_numeric_values": 0,
+    "missing_values": 457,
+    "unknown_periods": 0,
+    "duplicate_identical": 213718,
+    "duplicate_conflicts": 0
+  }
+}

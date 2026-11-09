@@ -1,0 +1,4506 @@
+{
+  "created_utc": "2026-11-08T21:54:36.673932+00:00",
+  "duckdb_version": "2.0.0",
+  "method": "Full local raw-table scans, SHA-256 exact-file deduplication, deduplication by native series/year/period, full index count scans, bounded output samples.",
+  "limitations": [
+    "Local downloaded data only; no provider denominator or new requests.",
+    "Output indexes are inventories, not proof every physical series file exists.",
+    "No full traversal or exact measurement of individual series-file storage.",
+    "History span includes gaps; numeric counts include annual averages and are not frequency-specific training eligibility.",
+    "Conflicting raw values use scraper file-priority ordering; conflict counts and continuity gaps are not assessed."
+  ],
+  "datasets": [
+    {
+      "program": "AP",
+      "run_status": "ok",
+      "summary": {
+        "series": 1483,
+        "observations": 356553,
+        "singleton_series": 2,
+        "single_year_series": 14,
+        "series_without_numeric_values": 0,
+        "series_with_one_numeric_value": 2,
+        "min_observations": 1,
+        "median_observations": 210.0,
+        "mean_observations": 240.42683749157115,
+        "max_observations": 609,
+        "p10_observations": 36,
+        "p90_observations": 527,
+        "first_year": 1973,
+        "last_year": 2026,
+        "median_year_span": 20.0,
+        "numeric_observations": 356096,
+        "missing_tokens": 457
+      },
+      "raw_quality": {
+        "rows_read": 570271,
+        "invalid_rows": 0
+      },
+      "raw_files": [
+        {
+          "name": "ap.data.0.Current",
+          "bytes": 8976664,
+          "sha256": "957044dea3350ef95023c3577b10a8c5c6aaad1c3f2452062901761cec2080eb",
+          "byte_identical_to": null
+        },
+        {
+          "name": "ap.data.1.HouseholdFuels",
+          "bytes": 4493170,
+          "sha256": "060ad6eb6bf1217945c2de8a032dab2c03d4877ce2ea9b19ba7b2602a228e64b",
+          "byte_identical_to": null
+        },
+        {
+          "name": "ap.data.2.Gasoline",
+          "bytes": 4180138,
+          "sha256": "79792810628db0e7c89a16401fb1e5357a31cfb8920a6e4ffe626fd721814f60",
+          "byte_identical_to": null
+        },
+        {
+          "name": "ap.data.3.Food",
+          "bytes": 6302544,
+          "sha256": "5f58bb7fb30dd805dbd4eb167c6070947777e73eb701846901b18e5b8c2f1c54",
+          "byte_identical_to": null
+        }
+      ],
+      "byte_identical_files_omitted_from_analysis": 0,
+      "duplicate_rows_removed_after_identical_file_elimination": 213718,
+      "observation_count_histogram": [
+        {
+          "observations": 1,
+          "series": 2
+        },
+        {
+          "observations": 3,
+          "series": 1
+        },
+        {
+          "observations": 4,
+          "series": 2
+        },
+        {
+          "observations": 5,
+          "series": 2
+        },
+        {
+          "observations": 6,
+          "series": 4
+        },
+        {
+          "observations": 7,
+          "series": 3
+        },
+        {
+          "observations": 8,
+          "series": 3
+        },
+        {
+          "observations": 9,
+          "series": 4
+        },
+        {
+          "observations": 10,
+          "series": 4
+        },
+        {
+          "observations": 11,
+          "series": 2
+        },
+        {
+          "observations": 12,
+          "series": 1
+        },
+        {
+          "observations": 13,
+          "series": 7
+        },
+        {
+          "observations": 14,
+          "series": 5
+        },
+        {
+          "observations": 15,
+          "series": 3
+        },
+        {
+          "observations": 16,
+          "series": 3
+        },
+        {
+          "observations": 17,
+          "series": 2
+        },
+        {
+          "observations": 18,
+          "series": 4
+        },
+        {
+          "observations": 19,
+          "series": 4
+        },
+        {
+          "observations": 20,
+          "series": 2
+        },
+        {
+          "observations": 21,
+          "series": 3
+        },
+        {
+          "observations": 22,
+          "series": 3
+        },
+        {
+          "observations": 23,
+          "series": 4
+        },
+        {
+          "observations": 24,
+          "series": 18
+        },
+        {
+          "observations": 25,
+          "series": 4
+        },
+        {
+          "observations": 26,
+          "series": 1
+        },
+        {
+          "observations": 27,
+          "series": 1
+        },
+        {
+          "observations": 28,
+          "series": 3
+        },
+        {
+          "observations": 29,
+          "series": 16
+        },
+        {
+          "observations": 30,
+          "series": 9
+        },
+        {
+          "observations": 31,
+          "series": 5
+        },
+        {
+          "observations": 32,
+          "series": 2
+        },
+        {
+          "observations": 33,
+          "series": 11
+        },
+        {
+          "observations": 34,
+          "series": 5
+        },
+        {
+          "observations": 35,
+          "series": 2
+        },
+        {
+          "observations": 36,
+          "series": 5
+        },
+        {
+          "observations": 37,
+          "series": 5
+        },
+        {
+          "observations": 38,
+          "series": 2
+        },
+        {
+          "observations": 39,
+          "series": 4
+        },
+        {
+          "observations": 40,
+          "series": 1
+        },
+        {
+          "observations": 41,
+          "series": 3
+        },
+        {
+          "observations": 42,
+          "series": 3
+        },
+        {
+          "observations": 44,
+          "series": 4
+        },
+        {
+          "observations": 45,
+          "series": 2
+        },
+        {
+          "observations": 46,
+          "series": 4
+        },
+        {
+          "observations": 47,
+          "series": 3
+        },
+        {
+          "observations": 48,
+          "series": 5
+        },
+        {
+          "observations": 49,
+          "series": 12
+        },
+        {
+          "observations": 50,
+          "series": 1
+        },
+        {
+          "observations": 51,
+          "series": 2
+        },
+        {
+          "observations": 52,
+          "series": 6
+        },
+        {
+          "observations": 53,
+          "series": 1
+        },
+        {
+          "observations": 55,
+          "series": 3
+        },
+        {
+          "observations": 56,
+          "series": 3
+        },
+        {
+          "observations": 57,
+          "series": 4
+        },
+        {
+          "observations": 58,
+          "series": 2
+        },
+        {
+          "observations": 59,
+          "series": 1
+        },
+        {
+          "observations": 60,
+          "series": 2
+        },
+        {
+          "observations": 61,
+          "series": 1
+        },
+        {
+          "observations": 62,
+          "series": 1
+        },
+        {
+          "observations": 63,
+          "series": 6
+        },
+        {
+          "observations": 64,
+          "series": 6
+        },
+        {
+          "observations": 65,
+          "series": 1
+        },
+        {
+          "observations": 67,
+          "series": 3
+        },
+        {
+          "observations": 69,
+          "series": 2
+        },
+        {
+          "observations": 70,
+          "series": 1
+        },
+        {
+          "observations": 71,
+          "series": 2
+        },
+        {
+          "observations": 72,
+          "series": 6
+        },
+        {
+          "observations": 73,
+          "series": 4
+        },
+        {
+          "observations": 74,
+          "series": 5
+        },
+        {
+          "observations": 75,
+          "series": 5
+        },
+        {
+          "observations": 76,
+          "series": 3
+        },
+        {
+          "observations": 77,
+          "series": 3
+        },
+        {
+          "observations": 79,
+          "series": 4
+        },
+        {
+          "observations": 80,
+          "series": 3
+        },
+        {
+          "observations": 81,
+          "series": 1
+        },
+        {
+          "observations": 82,
+          "series": 1
+        },
+        {
+          "observations": 84,
+          "series": 32
+        },
+        {
+          "observations": 86,
+          "series": 1
+        },
+        {
+          "observations": 87,
+          "series": 1
+        },
+        {
+          "observations": 88,
+          "series": 6
+        },
+        {
+          "observations": 89,
+          "series": 2
+        },
+        {
+          "observations": 90,
+          "series": 7
+        },
+        {
+          "observations": 91,
+          "series": 5
+        },
+        {
+          "observations": 92,
+          "series": 2
+        },
+        {
+          "observations": 93,
+          "series": 2
+        },
+        {
+          "observations": 95,
+          "series": 2
+        },
+        {
+          "observations": 96,
+          "series": 6
+        },
+        {
+          "observations": 97,
+          "series": 57
+        },
+        {
+          "observations": 98,
+          "series": 2
+        },
+        {
+          "observations": 99,
+          "series": 5
+        },
+        {
+          "observations": 100,
+          "series": 2
+        },
+        {
+          "observations": 102,
+          "series": 16
+        },
+        {
+          "observations": 103,
+          "series": 3
+        },
+        {
+          "observations": 104,
+          "series": 3
+        },
+        {
+          "observations": 105,
+          "series": 63
+        },
+        {
+          "observations": 106,
+          "series": 1
+        },
+        {
+          "observations": 107,
+          "series": 9
+        },
+        {
+          "observations": 108,
+          "series": 22
+        },
+        {
+          "observations": 109,
+          "series": 1
+        },
+        {
+          "observations": 110,
+          "series": 1
+        },
+        {
+          "observations": 112,
+          "series": 1
+        },
+        {
+          "observations": 114,
+          "series": 1
+        },
+        {
+          "observations": 115,
+          "series": 3
+        },
+        {
+          "observations": 117,
+          "series": 1
+        },
+        {
+          "observations": 118,
+          "series": 2
+        },
+        {
+          "observations": 119,
+          "series": 1
+        },
+        {
+          "observations": 120,
+          "series": 2
+        },
+        {
+          "observations": 121,
+          "series": 6
+        },
+        {
+          "observations": 123,
+          "series": 4
+        },
+        {
+          "observations": 124,
+          "series": 2
+        },
+        {
+          "observations": 125,
+          "series": 2
+        },
+        {
+          "observations": 126,
+          "series": 2
+        },
+        {
+          "observations": 127,
+          "series": 7
+        },
+        {
+          "observations": 128,
+          "series": 1
+        },
+        {
+          "observations": 129,
+          "series": 3
+        },
+        {
+          "observations": 130,
+          "series": 4
+        },
+        {
+          "observations": 131,
+          "series": 2
+        },
+        {
+          "observations": 132,
+          "series": 23
+        },
+        {
+          "observations": 133,
+          "series": 3
+        },
+        {
+          "observations": 134,
+          "series": 3
+        },
+        {
+          "observations": 135,
+          "series": 3
+        },
+        {
+          "observations": 136,
+          "series": 6
+        },
+        {
+          "observations": 137,
+          "series": 1
+        },
+        {
+          "observations": 138,
+          "series": 3
+        },
+        {
+          "observations": 139,
+          "series": 3
+        },
+        {
+          "observations": 140,
+          "series": 2
+        },
+        {
+          "observations": 141,
+          "series": 1
+        },
+        {
+          "observations": 142,
+          "series": 1
+        },
+        {
+          "observations": 143,
+          "series": 4
+        },
+        {
+          "observations": 144,
+          "series": 2
+        },
+        {
+          "observations": 146,
+          "series": 4
+        },
+        {
+          "observations": 147,
+          "series": 2
+        },
+        {
+          "observations": 148,
+          "series": 1
+        },
+        {
+          "observations": 149,
+          "series": 1
+        },
+        {
+          "observations": 150,
+          "series": 1
+        },
+        {
+          "observations": 151,
+          "series": 1
+        },
+        {
+          "observations": 152,
+          "series": 1
+        },
+        {
+          "observations": 154,
+          "series": 2
+        },
+        {
+          "observations": 155,
+          "series": 2
+        },
+        {
+          "observations": 156,
+          "series": 1
+        },
+        {
+          "observations": 157,
+          "series": 1
+        },
+        {
+          "observations": 158,
+          "series": 1
+        },
+        {
+          "observations": 160,
+          "series": 12
+        },
+        {
+          "observations": 162,
+          "series": 1
+        },
+        {
+          "observations": 163,
+          "series": 1
+        },
+        {
+          "observations": 164,
+          "series": 1
+        },
+        {
+          "observations": 165,
+          "series": 1
+        },
+        {
+          "observations": 166,
+          "series": 1
+        },
+        {
+          "observations": 167,
+          "series": 2
+        },
+        {
+          "observations": 169,
+          "series": 2
+        },
+        {
+          "observations": 170,
+          "series": 2
+        },
+        {
+          "observations": 171,
+          "series": 1
+        },
+        {
+          "observations": 172,
+          "series": 3
+        },
+        {
+          "observations": 174,
+          "series": 1
+        },
+        {
+          "observations": 175,
+          "series": 1
+        },
+        {
+          "observations": 176,
+          "series": 1
+        },
+        {
+          "observations": 177,
+          "series": 2
+        },
+        {
+          "observations": 178,
+          "series": 4
+        },
+        {
+          "observations": 180,
+          "series": 2
+        },
+        {
+          "observations": 181,
+          "series": 8
+        },
+        {
+          "observations": 184,
+          "series": 1
+        },
+        {
+          "observations": 185,
+          "series": 2
+        },
+        {
+          "observations": 186,
+          "series": 18
+        },
+        {
+          "observations": 188,
+          "series": 1
+        },
+        {
+          "observations": 190,
+          "series": 1
+        },
+        {
+          "observations": 191,
+          "series": 2
+        },
+        {
+          "observations": 193,
+          "series": 1
+        },
+        {
+          "observations": 194,
+          "series": 1
+        },
+        {
+          "observations": 195,
+          "series": 1
+        },
+        {
+          "observations": 196,
+          "series": 8
+        },
+        {
+          "observations": 199,
+          "series": 1
+        },
+        {
+          "observations": 200,
+          "series": 2
+        },
+        {
+          "observations": 202,
+          "series": 1
+        },
+        {
+          "observations": 203,
+          "series": 1
+        },
+        {
+          "observations": 204,
+          "series": 1
+        },
+        {
+          "observations": 205,
+          "series": 1
+        },
+        {
+          "observations": 206,
+          "series": 1
+        },
+        {
+          "observations": 208,
+          "series": 1
+        },
+        {
+          "observations": 210,
+          "series": 2
+        },
+        {
+          "observations": 211,
+          "series": 1
+        },
+        {
+          "observations": 213,
+          "series": 13
+        },
+        {
+          "observations": 214,
+          "series": 2
+        },
+        {
+          "observations": 215,
+          "series": 1
+        },
+        {
+          "observations": 216,
+          "series": 4
+        },
+        {
+          "observations": 217,
+          "series": 1
+        },
+        {
+          "observations": 218,
+          "series": 1
+        },
+        {
+          "observations": 219,
+          "series": 1
+        },
+        {
+          "observations": 222,
+          "series": 2
+        },
+        {
+          "observations": 223,
+          "series": 1
+        },
+        {
+          "observations": 224,
+          "series": 2
+        },
+        {
+          "observations": 225,
+          "series": 3
+        },
+        {
+          "observations": 226,
+          "series": 1
+        },
+        {
+          "observations": 227,
+          "series": 2
+        },
+        {
+          "observations": 228,
+          "series": 4
+        },
+        {
+          "observations": 229,
+          "series": 64
+        },
+        {
+          "observations": 230,
+          "series": 1
+        },
+        {
+          "observations": 231,
+          "series": 3
+        },
+        {
+          "observations": 232,
+          "series": 1
+        },
+        {
+          "observations": 233,
+          "series": 1
+        },
+        {
+          "observations": 238,
+          "series": 2
+        },
+        {
+          "observations": 240,
+          "series": 25
+        },
+        {
+          "observations": 243,
+          "series": 1
+        },
+        {
+          "observations": 244,
+          "series": 2
+        },
+        {
+          "observations": 245,
+          "series": 1
+        },
+        {
+          "observations": 246,
+          "series": 1
+        },
+        {
+          "observations": 247,
+          "series": 2
+        },
+        {
+          "observations": 248,
+          "series": 2
+        },
+        {
+          "observations": 249,
+          "series": 3
+        },
+        {
+          "observations": 250,
+          "series": 3
+        },
+        {
+          "observations": 252,
+          "series": 1
+        },
+        {
+          "observations": 253,
+          "series": 1
+        },
+        {
+          "observations": 254,
+          "series": 1
+        },
+        {
+          "observations": 255,
+          "series": 1
+        },
+        {
+          "observations": 257,
+          "series": 1
+        },
+        {
+          "observations": 259,
+          "series": 1
+        },
+        {
+          "observations": 260,
+          "series": 1
+        },
+        {
+          "observations": 261,
+          "series": 2
+        },
+        {
+          "observations": 262,
+          "series": 3
+        },
+        {
+          "observations": 265,
+          "series": 2
+        },
+        {
+          "observations": 266,
+          "series": 1
+        },
+        {
+          "observations": 268,
+          "series": 2
+        },
+        {
+          "observations": 269,
+          "series": 3
+        },
+        {
+          "observations": 270,
+          "series": 1
+        },
+        {
+          "observations": 271,
+          "series": 1
+        },
+        {
+          "observations": 272,
+          "series": 2
+        },
+        {
+          "observations": 273,
+          "series": 2
+        },
+        {
+          "observations": 274,
+          "series": 3
+        },
+        {
+          "observations": 277,
+          "series": 2
+        },
+        {
+          "observations": 280,
+          "series": 1
+        },
+        {
+          "observations": 281,
+          "series": 2
+        },
+        {
+          "observations": 283,
+          "series": 2
+        },
+        {
+          "observations": 284,
+          "series": 2
+        },
+        {
+          "observations": 285,
+          "series": 1
+        },
+        {
+          "observations": 288,
+          "series": 1
+        },
+        {
+          "observations": 289,
+          "series": 3
+        },
+        {
+          "observations": 290,
+          "series": 1
+        },
+        {
+          "observations": 296,
+          "series": 2
+        },
+        {
+          "observations": 298,
+          "series": 2
+        },
+        {
+          "observations": 301,
+          "series": 1
+        },
+        {
+          "observations": 304,
+          "series": 2
+        },
+        {
+          "observations": 305,
+          "series": 1
+        },
+        {
+          "observations": 306,
+          "series": 1
+        },
+        {
+          "observations": 309,
+          "series": 1
+        },
+        {
+          "observations": 311,
+          "series": 2
+        },
+        {
+          "observations": 312,
+          "series": 3
+        },
+        {
+          "observations": 313,
+          "series": 1
+        },
+        {
+          "observations": 315,
+          "series": 1
+        },
+        {
+          "observations": 317,
+          "series": 1
+        },
+        {
+          "observations": 318,
+          "series": 9
+        },
+        {
+          "observations": 319,
+          "series": 1
+        },
+        {
+          "observations": 323,
+          "series": 1
+        },
+        {
+          "observations": 324,
+          "series": 9
+        },
+        {
+          "observations": 325,
+          "series": 3
+        },
+        {
+          "observations": 327,
+          "series": 1
+        },
+        {
+          "observations": 328,
+          "series": 1
+        },
+        {
+          "observations": 329,
+          "series": 1
+        },
+        {
+          "observations": 331,
+          "series": 1
+        },
+        {
+          "observations": 334,
+          "series": 1
+        },
+        {
+          "observations": 335,
+          "series": 1
+        },
+        {
+          "observations": 336,
+          "series": 3
+        },
+        {
+          "observations": 337,
+          "series": 1
+        },
+        {
+          "observations": 338,
+          "series": 2
+        },
+        {
+          "observations": 339,
+          "series": 1
+        },
+        {
+          "observations": 340,
+          "series": 3
+        },
+        {
+          "observations": 341,
+          "series": 1
+        },
+        {
+          "observations": 342,
+          "series": 2
+        },
+        {
+          "observations": 343,
+          "series": 1
+        },
+        {
+          "observations": 344,
+          "series": 4
+        },
+        {
+          "observations": 345,
+          "series": 58
+        },
+        {
+          "observations": 346,
+          "series": 3
+        },
+        {
+          "observations": 348,
+          "series": 1
+        },
+        {
+          "observations": 355,
+          "series": 1
+        },
+        {
+          "observations": 356,
+          "series": 2
+        },
+        {
+          "observations": 361,
+          "series": 1
+        },
+        {
+          "observations": 364,
+          "series": 1
+        },
+        {
+          "observations": 366,
+          "series": 1
+        },
+        {
+          "observations": 367,
+          "series": 1
+        },
+        {
+          "observations": 369,
+          "series": 1
+        },
+        {
+          "observations": 370,
+          "series": 2
+        },
+        {
+          "observations": 372,
+          "series": 7
+        },
+        {
+          "observations": 373,
+          "series": 3
+        },
+        {
+          "observations": 374,
+          "series": 2
+        },
+        {
+          "observations": 375,
+          "series": 10
+        },
+        {
+          "observations": 376,
+          "series": 1
+        },
+        {
+          "observations": 379,
+          "series": 1
+        },
+        {
+          "observations": 380,
+          "series": 3
+        },
+        {
+          "observations": 382,
+          "series": 1
+        },
+        {
+          "observations": 384,
+          "series": 3
+        },
+        {
+          "observations": 385,
+          "series": 1
+        },
+        {
+          "observations": 386,
+          "series": 1
+        },
+        {
+          "observations": 387,
+          "series": 1
+        },
+        {
+          "observations": 392,
+          "series": 2
+        },
+        {
+          "observations": 393,
+          "series": 1
+        },
+        {
+          "observations": 394,
+          "series": 16
+        },
+        {
+          "observations": 395,
+          "series": 1
+        },
+        {
+          "observations": 396,
+          "series": 1
+        },
+        {
+          "observations": 397,
+          "series": 2
+        },
+        {
+          "observations": 398,
+          "series": 1
+        },
+        {
+          "observations": 399,
+          "series": 3
+        },
+        {
+          "observations": 400,
+          "series": 1
+        },
+        {
+          "observations": 404,
+          "series": 2
+        },
+        {
+          "observations": 405,
+          "series": 1
+        },
+        {
+          "observations": 406,
+          "series": 5
+        },
+        {
+          "observations": 408,
+          "series": 1
+        },
+        {
+          "observations": 409,
+          "series": 6
+        },
+        {
+          "observations": 412,
+          "series": 1
+        },
+        {
+          "observations": 413,
+          "series": 1
+        },
+        {
+          "observations": 414,
+          "series": 9
+        },
+        {
+          "observations": 415,
+          "series": 55
+        },
+        {
+          "observations": 416,
+          "series": 3
+        },
+        {
+          "observations": 417,
+          "series": 1
+        },
+        {
+          "observations": 418,
+          "series": 1
+        },
+        {
+          "observations": 419,
+          "series": 2
+        },
+        {
+          "observations": 421,
+          "series": 3
+        },
+        {
+          "observations": 424,
+          "series": 1
+        },
+        {
+          "observations": 425,
+          "series": 1
+        },
+        {
+          "observations": 426,
+          "series": 1
+        },
+        {
+          "observations": 428,
+          "series": 3
+        },
+        {
+          "observations": 429,
+          "series": 2
+        },
+        {
+          "observations": 432,
+          "series": 1
+        },
+        {
+          "observations": 435,
+          "series": 2
+        },
+        {
+          "observations": 436,
+          "series": 3
+        },
+        {
+          "observations": 441,
+          "series": 4
+        },
+        {
+          "observations": 442,
+          "series": 2
+        },
+        {
+          "observations": 443,
+          "series": 2
+        },
+        {
+          "observations": 445,
+          "series": 1
+        },
+        {
+          "observations": 446,
+          "series": 1
+        },
+        {
+          "observations": 449,
+          "series": 1
+        },
+        {
+          "observations": 450,
+          "series": 1
+        },
+        {
+          "observations": 451,
+          "series": 2
+        },
+        {
+          "observations": 453,
+          "series": 7
+        },
+        {
+          "observations": 454,
+          "series": 1
+        },
+        {
+          "observations": 455,
+          "series": 2
+        },
+        {
+          "observations": 458,
+          "series": 1
+        },
+        {
+          "observations": 459,
+          "series": 1
+        },
+        {
+          "observations": 464,
+          "series": 2
+        },
+        {
+          "observations": 465,
+          "series": 1
+        },
+        {
+          "observations": 468,
+          "series": 2
+        },
+        {
+          "observations": 469,
+          "series": 7
+        },
+        {
+          "observations": 470,
+          "series": 1
+        },
+        {
+          "observations": 475,
+          "series": 2
+        },
+        {
+          "observations": 476,
+          "series": 2
+        },
+        {
+          "observations": 477,
+          "series": 8
+        },
+        {
+          "observations": 478,
+          "series": 5
+        },
+        {
+          "observations": 479,
+          "series": 2
+        },
+        {
+          "observations": 480,
+          "series": 4
+        },
+        {
+          "observations": 482,
+          "series": 6
+        },
+        {
+          "observations": 491,
+          "series": 1
+        },
+        {
+          "observations": 494,
+          "series": 1
+        },
+        {
+          "observations": 498,
+          "series": 2
+        },
+        {
+          "observations": 500,
+          "series": 1
+        },
+        {
+          "observations": 501,
+          "series": 1
+        },
+        {
+          "observations": 502,
+          "series": 1
+        },
+        {
+          "observations": 504,
+          "series": 1
+        },
+        {
+          "observations": 507,
+          "series": 1
+        },
+        {
+          "observations": 509,
+          "series": 1
+        },
+        {
+          "observations": 510,
+          "series": 1
+        },
+        {
+          "observations": 512,
+          "series": 1
+        },
+        {
+          "observations": 513,
+          "series": 2
+        },
+        {
+          "observations": 514,
+          "series": 1
+        },
+        {
+          "observations": 517,
+          "series": 1
+        },
+        {
+          "observations": 518,
+          "series": 3
+        },
+        {
+          "observations": 521,
+          "series": 2
+        },
+        {
+          "observations": 522,
+          "series": 2
+        },
+        {
+          "observations": 524,
+          "series": 1
+        },
+        {
+          "observations": 527,
+          "series": 2
+        },
+        {
+          "observations": 529,
+          "series": 1
+        },
+        {
+          "observations": 530,
+          "series": 1
+        },
+        {
+          "observations": 531,
+          "series": 4
+        },
+        {
+          "observations": 536,
+          "series": 1
+        },
+        {
+          "observations": 537,
+          "series": 1
+        },
+        {
+          "observations": 538,
+          "series": 2
+        },
+        {
+          "observations": 540,
+          "series": 3
+        },
+        {
+          "observations": 541,
+          "series": 17
+        },
+        {
+          "observations": 543,
+          "series": 1
+        },
+        {
+          "observations": 545,
+          "series": 1
+        },
+        {
+          "observations": 547,
+          "series": 2
+        },
+        {
+          "observations": 548,
+          "series": 1
+        },
+        {
+          "observations": 549,
+          "series": 2
+        },
+        {
+          "observations": 550,
+          "series": 1
+        },
+        {
+          "observations": 551,
+          "series": 1
+        },
+        {
+          "observations": 552,
+          "series": 3
+        },
+        {
+          "observations": 553,
+          "series": 19
+        },
+        {
+          "observations": 556,
+          "series": 1
+        },
+        {
+          "observations": 557,
+          "series": 4
+        },
+        {
+          "observations": 558,
+          "series": 2
+        },
+        {
+          "observations": 559,
+          "series": 5
+        },
+        {
+          "observations": 560,
+          "series": 6
+        },
+        {
+          "observations": 561,
+          "series": 18
+        },
+        {
+          "observations": 574,
+          "series": 13
+        },
+        {
+          "observations": 584,
+          "series": 2
+        },
+        {
+          "observations": 585,
+          "series": 35
+        },
+        {
+          "observations": 609,
+          "series": 1
+        }
+      ],
+      "length_thresholds": [
+        {
+          "minimum_observations": 2,
+          "series": 1481,
+          "series_with_enough_numeric_values": 1481
+        },
+        {
+          "minimum_observations": 12,
+          "series": 1456,
+          "series_with_enough_numeric_values": 1456
+        },
+        {
+          "minimum_observations": 24,
+          "series": 1415,
+          "series_with_enough_numeric_values": 1414
+        },
+        {
+          "minimum_observations": 60,
+          "series": 1262,
+          "series_with_enough_numeric_values": 1262
+        },
+        {
+          "minimum_observations": 120,
+          "series": 942,
+          "series_with_enough_numeric_values": 942
+        }
+      ],
+      "year_counts": [
+        {
+          "year": 1973,
+          "observations": 6
+        },
+        {
+          "year": 1974,
+          "observations": 24
+        },
+        {
+          "year": 1975,
+          "observations": 24
+        },
+        {
+          "year": 1976,
+          "observations": 36
+        },
+        {
+          "year": 1977,
+          "observations": 36
+        },
+        {
+          "year": 1978,
+          "observations": 3074
+        },
+        {
+          "year": 1979,
+          "observations": 6010
+        },
+        {
+          "year": 1980,
+          "observations": 10571
+        },
+        {
+          "year": 1981,
+          "observations": 10442
+        },
+        {
+          "year": 1982,
+          "observations": 10036
+        },
+        {
+          "year": 1983,
+          "observations": 9966
+        },
+        {
+          "year": 1984,
+          "observations": 10305
+        },
+        {
+          "year": 1985,
+          "observations": 9899
+        },
+        {
+          "year": 1986,
+          "observations": 10152
+        },
+        {
+          "year": 1987,
+          "observations": 8529
+        },
+        {
+          "year": 1988,
+          "observations": 8252
+        },
+        {
+          "year": 1989,
+          "observations": 7760
+        },
+        {
+          "year": 1990,
+          "observations": 7429
+        },
+        {
+          "year": 1991,
+          "observations": 7583
+        },
+        {
+          "year": 1992,
+          "observations": 7439
+        },
+        {
+          "year": 1993,
+          "observations": 7436
+        },
+        {
+          "year": 1994,
+          "observations": 7826
+        },
+        {
+          "year": 1995,
+          "observations": 7985
+        },
+        {
+          "year": 1996,
+          "observations": 8289
+        },
+        {
+          "year": 1997,
+          "observations": 8295
+        },
+        {
+          "year": 1998,
+          "observations": 7393
+        },
+        {
+          "year": 1999,
+          "observations": 7386
+        },
+        {
+          "year": 2000,
+          "observations": 7238
+        },
+        {
+          "year": 2001,
+          "observations": 7085
+        },
+        {
+          "year": 2002,
+          "observations": 7061
+        },
+        {
+          "year": 2003,
+          "observations": 6934
+        },
+        {
+          "year": 2004,
+          "observations": 6882
+        },
+        {
+          "year": 2005,
+          "observations": 6849
+        },
+        {
+          "year": 2006,
+          "observations": 6995
+        },
+        {
+          "year": 2007,
+          "observations": 7058
+        },
+        {
+          "year": 2008,
+          "observations": 7105
+        },
+        {
+          "year": 2009,
+          "observations": 7080
+        },
+        {
+          "year": 2010,
+          "observations": 7265
+        },
+        {
+          "year": 2011,
+          "observations": 7272
+        },
+        {
+          "year": 2012,
+          "observations": 7195
+        },
+        {
+          "year": 2013,
+          "observations": 6456
+        },
+        {
+          "year": 2014,
+          "observations": 5781
+        },
+        {
+          "year": 2015,
+          "observations": 5778
+        },
+        {
+          "year": 2016,
+          "observations": 5728
+        },
+        {
+          "year": 2017,
+          "observations": 5696
+        },
+        {
+          "year": 2018,
+          "observations": 6517
+        },
+        {
+          "year": 2019,
+          "observations": 6523
+        },
+        {
+          "year": 2020,
+          "observations": 6041
+        },
+        {
+          "year": 2021,
+          "observations": 6058
+        },
+        {
+          "year": 2022,
+          "observations": 6201
+        },
+        {
+          "year": 2023,
+          "observations": 6306
+        },
+        {
+          "year": 2024,
+          "observations": 6267
+        },
+        {
+          "year": 2025,
+          "observations": 5217
+        },
+        {
+          "year": 2026,
+          "observations": 3782
+        }
+      ],
+      "period_counts": [
+        {
+          "period": "M01",
+          "observations": 29832
+        },
+        {
+          "period": "M02",
+          "observations": 29890
+        },
+        {
+          "period": "M03",
+          "observations": 29915
+        },
+        {
+          "period": "M04",
+          "observations": 29866
+        },
+        {
+          "period": "M05",
+          "observations": 29769
+        },
+        {
+          "period": "M06",
+          "observations": 29982
+        },
+        {
+          "period": "M07",
+          "observations": 29941
+        },
+        {
+          "period": "M08",
+          "observations": 29847
+        },
+        {
+          "period": "M09",
+          "observations": 29571
+        },
+        {
+          "period": "M10",
+          "observations": 29303
+        },
+        {
+          "period": "M11",
+          "observations": 29268
+        },
+        {
+          "period": "M12",
+          "observations": 29369
+        }
+      ],
+      "output_index": {
+        "method": "full JSON parse",
+        "series": 1483,
+        "observations": 356553,
+        "zero_observation_series": 0,
+        "singleton_series": 2,
+        "observation_count_histogram": [
+          {
+            "observations": 1,
+            "series": 2
+          },
+          {
+            "observations": 3,
+            "series": 1
+          },
+          {
+            "observations": 4,
+            "series": 2
+          },
+          {
+            "observations": 5,
+            "series": 2
+          },
+          {
+            "observations": 6,
+            "series": 4
+          },
+          {
+            "observations": 7,
+            "series": 3
+          },
+          {
+            "observations": 8,
+            "series": 3
+          },
+          {
+            "observations": 9,
+            "series": 4
+          },
+          {
+            "observations": 10,
+            "series": 4
+          },
+          {
+            "observations": 11,
+            "series": 2
+          },
+          {
+            "observations": 12,
+            "series": 1
+          },
+          {
+            "observations": 13,
+            "series": 7
+          },
+          {
+            "observations": 14,
+            "series": 5
+          },
+          {
+            "observations": 15,
+            "series": 3
+          },
+          {
+            "observations": 16,
+            "series": 3
+          },
+          {
+            "observations": 17,
+            "series": 2
+          },
+          {
+            "observations": 18,
+            "series": 4
+          },
+          {
+            "observations": 19,
+            "series": 4
+          },
+          {
+            "observations": 20,
+            "series": 2
+          },
+          {
+            "observations": 21,
+            "series": 3
+          },
+          {
+            "observations": 22,
+            "series": 3
+          },
+          {
+            "observations": 23,
+            "series": 4
+          },
+          {
+            "observations": 24,
+            "series": 18
+          },
+          {
+            "observations": 25,
+            "series": 4
+          },
+          {
+            "observations": 26,
+            "series": 1
+          },
+          {
+            "observations": 27,
+            "series": 1
+          },
+          {
+            "observations": 28,
+            "series": 3
+          },
+          {
+            "observations": 29,
+            "series": 16
+          },
+          {
+            "observations": 30,
+            "series": 9
+          },
+          {
+            "observations": 31,
+            "series": 5
+          },
+          {
+            "observations": 32,
+            "series": 2
+          },
+          {
+            "observations": 33,
+            "series": 11
+          },
+          {
+            "observations": 34,
+            "series": 5
+          },
+          {
+            "observations": 35,
+            "series": 2
+          },
+          {
+            "observations": 36,
+            "series": 5
+          },
+          {
+            "observations": 37,
+            "series": 5
+          },
+          {
+            "observations": 38,
+            "series": 2
+          },
+          {
+            "observations": 39,
+            "series": 4
+          },
+          {
+            "observations": 40,
+            "series": 1
+          },
+          {
+            "observations": 41,
+            "series": 3
+          },
+          {
+            "observations": 42,
+            "series": 3
+          },
+          {
+            "observations": 44,
+            "series": 4
+          },
+          {
+            "observations": 45,
+            "series": 2
+          },
+          {
+            "observations": 46,
+            "series": 4
+          },
+          {
+            "observations": 47,
+            "series": 3
+          },
+          {
+            "observations": 48,
+            "series": 5
+          },
+          {
+            "observations": 49,
+            "series": 12
+          },
+          {
+            "observations": 50,
+            "series": 1
+          },
+          {
+            "observations": 51,
+            "series": 2
+          },
+          {
+            "observations": 52,
+            "series": 6
+          },
+          {
+            "observations": 53,
+            "series": 1
+          },
+          {
+            "observations": 55,
+            "series": 3
+          },
+          {
+            "observations": 56,
+            "series": 3
+          },
+          {
+            "observations": 57,
+            "series": 4
+          },
+          {
+            "observations": 58,
+            "series": 2
+          },
+          {
+            "observations": 59,
+            "series": 1
+          },
+          {
+            "observations": 60,
+            "series": 2
+          },
+          {
+            "observations": 61,
+            "series": 1
+          },
+          {
+            "observations": 62,
+            "series": 1
+          },
+          {
+            "observations": 63,
+            "series": 6
+          },
+          {
+            "observations": 64,
+            "series": 6
+          },
+          {
+            "observations": 65,
+            "series": 1
+          },
+          {
+            "observations": 67,
+            "series": 3
+          },
+          {
+            "observations": 69,
+            "series": 2
+          },
+          {
+            "observations": 70,
+            "series": 1
+          },
+          {
+            "observations": 71,
+            "series": 2
+          },
+          {
+            "observations": 72,
+            "series": 6
+          },
+          {
+            "observations": 73,
+            "series": 4
+          },
+          {
+            "observations": 74,
+            "series": 5
+          },
+          {
+            "observations": 75,
+            "series": 5
+          },
+          {
+            "observations": 76,
+            "series": 3
+          },
+          {
+            "observations": 77,
+            "series": 3
+          },
+          {
+            "observations": 79,
+            "series": 4
+          },
+          {
+            "observations": 80,
+            "series": 3
+          },
+          {
+            "observations": 81,
+            "series": 1
+          },
+          {
+            "observations": 82,
+            "series": 1
+          },
+          {
+            "observations": 84,
+            "series": 32
+          },
+          {
+            "observations": 86,
+            "series": 1
+          },
+          {
+            "observations": 87,
+            "series": 1
+          },
+          {
+            "observations": 88,
+            "series": 6
+          },
+          {
+            "observations": 89,
+            "series": 2
+          },
+          {
+            "observations": 90,
+            "series": 7
+          },
+          {
+            "observations": 91,
+            "series": 5
+          },
+          {
+            "observations": 92,
+            "series": 2
+          },
+          {
+            "observations": 93,
+            "series": 2
+          },
+          {
+            "observations": 95,
+            "series": 2
+          },
+          {
+            "observations": 96,
+            "series": 6
+          },
+          {
+            "observations": 97,
+            "series": 57
+          },
+          {
+            "observations": 98,
+            "series": 2
+          },
+          {
+            "observations": 99,
+            "series": 5
+          },
+          {
+            "observations": 100,
+            "series": 2
+          },
+          {
+            "observations": 102,
+            "series": 16
+          },
+          {
+            "observations": 103,
+            "series": 3
+          },
+          {
+            "observations": 104,
+            "series": 3
+          },
+          {
+            "observations": 105,
+            "series": 63
+          },
+          {
+            "observations": 106,
+            "series": 1
+          },
+          {
+            "observations": 107,
+            "series": 9
+          },
+          {
+            "observations": 108,
+            "series": 22
+          },
+          {
+            "observations": 109,
+            "series": 1
+          },
+          {
+            "observations": 110,
+            "series": 1
+          },
+          {
+            "observations": 112,
+            "series": 1
+          },
+          {
+            "observations": 114,
+            "series": 1
+          },
+          {
+            "observations": 115,
+            "series": 3
+          },
+          {
+            "observations": 117,
+            "series": 1
+          },
+          {
+            "observations": 118,
+            "series": 2
+          },
+          {
+            "observations": 119,
+            "series": 1
+          },
+          {
+            "observations": 120,
+            "series": 2
+          },
+          {
+            "observations": 121,
+            "series": 6
+          },
+          {
+            "observations": 123,
+            "series": 4
+          },
+          {
+            "observations": 124,
+            "series": 2
+          },
+          {
+            "observations": 125,
+            "series": 2
+          },
+          {
+            "observations": 126,
+            "series": 2
+          },
+          {
+            "observations": 127,
+            "series": 7
+          },
+          {
+            "observations": 128,
+            "series": 1
+          },
+          {
+            "observations": 129,
+            "series": 3
+          },
+          {
+            "observations": 130,
+            "series": 4
+          },
+          {
+            "observations": 131,
+            "series": 2
+          },
+          {
+            "observations": 132,
+            "series": 23
+          },
+          {
+            "observations": 133,
+            "series": 3
+          },
+          {
+            "observations": 134,
+            "series": 3
+          },
+          {
+            "observations": 135,
+            "series": 3
+          },
+          {
+            "observations": 136,
+            "series": 6
+          },
+          {
+            "observations": 137,
+            "series": 1
+          },
+          {
+            "observations": 138,
+            "series": 3
+          },
+          {
+            "observations": 139,
+            "series": 3
+          },
+          {
+            "observations": 140,
+            "series": 2
+          },
+          {
+            "observations": 141,
+            "series": 1
+          },
+          {
+            "observations": 142,
+            "series": 1
+          },
+          {
+            "observations": 143,
+            "series": 4
+          },
+          {
+            "observations": 144,
+            "series": 2
+          },
+          {
+            "observations": 146,
+            "series": 4
+          },
+          {
+            "observations": 147,
+            "series": 2
+          },
+          {
+            "observations": 148,
+            "series": 1
+          },
+          {
+            "observations": 149,
+            "series": 1
+          },
+          {
+            "observations": 150,
+            "series": 1
+          },
+          {
+            "observations": 151,
+            "series": 1
+          },
+          {
+            "observations": 152,
+            "series": 1
+          },
+          {
+            "observations": 154,
+            "series": 2
+          },
+          {
+            "observations": 155,
+            "series": 2
+          },
+          {
+            "observations": 156,
+            "series": 1
+          },
+          {
+            "observations": 157,
+            "series": 1
+          },
+          {
+            "observations": 158,
+            "series": 1
+          },
+          {
+            "observations": 160,
+            "series": 12
+          },
+          {
+            "observations": 162,
+            "series": 1
+          },
+          {
+            "observations": 163,
+            "series": 1
+          },
+          {
+            "observations": 164,
+            "series": 1
+          },
+          {
+            "observations": 165,
+            "series": 1
+          },
+          {
+            "observations": 166,
+            "series": 1
+          },
+          {
+            "observations": 167,
+            "series": 2
+          },
+          {
+            "observations": 169,
+            "series": 2
+          },
+          {
+            "observations": 170,
+            "series": 2
+          },
+          {
+            "observations": 171,
+            "series": 1
+          },
+          {
+            "observations": 172,
+            "series": 3
+          },
+          {
+            "observations": 174,
+            "series": 1
+          },
+          {
+            "observations": 175,
+            "series": 1
+          },
+          {
+            "observations": 176,
+            "series": 1
+          },
+          {
+            "observations": 177,
+            "series": 2
+          },
+          {
+            "observations": 178,
+            "series": 4
+          },
+          {
+            "observations": 180,
+            "series": 2
+          },
+          {
+            "observations": 181,
+            "series": 8
+          },
+          {
+            "observations": 184,
+            "series": 1
+          },
+          {
+            "observations": 185,
+            "series": 2
+          },
+          {
+            "observations": 186,
+            "series": 18
+          },
+          {
+            "observations": 188,
+            "series": 1
+          },
+          {
+            "observations": 190,
+            "series": 1
+          },
+          {
+            "observations": 191,
+            "series": 2
+          },
+          {
+            "observations": 193,
+            "series": 1
+          },
+          {
+            "observations": 194,
+            "series": 1
+          },
+          {
+            "observations": 195,
+            "series": 1
+          },
+          {
+            "observations": 196,
+            "series": 8
+          },
+          {
+            "observations": 199,
+            "series": 1
+          },
+          {
+            "observations": 200,
+            "series": 2
+          },
+          {
+            "observations": 202,
+            "series": 1
+          },
+          {
+            "observations": 203,
+            "series": 1
+          },
+          {
+            "observations": 204,
+            "series": 1
+          },
+          {
+            "observations": 205,
+            "series": 1
+          },
+          {
+            "observations": 206,
+            "series": 1
+          },
+          {
+            "observations": 208,
+            "series": 1
+          },
+          {
+            "observations": 210,
+            "series": 2
+          },
+          {
+            "observations": 211,
+            "series": 1
+          },
+          {
+            "observations": 213,
+            "series": 13
+          },
+          {
+            "observations": 214,
+            "series": 2
+          },
+          {
+            "observations": 215,
+            "series": 1
+          },
+          {
+            "observations": 216,
+            "series": 4
+          },
+          {
+            "observations": 217,
+            "series": 1
+          },
+          {
+            "observations": 218,
+            "series": 1
+          },
+          {
+            "observations": 219,
+            "series": 1
+          },
+          {
+            "observations": 222,
+            "series": 2
+          },
+          {
+            "observations": 223,
+            "series": 1
+          },
+          {
+            "observations": 224,
+            "series": 2
+          },
+          {
+            "observations": 225,
+            "series": 3
+          },
+          {
+            "observations": 226,
+            "series": 1
+          },
+          {
+            "observations": 227,
+            "series": 2
+          },
+          {
+            "observations": 228,
+            "series": 4
+          },
+          {
+            "observations": 229,
+            "series": 64
+          },
+          {
+            "observations": 230,
+            "series": 1
+          },
+          {
+            "observations": 231,
+            "series": 3
+          },
+          {
+            "observations": 232,
+            "series": 1
+          },
+          {
+            "observations": 233,
+            "series": 1
+          },
+          {
+            "observations": 238,
+            "series": 2
+          },
+          {
+            "observations": 240,
+            "series": 25
+          },
+          {
+            "observations": 243,
+            "series": 1
+          },
+          {
+            "observations": 244,
+            "series": 2
+          },
+          {
+            "observations": 245,
+            "series": 1
+          },
+          {
+            "observations": 246,
+            "series": 1
+          },
+          {
+            "observations": 247,
+            "series": 2
+          },
+          {
+            "observations": 248,
+            "series": 2
+          },
+          {
+            "observations": 249,
+            "series": 3
+          },
+          {
+            "observations": 250,
+            "series": 3
+          },
+          {
+            "observations": 252,
+            "series": 1
+          },
+          {
+            "observations": 253,
+            "series": 1
+          },
+          {
+            "observations": 254,
+            "series": 1
+          },
+          {
+            "observations": 255,
+            "series": 1
+          },
+          {
+            "observations": 257,
+            "series": 1
+          },
+          {
+            "observations": 259,
+            "series": 1
+          },
+          {
+            "observations": 260,
+            "series": 1
+          },
+          {
+            "observations": 261,
+            "series": 2
+          },
+          {
+            "observations": 262,
+            "series": 3
+          },
+          {
+            "observations": 265,
+            "series": 2
+          },
+          {
+            "observations": 266,
+            "series": 1
+          },
+          {
+            "observations": 268,
+            "series": 2
+          },
+          {
+            "observations": 269,
+            "series": 3
+          },
+          {
+            "observations": 270,
+            "series": 1
+          },
+          {
+            "observations": 271,
+            "series": 1
+          },
+          {
+            "observations": 272,
+            "series": 2
+          },
+          {
+            "observations": 273,
+            "series": 2
+          },
+          {
+            "observations": 274,
+            "series": 3
+          },
+          {
+            "observations": 277,
+            "series": 2
+          },
+          {
+            "observations": 280,
+            "series": 1
+          },
+          {
+            "observations": 281,
+            "series": 2
+          },
+          {
+            "observations": 283,
+            "series": 2
+          },
+          {
+            "observations": 284,
+            "series": 2
+          },
+          {
+            "observations": 285,
+            "series": 1
+          },
+          {
+            "observations": 288,
+            "series": 1
+          },
+          {
+            "observations": 289,
+            "series": 3
+          },
+          {
+            "observations": 290,
+            "series": 1
+          },
+          {
+            "observations": 296,
+            "series": 2
+          },
+          {
+            "observations": 298,
+            "series": 2
+          },
+          {
+            "observations": 301,
+            "series": 1
+          },
+          {
+            "observations": 304,
+            "series": 2
+          },
+          {
+            "observations": 305,
+            "series": 1
+          },
+          {
+            "observations": 306,
+            "series": 1
+          },
+          {
+            "observations": 309,
+            "series": 1
+          },
+          {
+            "observations": 311,
+            "series": 2
+          },
+          {
+            "observations": 312,
+            "series": 3
+          },
+          {
+            "observations": 313,
+            "series": 1
+          },
+          {
+            "observations": 315,
+            "series": 1
+          },
+          {
+            "observations": 317,
+            "series": 1
+          },
+          {
+            "observations": 318,
+            "series": 9
+          },
+          {
+            "observations": 319,
+            "series": 1
+          },
+          {
+            "observations": 323,
+            "series": 1
+          },
+          {
+            "observations": 324,
+            "series": 9
+          },
+          {
+            "observations": 325,
+            "series": 3
+          },
+          {
+            "observations": 327,
+            "series": 1
+          },
+          {
+            "observations": 328,
+            "series": 1
+          },
+          {
+            "observations": 329,
+            "series": 1
+          },
+          {
+            "observations": 331,
+            "series": 1
+          },
+          {
+            "observations": 334,
+            "series": 1
+          },
+          {
+            "observations": 335,
+            "series": 1
+          },
+          {
+            "observations": 336,
+            "series": 3
+          },
+          {
+            "observations": 337,
+            "series": 1
+          },
+          {
+            "observations": 338,
+            "series": 2
+          },
+          {
+            "observations": 339,
+            "series": 1
+          },
+          {
+            "observations": 340,
+            "series": 3
+          },
+          {
+            "observations": 341,
+            "series": 1
+          },
+          {
+            "observations": 342,
+            "series": 2
+          },
+          {
+            "observations": 343,
+            "series": 1
+          },
+          {
+            "observations": 344,
+            "series": 4
+          },
+          {
+            "observations": 345,
+            "series": 58
+          },
+          {
+            "observations": 346,
+            "series": 3
+          },
+          {
+            "observations": 348,
+            "series": 1
+          },
+          {
+            "observations": 355,
+            "series": 1
+          },
+          {
+            "observations": 356,
+            "series": 2
+          },
+          {
+            "observations": 361,
+            "series": 1
+          },
+          {
+            "observations": 364,
+            "series": 1
+          },
+          {
+            "observations": 366,
+            "series": 1
+          },
+          {
+            "observations": 367,
+            "series": 1
+          },
+          {
+            "observations": 369,
+            "series": 1
+          },
+          {
+            "observations": 370,
+            "series": 2
+          },
+          {
+            "observations": 372,
+            "series": 7
+          },
+          {
+            "observations": 373,
+            "series": 3
+          },
+          {
+            "observations": 374,
+            "series": 2
+          },
+          {
+            "observations": 375,
+            "series": 10
+          },
+          {
+            "observations": 376,
+            "series": 1
+          },
+          {
+            "observations": 379,
+            "series": 1
+          },
+          {
+            "observations": 380,
+            "series": 3
+          },
+          {
+            "observations": 382,
+            "series": 1
+          },
+          {
+            "observations": 384,
+            "series": 3
+          },
+          {
+            "observations": 385,
+            "series": 1
+          },
+          {
+            "observations": 386,
+            "series": 1
+          },
+          {
+            "observations": 387,
+            "series": 1
+          },
+          {
+            "observations": 392,
+            "series": 2
+          },
+          {
+            "observations": 393,
+            "series": 1
+          },
+          {
+            "observations": 394,
+            "series": 16
+          },
+          {
+            "observations": 395,
+            "series": 1
+          },
+          {
+            "observations": 396,
+            "series": 1
+          },
+          {
+            "observations": 397,
+            "series": 2
+          },
+          {
+            "observations": 398,
+            "series": 1
+          },
+          {
+            "observations": 399,
+            "series": 3
+          },
+          {
+            "observations": 400,
+            "series": 1
+          },
+          {
+            "observations": 404,
+            "series": 2
+          },
+          {
+            "observations": 405,
+            "series": 1
+          },
+          {
+            "observations": 406,
+            "series": 5
+          },
+          {
+            "observations": 408,
+            "series": 1
+          },
+          {
+            "observations": 409,
+            "series": 6
+          },
+          {
+            "observations": 412,
+            "series": 1
+          },
+          {
+            "observations": 413,
+            "series": 1
+          },
+          {
+            "observations": 414,
+            "series": 9
+          },
+          {
+            "observations": 415,
+            "series": 55
+          },
+          {
+            "observations": 416,
+            "series": 3
+          },
+          {
+            "observations": 417,
+            "series": 1
+          },
+          {
+            "observations": 418,
+            "series": 1
+          },
+          {
+            "observations": 419,
+            "series": 2
+          },
+          {
+            "observations": 421,
+            "series": 3
+          },
+          {
+            "observations": 424,
+            "series": 1
+          },
+          {
+            "observations": 425,
+            "series": 1
+          },
+          {
+            "observations": 426,
+            "series": 1
+          },
+          {
+            "observations": 428,
+            "series": 3
+          },
+          {
+            "observations": 429,
+            "series": 2
+          },
+          {
+            "observations": 432,
+            "series": 1
+          },
+          {
+            "observations": 435,
+            "series": 2
+          },
+          {
+            "observations": 436,
+            "series": 3
+          },
+          {
+            "observations": 441,
+            "series": 4
+          },
+          {
+            "observations": 442,
+            "series": 2
+          },
+          {
+            "observations": 443,
+            "series": 2
+          },
+          {
+            "observations": 445,
+            "series": 1
+          },
+          {
+            "observations": 446,
+            "series": 1
+          },
+          {
+            "observations": 449,
+            "series": 1
+          },
+          {
+            "observations": 450,
+            "series": 1
+          },
+          {
+            "observations": 451,
+            "series": 2
+          },
+          {
+            "observations": 453,
+            "series": 7
+          },
+          {
+            "observations": 454,
+            "series": 1
+          },
+          {
+            "observations": 455,
+            "series": 2
+          },
+          {
+            "observations": 458,
+            "series": 1
+          },
+          {
+            "observations": 459,
+            "series": 1
+          },
+          {
+            "observations": 464,
+            "series": 2
+          },
+          {
+            "observations": 465,
+            "series": 1
+          },
+          {
+            "observations": 468,
+            "series": 2
+          },
+          {
+            "observations": 469,
+            "series": 7
+          },
+          {
+            "observations": 470,
+            "series": 1
+          },
+          {
+            "observations": 475,
+            "series": 2
+          },
+          {
+            "observations": 476,
+            "series": 2
+          },
+          {
+            "observations": 477,
+            "series": 8
+          },
+          {
+            "observations": 478,
+            "series": 5
+          },
+          {
+            "observations": 479,
+            "series": 2
+          },
+          {
+            "observations": 480,
+            "series": 4
+          },
+          {
+            "observations": 482,
+            "series": 6
+          },
+          {
+            "observations": 491,
+            "series": 1
+          },
+          {
+            "observations": 494,
+            "series": 1
+          },
+          {
+            "observations": 498,
+            "series": 2
+          },
+          {
+            "observations": 500,
+            "series": 1
+          },
+          {
+            "observations": 501,
+            "series": 1
+          },
+          {
+            "observations": 502,
+            "series": 1
+          },
+          {
+            "observations": 504,
+            "series": 1
+          },
+          {
+            "observations": 507,
+            "series": 1
+          },
+          {
+            "observations": 509,
+            "series": 1
+          },
+          {
+            "observations": 510,
+            "series": 1
+          },
+          {
+            "observations": 512,
+            "series": 1
+          },
+          {
+            "observations": 513,
+            "series": 2
+          },
+          {
+            "observations": 514,
+            "series": 1
+          },
+          {
+            "observations": 517,
+            "series": 1
+          },
+          {
+            "observations": 518,
+            "series": 3
+          },
+          {
+            "observations": 521,
+            "series": 2
+          },
+          {
+            "observations": 522,
+            "series": 2
+          },
+          {
+            "observations": 524,
+            "series": 1
+          },
+          {
+            "observations": 527,
+            "series": 2
+          },
+          {
+            "observations": 529,
+            "series": 1
+          },
+          {
+            "observations": 530,
+            "series": 1
+          },
+          {
+            "observations": 531,
+            "series": 4
+          },
+          {
+            "observations": 536,
+            "series": 1
+          },
+          {
+            "observations": 537,
+            "series": 1
+          },
+          {
+            "observations": 538,
+            "series": 2
+          },
+          {
+            "observations": 540,
+            "series": 3
+          },
+          {
+            "observations": 541,
+            "series": 17
+          },
+          {
+            "observations": 543,
+            "series": 1
+          },
+          {
+            "observations": 545,
+            "series": 1
+          },
+          {
+            "observations": 547,
+            "series": 2
+          },
+          {
+            "observations": 548,
+            "series": 1
+          },
+          {
+            "observations": 549,
+            "series": 2
+          },
+          {
+            "observations": 550,
+            "series": 1
+          },
+          {
+            "observations": 551,
+            "series": 1
+          },
+          {
+            "observations": 552,
+            "series": 3
+          },
+          {
+            "observations": 553,
+            "series": 19
+          },
+          {
+            "observations": 556,
+            "series": 1
+          },
+          {
+            "observations": 557,
+            "series": 4
+          },
+          {
+            "observations": 558,
+            "series": 2
+          },
+          {
+            "observations": 559,
+            "series": 5
+          },
+          {
+            "observations": 560,
+            "series": 6
+          },
+          {
+            "observations": 561,
+            "series": 18
+          },
+          {
+            "observations": 574,
+            "series": 13
+          },
+          {
+            "observations": 584,
+            "series": 2
+          },
+          {
+            "observations": 585,
+            "series": 35
+          },
+          {
+            "observations": 609,
+            "series": 1
+          }
+        ]
+      },
+      "catalog_coverage_record": {
+        "series": 1483,
+        "observations": 356553,
+        "catalog_without_observations": 0,
+        "year_min": 1973,
+        "year_max": 2026
+      },
+      "output_sample": {
+        "selection": "lowest DuckDB hash(series_id), deterministic for this DuckDB version",
+        "requested": 256,
+        "found": 256,
+        "missing": 0,
+        "invalid_json": 0,
+        "count_mismatches": 0,
+        "logical_bytes": 6955880,
+        "allocated_bytes": 7017472,
+        "mean_file_bytes": 27171.40625,
+        "median_file_bytes": 24180.0,
+        "estimated_all_series_logical_bytes": 40295195.46875,
+        "estimated_all_series_allocated_bytes": 40651996.0,
+        "estimate_warning": "Sample extrapolation, not measured total; no confidence interval; physical output count unverified."
+      },
+      "storage": {
+        "raw_logical_bytes": 24206742,
+        "index_logical_bytes": 332022,
+        "top_level_file_logical_bytes": 342034
+      },
+      "elapsed_s": 0.57
+    },
+    {
+      "program": "BD",
+      "run_status": "ok",
+      "summary": {
+        "series": 34416,
+        "observations": 4626528,
+        "singleton_series": 0,
+        "single_year_series": 0,
+        "series_without_numeric_values": 0,
+        "series_with_one_numeric_value": 0,
+        "min_observations": 105,
+        "median_observations": 135.0,
+        "mean_observations": 134.42956764295675,
+        "max_observations": 135,
+        "p10_observations": 135,
+        "p90_observations": 135,
+        "first_year": 1992,
+        "last_year": 2026,
+        "median_year_span": 35.0,
+        "numeric_observations": 4623240,
+        "missing_tokens": 3288
+      },
+      "raw_quality": {
+        "rows_read": 8240208,
+        "invalid_rows": 0
+      },
+      "raw_files": [
+        {
+          "name": "bd.data.0.Current",
+          "bytes": 199205140,
+          "sha256": "e3e7676de895ef9af5e9cec8084381cd8aa96cf1d8d80e5c55b6e9126e90d799",
+          "byte_identical_to": null
+        },
+        {
+          "name": "bd.data.1.AllItems",
+          "bytes": 255021672,
+          "sha256": "8fd11308f099f6a1b8b89661b3696e895ad464fb1f452098ea8960a865ed159e",
+          "byte_identical_to": null
+        }
+      ],
+      "byte_identical_files_omitted_from_analysis": 0,
+      "duplicate_rows_removed_after_identical_file_elimination": 3613680,
+      "observation_count_histogram": [
+        {
+          "observations": 105,
+          "series": 328
+        },
+        {
+          "observations": 129,
+          "series": 1632
+        },
+        {
+          "observations": 135,
+          "series": 32456
+        }
+      ],
+      "length_thresholds": [
+        {
+          "minimum_observations": 2,
+          "series": 34416,
+          "series_with_enough_numeric_values": 34416
+        },
+        {
+          "minimum_observations": 12,
+          "series": 34416,
+          "series_with_enough_numeric_values": 34416
+        },
+        {
+          "minimum_observations": 24,
+          "series": 34416,
+          "series_with_enough_numeric_values": 34416
+        },
+        {
+          "minimum_observations": 60,
+          "series": 34416,
+          "series_with_enough_numeric_values": 34416
+        },
+        {
+          "minimum_observations": 120,
+          "series": 34088,
+          "series_with_enough_numeric_values": 34088
+        }
+      ],
+      "year_counts": [
+        {
+          "year": 1992,
+          "observations": 64912
+        },
+        {
+          "year": 1993,
+          "observations": 129824
+        },
+        {
+          "year": 1994,
+          "observations": 136352
+        },
+        {
+          "year": 1995,
+          "observations": 136352
+        },
+        {
+          "year": 1996,
+          "observations": 136352
+        },
+        {
+          "year": 1997,
+          "observations": 136352
+        },
+        {
+          "year": 1998,
+          "observations": 136352
+        },
+        {
+          "year": 1999,
+          "observations": 136352
+        },
+        {
+          "year": 2000,
+          "observations": 137664
+        },
+        {
+          "year": 2001,
+          "observations": 137664
+        },
+        {
+          "year": 2002,
+          "observations": 137664
+        },
+        {
+          "year": 2003,
+          "observations": 137664
+        },
+        {
+          "year": 2004,
+          "observations": 137664
+        },
+        {
+          "year": 2005,
+          "observations": 137664
+        },
+        {
+          "year": 2006,
+          "observations": 137664
+        },
+        {
+          "year": 2007,
+          "observations": 137664
+        },
+        {
+          "year": 2008,
+          "observations": 137664
+        },
+        {
+          "year": 2009,
+          "observations": 137664
+        },
+        {
+          "year": 2010,
+          "observations": 137664
+        },
+        {
+          "year": 2011,
+          "observations": 137664
+        },
+        {
+          "year": 2012,
+          "observations": 137664
+        },
+        {
+          "year": 2013,
+          "observations": 137664
+        },
+        {
+          "year": 2014,
+          "observations": 137664
+        },
+        {
+          "year": 2015,
+          "observations": 137664
+        },
+        {
+          "year": 2016,
+          "observations": 137664
+        },
+        {
+          "year": 2017,
+          "observations": 137664
+        },
+        {
+          "year": 2018,
+          "observations": 137664
+        },
+        {
+          "year": 2019,
+          "observations": 137664
+        },
+        {
+          "year": 2020,
+          "observations": 137664
+        },
+        {
+          "year": 2021,
+          "observations": 137664
+        },
+        {
+          "year": 2022,
+          "observations": 137664
+        },
+        {
+          "year": 2023,
+          "observations": 137664
+        },
+        {
+          "year": 2024,
+          "observations": 137664
+        },
+        {
+          "year": 2025,
+          "observations": 137664
+        },
+        {
+          "year": 2026,
+          "observations": 34416
+        }
+      ],
+      "period_counts": [
+        {
+          "period": "Q01",
+          "observations": 1166216
+        },
+        {
+          "period": "Q02",
+          "observations": 1131800
+        },
+        {
+          "period": "Q03",
+          "observations": 1164256
+        },
+        {
+          "period": "Q04",
+          "observations": 1164256
+        }
+      ],
+      "output_index": {
+        "method": "full JSON parse",
+        "series": 34416,
+        "observations": 4626528,
+        "zero_observation_series": 0,
+        "singleton_series": 0,
+        "observation_count_histogram": [
+          {
+            "observations": 105,
+            "series": 328
+          },
+          {
+            "observations": 129,
+            "series": 1632
+          },
+          {
+            "observations": 135,
+            "series": 32456
+          }
+        ]
+      },
+      "catalog_coverage_record": {
+        "series": 34416,
+        "observations": 4626528,
+        "catalog_without_observations": 0,
+        "year_min": 1992,
+        "year_max": 2026
+      },
+      "output_sample": {
+        "selection": "lowest DuckDB hash(series_id), deterministic for this DuckDB version",
+        "requested": 256,
+        "found": 256,
+        "missing": 0,
+        "invalid_json": 0,
+        "count_mismatches": 0,
+        "logical_bytes": 3977443,
+        "allocated_bytes": 4054528,
+        "mean_file_bytes": 15536.88671875,
+        "median_file_bytes": 15554.5,
+        "estimated_all_series_logical_bytes": 534717493.3125,
+        "estimated_all_series_allocated_bytes": 545080608.0,
+        "estimate_warning": "Sample extrapolation, not measured total; no confidence interval; physical output count unverified."
+      },
+      "storage": {
+        "raw_logical_bytes": 459855029,
+        "index_logical_bytes": 7663728,
+        "top_level_file_logical_bytes": 7680040
+      },
+      "elapsed_s": 8.86
+    },
+    {
+      "program": "BG",
+      "run_status": "ok",
+      "summary": {
+        "series": 25,
+        "observations": 784,
+        "singleton_series": 0,
+        "single_year_series": 0,
+        "series_without_numeric_values": 0,
+        "series_with_one_numeric_value": 0,
+        "min_observations": 7,
+        "median_observations": 24.0,
+        "mean_observations": 31.36,
+        "max_observations": 62,
+        "p10_observations": 7,
+        "p90_observations": 57,
+        "first_year": 1983,
+        "last_year": 1995,
+        "median_year_span": 8.0,
+        "numeric_observations": 443,
+        "missing_tokens": 341
+      },
+      "raw_quality": {
+        "rows_read": 784,
+        "invalid_rows": 0
+      },
+      "raw_files": [
+        {
+          "name": "bg.data.1.AllData",
+          "bytes": 28797,
+          "sha256": "155d9d970bd1777c327d520c3351ecf5dd9da6529737c61c6791378625579386",
+          "byte_identical_to": null
+        }
+      ],
+      "byte_identical_files_omitted_from_analysis": 0,
+      "duplicate_rows_removed_after_identical_file_elimination": 0,
+      "observation_count_histogram": [
+        {
+          "observations": 7,
+          "series": 5
+        },
+        {
+          "observations": 19,
+          "series": 1
+        },
+        {
+          "observations": 24,
+          "series": 11
+        },
+        {
+          "observations": 57,
+          "series": 6
+        },
+        {
+          "observations": 62,
+          "series": 2
+        }
+      ],
+      "length_thresholds": [
+        {
+          "minimum_observations": 2,
+          "series": 25,
+          "series_with_enough_numeric_values": 25
+        },
+        {
+          "minimum_observations": 12,
+          "series": 20,
+          "series_with_enough_numeric_values": 19
+        },
+        {
+          "minimum_observations": 24,
+          "series": 19,
+          "series_with_enough_numeric_values": 8
+        },
+        {
+          "minimum_observations": 60,
+          "series": 2,
+          "series_with_enough_numeric_values": 0
+        },
+        {
+          "minimum_observations": 120,
+          "series": 0,
+          "series_with_enough_numeric_values": 0
+        }
+      ],
+      "year_counts": [
+        {
+          "year": 1983,
+          "observations": 8
+        },
+        {
+          "year": 1984,
+          "observations": 54
+        },
+        {
+          "year": 1985,
+          "observations": 55
+        },
+        {
+          "year": 1986,
+          "observations": 40
+        },
+        {
+          "year": 1987,
+          "observations": 40
+        },
+        {
+          "year": 1988,
+          "observations": 52
+        },
+        {
+          "year": 1989,
+          "observations": 100
+        },
+        {
+          "year": 1990,
+          "observations": 100
+        },
+        {
+          "year": 1991,
+          "observations": 100
+        },
+        {
+          "year": 1992,
+          "observations": 40
+        },
+        {
+          "year": 1993,
+          "observations": 40
+        },
+        {
+          "year": 1994,
+          "observations": 95
+        },
+        {
+          "year": 1995,
+          "observations": 60
+        }
+      ],
+      "period_counts": [
+        {
+          "period": "Q01",
+          "observations": 154
+        },
+        {
+          "period": "Q02",
+          "observations": 167
+        },
+        {
+          "period": "Q03",
+          "observations": 142
+        },
+        {
+          "period": "Q04",
+          "observations": 142
+        },
+        {
+          "period": "Q05",
+          "observations": 179
+        }
+      ],
+      "output_index": {
+        "method": "full JSON parse",
+        "series": 25,
+        "observations": 784,
+        "zero_observation_series": 0,
+        "singleton_series": 0,
+        "observation_count_histogram": [
+          {
+            "observations": 7,
+            "series": 5
+          },
+          {
+            "observations": 19,
+            "series": 1
+          },
+          {
+            "observations": 24,
+            "series": 11
+          },
+          {
+            "observations": 57,
+            "series": 6
+          },
+          {
+            "observations": 62,
+            "series": 2
+          }
+        ]
+      },
+      "catalog_coverage_record": {
+        "series": 25,
+        "observations": 784,
+        "catalog_without_observations": 0,
+        "year_min": 1983,
+        "year_max": 1995
+      },
+      "output_sample": {
+        "selection": "lowest DuckDB hash(series_id), deterministic for this DuckDB version",
+        "requested": 25,
+        "found": 25,
+        "missing": 0,
+        "invalid_json": 0,
+        "count_mismatches": 0,
+        "logical_bytes": 90786,
+        "allocated_bytes": 98304,
+        "mean_file_bytes": 3631.44,
+        "median_file_bytes": 2854,
+        "estimated_all_series_logical_bytes": 90786.0,
+        "estimated_all_series_allocated_bytes": 98304.0,
+        "estimate_warning": "Sample extrapolation, not measured total; no confidence interval; physical output count unverified."
+      },
+      "storage": {
+        "raw_logical_bytes": 46153,
+        "index_logical_bytes": 2818,
+        "top_level_file_logical_bytes": 11686
+      },
+      "elapsed_s": 0.04
+    },
+    {
+      "program": "BP",
+      "run_status": "ok",
+      "summary": {
+        "series": 95,
+        "observations": 4631,
+        "singleton_series": 0,
+        "single_year_series": 0,
+        "series_without_numeric_values": 0,
+        "series_with_one_numeric_value": 0,
+        "min_observations": 25,
+        "median_observations": 37.0,
+        "mean_observations": 48.747368421052634,
+        "max_observations": 65,
+        "p10_observations": 25,
+        "p90_observations": 65,
+        "first_year": 1983,
+        "last_year": 1995,
+        "median_year_span": 8.0,
+        "numeric_observations": 4547,
+        "missing_tokens": 84
+      },
+      "raw_quality": {
+        "rows_read": 4631,
+        "invalid_rows": 0
+      },
+      "raw_files": [
+        {
+          "name": "bp.data.1.AllData",
+          "bytes": 189094,
+          "sha256": "d6111e7b4a813cbd3495e79cd44f5d3d6a186d944fda58efd62484ddff5ccf5b",
+          "byte_identical_to": null
+        }
+      ],
+      "byte_identical_files_omitted_from_analysis": 0,
+      "duplicate_rows_removed_after_identical_file_elimination": 0,
+      "observation_count_histogram": [
+        {
+          "observations": 25,
+          "series": 12
+        },
+        {
+          "observations": 30,
+          "series": 8
+        },
+        {
+          "observations": 37,
+          "series": 28
+        },
+        {
+          "observations": 65,
+          "series": 47
+        }
+      ],
+      "length_thresholds": [
+        {
+          "minimum_observations": 2,
+          "series": 95,
+          "series_with_enough_numeric_values": 95
+        },
+        {
+          "minimum_observations": 12,
+          "series": 95,
+          "series_with_enough_numeric_values": 95
+        },
+        {
+          "minimum_observations": 24,
+          "series": 95,
+          "series_with_enough_numeric_values": 95
+        },
+        {
+          "minimum_observations": 60,
+          "series": 47,
+          "series_with_enough_numeric_values": 47
+        },
+        {
+          "minimum_observations": 120,
+          "series": 0,
+          "series_with_enough_numeric_values": 0
+        }
+      ],
+      "year_counts": [
+        {
+          "year": 1983,
+          "observations": 235
+        },
+        {
+          "year": 1984,
+          "observations": 235
+        },
+        {
+          "year": 1985,
+          "observations": 235
+        },
+        {
+          "year": 1986,
+          "observations": 235
+        },
+        {
+          "year": 1987,
+          "observations": 235
+        },
+        {
+          "year": 1988,
+          "observations": 291
+        },
+        {
+          "year": 1989,
+          "observations": 375
+        },
+        {
+          "year": 1990,
+          "observations": 415
+        },
+        {
+          "year": 1991,
+          "observations": 475
+        },
+        {
+          "year": 1992,
+          "observations": 475
+        },
+        {
+          "year": 1993,
+          "observations": 475
+        },
+        {
+          "year": 1994,
+          "observations": 475
+        },
+        {
+          "year": 1995,
+          "observations": 475
+        }
+      ],
+      "period_counts": [
+        {
+          "period": "Q01",
+          "observations": 915
+        },
+        {
+          "period": "Q02",
+          "observations": 915
+        },
+        {
+          "period": "Q03",
+          "observations": 915
+        },
+        {
+          "period": "Q04",
+          "observations": 943
+        },
+        {
+          "period": "Q05",
+          "observations": 943
+        }
+      ],
+      "output_index": {
+        "method": "full JSON parse",
+        "series": 95,
+        "observations": 4631,
+        "zero_observation_series": 0,
+        "singleton_series": 0,
+        "observation_count_histogram": [
+          {
+            "observations": 25,
+            "series": 12
+          },
+          {
+            "observations": 30,
+            "series": 8
+          },
+          {
+            "observations": 37,
+            "series": 28
+          },
+          {
+            "observations": 65,
+            "series": 47
+          }
+        ]
+      },
+      "catalog_coverage_record": {
+        "series": 95,
+        "observations": 4631,
+        "catalog_without_observations": 0,
+        "year_min": 1983,
+        "year_max": 1995
+      },
+      "output_sample": {
+        "selection": "lowest DuckDB hash(series_id), deterministic for this DuckDB version",
+        "requested": 95,
+        "found": 95,
+        "missing": 0,
+        "invalid_json": 0,
+        "count_mismatches": 0,
+        "logical_bytes": 533070,
+        "allocated_bytes": 559616,
+        "mean_file_bytes": 5611.263157894737,
+        "median_file_bytes": 4347,
+        "estimated_all_series_logical_bytes": 533070.0,
+        "estimated_all_series_allocated_bytes": 559616.0,
+        "estimate_warning": "Sample extrapolation, not measured total; no confidence interval; physical output count unverified."
+      },
+      "storage": {
+        "raw_logical_bytes": 212970,
+        "index_logical_bytes": 11181,
+        "top_level_file_logical_bytes": 20995
+      },
+      "elapsed_s": 0.09
+    },
+    {
+      "program": "CA",
+      "run_status": "ok",
+      "summary": {
+        "series": 52439022,
+        "observations": 52439022,
+        "singleton_series": 52439022,
+        "single_year_series": 52439022,
+        "series_without_numeric_values": 0,
+        "series_with_one_numeric_value": 52439022,
+        "min_observations": 1,
+        "median_observations": 1.0,
+        "mean_observations": 1.0,
+        "max_observations": 1,
+        "p10_observations": 1,
+        "p90_observations": 1,
+        "first_year": 2024,
+        "last_year": 2024,
+        "median_year_span": 1.0,
+        "numeric_observations": 52439022,
+        "missing_tokens": 0
+      },
+      "raw_quality": {
+        "rows_read": 52439022,
+        "invalid_rows": 0
+      },
+      "raw_files": [
+        {
+          "name": "ca.data.0.Current",
+          "bytes": 2885908659,
+          "sha256": "c24fceae692f1319b273856967a1d3c1cc48026777240c2c102bee2899acbe9f",
+          "byte_identical_to": null
+        },
+        {
+          "name": "ca.data.1.AllData",
+          "bytes": 2885908659,
+          "sha256": "c24fceae692f1319b273856967a1d3c1cc48026777240c2c102bee2899acbe9f",
+          "byte_identical_to": "ca.data.0.Current"
+        }
+      ],
+      "byte_identical_files_omitted_from_analysis": 1,
+      "duplicate_rows_removed_after_identical_file_elimination": 0,
+      "observation_count_histogram": [
+        {
+          "observations": 1,
+          "series": 52439022
+        }
+      ],
+      "length_thresholds": [
+        {
+          "minimum_observations": 2,
+          "series": 0,
+          "series_with_enough_numeric_values": 0
+        },
+        {
+          "minimum_observations": 12,
+          "series": 0,
+          "series_with_enough_numeric_values": 0
+        },
+        {
+          "minimum_observations": 24,
+          "series": 0,
+          "series_with_enough_numeric_values": 0
+        },
+        {
+          "minimum_observations": 60,
+          "series": 0,
+          "series_with_enough_numeric_values": 0
+        },
+        {
+          "minimum_observations": 120,
+          "series": 0,
+          "series_with_enough_numeric_values": 0
+        }
+      ],
+      "year_counts": [
+        {
+          "year": 2024,
+          "observations": 52439022
+        }
+      ],
+      "period_counts": [
+        {
+          "period": "A01",
+          "observations": 52439022
+        }
+      ],
+      "output_index": {
+        "method": "full line scan of scraper index layout; not full JSON validation",
+        "series": 52439022,
+        "observations": 52439022,
+        "zero_observation_series": 0,
+        "singleton_series": 52439022,
+        "observation_count_histogram": [
+          {
+            "observations": 1,
+            "series": 52439022
+          }
+        ]
+      },
+      "catalog_coverage_record": {
+        "series": 52439022,
+        "observations": 52439022,
+        "catalog_without_observations": 0,
+        "year_min": 2024,
+        "year_max": 2024
+      },
+      "output_sample": {
+        "selection": "lowest DuckDB hash(series_id), deterministic for this DuckDB version",
+        "requested": 256,
+        "found": 256,
+        "missing": 0,
+        "invalid_json": 0,
+        "count_mismatches": 0,
+        "logical_bytes": 324157,
+        "allocated_bytes": 393216,
+        "mean_file_bytes": 1266.23828125,
+        "median_file_bytes": 1266.0,
+        "estimated_all_series_logical_bytes": 66400297087.71094,
+        "estimated_all_series_allocated_bytes": 80546337792.0,
+        "estimate_warning": "Sample extrapolation, not measured total; no confidence interval; physical output count unverified."
+      },
+      "storage": {
+        "raw_logical_bytes": 10281005167,
+        "index_logical_bytes": 6607316774,
+        "top_level_file_logical_bytes": 6607340021
+      },
+      "elapsed_s": 137.63
+    },
+    {
+      "program": "CB",
+      "run_status": "failed",
+      "summary": {
+        "series": 53142968,
+        "observations": 53142968,
+        "singleton_series": 53142968,
+        "single_year_series": 53142968,
+        "series_without_numeric_values": 0,
+        "series_with_one_numeric_value": 53142968,
+        "min_observations": 1,
+        "median_observations": 1.0,
+        "mean_observations": 1.0,
+        "max_observations": 1,
+        "p10_observations": 1,
+        "p90_observations": 1,
+        "first_year": 2022,
+        "last_year": 2022,
+        "median_year_span": 1.0,
+        "numeric_observations": 53142968,
+        "missing_tokens": 0
+      },
+      "raw_quality": {
+        "rows_read": 53142968,
+        "invalid_rows": 0
+      },
+      "raw_files": [
+        {
+          "name": "cb.data.0.Current",
+          "bytes": 2233698411,
+          "sha256": "3e96c5e50b1d20f6e53935f6c2aa97d66fdceb3bf06f289f8e612af207bec639",
+          "byte_identical_to": null
+        },
+        {
+          "name": "cb.data.1.AllData",
+          "bytes": 2233698411,
+          "sha256": "3e96c5e50b1d20f6e53935f6c2aa97d66fdceb3bf06f289f8e612af207bec639",
+          "byte_identical_to": "cb.data.0.Current"
+        }
+      ],
+      "byte_identical_files_omitted_from_analysis": 1,
+      "duplicate_rows_removed_after_identical_file_elimination": 0,
+      "observation_count_histogram": [
+        {
+          "observations": 1,
+          "series": 53142968
+        }
+      ],
+      "length_thresholds": [
+        {
+          "minimum_observations": 2,
+          "series": 0,
+          "series_with_enough_numeric_values": 0
+        },
+        {
+          "minimum_observations": 12,
+          "series": 0,
+          "series_with_enough_numeric_values": 0
+        },
+        {
+          "minimum_observations": 24,
+          "series": 0,
+          "series_with_enough_numeric_values": 0
+        },
+        {
+          "minimum_observations": 60,
+          "series": 0,
+          "series_with_enough_numeric_values": 0
+        },
+        {
+          "minimum_observations": 120,
+          "series": 0,
+          "series_with_enough_numeric_values": 0
+        }
+      ],
+      "year_counts": [
+        {
+          "year": 2022,
+          "observations": 53142968
+        }
+      ],
+      "period_counts": [
+        {
+          "period": "A01",
+          "observations": 53142968
+        }
+      ],
+      "output_index": null,
+      "catalog_coverage_record": null,
+      "output_sample": {
+        "selection": "lowest DuckDB hash(series_id), deterministic for this DuckDB version",
+        "requested": 256,
+        "found": 0,
+        "missing": 256,
+        "invalid_json": 0,
+        "count_mismatches": 0,
+        "logical_bytes": 0,
+        "allocated_bytes": 0
+      },
+      "storage": {
+        "raw_logical_bytes": 4467663591,
+        "index_logical_bytes": 0,
+        "top_level_file_logical_bytes": 0
+      },
+      "elapsed_s": 112.51
+    }
+  ],
+  "elapsed_s": 261.55
+}

@@ -1,0 +1,3386 @@
+{
+  "ap": {
+    "coverage_record": {
+      "series": 1483,
+      "observations": 356553,
+      "catalog_without_observations": 0,
+      "year_min": 1973,
+      "year_max": 2026
+    },
+    "validation_record": {
+      "rows_in": 570271,
+      "rows_written": 356553,
+      "malformed_rows": 0,
+      "non_numeric_values": 0,
+      "missing_values": 457,
+      "unknown_periods": 0,
+      "duplicate_identical": 213718,
+      "duplicate_conflicts": 0
+    },
+    "receipts": [
+      {
+        "name": "ap.area",
+        "listing_size": 2114,
+        "record_size": 2114,
+        "actual_size": 2114,
+        "status": "downloaded"
+      },
+      {
+        "name": "ap.contacts",
+        "listing_size": 987,
+        "record_size": 987,
+        "actual_size": 987,
+        "status": "downloaded"
+      },
+      {
+        "name": "ap.data.0.Current",
+        "listing_size": 8976664,
+        "record_size": 8976664,
+        "actual_size": 8976664,
+        "status": "downloaded"
+      },
+      {
+        "name": "ap.data.1.HouseholdFuels",
+        "listing_size": 4493170,
+        "record_size": 4493170,
+        "actual_size": 4493170,
+        "status": "downloaded"
+      },
+      {
+        "name": "ap.data.2.Gasoline",
+        "listing_size": 4180138,
+        "record_size": 4180138,
+        "actual_size": 4180138,
+        "status": "downloaded"
+      },
+      {
+        "name": "ap.data.3.Food",
+        "listing_size": 6302544,
+        "record_size": 6302544,
+        "actual_size": 6302544,
+        "status": "downloaded"
+      },
+      {
+        "name": "ap.footnote",
+        "listing_size": 89,
+        "record_size": 89,
+        "actual_size": 89,
+        "status": "downloaded"
+      },
+      {
+        "name": "ap.item",
+        "listing_size": 9242,
+        "record_size": 9242,
+        "actual_size": 9242,
+        "status": "downloaded"
+      },
+      {
+        "name": "ap.period",
+        "listing_size": 252,
+        "record_size": 252,
+        "actual_size": 252,
+        "status": "downloaded"
+      },
+      {
+        "name": "ap.seasonal",
+        "listing_size": 79,
+        "record_size": 79,
+        "actual_size": 79,
+        "status": "downloaded"
+      },
+      {
+        "name": "ap.series",
+        "listing_size": 231046,
+        "record_size": 231046,
+        "actual_size": 231046,
+        "status": "downloaded"
+      },
+      {
+        "name": "ap.txt",
+        "listing_size": 10417,
+        "record_size": 10417,
+        "actual_size": 10417,
+        "status": "downloaded"
+      }
+    ],
+    "catalog_rows_checked": 1483,
+    "catalog_duplicate_ids": 0,
+    "dimension_distinct_codes": {
+      "area_code": 74,
+      "item_code": 160
+    },
+    "raw_rows_read": 570271,
+    "periods": {
+      "M11": 46553,
+      "M12": 46674,
+      "M01": 47786,
+      "M02": 47915,
+      "M03": 47912,
+      "M04": 47806,
+      "M05": 47635,
+      "M06": 47967,
+      "M07": 47876,
+      "M08": 47802,
+      "M09": 47519,
+      "M10": 46826
+    },
+    "extra_observation_fields": {},
+    "output_files_checked": 1483,
+    "output_observations_checked": 356553,
+    "missing_output_ids": [],
+    "raw_output_mismatches": [],
+    "sample_duplicate_conflicts": 0,
+    "endpoint_mismatches": [],
+    "index_check": {
+      "entries": 1483,
+      "observations": 356553,
+      "missing_catalog_ids": 0,
+      "extra_ids": 0
+    },
+    "examples": [
+      {
+        "id": "APU0000701111",
+        "observations": 560,
+        "first": {
+          "year": "1980",
+          "period": "M01",
+          "value": "0.203",
+          "footnote_codes": ""
+        },
+        "last": {
+          "year": "2026",
+          "period": "M09",
+          "value": "0.545",
+          "footnote_codes": ""
+        }
+      },
+      {
+        "id": "APU0000701311",
+        "observations": 24,
+        "first": {
+          "year": "1980",
+          "period": "M01",
+          "value": "1.108",
+          "footnote_codes": ""
+        },
+        "last": {
+          "year": "1981",
+          "period": "M12",
+          "value": "1.353",
+          "footnote_codes": ""
+        }
+      }
+    ],
+    "small_raw_sha256": {
+      "ap.area": "1137036146970cc9320065ed0f94902f710709b6693ca0abf82c9fda3cf51042",
+      "ap.contacts": "e6bf19bed5382472c2d397111995d39a8dfb012091cffee0fadadb9b778c0157",
+      "ap.data.0.Current": "957044dea3350ef95023c3577b10a8c5c6aaad1c3f2452062901761cec2080eb",
+      "ap.data.1.HouseholdFuels": "060ad6eb6bf1217945c2de8a032dab2c03d4877ce2ea9b19ba7b2602a228e64b",
+      "ap.data.2.Gasoline": "79792810628db0e7c89a16401fb1e5357a31cfb8920a6e4ffe626fd721814f60",
+      "ap.data.3.Food": "5f58bb7fb30dd805dbd4eb167c6070947777e73eb701846901b18e5b8c2f1c54",
+      "ap.footnote": "ee0ad4fc6d5ca98c10b0a9b9cdd343ad9a56438c6d3534cc4c82f20505cac6f9",
+      "ap.item": "4e96f3bca741f65692971fdec8053a44f7ee20f47a02eace4c4d3d9a1dd148f6",
+      "ap.period": "3a6636301c03a15da1cfa37522aeaccda45fa2bf92d325677d7b6c258ab0cd7d",
+      "ap.seasonal": "801baddf3511b8d9b03c0dbd1a9d9365c668b911a2228c6c594ea8a684ace5d7",
+      "ap.series": "9b3ad0b00e10b7872e76c09c620b655f24e76220f4ac5730069449979fc08eee",
+      "ap.txt": "c83886f9a54f113a093c4251d5893233854407e382ae0d5209ffb09f791e7864"
+    }
+  },
+  "bd": {
+    "coverage_record": {
+      "series": 34416,
+      "observations": 4626528,
+      "catalog_without_observations": 0,
+      "year_min": 1992,
+      "year_max": 2026
+    },
+    "validation_record": {
+      "rows_in": 8240208,
+      "rows_written": 4626528,
+      "malformed_rows": 0,
+      "non_numeric_values": 0,
+      "missing_values": 3288,
+      "unknown_periods": 0,
+      "duplicate_identical": 3613680,
+      "duplicate_conflicts": 0
+    },
+    "receipts": [
+      {
+        "name": "bd.contacts",
+        "listing_size": 209,
+        "record_size": 209,
+        "actual_size": 209,
+        "status": "downloaded"
+      },
+      {
+        "name": "bd.county",
+        "listing_size": 39,
+        "record_size": 39,
+        "actual_size": 39,
+        "status": "downloaded"
+      },
+      {
+        "name": "bd.data.0.Current",
+        "listing_size": 199205140,
+        "record_size": 199205140,
+        "actual_size": 199205140,
+        "status": "downloaded"
+      },
+      {
+        "name": "bd.data.1.AllItems",
+        "listing_size": 255021672,
+        "record_size": 255021672,
+        "actual_size": 255021672,
+        "status": "downloaded"
+      },
+      {
+        "name": "bd.dataclass",
+        "listing_size": 267,
+        "record_size": 267,
+        "actual_size": 267,
+        "status": "downloaded"
+      },
+      {
+        "name": "bd.dataelement",
+        "listing_size": 77,
+        "record_size": 77,
+        "actual_size": 77,
+        "status": "downloaded"
+      },
+      {
+        "name": "bd.footnote",
+        "listing_size": 153,
+        "record_size": 153,
+        "actual_size": 153,
+        "status": "downloaded"
+      },
+      {
+        "name": "bd.industry",
+        "listing_size": 4452,
+        "record_size": 4452,
+        "actual_size": 4452,
+        "status": "downloaded"
+      },
+      {
+        "name": "bd.msa",
+        "listing_size": 35,
+        "record_size": 35,
+        "actual_size": 35,
+        "status": "downloaded"
+      },
+      {
+        "name": "bd.ownership",
+        "listing_size": 49,
+        "record_size": 49,
+        "actual_size": 49,
+        "status": "downloaded"
+      },
+      {
+        "name": "bd.periodicity",
+        "listing_size": 58,
+        "record_size": 58,
+        "actual_size": 58,
+        "status": "downloaded"
+      },
+      {
+        "name": "bd.ratelevel",
+        "listing_size": 48,
+        "record_size": 48,
+        "actual_size": 48,
+        "status": "downloaded"
+      },
+      {
+        "name": "bd.seasonal",
+        "listing_size": 79,
+        "record_size": 79,
+        "actual_size": 79,
+        "status": "downloaded"
+      },
+      {
+        "name": "bd.series",
+        "listing_size": 5603877,
+        "record_size": 5603877,
+        "actual_size": 5603877,
+        "status": "downloaded"
+      },
+      {
+        "name": "bd.sizeclass",
+        "listing_size": 570,
+        "record_size": 570,
+        "actual_size": 570,
+        "status": "downloaded"
+      },
+      {
+        "name": "bd.state",
+        "listing_size": 771,
+        "record_size": 771,
+        "actual_size": 771,
+        "status": "downloaded"
+      },
+      {
+        "name": "bd.txt",
+        "listing_size": 17479,
+        "record_size": 17479,
+        "actual_size": 17479,
+        "status": "downloaded"
+      },
+      {
+        "name": "bd.unitanalysis",
+        "listing_size": 54,
+        "record_size": 54,
+        "actual_size": 54,
+        "status": "downloaded"
+      }
+    ],
+    "catalog_rows_checked": 34416,
+    "catalog_duplicate_ids": 0,
+    "dimension_distinct_codes": {
+      "seasonal": 2,
+      "msa_code": 1,
+      "state_code": 54,
+      "county_code": 1,
+      "industry_code": 91,
+      "unitanalysis_code": 1,
+      "dataelement_code": 2,
+      "sizeclass_code": 32,
+      "dataclass_code": 8,
+      "ratelevel_code": 2,
+      "periodicity_code": 2,
+      "ownership_code": 1
+    },
+    "raw_rows_read": 8240208,
+    "periods": {
+      "Q03": 2059072,
+      "Q04": 2059072,
+      "Q01": 2095448,
+      "Q02": 2026616
+    },
+    "extra_observation_fields": {},
+    "output_files_checked": 101,
+    "output_observations_checked": 13551,
+    "missing_output_ids": [],
+    "raw_output_mismatches": [],
+    "sample_duplicate_conflicts": 0,
+    "endpoint_mismatches": [],
+    "index_check": {
+      "entries": 34416,
+      "observations": 4626528,
+      "missing_catalog_ids": 0,
+      "extra_ids": 0
+    },
+    "examples": [
+      {
+        "id": "BDS0000000000000000110001LQ5",
+        "observations": 135,
+        "first": {
+          "year": "1992",
+          "period": "Q03",
+          "value": "7369",
+          "footnote_codes": "1"
+        },
+        "last": {
+          "year": "2026",
+          "period": "Q01",
+          "value": "7381",
+          "footnote_codes": "1"
+        }
+      },
+      {
+        "id": "BDS0000000000000000122201LQ5",
+        "observations": 135,
+        "first": {
+          "year": "1992",
+          "period": "Q03",
+          "value": "14",
+          "footnote_codes": ""
+        },
+        "last": {
+          "year": "2026",
+          "period": "Q01",
+          "value": "13",
+          "footnote_codes": ""
+        }
+      }
+    ],
+    "small_raw_sha256": {
+      "bd.contacts": "2f8854add0c693e3a97e9929009790b1db59a97147922bd9782ef1dbf5d62f1c",
+      "bd.county": "f3369f01c5d35e2e2d12dedccfada7258f46cd2593d594d0bbbdd361dc3bb38c",
+      "bd.dataclass": "1a912fc027b2679e4dd5da5ebdfc37657ce0aa1b6c12fbf42191d7c3692cd7ba",
+      "bd.dataelement": "438cbe097ee57146acce647246630cec7de708f3baac3984a191d5555faed089",
+      "bd.footnote": "a1cb15857931e89ce0e0e6a8f202d3070a3474dbe39f79ea869e0b5cc1db83a7",
+      "bd.industry": "6dec181f5061346f6e45b95912e99953e3b78c33709d2768fede2362e7d7c144",
+      "bd.msa": "3ceb8ed49928c550aafd5cea7a5b075209ae0bed4a59037b1264eb59a3e1e771",
+      "bd.ownership": "019754faeb0675d78afbf2af62b08923e1fb32a6ffff56dfb3587b2853b5b226",
+      "bd.periodicity": "be7f0c34d8f8f8b4d2e00b6755cfea054230e1f80512912e8a73a3a7e2ef9dca",
+      "bd.ratelevel": "27373d532ac5c5b292d7d26b3d79db42f36a189d9ea8a4e89d7f31e57f83e156",
+      "bd.seasonal": "9593252368e2787a16be26d8883593e91d3104f8213326274f5fce90a0f86788",
+      "bd.series": "5a7f48dd14eecfe53bdf0772a6b33260cd9f3bf90778f599d5a9b5577f0087c2",
+      "bd.sizeclass": "43fc953375071a7d1d4235bb576b1c5eb5868182139ae98deeb5a37b3919f20f",
+      "bd.state": "c9ac6e75f4767c84ae18c19faaf7f172c9008a0bc689d7863783563af76a2c83",
+      "bd.txt": "a1bed72aac85050643c952bda1f5ea51db25c769e28459ccc2c99eaf40ce35f1",
+      "bd.unitanalysis": "b7abecb7a52e68ea65308ace9701c9adb5bacdeef090e31826806b19db57a78a"
+    }
+  },
+  "bg": {
+    "coverage_record": {
+      "series": 25,
+      "observations": 784,
+      "catalog_without_observations": 0,
+      "year_min": 1983,
+      "year_max": 1995
+    },
+    "validation_record": {
+      "rows_in": 784,
+      "rows_written": 784,
+      "malformed_rows": 0,
+      "non_numeric_values": 0,
+      "missing_values": 341,
+      "unknown_periods": 0,
+      "duplicate_identical": 0,
+      "duplicate_conflicts": 0
+    },
+    "receipts": [
+      {
+        "name": "bg.alteration",
+        "listing_size": 257,
+        "record_size": 257,
+        "actual_size": 257,
+        "status": "downloaded"
+      },
+      {
+        "name": "bg.contacts",
+        "listing_size": 731,
+        "record_size": 731,
+        "actual_size": 731,
+        "status": "downloaded"
+      },
+      {
+        "name": "bg.data.1.AllData",
+        "listing_size": 28797,
+        "record_size": 28797,
+        "actual_size": 28797,
+        "status": "downloaded"
+      },
+      {
+        "name": "bg.duration",
+        "listing_size": 66,
+        "record_size": 66,
+        "actual_size": 66,
+        "status": "downloaded"
+      },
+      {
+        "name": "bg.measure",
+        "listing_size": 1257,
+        "record_size": 1257,
+        "actual_size": 1257,
+        "status": "downloaded"
+      },
+      {
+        "name": "bg.period",
+        "listing_size": 146,
+        "record_size": 146,
+        "actual_size": 146,
+        "status": "downloaded"
+      },
+      {
+        "name": "bg.sector",
+        "listing_size": 195,
+        "record_size": 195,
+        "actual_size": 195,
+        "status": "downloaded"
+      },
+      {
+        "name": "bg.selection",
+        "listing_size": 114,
+        "record_size": 114,
+        "actual_size": 114,
+        "status": "downloaded"
+      },
+      {
+        "name": "bg.series",
+        "listing_size": 1377,
+        "record_size": 1377,
+        "actual_size": 1377,
+        "status": "downloaded"
+      },
+      {
+        "name": "bg.txt",
+        "listing_size": 13090,
+        "record_size": 13090,
+        "actual_size": 13090,
+        "status": "downloaded"
+      },
+      {
+        "name": "bg.unit",
+        "listing_size": 123,
+        "record_size": 123,
+        "actual_size": 123,
+        "status": "downloaded"
+      }
+    ],
+    "catalog_rows_checked": 25,
+    "catalog_duplicate_ids": 0,
+    "dimension_distinct_codes": {
+      "measure_code": 12,
+      "unit_code": 2,
+      "alteration_code": 3,
+      "sector_code": 3,
+      "seasonal": 1
+    },
+    "raw_rows_read": 784,
+    "periods": {
+      "Q02": 167,
+      "Q03": 142,
+      "Q04": 142,
+      "Q05": 179,
+      "Q01": 154
+    },
+    "extra_observation_fields": {
+      "cont_break": {
+        "N": 784
+      },
+      "status": {
+        "F": 683,
+        "P": 101
+      },
+      "footnote_exists": {
+        "N": 750,
+        "Y": 34
+      }
+    },
+    "output_files_checked": 25,
+    "output_observations_checked": 784,
+    "missing_output_ids": [],
+    "raw_output_mismatches": [],
+    "sample_duplicate_conflicts": 0,
+    "endpoint_mismatches": [
+      {
+        "id": "BGU01111001",
+        "catalog": [
+          "1984",
+          "Q02",
+          "1995",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1984",
+            "Q02"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU04111001",
+        "catalog": [
+          "1984",
+          "Q02",
+          "1995",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1984",
+            "Q02"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU13111001",
+        "catalog": [
+          "1983",
+          "Q02",
+          "1995",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q02"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU16111001",
+        "catalog": [
+          "1983",
+          "Q02",
+          "1995",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q02"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU25111",
+        "catalog": [
+          "1984",
+          "Q02",
+          "1995",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1984",
+            "Q02"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU25541",
+        "catalog": [
+          "1984",
+          "Q02",
+          "1985",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1984",
+            "Q02"
+          ],
+          [
+            "1985",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU25551",
+        "catalog": [
+          "1984",
+          "Q02",
+          "1985",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1984",
+            "Q02"
+          ],
+          [
+            "1985",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU26111",
+        "catalog": [
+          "1984",
+          "Q02",
+          "1995",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1984",
+            "Q02"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU26541",
+        "catalog": [
+          "1984",
+          "Q02",
+          "1985",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1984",
+            "Q02"
+          ],
+          [
+            "1985",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU27111",
+        "catalog": [
+          "1984",
+          "Q02",
+          "1995",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1984",
+            "Q02"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU27541",
+        "catalog": [
+          "1984",
+          "Q02",
+          "1985",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1984",
+            "Q02"
+          ],
+          [
+            "1985",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU28111",
+        "catalog": [
+          "1984",
+          "Q02",
+          "1995",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1984",
+            "Q02"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU28541",
+        "catalog": [
+          "1984",
+          "Q02",
+          "1985",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1984",
+            "Q02"
+          ],
+          [
+            "1985",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU49111001",
+        "catalog": [
+          "1988",
+          "Q13",
+          "1995",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q05"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU49112001",
+        "catalog": [
+          "1988",
+          "Q13",
+          "1995",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q05"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU49113001",
+        "catalog": [
+          "1988",
+          "Q13",
+          "1995",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q05"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU52111001",
+        "catalog": [
+          "1988",
+          "Q13",
+          "1995",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q05"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU52112001",
+        "catalog": [
+          "1988",
+          "Q13",
+          "1995",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q05"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU52113001",
+        "catalog": [
+          "1988",
+          "Q13",
+          "1995",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q05"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU55111001",
+        "catalog": [
+          "1988",
+          "Q13",
+          "1995",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q05"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU55112001",
+        "catalog": [
+          "1988",
+          "Q13",
+          "1995",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q05"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU55113001",
+        "catalog": [
+          "1988",
+          "Q13",
+          "1995",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q05"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU58111001",
+        "catalog": [
+          "1988",
+          "Q13",
+          "1995",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q05"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU58112001",
+        "catalog": [
+          "1988",
+          "Q13",
+          "1995",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q05"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BGU58113001",
+        "catalog": [
+          "1988",
+          "Q13",
+          "1995",
+          "Q02"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q05"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      }
+    ],
+    "index_check": {
+      "entries": 25,
+      "observations": 784,
+      "missing_catalog_ids": 0,
+      "extra_ids": 0
+    },
+    "examples": [
+      {
+        "id": "BGU01111001",
+        "observations": 57,
+        "first": {
+          "year": "1984",
+          "period": "Q02",
+          "value": "3.9",
+          "footnote_codes": ""
+        },
+        "last": {
+          "year": "1995",
+          "period": "Q05",
+          "value": "",
+          "footnote_codes": ""
+        }
+      },
+      {
+        "id": "BGU04111001",
+        "observations": 57,
+        "first": {
+          "year": "1984",
+          "period": "Q02",
+          "value": "4.2",
+          "footnote_codes": ""
+        },
+        "last": {
+          "year": "1995",
+          "period": "Q05",
+          "value": "",
+          "footnote_codes": ""
+        }
+      }
+    ],
+    "small_raw_sha256": {
+      "bg.alteration": "0381f0c3e6a8543d779eb34b4a949dbe9ee70545206028082470644d9b5e7ce9",
+      "bg.contacts": "1318fb6de253b322a18ee7de7e8e830d409df4f799d8f52333a070f05faa20cc",
+      "bg.data.1.AllData": "155d9d970bd1777c327d520c3351ecf5dd9da6529737c61c6791378625579386",
+      "bg.duration": "2bec2396dd029b8acd9708b68c04e13b5faaac5e91f5b99750148c5338423fec",
+      "bg.measure": "1cb9a5c4d1299a38b88ac7249c2b81e926953cb7529ba26da73777ae5c032ed8",
+      "bg.period": "2a73359647de19a1fc85b2db5002d7efdda291005a501bfe432749c60bce0b2c",
+      "bg.sector": "0afd9053ed1cb911934ca3a325f3e35f808b8f442d4abac21a7cc20e7189a3c7",
+      "bg.selection": "bf7c5d6fd110a5801fe93ec7cd94563a336faa14b8c1a70ce6bd3a6641e61443",
+      "bg.series": "4a249f0dd32c746700935c1847a62ee0e2f83c00a3a7a2193bbbbbe04f4c2490",
+      "bg.txt": "a2cbdad64c028be945f24863e8bf525077bf7d60e7b2f1312e8da5dfc06bf566",
+      "bg.unit": "cc765ba6f0f037b54bbd3567f44d2f117cac11578d3c1f173ade1c5cecf09a84"
+    }
+  },
+  "bp": {
+    "coverage_record": {
+      "series": 95,
+      "observations": 4631,
+      "catalog_without_observations": 0,
+      "year_min": 1983,
+      "year_max": 1995
+    },
+    "validation_record": {
+      "rows_in": 4631,
+      "rows_written": 4631,
+      "malformed_rows": 0,
+      "non_numeric_values": 0,
+      "missing_values": 84,
+      "unknown_periods": 0,
+      "duplicate_identical": 0,
+      "duplicate_conflicts": 0
+    },
+    "receipts": [
+      {
+        "name": "bp.alteration",
+        "listing_size": 291,
+        "record_size": 291,
+        "actual_size": 291,
+        "status": "downloaded"
+      },
+      {
+        "name": "bp.contacts",
+        "listing_size": 731,
+        "record_size": 731,
+        "actual_size": 731,
+        "status": "downloaded"
+      },
+      {
+        "name": "bp.data.1.AllData",
+        "listing_size": 189094,
+        "record_size": 189094,
+        "actual_size": 189094,
+        "status": "downloaded"
+      },
+      {
+        "name": "bp.duration",
+        "listing_size": 80,
+        "record_size": 80,
+        "actual_size": 80,
+        "status": "downloaded"
+      },
+      {
+        "name": "bp.industry",
+        "listing_size": 290,
+        "record_size": 290,
+        "actual_size": 290,
+        "status": "downloaded"
+      },
+      {
+        "name": "bp.measure",
+        "listing_size": 3042,
+        "record_size": 3042,
+        "actual_size": 3042,
+        "status": "downloaded"
+      },
+      {
+        "name": "bp.period",
+        "listing_size": 146,
+        "record_size": 146,
+        "actual_size": 146,
+        "status": "downloaded"
+      },
+      {
+        "name": "bp.periodicity",
+        "listing_size": 94,
+        "record_size": 94,
+        "actual_size": 94,
+        "status": "downloaded"
+      },
+      {
+        "name": "bp.selection",
+        "listing_size": 111,
+        "record_size": 111,
+        "actual_size": 111,
+        "status": "downloaded"
+      },
+      {
+        "name": "bp.series",
+        "listing_size": 5111,
+        "record_size": 5111,
+        "actual_size": 5111,
+        "status": "downloaded"
+      },
+      {
+        "name": "bp.txt",
+        "listing_size": 13857,
+        "record_size": 13857,
+        "actual_size": 13857,
+        "status": "downloaded"
+      },
+      {
+        "name": "bp.unit",
+        "listing_size": 123,
+        "record_size": 123,
+        "actual_size": 123,
+        "status": "downloaded"
+      }
+    ],
+    "catalog_rows_checked": 95,
+    "catalog_duplicate_ids": 0,
+    "dimension_distinct_codes": {
+      "measure_code": 28,
+      "unit_code": 2,
+      "periodicity_code": 2,
+      "alteration_code": 4,
+      "industry_code": 6,
+      "seasonal": 1
+    },
+    "raw_rows_read": 4631,
+    "periods": {
+      "Q01": 915,
+      "Q02": 915,
+      "Q03": 915,
+      "Q04": 943,
+      "Q05": 943
+    },
+    "extra_observation_fields": {
+      "cont_break": {
+        "N": 4631
+      },
+      "status": {
+        "F": 4631
+      },
+      "footnote_exists": {
+        "N": 4404,
+        "Y": 227
+      }
+    },
+    "output_files_checked": 95,
+    "output_observations_checked": 4631,
+    "missing_output_ids": [],
+    "raw_output_mismatches": [],
+    "sample_duplicate_conflicts": 0,
+    "endpoint_mismatches": [
+      {
+        "id": "BPU0111101001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0114101001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0114102001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0114103001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0114106001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0214101001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0214102001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0214103001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0214106001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0314101001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0314102001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0314103001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0314106001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0411101001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0414101001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0414102001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0414103001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0414106001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0514101001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0514102001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0514103001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0514106001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0614101001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0614102001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0614103001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU0614106001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU1311101001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU1314101001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU1611101001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU1614101001",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2511101",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2514101",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2514201",
+        "catalog": [
+          "1990",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1990",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2514401",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2551401",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2551501",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2611101",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2614101",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2614201",
+        "catalog": [
+          "1990",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1990",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2614401",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2651401",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2711101",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2714101",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2714201",
+        "catalog": [
+          "1990",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1990",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2714401",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2751401",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2811101",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2814101",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2814201",
+        "catalog": [
+          "1990",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1990",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2814401",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU2851401",
+        "catalog": [
+          "1983",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1983",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU4911101001",
+        "catalog": [
+          "1990",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1990",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU4914101001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU4914102001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU4914103001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU4914111001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU4914112001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5014101001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5114101001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5211101001",
+        "catalog": [
+          "1990",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1990",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5214101001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5214102001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5214103001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5214111001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5214112001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5314101001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5414101001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5511101001",
+        "catalog": [
+          "1990",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1990",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5514101001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5514102001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5514103001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5514111001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5514112001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5614101001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5714101001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5811101001",
+        "catalog": [
+          "1990",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1990",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5814101001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5814102001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5814103001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5814111001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5814112001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU5914101001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU6014101001",
+        "catalog": [
+          "1988",
+          "Q04",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1988",
+            "Q04"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU6414101001",
+        "catalog": [
+          "1991",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1991",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU6414102001",
+        "catalog": [
+          "1991",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1991",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU6414103001",
+        "catalog": [
+          "1991",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1991",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU6714101001",
+        "catalog": [
+          "1991",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1991",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU6714102001",
+        "catalog": [
+          "1991",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1991",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU6714103001",
+        "catalog": [
+          "1991",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1991",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU7114101001",
+        "catalog": [
+          "1991",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1991",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU7114102001",
+        "catalog": [
+          "1991",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1991",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU7114103001",
+        "catalog": [
+          "1991",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1991",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU7414101001",
+        "catalog": [
+          "1991",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1991",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU7414102001",
+        "catalog": [
+          "1991",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1991",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      },
+      {
+        "id": "BPU7414103001",
+        "catalog": [
+          "1991",
+          "Q01",
+          "1995",
+          "Q04"
+        ],
+        "observed": [
+          [
+            "1991",
+            "Q01"
+          ],
+          [
+            "1995",
+            "Q05"
+          ]
+        ]
+      }
+    ],
+    "index_check": {
+      "entries": 95,
+      "observations": 4631,
+      "missing_catalog_ids": 0,
+      "extra_ids": 0
+    },
+    "examples": [
+      {
+        "id": "BPU0111101001",
+        "observations": 65,
+        "first": {
+          "year": "1983",
+          "period": "Q01",
+          "value": "-1.2",
+          "footnote_codes": ""
+        },
+        "last": {
+          "year": "1995",
+          "period": "Q05",
+          "value": "2.3",
+          "footnote_codes": ""
+        }
+      },
+      {
+        "id": "BPU0114101001",
+        "observations": 65,
+        "first": {
+          "year": "1983",
+          "period": "Q01",
+          "value": "3.0",
+          "footnote_codes": ""
+        },
+        "last": {
+          "year": "1995",
+          "period": "Q05",
+          "value": "2.3",
+          "footnote_codes": ""
+        }
+      }
+    ],
+    "small_raw_sha256": {
+      "bp.alteration": "3d15f92b2b7bff5f45198db302fc38877fee69985b5aa24ff85b7acab530e438",
+      "bp.contacts": "1318fb6de253b322a18ee7de7e8e830d409df4f799d8f52333a070f05faa20cc",
+      "bp.data.1.AllData": "d6111e7b4a813cbd3495e79cd44f5d3d6a186d944fda58efd62484ddff5ccf5b",
+      "bp.duration": "8f9581388afe372f13989c716ac4c4844bb6927c18b9731f7d35d914b700c3bf",
+      "bp.industry": "35c093a9bef4f3a53b15d69a81b835ebd3a7feb8f296f5ae1cda5eee028eb1c1",
+      "bp.measure": "47acaa8f5692eed6426691e336a5ad6229a4243d7b7ece17245b034507c71706",
+      "bp.period": "2a73359647de19a1fc85b2db5002d7efdda291005a501bfe432749c60bce0b2c",
+      "bp.periodicity": "db5f79fe7e42754794b480c445edaf99e9ad9f94252461b1b5f689b717c950f8",
+      "bp.selection": "7127eb71b3ba2809dffb70ae9b46753e993a1e84e77d182307cb0000b7a17ec9",
+      "bp.series": "29c5e0de34115aa76c7ef25c1bf911f434f7c2fba5f9403c0c067f9c3141aa5e",
+      "bp.txt": "06e8ce5e0fb5209cee8e0d10ae61aefb3eb62115068cc0f309fd254c5d11c32a",
+      "bp.unit": "0e98bc48f6aebe78ff81706114b677a01506315eb1b3b4be8859e414a5fa6b52"
+    }
+  },
+  "ca": {
+    "coverage_record": {
+      "series": 52439022,
+      "observations": 52439022,
+      "catalog_without_observations": 0,
+      "year_min": 2024,
+      "year_max": 2024
+    },
+    "validation_record": {
+      "rows_in": 104878044,
+      "rows_written": 52439022,
+      "malformed_rows": 0,
+      "non_numeric_values": 0,
+      "missing_values": 0,
+      "unknown_periods": 0,
+      "duplicate_identical": 52439022,
+      "duplicate_conflicts": 0
+    },
+    "receipts": [
+      {
+        "name": "ca.age",
+        "listing_size": 1074,
+        "record_size": 1074,
+        "actual_size": 1074,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.case",
+        "listing_size": 1045,
+        "record_size": 1045,
+        "actual_size": 1045,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.category",
+        "listing_size": 138047,
+        "record_size": 138047,
+        "actual_size": 138047,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.contacts",
+        "listing_size": 2934,
+        "record_size": 2934,
+        "actual_size": 2934,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.data.0.Current",
+        "listing_size": 2885908659,
+        "record_size": 2885908659,
+        "actual_size": 2885908659,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.data.1.AllData",
+        "listing_size": 2885908659,
+        "record_size": 2885908659,
+        "actual_size": 2885908659,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.datatype",
+        "listing_size": 467,
+        "record_size": 467,
+        "actual_size": 467,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.event",
+        "listing_size": 21814,
+        "record_size": 21814,
+        "actual_size": 21814,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.footnote",
+        "listing_size": 111,
+        "record_size": 111,
+        "actual_size": 111,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.hour",
+        "listing_size": 292,
+        "record_size": 292,
+        "actual_size": 292,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.industry",
+        "listing_size": 59204,
+        "record_size": 59204,
+        "actual_size": 59204,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.los",
+        "listing_size": 157,
+        "record_size": 157,
+        "actual_size": 157,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.medical",
+        "listing_size": 179,
+        "record_size": 179,
+        "actual_size": 179,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.nature",
+        "listing_size": 17324,
+        "record_size": 17324,
+        "actual_size": 17324,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.occupation",
+        "listing_size": 67804,
+        "record_size": 67804,
+        "actual_size": 67804,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.ownership",
+        "listing_size": 148,
+        "record_size": 148,
+        "actual_size": 148,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.pob",
+        "listing_size": 7615,
+        "record_size": 7615,
+        "actual_size": 7615,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.race",
+        "listing_size": 329,
+        "record_size": 329,
+        "actual_size": 329,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.series",
+        "listing_size": 4508789436,
+        "record_size": 4508789436,
+        "actual_size": 4508789436,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.sex",
+        "listing_size": 86,
+        "record_size": 86,
+        "actual_size": 86,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.source",
+        "listing_size": 58545,
+        "record_size": 58545,
+        "actual_size": 58545,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.special",
+        "listing_size": 241,
+        "record_size": 241,
+        "actual_size": 241,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.state",
+        "listing_size": 1017,
+        "record_size": 1017,
+        "actual_size": 1017,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.time",
+        "listing_size": 217,
+        "record_size": 217,
+        "actual_size": 217,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.txt",
+        "listing_size": 19603,
+        "record_size": 19603,
+        "actual_size": 19603,
+        "status": "downloaded"
+      },
+      {
+        "name": "ca.weekday",
+        "listing_size": 160,
+        "record_size": 160,
+        "actual_size": 160,
+        "status": "downloaded"
+      }
+    ],
+    "catalog_rows_checked": 32,
+    "catalog_duplicate_ids": 0,
+    "dimension_distinct_codes": {
+      "seasonal": 1,
+      "category_code": 1,
+      "datatype_code": 1,
+      "case_code": 1,
+      "age_code": 1,
+      "los_code": 1,
+      "race_code": 1,
+      "sex_code": 1,
+      "pob_code": 1,
+      "event_code": 1,
+      "source_code": 1,
+      "occupation_code": 1,
+      "nature_code": 1,
+      "industry_code": 1,
+      "time_code": 1,
+      "hour_code": 1,
+      "weekday_code": 1,
+      "special_code": 1,
+      "ownership_code": 1,
+      "state_code": 32
+    },
+    "raw_rows_read": 64,
+    "periods": {
+      "A01": 64
+    },
+    "extra_observation_fields": {},
+    "output_files_checked": 32,
+    "output_observations_checked": 32,
+    "missing_output_ids": [],
+    "raw_output_mismatches": [],
+    "sample_duplicate_conflicts": 0,
+    "endpoint_mismatches": [],
+    "index_check": null,
+    "examples": [
+      {
+        "id": "CAU00X00000013000",
+        "observations": 1,
+        "first": {
+          "year": "2024",
+          "period": "A01",
+          "value": "54.9",
+          "footnote_codes": ""
+        },
+        "last": {
+          "year": "2024",
+          "period": "A01",
+          "value": "54.9",
+          "footnote_codes": ""
+        }
+      },
+      {
+        "id": "CAU00X00000013001",
+        "observations": 1,
+        "first": {
+          "year": "2024",
+          "period": "A01",
+          "value": "41.2",
+          "footnote_codes": ""
+        },
+        "last": {
+          "year": "2024",
+          "period": "A01",
+          "value": "41.2",
+          "footnote_codes": ""
+        }
+      }
+    ],
+    "small_raw_sha256": {
+      "ca.age": "cffa89b2ed28f9c0503bf174263035143d859b68e9798864543c920ff4527644",
+      "ca.case": "0023eca4f23be154ea0d5a4c210ae03183bdf1bba2fb3a8c7d02a364a25eaf12",
+      "ca.category": "4f44318b43ea39212a8a0ae065fdedc5b9826b6a6df616d39223923b2f6f45b0",
+      "ca.contacts": "c866996dbdfd28411337e0523e4e1b8e5466357dd8328b78f9f1da860734f3fe",
+      "ca.datatype": "a96f6105ddc84bd2b94eb08e12bb2e31e812a700ff3a2dbd22b360791c15bceb",
+      "ca.event": "18dd56d6ab84eca074f2070685e91575d9ae47282faa43d8af86e11e5f57234d",
+      "ca.footnote": "f14d623828ba860c3577b7ee56d38eef4a5c094557e7cfede3c9658be7ede61c",
+      "ca.hour": "a8c2d96f7f38579a4767ba9f18858e3a260d5124c5ff59d2d0fec6d4a88ca105",
+      "ca.industry": "c7583456fb4fa8b99ffc8067be68c5e3f59d240fb0c4c50db554adf7828cf43d",
+      "ca.los": "70c7b86dec08de08577ec5e757b3b81474b6d2ab316e080363d327c32d1f9c8e",
+      "ca.medical": "ab6489587d58c478356d4200e63a80532e87bb665235de6889c99b24928724a9",
+      "ca.nature": "83bd6b4b642763b9612d7904b63594b44d9a55ac8e7a4a36182c5b36ce4c8b37",
+      "ca.occupation": "b7175b0cebe833f4dbc962ada8ea34bab4a2f36066953a2c7083765ade858260",
+      "ca.ownership": "c8728b310118e9159915bc1476664679bf04e4ee7c617d716b21e8fcb9a938d7",
+      "ca.pob": "a65a7db49859345bccb23e5531ee50c08ce80f332423330a690fc7555319bc0b",
+      "ca.race": "a55d7746f104309ce2c14ccbcfcc7ba242f40ab6665be1abe5f2ad01a656082e",
+      "ca.sex": "aed3d69ff37741913e831868e442e77e547676037c555916d696e457d44abc60",
+      "ca.source": "df14290d178fb755a6b19e01b2c4471e43b38f9a25718bd064894268e56c947d",
+      "ca.special": "b5cda5cf1996450d2174d6ee1d9e4495719cfb49c5b71a2290ada25c895dcf51",
+      "ca.state": "68c56b9095a0cd1ea7dfbe45a06704a31e0a5a185fd68c42fd944f17c11b4702",
+      "ca.time": "526995d6b49381e9c69d3c377ffb198269e33a8562ddc83d1da55ab2a3429c88",
+      "ca.txt": "288152b60efdbb2eafbbbd99cae1b36a148270153472d55efae75ddabce81b89",
+      "ca.weekday": "c2ba985d23fc32f515333d97c6b3b7e701ea4f8650640e24f38f0f9a69dbeb0c"
+    }
+  }
+}

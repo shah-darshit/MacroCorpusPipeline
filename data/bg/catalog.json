@@ -1,0 +1,115 @@
+{
+  "program": "BG",
+  "listing_sha256": "753f3961c1f0166eeb4721af032f2ba58135a6c8795c8932bcca5e0148349eca",
+  "files": [
+    {
+      "name": "bg.alteration",
+      "sha256": "0381f0c3e6a8543d779eb34b4a949dbe9ee70545206028082470644d9b5e7ce9",
+      "size": 257,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bg.contacts",
+      "sha256": "1318fb6de253b322a18ee7de7e8e830d409df4f799d8f52333a070f05faa20cc",
+      "size": 731,
+      "role": "documentation",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bg.data.1.AllData",
+      "sha256": "155d9d970bd1777c327d520c3351ecf5dd9da6529737c61c6791378625579386",
+      "size": 28797,
+      "role": "observations",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bg.duration",
+      "sha256": "2bec2396dd029b8acd9708b68c04e13b5faaac5e91f5b99750148c5338423fec",
+      "size": 66,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bg.measure",
+      "sha256": "1cb9a5c4d1299a38b88ac7249c2b81e926953cb7529ba26da73777ae5c032ed8",
+      "size": 1257,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bg.period",
+      "sha256": "2a73359647de19a1fc85b2db5002d7efdda291005a501bfe432749c60bce0b2c",
+      "size": 146,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bg.sector",
+      "sha256": "0afd9053ed1cb911934ca3a325f3e35f808b8f442d4abac21a7cc20e7189a3c7",
+      "size": 195,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bg.selection",
+      "sha256": "bf7c5d6fd110a5801fe93ec7cd94563a336faa14b8c1a70ce6bd3a6641e61443",
+      "size": 114,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bg.series",
+      "sha256": "4a249f0dd32c746700935c1847a62ee0e2f83c00a3a7a2193bbbbbe04f4c2490",
+      "size": 1377,
+      "role": "series_catalog",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bg.txt",
+      "sha256": "a2cbdad64c028be945f24863e8bf525077bf7d60e7b2f1312e8da5dfc06bf566",
+      "size": 13090,
+      "role": "documentation",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bg.unit",
+      "sha256": "cc765ba6f0f037b54bbd3567f44d2f117cac11578d3c1f173ade1c5cecf09a84",
+      "size": 123,
+      "role": "mapping",
+      "download_status": "downloaded"
+    }
+  ],
+  "catalog_fields": [
+    "series_id",
+    "measure_code",
+    "unit_code",
+    "alteration_code",
+    "sector_code",
+    "contract_duration",
+    "contract_selection",
+    "seasonal",
+    "begin_year",
+    "begin_period",
+    "end_year",
+    "end_period"
+  ],
+  "joins": [],
+  "coverage": {
+    "series": 25,
+    "observations": 784,
+    "catalog_without_observations": 0,
+    "year_min": 1983,
+    "year_max": 1995
+  },
+  "validation": {
+    "rows_in": 784,
+    "rows_written": 784,
+    "malformed_rows": 0,
+    "non_numeric_values": 0,
+    "missing_values": 341,
+    "unknown_periods": 0,
+    "duplicate_identical": 0,
+    "duplicate_conflicts": 0
+  }
+}

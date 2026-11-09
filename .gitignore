@@ -4,7 +4,29 @@ __pycache__/
 .venv/
 .DS_Store
 
-data/
+# Downloaded data: only reviewed, small assessment receipts are shareable.
+/data/*
+!/data/run.json
+!/data/ap/
+!/data/bd/
+!/data/bg/
+!/data/bp/
+!/data/ca/
+/data/ap/*
+/data/bd/*
+/data/bg/*
+/data/bp/*
+/data/ca/*
+!/data/ap/catalog.json
+!/data/ap/download.json
+!/data/bd/catalog.json
+!/data/bd/download.json
+!/data/bg/catalog.json
+!/data/bg/download.json
+!/data/bp/catalog.json
+!/data/bp/download.json
+!/data/ca/catalog.json
+!/data/ca/download.json
 logs/
 *.part
 *.duckdb
@@ -14,3 +36,24 @@ samples/
 bd-snapshot-*.tar.gz
 README.txt
 SHA256SUMS
+
+# Scratch files, caches, local settings, and credentials.
+*.tmp
+*.tmp.*
+*.duckdb.wal
+*.py[cod]
+.mypy_cache/
+.ruff_cache/
+.cache/
+/tmp/
+/temp/
+.env.*
+!.env.example
+/.aws/
+/.codex/
+/.agents/
+*.pem
+*.key
+credentials.json
+token.json
+service-account*.json

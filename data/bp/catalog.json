@@ -1,0 +1,132 @@
+{
+  "program": "BP",
+  "listing_sha256": "2f59b4865dd03151ebfea62f1ebcec9664838e058e374a1b23f6118a89774913",
+  "files": [
+    {
+      "name": "bp.alteration",
+      "sha256": "3d15f92b2b7bff5f45198db302fc38877fee69985b5aa24ff85b7acab530e438",
+      "size": 291,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bp.contacts",
+      "sha256": "1318fb6de253b322a18ee7de7e8e830d409df4f799d8f52333a070f05faa20cc",
+      "size": 731,
+      "role": "documentation",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bp.data.1.AllData",
+      "sha256": "d6111e7b4a813cbd3495e79cd44f5d3d6a186d944fda58efd62484ddff5ccf5b",
+      "size": 189094,
+      "role": "observations",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bp.duration",
+      "sha256": "8f9581388afe372f13989c716ac4c4844bb6927c18b9731f7d35d914b700c3bf",
+      "size": 80,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bp.industry",
+      "sha256": "35c093a9bef4f3a53b15d69a81b835ebd3a7feb8f296f5ae1cda5eee028eb1c1",
+      "size": 290,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bp.measure",
+      "sha256": "47acaa8f5692eed6426691e336a5ad6229a4243d7b7ece17245b034507c71706",
+      "size": 3042,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bp.period",
+      "sha256": "2a73359647de19a1fc85b2db5002d7efdda291005a501bfe432749c60bce0b2c",
+      "size": 146,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bp.periodicity",
+      "sha256": "db5f79fe7e42754794b480c445edaf99e9ad9f94252461b1b5f689b717c950f8",
+      "size": 94,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bp.selection",
+      "sha256": "7127eb71b3ba2809dffb70ae9b46753e993a1e84e77d182307cb0000b7a17ec9",
+      "size": 111,
+      "role": "mapping",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bp.series",
+      "sha256": "29c5e0de34115aa76c7ef25c1bf911f434f7c2fba5f9403c0c067f9c3141aa5e",
+      "size": 5111,
+      "role": "series_catalog",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bp.txt",
+      "sha256": "06e8ce5e0fb5209cee8e0d10ae61aefb3eb62115068cc0f309fd254c5d11c32a",
+      "size": 13857,
+      "role": "documentation",
+      "download_status": "downloaded"
+    },
+    {
+      "name": "bp.unit",
+      "sha256": "0e98bc48f6aebe78ff81706114b677a01506315eb1b3b4be8859e414a5fa6b52",
+      "size": 123,
+      "role": "mapping",
+      "download_status": "downloaded"
+    }
+  ],
+  "catalog_fields": [
+    "series_id",
+    "measure_code",
+    "unit_code",
+    "periodicity_code",
+    "alteration_code",
+    "industry_code",
+    "contract_duration",
+    "contract_selection",
+    "seasonal",
+    "begin_year",
+    "begin_period",
+    "end_year",
+    "end_period"
+  ],
+  "joins": [
+    {
+      "file": "bp.periodicity",
+      "catalog_column": "periodicity_code",
+      "label_column": "periodicity_text",
+      "matched": 95,
+      "blank": 0,
+      "unmatched": 0
+    }
+  ],
+  "coverage": {
+    "series": 95,
+    "observations": 4631,
+    "catalog_without_observations": 0,
+    "year_min": 1983,
+    "year_max": 1995
+  },
+  "validation": {
+    "rows_in": 4631,
+    "rows_written": 4631,
+    "malformed_rows": 0,
+    "non_numeric_values": 0,
+    "missing_values": 84,
+    "unknown_periods": 0,
+    "duplicate_identical": 0,
+    "duplicate_conflicts": 0
+  }
+}
