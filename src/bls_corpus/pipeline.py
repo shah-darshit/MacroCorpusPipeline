@@ -2,6 +2,9 @@
 from __future__ import annotations
 
 import argparse
+import codecs
+import shutil
+import tempfile
 import hashlib
 import json
 import os
@@ -33,6 +36,8 @@ class AppConfig:
     min_interval_s: float = 0.35
     connect_timeout_s: float = 15.0
     read_timeout_s: float = 120.0
+    memory_limit: str = "1GB"
+    threads: int = 2
     max_retries: int = 5
     backoff_base_s: float = 1.0
     backoff_max_s: float = 60.0
@@ -215,6 +220,7 @@ class FileRecord:
     download_status: str = "pending"
     attempts: int = 0
     error_message: str | None = None
+    http_status: int | None = None
 
 
 @dataclass
@@ -267,7 +273,7 @@ def new_manifest(discovery: DiscoveryResult) -> Manifest:
     return manifest
 
 
-def sha256_file(path: Path, _buf: int = 1024 * 1024) -> str:
+def sha256_file(path: Path, _buf: int = 64 * 1024) -> str:
     h = hashlib.sha256()
     with open(path, "rb") as fh:
         while chunk := fh.read(_buf):
@@ -342,40 +348,42 @@ class Downloader:
 
     def download_one(self, record: FileRecord, dest_dir: Path,
                      prior: FileRecord | None = None) -> FileRecord:
+        client = self._client_or_new()
+        try:
+            return self._download_one(client, record, dest_dir, prior)
+        finally:
+            if self._client is None:
+                client.close()
+
+    def _download_one(self, client: httpx.Client, record: FileRecord, dest_dir: Path,
+                      prior: FileRecord | None) -> FileRecord:
         dest_dir.mkdir(parents=True, exist_ok=True)
         dest = dest_dir / record.relative_path
         part = dest.with_name(dest.name + ".part")
-        client = self._client_or_new()
         headers: dict[str, str] = {}
-        if prior and prior.sha256 and dest.exists() and dest.stat().st_size == (prior.local_size or -1):
-            if sha256_file(dest) == prior.sha256:
-                if prior.etag:
-                    headers["If-None-Match"] = prior.etag
-                if prior.last_modified:
-                    headers["If-Modified-Since"] = _to_http_date(prior.last_modified)
-                record.sha256, record.local_size = prior.sha256, prior.local_size
-                record.etag, record.last_modified = prior.etag, prior.last_modified
-                if not headers:
-                    record.download_status = "skipped_verified"
-                    return record
-            else:
-                dest.unlink()
-                headers.clear()
+        if (prior and prior.sha256 and prior.source_url == record.source_url and dest.exists()
+                and dest.stat().st_size == prior.local_size
+                and (record.remote_size is None or record.remote_size == prior.local_size)
+                and sha256_file(dest) == prior.sha256):
+            if prior.etag:
+                headers["If-None-Match"] = prior.etag
+            if prior.last_modified:
+                headers["If-Modified-Since"] = _to_http_date(prior.last_modified)
+            record.sha256, record.local_size = prior.sha256, prior.local_size
+            record.etag = prior.etag
+            if not headers and record.last_modified == prior.last_modified:
+                record.download_status = "skipped_verified"
+                return record
         last_error: str | None = None
         for attempt in range(self.cfg.max_retries + 1):
             record.attempts = attempt + 1
             self._pace()
             try:
                 status = self._attempt(client, record, dest, part, dict(headers))
-                if status == "not_modified":
-                    record.download_status = "skipped_not_modified"
-                    record.local_size = dest.stat().st_size
-                    if not record.sha256:
-                        record.sha256 = sha256_file(dest)
-                    return record
-                record.download_status = "downloaded"
+                record.download_status = "skipped_not_modified" if status == "not_modified" else "downloaded"
                 record.local_size = dest.stat().st_size
                 record.sha256 = sha256_file(dest)
+                record.error_message = None
                 return record
             except _PermanentError as exc:
                 record.download_status = "failed"
@@ -383,9 +391,10 @@ class Downloader:
                 return record
             except _RetryableError as exc:
                 last_error = str(exc)
+                headers.clear()
                 if attempt < self.cfg.max_retries:
                     self.sleep(self._backoff(attempt, exc.retry_after))
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 record.download_status = "failed"
                 record.error_message = f"unexpected: {type(exc).__name__}: {exc}"
                 return record
@@ -395,69 +404,115 @@ class Downloader:
 
     def _attempt(self, client: httpx.Client, record: FileRecord, dest: Path,
                  part: Path, headers: dict[str, str]) -> str:
+        resume_meta = part.with_name(part.name + ".json")
         resume_from = part.stat().st_size if part.exists() else 0
-        if resume_from > 0:
-            headers["Range"] = f"bytes={resume_from}-"
-            if record.etag:
-                headers["If-Range"] = record.etag
+        saved = {}
+        if resume_from:
+            try:
+                saved = json.loads(resume_meta.read_text())
+            except (OSError, ValueError):
+                pass
+            if (saved.get("source_url") != record.source_url or not saved.get("validator")
+                    or saved.get("remote_size") != record.remote_size
+                    or (record.remote_size is not None and resume_from >= record.remote_size)):
+                # An unverified prefix may be from another source revision.
+                part.unlink(missing_ok=True)
+                resume_meta.unlink(missing_ok=True)
+                resume_from = 0
+            else:
+                headers["Range"] = f"bytes={resume_from}-"
+                headers["If-Range"] = saved["validator"]
         try:
             with client.stream("GET", record.source_url, headers=headers) as resp:
+                record.http_status = resp.status_code
                 if resp.status_code == 304:
-                    if not dest.exists():
-                        raise _RetryableError("304 received but local file is missing")
+                    if (not dest.exists() or not record.sha256
+                            or sha256_file(dest) != record.sha256
+                            or (record.remote_size is not None and dest.stat().st_size != record.remote_size)):
+                        raise _RetryableError("304 without a verified complete local file")
                     return "not_modified"
                 if resp.status_code in RETRYABLE_STATUS:
-                    raise _RetryableError(
-                        f"HTTP {resp.status_code}",
-                        retry_after=_parse_retry_after(resp.headers.get("Retry-After")))
+                    raise _RetryableError(f"HTTP {resp.status_code}",
+                                          retry_after=_parse_retry_after(resp.headers.get("Retry-After")))
+                if resp.status_code == 416 and resume_from:
+                    part.unlink(missing_ok=True)
+                    resume_meta.unlink(missing_ok=True)
+                    raise _RetryableError("HTTP 416: discarded stale partial file")
                 if resp.status_code >= 400:
                     raise _PermanentError(f"HTTP {resp.status_code} for {record.source_url}")
-                record.etag = resp.headers.get("ETag", record.etag)
-                record.last_modified = resp.headers.get("Last-Modified", record.last_modified)
-                append = False
-                if resume_from > 0 and resp.status_code == 206:
-                    append = True
-                elif resume_from > 0:
-                    resume_from = 0
-                expected_total = None
+                if resp.status_code not in (200, 206):
+                    raise _PermanentError(f"unexpected HTTP {resp.status_code}")
+                etag = resp.headers.get("ETag")
+                modified = resp.headers.get("Last-Modified")
+                validator = etag if etag and not etag.startswith("W/") else modified
                 clen = resp.headers.get("Content-Length")
-                if clen is not None:
-                    expected_total = (resume_from if append else 0) + int(clen)
-                written = resume_from if append else 0
-                with open(part, "ab" if append else "wb") as fh:
-                    for chunk in resp.iter_bytes(1024 * 256):
-                        fh.write(chunk)
+                length = int(clen) if clen is not None else None
+                total = None
+                append = resp.status_code == 206
+                if append:
+                    match = re.fullmatch(r"bytes (\d+)-(\d+)/(\d+)", resp.headers.get("Content-Range", ""))
+                    valid = bool(match and resume_from and headers.get("If-Range"))
+                    if match:
+                        start, end, total = map(int, match.groups())
+                        valid = (valid and start == resume_from and start <= end < total
+                                 and end == total - 1 and (length is None or length == end-start+1)
+                                 and (record.remote_size is None or total == record.remote_size)
+                                 and validator == saved.get("validator"))
+                    if not valid:
+                        part.unlink(missing_ok=True)
+                        resume_meta.unlink(missing_ok=True)
+                        raise _RetryableError("invalid or changed Content-Range/validator; restarting")
+                else:
+                    resume_from = 0
+                    total = length
+                record.etag, record.last_modified = etag, modified
+                _write_json(resume_meta, {"source_url": record.source_url, "validator": validator,
+                                          "remote_size": record.remote_size})
+                written = resume_from
+                with part.open("ab" if append else "wb") as handle:
+                    for chunk in resp.iter_bytes(64 * 1024):
+                        handle.write(chunk)
                         written += len(chunk)
-                if expected_total is not None and written != expected_total:
-                    raise _RetryableError(
-                        f"truncated: got {written} of {expected_total} bytes")
-                if record.remote_size is not None and written != record.remote_size \
-                        and expected_total is None:
-                    raise _RetryableError(
-                        f"size mismatch vs listing: got {written}, listing={record.remote_size}")
-        except (httpx.TimeoutException, httpx.TransportError,
-                httpx.DecodingError) as exc:
+                if total is not None and written != total:
+                    raise _RetryableError(f"truncated: got {written} of {total} bytes")
+                if record.remote_size is not None and written != record.remote_size:
+                    part.unlink(missing_ok=True)
+                    resume_meta.unlink(missing_ok=True)
+                    raise _RetryableError(f"size mismatch vs listing: got {written}, listing={record.remote_size}")
+        except (httpx.TimeoutException, httpx.TransportError, httpx.DecodingError) as exc:
             if isinstance(exc, httpx.DecodingError):
                 part.unlink(missing_ok=True)
+                resume_meta.unlink(missing_ok=True)
             raise _RetryableError(f"{type(exc).__name__}: {exc}") from exc
         part.replace(dest)
+        resume_meta.unlink(missing_ok=True)
         return "downloaded"
 
     def download_all(self, manifest: Manifest, dest_dir: Path,
                      prior: Manifest | None = None,
-                     only: set[str] | None = None) -> Manifest:
+                     only: set[str] | None = None, manifest_path: Path | None = None) -> Manifest:
         prior_by_path = {r.relative_path: r for r in prior.files} if prior else {}
         records = [r for r in manifest.files if only is None or r.relative_path in only]
-        workers = max(1, self.cfg.concurrency)
-        if workers == 1 or len(records) <= 1:
-            for r in records:
-                self.download_one(r, dest_dir, prior_by_path.get(r.relative_path))
-        else:
-            with ThreadPoolExecutor(max_workers=workers) as pool:
-                futs = {pool.submit(self.download_one, r, dest_dir,
-                                    prior_by_path.get(r.relative_path)): r for r in records}
-                for fut in as_completed(futs):
-                    fut.result()
+        if manifest_path:
+            manifest.save(manifest_path)
+        try:
+            workers = max(1, self.cfg.concurrency)
+            if workers == 1 or len(records) <= 1:
+                for r in records:
+                    self.download_one(r, dest_dir, prior_by_path.get(r.relative_path))
+                    if manifest_path:
+                        manifest.save(manifest_path)
+            else:
+                with ThreadPoolExecutor(max_workers=workers) as pool:
+                    futs = {pool.submit(self.download_one, r, dest_dir,
+                                        prior_by_path.get(r.relative_path)): r for r in records}
+                    for fut in as_completed(futs):
+                        fut.result()
+                        if manifest_path:
+                            manifest.save(manifest_path)
+        finally:
+            if manifest_path:
+                manifest.save(manifest_path)
         failed_required = [r for r in records if r.download_status == "failed" and r.required]
         if failed_required:
             names = ", ".join(r.relative_path for r in failed_required)
@@ -467,23 +522,80 @@ class Downloader:
 
 # -- layout and write ------------------------------------------------------
 
-def sniff_encoding(path: Path, nbytes: int = 65536) -> str:
-    sample = path.read_bytes()[:nbytes]
-    try:
-        sample.decode("utf-8")
-        return "utf-8"
-    except UnicodeDecodeError:
-        return "latin-1"
+INSPECTION_BYTES = 64 * 1024
+PIPELINE_VERSION = 2
+
+
+def sample_file(path: Path, budget: int = INSPECTION_BYTES, windows: int = 4) -> list[bytes]:
+    """Read at most budget bytes spread over the file, never materializing it."""
+    if budget < windows * 4 or windows < 1:
+        raise ValueError("sample budget must allow at least four bytes per window")
+    size = path.stat().st_size
+    with path.open("rb") as handle:
+        if size <= budget:
+            return [handle.read(budget)]
+        width = budget // windows
+        samples = []
+        for i in range(windows):
+            handle.seek((size - width) * i // max(1, windows - 1))
+            samples.append(handle.read(width))
+        return samples
+
+
+def sniff_encoding(path: Path, nbytes: int = INSPECTION_BYTES) -> str:
+    samples = sample_file(path, nbytes)
+    for i, sample in enumerate(samples):
+        # A window can start/end in the middle of a valid UTF-8 character.
+        if i:
+            sample = sample.lstrip(bytes(range(0x80, 0xc0)))
+        try:
+            codecs.getincrementaldecoder("utf-8")().decode(sample, final=i == len(samples) - 1)
+        except UnicodeDecodeError:
+            return "latin-1"
+    return "utf-8"
 
 
 def read_header(path: Path) -> tuple[list[str], str]:
     enc = sniff_encoding(path)
-    text = path.read_bytes()[:8192].decode(enc, errors="replace")
-    first = text.splitlines()[0] if text.strip() else ""
-    cols = [c.strip() for c in first.split("\t")]
+    with path.open("rb") as handle:
+        first = handle.readline(INSPECTION_BYTES + 1)
+    if len(first) > INSPECTION_BYTES:
+        raise ValueError(f"{path}: header exceeds 64 KiB")
+    cols = [c.strip().lstrip("\ufeff\x00") for c in first.decode(enc).split("\t")]
     while cols and cols[-1] == "":
         cols.pop()
-    return [c.strip() for c in cols], enc
+    return cols, enc
+
+
+def legacy_mapping_rows(path: Path, encoding: str):
+    """Read BG/BP's numeric-code tables and join indented wrapped labels."""
+    current = None
+    with path.open(encoding=encoding) as handle:
+        for line in handle:
+            match = re.match(r"^\s*(\d+)\s+(\S.*)$", line.rstrip())
+            if match:
+                if current:
+                    yield current
+                current = [match[1], match[2].strip()]
+            elif current and line.strip():
+                current[1] += " " + line.strip()
+    if current:
+        yield current
+
+
+def legacy_mapping_columns(path: Path, encoding: str, table: str) -> list[str]:
+    with path.open(encoding=encoding) as handle:
+        for _ in range(50):
+            line = handle.readline(INSPECTION_BYTES + 1)
+            if not line:
+                break
+            if len(line) > INSPECTION_BYTES:
+                raise ValueError(f"{path}: mapping line exceeds 64 KiB")
+            cols = line.split()
+            if (len(cols) == 2 and cols[0].endswith("_code")
+                    and cols[1].endswith(("_text", "_name", "_title"))):
+                return cols
+    return [table + "_code", table + "_text"]
 
 
 def _suffix(name: str, program: str) -> str:
@@ -513,6 +625,10 @@ class MappingSpec:
     label_col: str | None
     links_to: list[str]
     context_column: str | None = None
+    key_columns: list[str] = field(default_factory=list)
+    catalog_keys: list[str] = field(default_factory=list)
+    layout: str = "tab"
+    encoding: str = "utf-8"
 
 
 @dataclass
@@ -542,7 +658,7 @@ def _first(cols: list[str], names: tuple[str, ...]) -> str | None:
 
 
 def _stem(name: str) -> str:
-    return re.sub(r"(_code|_text|_name)$", "", name.lower())
+    return re.sub(r"(_code|_text|_name|_title)$", "", name.lower())
 
 
 def _label_column(cols: list[str]) -> str | None:
@@ -554,26 +670,31 @@ def _label_column(cols: list[str]) -> str | None:
 
 def _link_mapping(table: str, filename: str, cols: list[str],
                   catalog_cols: list[str]) -> MappingSpec:
-    if (filename.lower() == "pc.product"
-            and {"industry_code", "product_code", "product_name"}.issubset(cols)
-            and {"industry_code", "product_code"}.issubset(catalog_cols)):
-        return MappingSpec(
-            table=table, path=filename, columns=cols, code_col="product_code",
-            label_col="product_name", links_to=["product_code"],
-            context_column="industry_code",
-        )
-    code_col = cols[0]
-    label_col = _label_column(cols)
-    links: list[str] = []
-    if label_col and _stem(code_col) == _stem(label_col):
-        code_l = code_col.lower()
-        stem = _stem(code_col)
-        for c in catalog_cols:
-            cl = c.lower()
-            if cl == code_l or cl == stem or cl == stem + "_code":
-                links.append(c)
-    return MappingSpec(table=table, path=filename, columns=cols,
-                       code_col=code_col, label_col=label_col, links_to=links)
+    label_col = next((c for c in cols if c.lower() in
+                      (table + "_text", table + "_name", table + "_title")), None)
+    label_col = label_col or _label_column(cols)
+    aliases = {"duration_code": "contract_duration", "selection_code": "contract_selection"}
+    keys, catalog_keys = [], []
+    for col in cols:
+        if col == label_col or not col.endswith("_code"):
+            continue
+        link = next((c for c in catalog_cols
+                     if c == col or c == _stem(col) or c == aliases.get(col)), None)
+        if link:
+            keys.append(col)
+            catalog_keys.append(link)
+    # Only attach labels when their own code participates in the full key.
+    if not label_col or not any(_stem(k) == _stem(label_col) for k in keys):
+        keys, catalog_keys = [], []
+    primary = next((k for k in keys if _stem(k) == _stem(label_col or "")), cols[0])
+    if primary != cols[0] and cols[0].endswith("_code") and cols[0] not in keys:
+        # A contextual first key must never be dropped to make a join possible.
+        keys, catalog_keys = [], []
+    context = next((c for k, c in zip(keys, catalog_keys) if k != primary), None)
+    links = [catalog_keys[keys.index(primary)]] if keys else []
+    return MappingSpec(table=table, path=filename, columns=cols, code_col=primary,
+                       label_col=label_col, links_to=links, context_column=context,
+                       key_columns=keys, catalog_keys=catalog_keys)
 
 
 def infer_schema(raw_dir: Path, program: str,
@@ -587,7 +708,7 @@ def infer_schema(raw_dir: Path, program: str,
     data_files: list[dict] = []
     data_cols: list[str] = []
     footnote_path = None
-    mapping_files: list[tuple[str, Path, list[str]]] = []
+    mapping_files: list[tuple[str, Path, list[str], str, str]] = []
     documentation: list[str] = []
     auxiliary: list[str] = []
     unclassified: list[str] = []
@@ -596,6 +717,9 @@ def infer_schema(raw_dir: Path, program: str,
         if not path.is_file() or name.endswith(".part"):
             continue
         low = name.lower()
+        if not low.startswith(program.lower() + ".") or low.endswith((".json", ".jsonl")):
+            unclassified.append(name)
+            continue
         if low.endswith(".txt") or low.endswith(".contacts"):
             documentation.append(name)
             continue
@@ -605,7 +729,8 @@ def infer_schema(raw_dir: Path, program: str,
             catalog_path, catalog_cols = name, cols
             continue
         if ".data." in low:
-            data_files.append({"path": name, "rank": _data_rank(name)})
+            data_files.append({"path": name, "rank": _data_rank(name),
+                               "columns": cols, "encoding": enc})
             if not data_cols:
                 data_cols = cols
             continue
@@ -615,12 +740,21 @@ def infer_schema(raw_dir: Path, program: str,
         if _looks_like_observations(cols):
             auxiliary.append(name)
             continue
+        table = _suffix(name, program)
+        layout = "tab"
+        if len(cols) < 2 and program in {"BG", "BP"}:
+            if next(legacy_mapping_rows(path, enc), None):
+                cols = legacy_mapping_columns(path, enc, table)
+                layout = "legacy"
         if len(cols) >= 2:
-            mapping_files.append((_suffix(name, program), path, cols))
+            mapping_files.append((table, path, cols, layout, enc))
             continue
         unclassified.append(name)
-    mappings = [_link_mapping(table, path.name, cols, catalog_cols)
-                for table, path, cols in mapping_files]
+    mappings = []
+    for table, path, cols, layout, enc in mapping_files:
+        m = _link_mapping(table, path.name, cols, catalog_cols)
+        m.layout, m.encoding = layout, enc
+        mappings.append(m)
     data_files.sort(key=lambda d: (d["rank"], d["path"]))
     return ProgramSchema(
         program=program,
@@ -643,10 +777,15 @@ def required_missing(schema: ProgramSchema) -> list[str]:
     if not schema.data_files:
         missing.append("observation file (*.data.*)")
     else:
-        have = {c.lower() for c in schema.data_columns}
-        for col in ("series_id", "year", "period", "value"):
-            if col not in have:
-                missing.append(f"observation column '{col}'")
+        for item in schema.data_files:
+            have = {c.lower() for c in item["columns"]}
+            if len(have) != len(item["columns"]):
+                missing.append(f"duplicate header fields in {item['path']}")
+            for col in ("series_id", "year", "period", "value"):
+                if col not in have:
+                    missing.append(f"{item['path']}: observation column '{col}'")
+    if "series_id" not in schema.catalog_columns:
+        missing.append("catalog column 'series_id'")
     return missing
 
 
@@ -672,7 +811,7 @@ def _lines_sql(path: Path, encoding: str) -> str:
     return (
         f"read_csv({_sql_str(str(path))}, columns={{'line':'VARCHAR'}}, "
         f"delim='\\x1f', quote='', escape='', header=false, auto_detect=false, "
-        f"encoding={_sql_str(encoding)}, store_rejects=true, ignore_errors=true) "
+        f"encoding={_sql_str(encoding)}, strict_mode=true, ignore_errors=false, max_line_size=16777216) "
         f"WITH ORDINALITY AS t(line, rec)"
     )
 
@@ -697,6 +836,10 @@ class ProcessResult:
     missing_values: int = 0
     non_numeric_values: int = 0
     unknown_periods: int = 0
+    duplicate_rows_removed: int = 0
+    orphan_observations: int = 0
+    exported_series: int = 0
+    exported_observations: int = 0
     elapsed_s: float = 0.0
 
     def parse_stats(self) -> dict:
@@ -708,11 +851,16 @@ class ProcessResult:
             "unknown_periods": self.unknown_periods,
             "duplicate_identical": self.duplicate_identical,
             "duplicate_conflicts": self.duplicate_conflicts,
+            "duplicate_rows_removed": self.duplicate_rows_removed,
+            "orphan_observations": self.orphan_observations,
+            "exported_series": self.exported_series,
+            "exported_observations": self.exported_observations,
         }
 
 
 class Engine:
-    def __init__(self, raw_dir: Path, out_dir: Path, program: str):
+    def __init__(self, raw_dir: Path, out_dir: Path, program: str,
+                 memory_limit: str = "1GB", threads: int = 2):
         self.raw_dir = Path(raw_dir)
         self.out_dir = Path(out_dir)
         self.program = program.upper()
@@ -721,6 +869,8 @@ class Engine:
         if self.db_path.exists():
             self.db_path.unlink()
         self.con = duckdb.connect(str(self.db_path))
+        self.con.execute(f"SET memory_limit={_sql_str(memory_limit)}")
+        self.con.execute(f"SET threads={int(threads)}")
         self.con.execute("SET preserve_insertion_order=true")
         spill = self.out_dir / "spill"
         spill.mkdir(exist_ok=True)
@@ -774,6 +924,7 @@ class Engine:
         missing = required_missing(schema)
         if missing:
             raise RuntimeError(f"{self.program}: missing required pieces: {', '.join(missing)}")
+        self.schema = schema
         self._load_catalog(schema)
         self._load_mappings(schema)
         self._load_footnotes(schema)
@@ -781,6 +932,12 @@ class Engine:
         self._enrich_catalog(schema)
         stats = self._stats()
         self.stats = stats
+        if stats.orphan_observations or stats.malformed_rows or stats.duplicate_conflicts:
+            _write_json(self.out_dir / "validation.json", stats.parse_stats())
+            raise RuntimeError(
+                f"{self.program}: validation failed: {stats.malformed_rows} malformed rows, "
+                f"{stats.orphan_observations} orphan observations, "
+                f"{stats.duplicate_conflicts} conflicting observation keys")
         stats.elapsed_s = time.perf_counter() - started
         return stats
 
@@ -795,25 +952,56 @@ class Engine:
             CREATE TABLE catalog_raw AS
             SELECT rec, {selects}, len(f) AS n_fields,
                    len(list_filter(f[{n}+1:], lambda x: trim(x) <> '')) AS extra
-            FROM ({_split_sql(path, schema.encoding)})
+            FROM ({_split_sql(path, read_header(path)[1])})
         """)
+        bad = self.con.execute(f"SELECT count(*) FROM catalog_raw WHERE series_id IS NULL "
+                               f"OR series_id = '' OR n_fields < {n} OR extra > 0").fetchone()[0]
+        duplicates = self.con.execute("SELECT count(*) FROM (SELECT series_id FROM catalog_raw "
+                                      "GROUP BY 1 HAVING count(*) > 1)").fetchone()[0]
+        unsafe = self.con.execute("SELECT count(*) FROM catalog_raw WHERE "
+                                  "NOT regexp_full_match(series_id, '[A-Za-z0-9_-][A-Za-z0-9_.-]*') "
+                                  "OR series_id IN ('.', '..')").fetchone()[0]
+        if bad or duplicates or unsafe:
+            raise RuntimeError(f"invalid catalog: {bad} malformed rows, {duplicates} duplicate IDs, "
+                               f"{unsafe} unsafe IDs")
 
     def _load_mappings(self, schema: ProgramSchema) -> None:
-        self.con.execute(
-            "CREATE TABLE mappings (table_name VARCHAR, code VARCHAR, label VARCHAR, source_file VARCHAR, context_code VARCHAR)")
+        self.con.execute("CREATE TABLE mappings (table_name VARCHAR, key VARCHAR, label VARCHAR)")
         for m in schema.mappings:
+            if not m.key_columns or not m.label_col:
+                continue
             path = self.raw_dir / m.path
-            code_i = m.columns.index(m.code_col) + 1
-            label_expr = (f"trim(f[{m.columns.index(m.label_col)+1}])"
-                          if m.label_col in m.columns else "NULL")
-            context_expr = (f"trim(f[{m.columns.index(m.context_column)+1}])"
-                            if m.context_column else "NULL")
-            self.con.execute(f"""
-                INSERT INTO mappings
-                SELECT {_sql_str(m.table)}, trim(f[{code_i}]), {label_expr}, {_sql_str(m.path)}, {context_expr}
-                FROM ({_split_sql(path, schema.encoding)})
-                WHERE len(f) >= 1
-            """)
+            if m.layout == "legacy":
+                batch = []
+                for row in legacy_mapping_rows(path, m.encoding):
+                    keys = [row[m.columns.index(k)] for k in m.key_columns]
+                    batch.append((m.table, json.dumps(keys, separators=(",", ":")),
+                                  row[m.columns.index(m.label_col)] or None))
+                    if len(batch) == 1000:
+                        self.con.executemany("INSERT INTO mappings VALUES (?, ?, ?)", batch)
+                        batch.clear()
+                if batch:
+                    self.con.executemany("INSERT INTO mappings VALUES (?, ?, ?)", batch)
+            else:
+                key_expr = ", ".join(f"trim(f[{m.columns.index(k)+1}])" for k in m.key_columns)
+                label_i = m.columns.index(m.label_col) + 1
+                self.con.execute(f"""
+                    INSERT INTO mappings
+                    SELECT {_sql_str(m.table)}, CAST(to_json(list_value({key_expr})) AS VARCHAR),
+                           nullif(trim(f[{label_i}]), '')
+                    FROM ({_split_sql(path, m.encoding)})
+                """)
+            ambiguous = self.con.execute(
+                "SELECT count(*) FROM (SELECT key FROM mappings WHERE table_name = ? "
+                "GROUP BY key HAVING count(*) > 1)", [m.table]).fetchone()[0]
+            if ambiguous:
+                raise RuntimeError(f"{m.path}: {ambiguous} duplicate lookup keys for {m.key_columns}")
+
+    @staticmethod
+    def _catalog_key(mapping: MappingSpec, alias: str = "c") -> str:
+        cols = ", ".join(f"{alias}.{_ident(c)}" for c in mapping.catalog_keys)
+        return f"CAST(to_json(list_value({cols})) AS VARCHAR)"
+
 
     def _load_footnotes(self, schema: ProgramSchema) -> None:
         self.con.execute(
@@ -826,55 +1014,56 @@ class Engine:
         self.con.execute(f"""
             INSERT INTO footnotes
             SELECT trim(f[1]), trim(f[{text_i}]), {_sql_str(schema.footnote_path)}
-            FROM ({_split_sql(path, schema.encoding)})
+            FROM ({_split_sql(path, read_header(path)[1])})
         """)
 
     def _load_observations(self, schema: ProgramSchema) -> None:
-        cols = {c.lower(): i + 1 for i, c in enumerate(schema.data_columns)}
-        sid, year, period = cols["series_id"], cols["year"], cols["period"]
-        value, n = cols["value"], len(schema.data_columns)
-        fn = cols.get("footnote_codes")
-        fn_expr = f"nullif(trim(f[{fn}]), '')" if fn else "NULL"
         parts = []
+        self.observation_fields = sorted({c for item in schema.data_files for c in item["columns"]
+                                          if c.lower() not in {"series_id", "year", "period", "value", "footnote_codes"}})
         for item in schema.data_files:
-            path = self.raw_dir / item["path"]
+            cols = {c.lower(): i + 1 for i, c in enumerate(item["columns"])}
+            get = lambda name: f"trim(f[{cols[name]}])"
+            fn_expr = get("footnote_codes") if "footnote_codes" in cols else "''"
+            extras = ", ".join(f"{_sql_str(c)}, trim(f[{i+1}])" for i, c in sorted(enumerate(item["columns"]), key=lambda item: item[1])
+                               if c.lower() not in {"series_id", "year", "period", "value", "footnote_codes"})
+            n = len(item["columns"])
             parts.append(f"""
-                SELECT trim(f[{sid}]) AS series_id,
-                       TRY_CAST(trim(f[{year}]) AS INTEGER) AS year,
-                       trim(f[{period}]) AS period,
-                       trim(f[{value}]) AS value_raw,
+                SELECT {get('series_id')} AS series_id,
+                       TRY_CAST({get('year')} AS INTEGER) AS year,
+                       {get('period')} AS period, {get('value')} AS value_raw,
                        {fn_expr} AS footnote_codes,
+                       CAST(json_object({extras}) AS VARCHAR) AS source_fields,
                        {int(item['rank'])} AS file_rank,
-                       {_sql_str(item['path'])} AS source_file,
-                       rec AS source_row,
+                       {_sql_str(item['path'])} AS source_file, rec AS source_row,
                        len(f) AS n_fields,
-                       len(list_filter(f[{n}+1:], lambda x: trim(x) <> '')) AS extra
-                FROM ({_split_sql(path, schema.encoding)})
+                       len(list_filter(f[{n}+1:], lambda x: trim(x) <> '')) AS extra,
+                       {n} AS expected_fields
+                FROM ({_split_sql(self.raw_dir / item['path'], item['encoding'])})
             """)
         self.con.execute("CREATE TABLE obs_raw AS " + " UNION ALL ".join(parts))
         self.con.execute("""
             CREATE TABLE observations AS
             SELECT series_id, year, period,
-                   CAST(period_start(year, period) AS VARCHAR) AS period_start,
-                   CAST(period_finish(year, period) AS VARCHAR) AS period_end,
                    period_kind(period) AS period_kind,
                    value_raw,
-                   TRY_CAST(replace(value_raw, ',', '') AS DOUBLE) AS value_numeric,
                    CASE
                      WHEN value_raw IS NULL OR trim(value_raw) IN ('', '-', '--', '.', 'NA', 'N/A', '(NA)', 'null')
                        THEN 'missing_token'
-                     WHEN TRY_CAST(replace(value_raw, ',', '') AS DOUBLE) IS NULL THEN 'non_numeric'
+                     WHEN TRY_CAST(replace(value_raw, ',', '') AS DOUBLE) IS NULL
+                       OR NOT isfinite(TRY_CAST(replace(value_raw, ',', '') AS DOUBLE)) THEN 'non_numeric'
                      ELSE 'numeric'
                    END AS value_status,
-                   footnote_codes, source_file, source_row
+                   footnote_codes, source_fields, source_file, source_row
             FROM obs_raw
-            WHERE year IS NOT NULL AND series_id <> '' AND period <> ''
-              AND n_fields >= 4 AND extra = 0
+            WHERE year BETWEEN 1 AND 9999 AND series_id <> '' AND period <> ''
+              AND n_fields >= expected_fields AND extra = 0
             QUALIFY row_number() OVER (
                 PARTITION BY series_id, year, period
                 ORDER BY file_rank, source_file, source_row
             ) = 1
         """)
+
 
     def _enrich_catalog(self, schema: ProgramSchema) -> None:
         sid = _ident("series_id")
@@ -897,181 +1086,179 @@ class Engine:
     def _stats(self) -> ProcessResult:
         rows_in = self.con.execute("SELECT count(*) FROM obs_raw").fetchone()[0]
         kept = self.con.execute("SELECT count(*) FROM observations").fetchone()[0]
-        malformed = self.con.execute(
-            "SELECT count(*) FROM obs_raw WHERE year IS NULL OR series_id = '' OR period = '' "
-            "OR n_fields < 4 OR extra > 0").fetchone()[0]
-        keys = self.con.execute("""
-            SELECT count(*), sum(n) - count(*),
-                   count(*) FILTER (WHERE nd > 1)
+        valid = ("year BETWEEN 1 AND 9999 AND series_id IS NOT NULL AND series_id <> '' "
+                 "AND period IS NOT NULL AND period <> '' AND n_fields >= expected_fields AND extra = 0")
+        malformed = rows_in - self.con.execute(f"SELECT count(*) FROM obs_raw WHERE {valid}").fetchone()[0]
+        keys = self.con.execute(f"""
+            SELECT coalesce(sum(n - nd), 0), count(*) FILTER (WHERE nd > 1), coalesce(sum(n-1), 0)
             FROM (
               SELECT series_id, year, period, count(*) n,
-                     count(DISTINCT coalesce(value_raw,'') || '|' || coalesce(footnote_codes,'')) nd
-              FROM obs_raw
-              WHERE year IS NOT NULL AND series_id <> '' AND period <> ''
-                AND n_fields >= 4 AND extra = 0
+                     count(DISTINCT struct_pack(value := value_raw, footnotes := footnote_codes,
+                                                fields := source_fields)) nd
+              FROM obs_raw WHERE {valid}
               GROUP BY 1,2,3
             )
         """).fetchone()
         missing, nonnum, unknown = self.con.execute("""
             SELECT count(*) FILTER (WHERE value_status = 'missing_token'),
                    count(*) FILTER (WHERE value_status = 'non_numeric'),
-                   count(*) FILTER (WHERE period_kind IN ('unknown_period', 'invalid_date'))
+                   count(*) FILTER (WHERE period_kind = 'unknown_period')
             FROM observations
         """).fetchone()
         series = self.con.execute("SELECT count(*) FROM catalog").fetchone()[0]
+        orphans = self.con.execute("SELECT count(*) FROM observations o ANTI JOIN catalog c "
+                                   "ON c.series_id = o.series_id").fetchone()[0]
         return ProcessResult(
-            program=self.program,
-            series=series, observations=kept, rows_in=rows_in,
-            duplicate_identical=int(keys[1] or 0),
-            duplicate_conflicts=int(keys[2] or 0),
+            program=self.program, series=series, observations=kept, rows_in=rows_in,
+            duplicate_identical=int(keys[0]), duplicate_conflicts=int(keys[1]),
+            duplicate_rows_removed=int(keys[2]), orphan_observations=orphans,
             malformed_rows=malformed, missing_values=missing,
             non_numeric_values=nonnum, unknown_periods=unknown,
         )
+
 
     def export_series(self, schema: ProgramSchema,
                       extra: dict | None = None) -> tuple[Path, Path]:
         extra = extra or {}
         series_dir = self.out_dir / "series"
-        if series_dir.exists():
-            for old in series_dir.glob("*.json"):
-                old.unlink()
         series_dir.mkdir(parents=True, exist_ok=True)
-        label_selects = []
+        label_selects, joins = [], []
         used = {_ident(c) for c in schema.catalog_columns}
-        for m in schema.mappings:
-            if not m.links_to or not m.label_col:
+        for m in sorted(schema.mappings, key=lambda m: -len(m.key_columns)):
+            if not m.key_columns or not m.label_col:
                 continue
+            key = self._catalog_key(m)
+            blank = " OR ".join(f"c.{_ident(c)} IS NULL OR c.{_ident(c)} = ''" for c in m.catalog_keys)
+            matched, blanks, unmatched = self.con.execute(f"""
+                SELECT count(*) FILTER (WHERE NOT ({blank}) AND mp.label IS NOT NULL),
+                       count(*) FILTER (WHERE {blank}),
+                       count(*) FILTER (WHERE NOT ({blank}) AND mp.label IS NULL)
+                FROM catalog_raw c LEFT JOIN mappings mp
+                  ON mp.table_name = {_sql_str(m.table)} AND mp.key = {key}
+            """).fetchone()
             alias = _ident(m.label_col)
-            if alias in used:
-                continue
-            used.add(alias)
-            code_col = _ident(m.links_to[0])
-            context_match = (
-                f"AND context_code = c.{_ident(m.context_column)} "
-                if m.context_column else ""
-            )
-            label_selects.append(
-                f"(SELECT label FROM mappings WHERE table_name = {_sql_str(m.table)} "
-                f"AND code = c.{code_col} {context_match}LIMIT 1) AS {alias}"
-            )
+            exported = alias not in used
+            if exported:
+                used.add(alias)
+                label_selects.append(
+                    f"CASE WHEN {blank} THEN NULL ELSE "
+                    f"(SELECT label FROM mappings WHERE table_name = {_sql_str(m.table)} "
+                    f"AND key = {key}) END AS {alias}"
+                )
+            joins.append({
+                "file": m.path, "catalog_column": m.links_to[0],
+                "catalog_columns": m.catalog_keys, "lookup_columns": m.key_columns,
+                **({"context_column": m.context_column} if m.context_column else {}),
+                "label_column": m.label_col, "exported": exported,
+                "matched": matched, "blank": blanks, "unmatched": unmatched,
+            })
         catalog_selects = [f"c.{_ident(c)} AS {_ident(c)}" for c in schema.catalog_columns]
-        select_list = ", ".join(catalog_selects + label_selects) or "c.series_id"
-        self.con.execute("CREATE OR REPLACE TABLE catalog_flat AS "
-                         f"SELECT {select_list} FROM catalog_raw c "
-                         f"WHERE c.{_ident('series_id')} IS NOT NULL "
-                         f"AND c.{_ident('series_id')} <> ''")
+        self.con.execute("CREATE TABLE catalog_flat AS SELECT " +
+                         ", ".join(catalog_selects + label_selects) + " FROM catalog_raw c")
         self.con.execute("""
-            CREATE OR REPLACE TABLE obs_grouped AS
+            CREATE TABLE obs_grouped AS
             SELECT series_id,
-                   to_json(list(json_object(
-                       'year', CAST(year AS VARCHAR),
-                       'period', period,
-                       'value', value_raw,
+                   to_json(list(json_merge_patch(json_object(
+                       'year', CAST(year AS VARCHAR), 'period', period, 'value', value_raw,
                        'footnote_codes', coalesce(footnote_codes, '')
-                   ) ORDER BY year, period)) AS observations
-            FROM observations
-            GROUP BY 1
+                   ), CAST(source_fields AS JSON)) ORDER BY year, period)) AS observations
+            FROM observations GROUP BY 1
         """)
         tmp = self.out_dir / "_series.jsonl"
         self.con.execute(f"""
             COPY (
               SELECT f.*, coalesce(o.observations, '[]'::JSON) AS observations
-              FROM catalog_flat f
-              LEFT JOIN obs_grouped o ON o.series_id = f.series_id
+              FROM catalog_flat f LEFT JOIN obs_grouped o ON o.series_id = f.series_id
             ) TO {_sql_str(str(tmp))} (FORMAT JSON)
         """)
-        index: dict[str, dict] = {}
-        with tmp.open(encoding="utf-8") as handle:
+        index_path = self.out_dir / "index.json"
+        ledger_path = self.out_dir / "outputs.jsonl"
+        exported_series = exported_observations = 0
+        with tmp.open(encoding="utf-8") as handle, index_path.open("w", encoding="utf-8") as index, \
+                ledger_path.open("w", encoding="utf-8") as ledger:
+            index.write("{\n")
             for line in handle:
                 rec = json.loads(line)
-                if rec.get("observations") is None:
-                    rec["observations"] = []
-                sid = rec.get("series_id") or ""
-                if not sid:
-                    continue
+                sid = rec["series_id"]
                 dest = series_dir / f"{sid}.json"
-                dest.write_text(json.dumps(rec, indent=2), encoding="utf-8")
-                index[sid] = {
-                    "path": f"series/{sid}.json",
-                    "series_title": rec.get("series_title") or rec.get("series_name") or "",
-                    "observation_count": len(rec["observations"]),
-                }
-        tmp.unlink(missing_ok=True)
-        joins = []
-        for m in schema.mappings:
-            if not m.links_to or not m.label_col:
-                continue
-            col = _ident(m.links_to[0])
-            context_match = (
-                f"AND mp.context_code = c.{_ident(m.context_column)}"
-                if m.context_column else ""
-            )
-            row = self.con.execute(f"""
-                SELECT
-                  count(*) FILTER (WHERE c.{col} IS NOT NULL AND c.{col} <> ''
-                    AND mp.label IS NOT NULL),
-                  count(*) FILTER (WHERE c.{col} IS NULL OR c.{col} = ''),
-                  count(*) FILTER (WHERE c.{col} IS NOT NULL AND c.{col} <> ''
-                    AND mp.label IS NULL)
-                FROM catalog_raw c
-                LEFT JOIN mappings mp
-                  ON mp.table_name = {_sql_str(m.table)} AND mp.code = c.{col}
-                  {context_match}
-            """).fetchone()
-            joins.append({
-                "file": m.path,
-                "catalog_column": m.links_to[0],
-                **({"context_column": m.context_column} if m.context_column else {}),
-                "label_column": m.label_col,
-                "matched": int(row[0] or 0),
-                "blank": int(row[1] or 0),
-                "unmatched": int(row[2] or 0),
-            })
+                _write_json(dest, rec)
+                count = len(rec["observations"])
+                entry = {"path": f"series/{sid}.json",
+                         "series_title": rec.get("series_title") or rec.get("series_name") or "",
+                         "observation_count": count}
+                if exported_series:
+                    index.write(",\n")
+                index.write("  " + json.dumps(sid) + ": " + json.dumps(entry))
+                ledger.write(json.dumps({"path": entry["path"], "sha256": sha256_file(dest),
+                                         "size": dest.stat().st_size, "observations": count}) + "\n")
+                exported_series += 1
+                exported_observations += count
+            index.write("\n}\n")
+        tmp.unlink()
+        self.stats.exported_series = exported_series
+        self.stats.exported_observations = exported_observations
+        if (exported_series, exported_observations) != (self.stats.series, self.stats.observations):
+            raise RuntimeError("export counts do not reconcile with processed series/observations")
         coverage = self.con.execute("""
-            SELECT (SELECT count(*) FROM catalog),
-                   (SELECT count(*) FROM observations),
-                   (SELECT count(*) FROM catalog WHERE observation_count = 0),
-                   (SELECT min(year) FROM observations),
-                   (SELECT max(year) FROM observations)
+            SELECT (SELECT count(*) FROM catalog WHERE observation_count = 0),
+                   (SELECT min(year) FROM observations), (SELECT max(year) FROM observations)
         """).fetchone()
         card = {
-            "program": self.program,
-            "listing_sha256": extra.get("listing_sha256"),
-            "files": extra.get("files", []),
-            "catalog_fields": schema.catalog_columns,
-            "joins": joins,
-            "coverage": {
-                "series": coverage[0],
-                "observations": coverage[1],
-                "catalog_without_observations": coverage[2],
-                "year_min": coverage[3],
-                "year_max": coverage[4],
-            },
-            "validation": self.stats.parse_stats() if getattr(self, "stats", None) else {},
+            "program": self.program, "pipeline_version": PIPELINE_VERSION,
+            "listing_sha256": extra.get("listing_sha256"), "files": extra.get("files", []),
+            "catalog_fields": schema.catalog_columns, "joins": joins,
+            "observation_fields": self.observation_fields,
+            "unlinked_mappings": [m.path for m in schema.mappings if not m.key_columns],
+            "auxiliary_files": schema.auxiliary, "unclassified_files": schema.unclassified,
+            "coverage": {"series": exported_series, "observations": exported_observations,
+                         "catalog_without_observations": coverage[0],
+                         "year_min": coverage[1], "year_max": coverage[2]},
+            "validation": self.stats.parse_stats(),
         }
         card_path = self.out_dir / "catalog.json"
-        index_path = self.out_dir / "index.json"
         _write_json(card_path, card)
-        _write_json(index_path, index)
+        _write_json(self.out_dir / "complete.json", {
+            "pipeline_version": PIPELINE_VERSION, "listing_sha256": extra.get("listing_sha256"),
+            "series": exported_series, "observations": exported_observations,
+            "files": {name: {"sha256": sha256_file(self.out_dir / name),
+                             "size": (self.out_dir / name).stat().st_size}
+                      for name in ("catalog.json", "index.json", "outputs.jsonl")},
+        })
         return card_path, index_path
 
 
 def process_catalog(raw_dir: Path, out_dir: Path, program: str,
-                    extra: dict | None = None) -> tuple[ProcessResult, ProgramSchema]:
-    schema = infer_schema(raw_dir, program)
-    engine = Engine(raw_dir, out_dir, program)
-    try:
-        stats = engine.process(schema)
-        engine.export_series(schema, extra=extra)
-        return stats, schema
-    finally:
-        engine.close()
-        engine.db_path.unlink(missing_ok=True)
-        spill = Path(out_dir) / "spill"
-        if spill.exists():
-            for p in spill.iterdir():
-                p.unlink()
-            spill.rmdir()
+                    extra: dict | None = None, memory_limit: str = "1GB", threads: int = 2,
+                    names: list[str] | None = None) -> tuple[ProcessResult, ProgramSchema]:
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    # Any interrupted rebuild must invalidate the old completion marker.
+    (out_dir / "complete.json").unlink(missing_ok=True)
+    schema = infer_schema(raw_dir, program, names=names)
+    with tempfile.TemporaryDirectory(prefix=".export-", dir=out_dir) as temporary:
+        stage = Path(temporary)
+        engine = Engine(raw_dir, stage, program, memory_limit=memory_limit, threads=threads)
+        try:
+            stats = engine.process(schema)
+            engine.export_series(schema, extra=extra)
+        except Exception:
+            if (stage / "validation.json").exists():
+                shutil.copyfile(stage / "validation.json", out_dir / "validation.json")
+            raise
+        finally:
+            engine.close()
+        previous = out_dir / ".series.previous"
+        if previous.exists():
+            shutil.rmtree(previous)
+        if (out_dir / "series").exists():
+            (out_dir / "series").rename(previous)
+        (stage / "series").rename(out_dir / "series")
+        for name in ("index.json", "outputs.jsonl", "catalog.json", "complete.json"):
+            os.replace(stage / name, out_dir / name)
+        if previous.exists():
+            shutil.rmtree(previous)
+        (out_dir / "validation.json").unlink(missing_ok=True)
+    return stats, schema
 
 
 # -- one run ---------------------------------------------------------------
@@ -1089,99 +1276,183 @@ def _file_receipt(raw_dir: Path, manifest: Manifest) -> list[dict]:
             "size": rec.local_size or (path.stat().st_size if path.exists() else None),
             "role": rec.file_role,
             "download_status": rec.download_status,
+            "required": rec.required,
+            "http_status": rec.http_status,
+            "attempts": rec.attempts,
+            "error": rec.error_message,
         })
     return rows
 
 
 def _unchanged(catalog_json: Path, listing_sha256: str) -> bool:
-    if not catalog_json.exists():
-        return False
+    """Skip only a completed, version-compatible export with verified files."""
+    root = catalog_json.parent
     try:
-        card = json.loads(catalog_json.read_text(encoding="utf-8"))
-    except json.JSONDecodeError:
+        complete = json.loads((root / "complete.json").read_text())
+        if (complete.get("pipeline_version") != PIPELINE_VERSION
+                or not listing_sha256 or complete.get("listing_sha256") != listing_sha256
+                or (root / "state.json").exists() and
+                json.loads((root / "state.json").read_text()).get("status") not in {"ok", "skipped"}):
+            return False
+        for name in ("catalog.json", "index.json", "outputs.jsonl"):
+            receipt = complete["files"][name]
+            path = root / name
+            if path.stat().st_size != receipt["size"] or sha256_file(path) != receipt["sha256"]:
+                return False
+        count = observations = 0
+        with (root / "outputs.jsonl").open() as ledger:
+            for line in ledger:
+                entry = json.loads(line)
+                relative = Path(entry["path"])
+                if (relative.is_absolute() or len(relative.parts) != 2
+                        or relative.parts[0] != "series" or relative.parts[1] in {".", ".."}):
+                    return False
+                path = root / relative
+                if path.stat().st_size != entry["size"] or sha256_file(path) != entry["sha256"]:
+                    return False
+                count += 1
+                observations += entry["observations"]
+        if (count, observations) != (complete["series"], complete["observations"]):
+            return False
+        # A hash of index.json alone doesn't establish the physical series inventory.
+        physical_count = sum(1 for path in (root / "series").iterdir() if path.suffix == ".json")
+        if physical_count != count:
+            return False
+        card = json.loads(catalog_json.read_text())
+        for receipt in card["files"]:
+            if receipt["download_status"] == "failed":
+                if receipt.get("required"):
+                    return False
+                continue
+            path = root / "raw" / receipt["name"]
+            if not receipt["sha256"] or path.stat().st_size != receipt["size"]:
+                return False
+            if sha256_file(path) != receipt["sha256"]:
+                return False
+        return True
+    except (OSError, ValueError, KeyError, TypeError):
         return False
-    return bool(card.get("listing_sha256") and card["listing_sha256"] == listing_sha256)
 
 
 def process_program(cfg: AppConfig, force: bool = False,
                     offline: bool = False) -> dict:
     program = cfg.program.upper()
-    raw_dir = cfg.raw_root
-    out_dir = cfg.catalog_dir
+    raw_dir, out_dir = cfg.raw_root, cfg.catalog_dir
     started = time.perf_counter()
-    result = {
-        "program": program, "status": "pending", "series": 0,
-        "observations": 0, "error": None, "elapsed_s": 0.0,
-    }
+    result = {"program": program, "status": "running", "series": 0,
+              "observations": 0, "error": None, "elapsed_s": 0.0,
+              "started_utc": datetime.now(timezone.utc).isoformat()}
+    out_dir.mkdir(parents=True, exist_ok=True)
+    def save():
+        result["elapsed_s"] = round(time.perf_counter() - started, 2)
+        _write_json(out_dir / "state.json", result)
     try:
+        # Check the prior state before replacing it with this run's started state.
         if offline:
+            save()
             if not raw_dir.exists():
                 raise FileNotFoundError(f"no local raw files at {raw_dir}")
-            extra = {"listing_sha256": None, "files": []}
+            extra, names = {"listing_sha256": None, "files": []}, None
+            manifest_path = out_dir / "download.json"
+            if manifest_path.exists():
+                manifest = Manifest.load(manifest_path)
+                names = []
+                for rec in manifest.files:
+                    path = raw_dir / rec.relative_path
+                    if not path.exists():
+                        if rec.required:
+                            raise DownloadError(f"offline required file missing: {rec.relative_path}")
+                        continue
+                    if rec.remote_size is not None and path.stat().st_size != rec.remote_size:
+                        raise DownloadError(f"offline size mismatch: {rec.relative_path}")
+                    digest = sha256_file(path)
+                    if rec.sha256 and rec.sha256 != digest:
+                        raise DownloadError(f"offline checksum mismatch: {rec.relative_path}")
+                    rec.download_status = "offline_verified" if rec.sha256 else "offline_unverified"
+                    rec.sha256, rec.local_size = digest, path.stat().st_size
+                    names.append(rec.relative_path)
+                extra["files"] = _file_receipt(raw_dir, manifest)
         else:
             disc = discover_remote(cfg.program, cfg.program_url, cfg.user_agent,
                                    timeout_s=cfg.read_timeout_s)
             if not force and _unchanged(out_dir / "catalog.json", disc.listing_sha256):
-                card = json.loads((out_dir / "catalog.json").read_text(encoding="utf-8"))
-                cov = card.get("coverage") or {}
-                result.update({
-                    "status": "skipped",
-                    "series": cov.get("series", 0),
-                    "observations": cov.get("observations", 0),
-                    "elapsed_s": round(time.perf_counter() - started, 2),
-                })
+                card = json.loads((out_dir / "catalog.json").read_text())
+                result.update(status="skipped", series=card["coverage"]["series"],
+                              observations=card["coverage"]["observations"])
                 return result
+            save()
+            (out_dir / "complete.json").unlink(missing_ok=True)
             manifest_path = out_dir / "download.json"
-            prior = Manifest.load(manifest_path) if manifest_path.exists() else None
+            try:
+                prior = Manifest.load(manifest_path) if manifest_path.exists() else None
+            except (ValueError, TypeError, KeyError):
+                prior = None
             manifest = new_manifest(disc)
-            Downloader(cfg).download_all(manifest, raw_dir, prior=prior)
-            manifest.save(manifest_path)
-            extra = {
-                "listing_sha256": disc.listing_sha256,
-                "files": _file_receipt(raw_dir, manifest),
-            }
-        stats, _schema = process_catalog(raw_dir, out_dir, program, extra=extra)
-        result.update({
-            "status": "ok",
-            "series": stats.series,
-            "observations": stats.observations,
-            "duplicate_identical": stats.duplicate_identical,
-            "duplicate_conflicts": stats.duplicate_conflicts,
-            "elapsed_s": round(time.perf_counter() - started, 2),
-        })
-    except (DiscoveryError, DownloadError, RuntimeError, FileNotFoundError, OSError) as exc:
-        result.update({
-            "status": "failed",
-            "error": str(exc),
-            "elapsed_s": round(time.perf_counter() - started, 2),
-        })
+            Downloader(cfg).download_all(manifest, raw_dir, prior=prior, manifest_path=manifest_path)
+            extra = {"listing_sha256": disc.listing_sha256,
+                     "files": _file_receipt(raw_dir, manifest)}
+            names = [r.relative_path for r in manifest.files if r.download_status != "failed"]
+        stats, _schema = process_catalog(raw_dir, out_dir, program, extra=extra,
+                                         memory_limit=cfg.memory_limit, threads=cfg.threads, names=names)
+        result.update(status="ok", series=stats.exported_series,
+                      observations=stats.exported_observations,
+                      duplicate_identical=stats.duplicate_identical,
+                      duplicate_conflicts=stats.duplicate_conflicts)
+    except Exception as exc:
+        # A parsing/database/HTTP error in one catalog must not suppress the remaining catalogs.
+        result.update(status="failed", error=f"{type(exc).__name__}: {exc}")
+    except BaseException:
+        result.update(status="interrupted", error="catalog interrupted before completion")
+        raise
+    finally:
+        result["finished_utc"] = datetime.now(timezone.utc).isoformat()
+        save()
     return result
 
 
 def run_all(cfg: AppConfig, only: list[str] | None = None, force: bool = False,
             offline: bool = False, prefixes: list[str] | None = None) -> dict:
+    log = {"started_utc": datetime.now(timezone.utc).isoformat(), "prefixes": [], "catalogs": []}
+    log_path = Path(cfg.data_dir) / "run.json"
+    _write_json(log_path, log)
     if prefixes is None:
         if only:
             prefixes = [p.lower() for p in only]
         else:
-            _html, prefixes = fetch_root_listing(
-                cfg.source_root, cfg.user_agent, timeout_s=cfg.read_timeout_s)
-    log = {
-        "started_utc": datetime.now(timezone.utc).isoformat(),
-        "prefixes": prefixes,
-        "catalogs": [],
-    }
-    for prefix in prefixes:
+            try:
+                _html, prefixes = fetch_root_listing(cfg.source_root, cfg.user_agent,
+                                                      timeout_s=cfg.read_timeout_s)
+                if not prefixes:
+                    raise DiscoveryError("no catalog directories discovered")
+            except Exception as exc:
+                log.update(error=f"{type(exc).__name__}: {exc}", failed=1,
+                           finished_utc=datetime.now(timezone.utc).isoformat())
+                _write_json(log_path, log)
+                return log
+    prefixes = list(dict.fromkeys(p.lower() for p in prefixes))
+    if any(not re.fullmatch(r"[a-z]{2}", p) for p in prefixes):
+        raise ValueError("catalog prefixes must contain exactly two letters")
+    log["prefixes"] = prefixes
+    log["catalogs"] = [{"program": p.upper(), "status": "not_reached"} for p in prefixes]
+    _write_json(log_path, log)
+    for i, prefix in enumerate(prefixes):
         print(f"[{prefix}] start", flush=True)
-        one = process_program(replace(cfg, program=prefix.upper(), data_dir=Path(cfg.data_dir)),
-                              force=force, offline=offline)
-        log["catalogs"].append(one)
+        log["catalogs"][i] = {"program": prefix.upper(), "status": "running"}
+        _write_json(log_path, log)
+        try:
+            one = process_program(replace(cfg, program=prefix.upper(), data_dir=Path(cfg.data_dir)),
+                                  force=force, offline=offline)
+        except BaseException:
+            log["catalogs"][i].update(status="interrupted")
+            _write_json(log_path, log)
+            raise
+        log["catalogs"][i] = one
         print(f"[{prefix}] {one['status']} series={one['series']} "
               f"obs={one['observations']} {one.get('error') or ''}", flush=True)
-        _write_json(Path(cfg.data_dir) / "run.json", log)
+        _write_json(log_path, log)
     log["finished_utc"] = datetime.now(timezone.utc).isoformat()
     log["failed"] = sum(1 for c in log["catalogs"] if c["status"] == "failed")
-    _write_json(Path(cfg.data_dir) / "run.json", log)
+    _write_json(log_path, log)
     return log
 
 
@@ -1194,12 +1465,17 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--offline", action="store_true")
     p.add_argument("--data-dir", default=None)
     p.add_argument("--source-root", default=None)
+    p.add_argument("--memory-limit", default="1GB", help="DuckDB memory budget; disk spill is used as needed.")
+    p.add_argument("--threads", type=int, default=2)
     return p
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    cfg = AppConfig()
+    cfg = AppConfig(memory_limit=args.memory_limit, threads=args.threads)
+    if args.threads < 1:
+        print("--threads must be positive", file=sys.stderr)
+        return 2
     if args.data_dir:
         cfg.data_dir = Path(args.data_dir)
     if args.source_root:
