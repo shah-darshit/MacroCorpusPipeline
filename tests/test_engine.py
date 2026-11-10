@@ -94,3 +94,35 @@ def test_ws_series_file(tmp_path):
     row = json.loads((out / "series" / "WSU001.json").read_text())
     assert row["measure_text"] == "Days of idleness"
     assert row["observations"][0]["value"] == "25720"
+
+
+def test_pc_product_names_use_industry_and_product(tmp_path):
+    raw = tmp_path / "raw"
+    raw.mkdir()
+    (raw / "pc.series").write_text(
+        "series_id\tindustry_code\tproduct_code\n"
+        "PCU001A\t001\t01\n"
+        "PCU002A\t002\t01\n"
+        "PCU003A\t003\t01\n")
+    (raw / "pc.product").write_text(
+        "industry_code\tproduct_code\tproduct_name\n"
+        "001\t01\tFirst industry product\n"
+        "002\t01\tSecond industry product\n")
+    (raw / "pc.data.0.Current").write_text(
+        "series_id\tyear\tperiod\tvalue\tfootnote_codes\n"
+        "PCU001A\t2026\tM01\t100\t\n"
+        "PCU002A\t2026\tM01\t200\t\n"
+        "PCU003A\t2026\tM01\t300\t\n")
+    out = tmp_path / "out"
+    process_catalog(raw, out, "PC")
+    rows = [json.loads((out / "series" / f"PCU00{i}A.json").read_text())
+            for i in (1, 2, 3)]
+    assert [r["product_name"] for r in rows] == [
+        "First industry product", "Second industry product", None]
+    assert all(r["product_code"] == "01" for r in rows)
+    assert [r["observations"][0]["value"] for r in rows] == ["100", "200", "300"]
+    card = json.loads((out / "catalog.json").read_text())
+    join = next(j for j in card["joins"] if j["file"] == "pc.product")
+    assert join["context_column"] == "industry_code"
+    assert join["matched"] == 2
+    assert join["unmatched"] == 1

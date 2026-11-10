@@ -512,6 +512,7 @@ class MappingSpec:
     code_col: str
     label_col: str | None
     links_to: list[str]
+    context_column: str | None = None
 
 
 @dataclass
@@ -553,6 +554,14 @@ def _label_column(cols: list[str]) -> str | None:
 
 def _link_mapping(table: str, filename: str, cols: list[str],
                   catalog_cols: list[str]) -> MappingSpec:
+    if (filename.lower() == "pc.product"
+            and {"industry_code", "product_code", "product_name"}.issubset(cols)
+            and {"industry_code", "product_code"}.issubset(catalog_cols)):
+        return MappingSpec(
+            table=table, path=filename, columns=cols, code_col="product_code",
+            label_col="product_name", links_to=["product_code"],
+            context_column="industry_code",
+        )
     code_col = cols[0]
     label_col = _label_column(cols)
     links: list[str] = []
@@ -791,15 +800,17 @@ class Engine:
 
     def _load_mappings(self, schema: ProgramSchema) -> None:
         self.con.execute(
-            "CREATE TABLE mappings (table_name VARCHAR, code VARCHAR, label VARCHAR, source_file VARCHAR)")
+            "CREATE TABLE mappings (table_name VARCHAR, code VARCHAR, label VARCHAR, source_file VARCHAR, context_code VARCHAR)")
         for m in schema.mappings:
             path = self.raw_dir / m.path
             code_i = m.columns.index(m.code_col) + 1
             label_expr = (f"trim(f[{m.columns.index(m.label_col)+1}])"
                           if m.label_col in m.columns else "NULL")
+            context_expr = (f"trim(f[{m.columns.index(m.context_column)+1}])"
+                            if m.context_column else "NULL")
             self.con.execute(f"""
                 INSERT INTO mappings
-                SELECT {_sql_str(m.table)}, trim(f[{code_i}]), {label_expr}, {_sql_str(m.path)}
+                SELECT {_sql_str(m.table)}, trim(f[{code_i}]), {label_expr}, {_sql_str(m.path)}, {context_expr}
                 FROM ({_split_sql(path, schema.encoding)})
                 WHERE len(f) >= 1
             """)
@@ -935,9 +946,13 @@ class Engine:
                 continue
             used.add(alias)
             code_col = _ident(m.links_to[0])
+            context_match = (
+                f"AND context_code = c.{_ident(m.context_column)} "
+                if m.context_column else ""
+            )
             label_selects.append(
                 f"(SELECT label FROM mappings WHERE table_name = {_sql_str(m.table)} "
-                f"AND code = c.{code_col} LIMIT 1) AS {alias}"
+                f"AND code = c.{code_col} {context_match}LIMIT 1) AS {alias}"
             )
         catalog_selects = [f"c.{_ident(c)} AS {_ident(c)}" for c in schema.catalog_columns]
         select_list = ", ".join(catalog_selects + label_selects) or "c.series_id"
@@ -987,6 +1002,10 @@ class Engine:
             if not m.links_to or not m.label_col:
                 continue
             col = _ident(m.links_to[0])
+            context_match = (
+                f"AND mp.context_code = c.{_ident(m.context_column)}"
+                if m.context_column else ""
+            )
             row = self.con.execute(f"""
                 SELECT
                   count(*) FILTER (WHERE c.{col} IS NOT NULL AND c.{col} <> ''
@@ -997,10 +1016,12 @@ class Engine:
                 FROM catalog_raw c
                 LEFT JOIN mappings mp
                   ON mp.table_name = {_sql_str(m.table)} AND mp.code = c.{col}
+                  {context_match}
             """).fetchone()
             joins.append({
                 "file": m.path,
                 "catalog_column": m.links_to[0],
+                **({"context_column": m.context_column} if m.context_column else {}),
                 "label_column": m.label_col,
                 "matched": int(row[0] or 0),
                 "blank": int(row[1] or 0),
