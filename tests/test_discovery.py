@@ -56,3 +56,41 @@ def test_discover_remote_missing_required_raises():
     transport = httpx.MockTransport(lambda r: httpx.Response(200, text="<pre></pre>"))
     with pytest.raises(DiscoveryError):
         discover_remote("BD", "https://x/bd/", "test-agent", transport=transport)
+
+
+def test_listing_retries_429_and_honors_retry_after():
+    import httpx
+    from bls_corpus.pipeline import fetch_listing
+    calls, waits = [], []
+
+    def handler(request):
+        calls.append(request)
+        if len(calls) < 3:
+            return httpx.Response(429, headers={"Retry-After": "7"})
+        return httpx.Response(200, text="<pre>ok</pre>")
+
+    html = fetch_listing("https://x/bd/", "test-agent", transport=httpx.MockTransport(handler),
+                         sleep=waits.append)
+    assert html == "<pre>ok</pre>"
+    assert len(calls) == 3 and waits == [7.0, 7.0]
+
+
+def test_listing_gives_up_with_throttled_error():
+    import httpx
+    from bls_corpus.pipeline import ThrottledError, fetch_listing
+    waits = []
+    transport = httpx.MockTransport(lambda r: httpx.Response(429))
+    with pytest.raises(ThrottledError):
+        fetch_listing("https://x/bd/", "test-agent", transport=transport,
+                      max_retries=2, sleep=waits.append)
+    assert len(waits) == 2 and waits[1] > waits[0]
+
+
+def test_listing_404_is_not_retried():
+    import httpx
+    from bls_corpus.pipeline import fetch_listing
+    waits = []
+    transport = httpx.MockTransport(lambda r: httpx.Response(404))
+    with pytest.raises(httpx.HTTPStatusError):
+        fetch_listing("https://x/zz/", "test-agent", transport=transport, sleep=waits.append)
+    assert waits == []

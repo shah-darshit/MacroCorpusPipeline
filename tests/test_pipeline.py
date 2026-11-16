@@ -37,3 +37,36 @@ def test_run_all_only_offline(tmp_path):
     assert run_path.exists()
     saved = json.loads(run_path.read_text())
     assert saved["catalogs"][0]["program"] == "BD"
+
+
+def _fake_results(monkeypatch, throttled: set[str]):
+    import bls_corpus.pipeline as pl
+
+    def fake(cfg, force=False, offline=False):
+        bad = cfg.program.lower() in throttled
+        return {"program": cfg.program, "status": "failed" if bad else "ok", "series": 0,
+                "observations": 0, "error": "HTTP 429" if bad else None,
+                **({"throttled": True} if bad else {})}
+    monkeypatch.setattr(pl, "process_program", fake)
+
+
+def test_run_all_stops_after_consecutive_throttles(tmp_path, monkeypatch):
+    _fake_results(monkeypatch, {"bb", "cc", "dd", "ee"})
+    cfg = AppConfig()
+    cfg.data_dir = tmp_path / "data"
+    waits = []
+    log = run_all(cfg, prefixes=["aa", "bb", "cc", "dd", "ee", "ff"], sleep=waits.append)
+    assert [c["status"] for c in log["catalogs"]] == [
+        "ok", "failed", "failed", "failed", "not_reached", "not_reached"]
+    assert waits == [cfg.throttle_cooldown_s] * 2
+    assert log["not_reached"] == 2 and "stopped_early" in log
+
+
+def test_run_all_cooldown_resets_after_a_success(tmp_path, monkeypatch):
+    _fake_results(monkeypatch, {"aa", "bb", "dd", "ee"})
+    cfg = AppConfig()
+    cfg.data_dir = tmp_path / "data"
+    waits = []
+    log = run_all(cfg, prefixes=["aa", "bb", "cc", "dd", "ee"], sleep=waits.append)
+    assert "stopped_early" not in log and log["not_reached"] == 0
+    assert len(waits) == 3  # no pause after the final catalog

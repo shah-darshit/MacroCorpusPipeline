@@ -41,6 +41,14 @@ class AppConfig:
     max_retries: int = 5
     backoff_base_s: float = 1.0
     backoff_max_s: float = 60.0
+    # Directory listings are one small request per catalog; wait longer between
+    # tries so a server-side throttle has time to clear.
+    listing_backoff_base_s: float = 5.0
+    listing_backoff_max_s: float = 120.0
+    # After a catalog is lost to throttling, pause before the next one, and stop
+    # the run once several in a row are throttled instead of hammering the server.
+    throttle_cooldown_s: float = 300.0
+    max_consecutive_throttled: int = 3
 
     @property
     def program_dir(self) -> str:
@@ -135,6 +143,41 @@ class DiscoveryError(RuntimeError):
     pass
 
 
+class ThrottledError(DiscoveryError):
+    """The server kept refusing a directory listing after every retry."""
+
+
+def fetch_listing(url: str, user_agent: str, timeout_s: float = 30.0, transport=None,
+                  max_retries: int = 5, backoff_base_s: float = 5.0,
+                  backoff_max_s: float = 120.0, sleep=time.sleep) -> str:
+    """GET a directory listing, retrying throttles and transient errors with backoff."""
+    headers = {"User-Agent": user_agent, "Accept-Encoding": "identity"}
+    last = ""
+    with httpx.Client(headers=headers, timeout=timeout_s, transport=transport,
+                      follow_redirects=True) as client:
+        for attempt in range(max_retries + 1):
+            retry_after = None
+            try:
+                resp = client.get(url)
+                if resp.status_code not in RETRYABLE_STATUS:
+                    resp.raise_for_status()
+                    return resp.text
+                last = f"HTTP {resp.status_code}"
+                retry_after = _parse_retry_after(resp.headers.get("Retry-After"))
+            except (httpx.TimeoutException, httpx.TransportError) as exc:
+                last = f"{type(exc).__name__}: {exc}"
+            if attempt < max_retries:
+                if retry_after is not None:
+                    wait = min(retry_after, 300.0)
+                else:
+                    base = min(backoff_base_s * (2 ** attempt), backoff_max_s)
+                    wait = base + random.uniform(0, base * 0.25)
+                print(f"  listing {url}: {last}; retry {attempt + 1}/{max_retries} "
+                      f"in {wait:.0f}s", flush=True)
+                sleep(wait)
+    raise ThrottledError(f"{last} for {url} after {max_retries + 1} attempts")
+
+
 def parse_listing(html: str, program: str, source_url: str) -> DiscoveryResult:
     program_dir = program.lower()
     files: list[FileEntry] = []
@@ -164,13 +207,8 @@ def parse_listing(html: str, program: str, source_url: str) -> DiscoveryResult:
 
 
 def discover_remote(program: str, source_url: str, user_agent: str,
-                    timeout_s: float = 30.0, transport=None) -> DiscoveryResult:
-    headers = {"User-Agent": user_agent, "Accept-Encoding": "identity"}
-    with httpx.Client(headers=headers, timeout=timeout_s, transport=transport,
-                      follow_redirects=True) as client:
-        resp = client.get(source_url)
-        resp.raise_for_status()
-        html = resp.text
+                    timeout_s: float = 30.0, transport=None, **retry) -> DiscoveryResult:
+    html = fetch_listing(source_url, user_agent, timeout_s, transport, **retry)
     result = parse_listing(html, program, source_url)
     if result.required_missing:
         raise DiscoveryError(
@@ -193,14 +231,9 @@ def list_catalog_prefixes(html: str) -> list[str]:
 
 
 def fetch_root_listing(source_root: str, user_agent: str,
-                       timeout_s: float = 30.0, transport=None) -> tuple[str, list[str]]:
+                       timeout_s: float = 30.0, transport=None, **retry) -> tuple[str, list[str]]:
     url = source_root.rstrip("/") + "/"
-    headers = {"User-Agent": user_agent, "Accept-Encoding": "identity"}
-    with httpx.Client(headers=headers, timeout=timeout_s, transport=transport,
-                      follow_redirects=True) as client:
-        resp = client.get(url)
-        resp.raise_for_status()
-        html = resp.text
+    html = fetch_listing(url, user_agent, timeout_s, transport, **retry)
     return html, list_catalog_prefixes(html)
 
 
@@ -279,6 +312,11 @@ def sha256_file(path: Path, _buf: int = 64 * 1024) -> str:
         while chunk := fh.read(_buf):
             h.update(chunk)
     return h.hexdigest()
+
+
+def _listing_retry(cfg: AppConfig) -> dict:
+    return {"max_retries": cfg.max_retries, "backoff_base_s": cfg.listing_backoff_base_s,
+            "backoff_max_s": cfg.listing_backoff_max_s}
 
 
 def _parse_retry_after(value: str | None) -> float | None:
@@ -1343,6 +1381,7 @@ def process_program(cfg: AppConfig, force: bool = False,
               "observations": 0, "error": None, "elapsed_s": 0.0,
               "started_utc": datetime.now(timezone.utc).isoformat()}
     out_dir.mkdir(parents=True, exist_ok=True)
+    manifest = None
     def save():
         result["elapsed_s"] = round(time.perf_counter() - started, 2)
         _write_json(out_dir / "state.json", result)
@@ -1374,7 +1413,7 @@ def process_program(cfg: AppConfig, force: bool = False,
                 extra["files"] = _file_receipt(raw_dir, manifest)
         else:
             disc = discover_remote(cfg.program, cfg.program_url, cfg.user_agent,
-                                   timeout_s=cfg.read_timeout_s)
+                                   timeout_s=cfg.read_timeout_s, **_listing_retry(cfg))
             if not force and _unchanged(out_dir / "catalog.json", disc.listing_sha256):
                 card = json.loads((out_dir / "catalog.json").read_text())
                 result.update(status="skipped", series=card["coverage"]["series"],
@@ -1401,6 +1440,12 @@ def process_program(cfg: AppConfig, force: bool = False,
     except Exception as exc:
         # A parsing/database/HTTP error in one catalog must not suppress the remaining catalogs.
         result.update(status="failed", error=f"{type(exc).__name__}: {exc}")
+        # Tell run_all when the server, not the data, is the reason for the failure.
+        if isinstance(exc, ThrottledError) or (
+                isinstance(exc, DownloadError) and manifest is not None
+                and any(r.download_status == "failed" and r.http_status == 429
+                        for r in manifest.files)):
+            result["throttled"] = True
     except BaseException:
         result.update(status="interrupted", error="catalog interrupted before completion")
         raise
@@ -1411,7 +1456,8 @@ def process_program(cfg: AppConfig, force: bool = False,
 
 
 def run_all(cfg: AppConfig, only: list[str] | None = None, force: bool = False,
-            offline: bool = False, prefixes: list[str] | None = None) -> dict:
+            offline: bool = False, prefixes: list[str] | None = None,
+            sleep=time.sleep) -> dict:
     log = {"started_utc": datetime.now(timezone.utc).isoformat(), "prefixes": [], "catalogs": []}
     log_path = Path(cfg.data_dir) / "run.json"
     _write_json(log_path, log)
@@ -1421,7 +1467,8 @@ def run_all(cfg: AppConfig, only: list[str] | None = None, force: bool = False,
         else:
             try:
                 _html, prefixes = fetch_root_listing(cfg.source_root, cfg.user_agent,
-                                                      timeout_s=cfg.read_timeout_s)
+                                                      timeout_s=cfg.read_timeout_s,
+                                                      **_listing_retry(cfg))
                 if not prefixes:
                     raise DiscoveryError("no catalog directories discovered")
             except Exception as exc:
@@ -1435,6 +1482,7 @@ def run_all(cfg: AppConfig, only: list[str] | None = None, force: bool = False,
     log["prefixes"] = prefixes
     log["catalogs"] = [{"program": p.upper(), "status": "not_reached"} for p in prefixes]
     _write_json(log_path, log)
+    throttled_in_a_row = 0
     for i, prefix in enumerate(prefixes):
         print(f"[{prefix}] start", flush=True)
         log["catalogs"][i] = {"program": prefix.upper(), "status": "running"}
@@ -1450,8 +1498,23 @@ def run_all(cfg: AppConfig, only: list[str] | None = None, force: bool = False,
         print(f"[{prefix}] {one['status']} series={one['series']} "
               f"obs={one['observations']} {one.get('error') or ''}", flush=True)
         _write_json(log_path, log)
+        if not one.get("throttled"):
+            throttled_in_a_row = 0
+            continue
+        throttled_in_a_row += 1
+        remaining = len(prefixes) - i - 1
+        if throttled_in_a_row >= cfg.max_consecutive_throttled and remaining:
+            # Later catalogs stay "not_reached"; a rerun picks them up.
+            log["stopped_early"] = (f"{throttled_in_a_row} catalogs in a row were throttled by "
+                                    f"the server; {remaining} not attempted. Rerun later.")
+            print(f"stopping: {log['stopped_early']}", flush=True)
+            break
+        if remaining:
+            print(f"[{prefix}] throttled; cooling down {cfg.throttle_cooldown_s:.0f}s", flush=True)
+            sleep(cfg.throttle_cooldown_s)
     log["finished_utc"] = datetime.now(timezone.utc).isoformat()
     log["failed"] = sum(1 for c in log["catalogs"] if c["status"] == "failed")
+    log["not_reached"] = sum(1 for c in log["catalogs"] if c["status"] == "not_reached")
     _write_json(log_path, log)
     return log
 
@@ -1485,6 +1548,6 @@ def main(argv: list[str] | None = None) -> int:
         print("--offline requires --only", file=sys.stderr)
         return 2
     log = run_all(cfg, only=only, force=args.force, offline=args.offline)
-    print(json.dumps({k: log[k] for k in ("prefixes", "failed", "finished_utc") if k in log},
-                     indent=2))
-    return 1 if log.get("failed") else 0
+    print(json.dumps({k: log[k] for k in ("prefixes", "failed", "not_reached", "stopped_early",
+                                          "finished_utc") if k in log}, indent=2))
+    return 1 if log.get("failed") or log.get("not_reached") else 0
