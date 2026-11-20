@@ -11,6 +11,7 @@ import os
 import random
 import re
 import sys
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict, dataclass, field, replace
@@ -32,8 +33,11 @@ class AppConfig:
         "Mozilla/5.0 (Macintosh; BLS-Corpus-Research/1.0; "
         "+https://www.bls.gov/data/) bls-corpus/0.1"
     )
-    concurrency: int = 2
-    min_interval_s: float = 0.35
+    concurrency: int = 1
+    # Minimum gap between any two requests to BLS in a run (listings and files).
+    # A throttle doubles it up to max_interval_s; successes ease it back down.
+    min_interval_s: float = 0.5
+    max_interval_s: float = 10.0
     connect_timeout_s: float = 15.0
     read_timeout_s: float = 120.0
     memory_limit: str = "1GB"
@@ -45,10 +49,14 @@ class AppConfig:
     # tries so a server-side throttle has time to clear.
     listing_backoff_base_s: float = 5.0
     listing_backoff_max_s: float = 120.0
-    # After a catalog is lost to throttling, pause before the next one, and stop
-    # the run once several in a row are throttled instead of hammering the server.
+    # After a catalog is lost to throttling, pause before the next one. The pause
+    # doubles for each throttled catalog in a row, up to throttle_cooldown_max_s,
+    # so an unattended run waits out a long block (about 2.5 hours at the
+    # defaults) before stopping. 0 means never stop.
     throttle_cooldown_s: float = 300.0
-    max_consecutive_throttled: int = 3
+    throttle_cooldown_max_s: float = 1800.0
+    max_consecutive_throttled: int = 8
+    pacer: RequestPacer | None = field(default=None, repr=False, compare=False)
 
     @property
     def program_dir(self) -> str:
@@ -69,6 +77,56 @@ class AppConfig:
     @property
     def series_root(self) -> Path:
         return self.catalog_dir / "series"
+
+
+class RequestPacer:
+    """One request clock shared by every listing and download in a run.
+
+    Requests are spaced at least ``interval`` seconds apart across all threads.
+    A throttle blocks every caller until the server's wait has passed and doubles
+    the interval; each success eases it back toward the base.
+    """
+
+    def __init__(self, min_interval_s: float, max_interval_s: float | None = None,
+                 sleep=time.sleep, clock=time.monotonic):
+        self.base = max(0.0, min_interval_s)
+        self.max_interval = max(self.base, max_interval_s if max_interval_s is not None
+                                else self.base)
+        self.interval = self.base
+        self._sleep = sleep
+        self._clock = clock
+        self._lock = threading.Lock()
+        self._next_at = 0.0
+        self._blocked_until = 0.0
+        self._epoch = 0
+
+    def wait(self) -> None:
+        with self._lock:
+            now = self._clock()
+            start = max(now, self._next_at, self._blocked_until)
+            self._next_at = start + self.interval
+            epoch = self._epoch
+        if start > now:
+            self._sleep(start - now)
+        # A throttle reported while this caller slept moves the start later.
+        with self._lock:
+            if self._epoch == epoch:
+                return
+            now = self._clock()
+            start = max(now, self._blocked_until)
+            self._next_at = max(self._next_at, start + self.interval)
+        if start > now:
+            self._sleep(start - now)
+
+    def throttled(self, wait_s: float) -> None:
+        with self._lock:
+            self._blocked_until = max(self._blocked_until, self._clock() + max(0.0, wait_s))
+            self.interval = min(max(self.interval * 2, self.base), self.max_interval)
+            self._epoch += 1
+
+    def succeeded(self) -> None:
+        with self._lock:
+            self.interval = max(self.base, self.interval * 0.9)
 
 
 def load_config(path: str | Path | None = None) -> AppConfig:
@@ -93,6 +151,7 @@ _KNOWN_ROLES: list[tuple[re.Pattern[str], str, bool]] = [
 SKIP_ROOT_DIRS = {"compressed", "sdmx", "esbr"}
 SKIP_PREFIXES = {"pf", "pi", "lf"}
 RETRYABLE_STATUS = {408, 425, 429, 500, 502, 503, 504}
+THROTTLE_STATUS = {429, 503}
 
 
 @dataclass
@@ -149,33 +208,47 @@ class ThrottledError(DiscoveryError):
 
 def fetch_listing(url: str, user_agent: str, timeout_s: float = 30.0, transport=None,
                   max_retries: int = 5, backoff_base_s: float = 5.0,
-                  backoff_max_s: float = 120.0, sleep=time.sleep) -> str:
+                  backoff_max_s: float = 120.0, sleep=time.sleep,
+                  pacer: RequestPacer | None = None) -> str:
     """GET a directory listing, retrying throttles and transient errors with backoff."""
+    pacer = pacer or RequestPacer(0.0, sleep=sleep)
     headers = {"User-Agent": user_agent, "Accept-Encoding": "identity"}
     last = ""
     with httpx.Client(headers=headers, timeout=timeout_s, transport=transport,
                       follow_redirects=True) as client:
         for attempt in range(max_retries + 1):
             retry_after = None
+            throttled = False
+            pacer.wait()
             try:
                 resp = client.get(url)
                 if resp.status_code not in RETRYABLE_STATUS:
                     resp.raise_for_status()
+                    pacer.succeeded()
                     return resp.text
                 last = f"HTTP {resp.status_code}"
+                throttled = resp.status_code in THROTTLE_STATUS
                 retry_after = _parse_retry_after(resp.headers.get("Retry-After"))
             except (httpx.TimeoutException, httpx.TransportError) as exc:
                 last = f"{type(exc).__name__}: {exc}"
-            if attempt < max_retries:
-                if retry_after is not None:
-                    wait = min(retry_after, 300.0)
-                else:
-                    base = min(backoff_base_s * (2 ** attempt), backoff_max_s)
-                    wait = base + random.uniform(0, base * 0.25)
-                print(f"  listing {url}: {last}; retry {attempt + 1}/{max_retries} "
-                      f"in {wait:.0f}s", flush=True)
+            wait = _retry_wait(attempt, retry_after, backoff_base_s, backoff_max_s)
+            if throttled:
+                # Holds back every request in the run, including the next try here.
+                pacer.throttled(wait)
+            if attempt == max_retries:
+                break
+            print(f"  listing {url}: {last}; retry {attempt + 1}/{max_retries} "
+                  f"in {wait:.0f}s", flush=True)
+            if not throttled:
                 sleep(wait)
     raise ThrottledError(f"{last} for {url} after {max_retries + 1} attempts")
+
+
+def _retry_wait(attempt: int, retry_after: float | None, base_s: float, max_s: float) -> float:
+    if retry_after is not None:
+        return min(retry_after, 300.0)
+    base = min(base_s * (2 ** attempt), max_s)
+    return base + random.uniform(0, base * 0.25)
 
 
 def parse_listing(html: str, program: str, source_url: str) -> DiscoveryResult:
@@ -316,7 +389,7 @@ def sha256_file(path: Path, _buf: int = 64 * 1024) -> str:
 
 def _listing_retry(cfg: AppConfig) -> dict:
     return {"max_retries": cfg.max_retries, "backoff_base_s": cfg.listing_backoff_base_s,
-            "backoff_max_s": cfg.listing_backoff_max_s}
+            "backoff_max_s": cfg.listing_backoff_max_s, "pacer": cfg.pacer}
 
 
 def _parse_retry_after(value: str | None) -> float | None:
@@ -339,9 +412,10 @@ def _to_http_date(listing_or_http: str) -> str:
 
 
 class _RetryableError(Exception):
-    def __init__(self, msg: str, retry_after: float | None = None):
+    def __init__(self, msg: str, retry_after: float | None = None, throttled: bool = False):
         super().__init__(msg)
         self.retry_after = retry_after
+        self.throttled = throttled
 
 
 class _PermanentError(Exception):
@@ -359,19 +433,10 @@ class Downloader:
         self.sleep = sleep
         self.transport = transport
         self._client = client
-        self._last_request_at = 0.0
-
-    def _pace(self) -> None:
-        wait = self.cfg.min_interval_s - (time.monotonic() - self._last_request_at)
-        if wait > 0:
-            self.sleep(wait)
-        self._last_request_at = time.monotonic()
+        self.pacer = cfg.pacer or RequestPacer(cfg.min_interval_s, cfg.max_interval_s, sleep=sleep)
 
     def _backoff(self, attempt: int, retry_after: float | None) -> float:
-        if retry_after is not None:
-            return min(retry_after, 300.0)
-        base = min(self.cfg.backoff_base_s * (2 ** attempt), self.cfg.backoff_max_s)
-        return base + random.uniform(0, base * 0.25)
+        return _retry_wait(attempt, retry_after, self.cfg.backoff_base_s, self.cfg.backoff_max_s)
 
     def _client_or_new(self) -> httpx.Client:
         if self._client is not None:
@@ -415,9 +480,10 @@ class Downloader:
         last_error: str | None = None
         for attempt in range(self.cfg.max_retries + 1):
             record.attempts = attempt + 1
-            self._pace()
+            self.pacer.wait()
             try:
                 status = self._attempt(client, record, dest, part, dict(headers))
+                self.pacer.succeeded()
                 record.download_status = "skipped_not_modified" if status == "not_modified" else "downloaded"
                 record.local_size = dest.stat().st_size
                 record.sha256 = sha256_file(dest)
@@ -430,8 +496,12 @@ class Downloader:
             except _RetryableError as exc:
                 last_error = str(exc)
                 headers.clear()
-                if attempt < self.cfg.max_retries:
-                    self.sleep(self._backoff(attempt, exc.retry_after))
+                wait = self._backoff(attempt, exc.retry_after)
+                if exc.throttled:
+                    # Holds back every request in the run, including the next try here.
+                    self.pacer.throttled(wait)
+                elif attempt < self.cfg.max_retries:
+                    self.sleep(wait)
             except Exception as exc:
                 record.download_status = "failed"
                 record.error_message = f"unexpected: {type(exc).__name__}: {exc}"
@@ -471,7 +541,8 @@ class Downloader:
                     return "not_modified"
                 if resp.status_code in RETRYABLE_STATUS:
                     raise _RetryableError(f"HTTP {resp.status_code}",
-                                          retry_after=_parse_retry_after(resp.headers.get("Retry-After")))
+                                          retry_after=_parse_retry_after(resp.headers.get("Retry-After")),
+                                          throttled=resp.status_code in THROTTLE_STATUS)
                 if resp.status_code == 416 and resume_from:
                     part.unlink(missing_ok=True)
                     resume_meta.unlink(missing_ok=True)
@@ -1458,6 +1529,8 @@ def process_program(cfg: AppConfig, force: bool = False,
 def run_all(cfg: AppConfig, only: list[str] | None = None, force: bool = False,
             offline: bool = False, prefixes: list[str] | None = None,
             sleep=time.sleep) -> dict:
+    if cfg.pacer is None:
+        cfg = replace(cfg, pacer=RequestPacer(cfg.min_interval_s, cfg.max_interval_s))
     log = {"started_utc": datetime.now(timezone.utc).isoformat(), "prefixes": [], "catalogs": []}
     log_path = Path(cfg.data_dir) / "run.json"
     _write_json(log_path, log)
@@ -1503,15 +1576,19 @@ def run_all(cfg: AppConfig, only: list[str] | None = None, force: bool = False,
             continue
         throttled_in_a_row += 1
         remaining = len(prefixes) - i - 1
-        if throttled_in_a_row >= cfg.max_consecutive_throttled and remaining:
+        if not remaining:
+            continue
+        if cfg.max_consecutive_throttled and throttled_in_a_row >= cfg.max_consecutive_throttled:
             # Later catalogs stay "not_reached"; a rerun picks them up.
             log["stopped_early"] = (f"{throttled_in_a_row} catalogs in a row were throttled by "
                                     f"the server; {remaining} not attempted. Rerun later.")
             print(f"stopping: {log['stopped_early']}", flush=True)
             break
-        if remaining:
-            print(f"[{prefix}] throttled; cooling down {cfg.throttle_cooldown_s:.0f}s", flush=True)
-            sleep(cfg.throttle_cooldown_s)
+        cooldown = min(cfg.throttle_cooldown_s * 2 ** (throttled_in_a_row - 1),
+                       cfg.throttle_cooldown_max_s)
+        print(f"[{prefix}] throttled ({throttled_in_a_row} in a row); "
+              f"cooling down {cooldown:.0f}s", flush=True)
+        sleep(cooldown)
     log["finished_utc"] = datetime.now(timezone.utc).isoformat()
     log["failed"] = sum(1 for c in log["catalogs"] if c["status"] == "failed")
     log["not_reached"] = sum(1 for c in log["catalogs"] if c["status"] == "not_reached")
@@ -1530,14 +1607,28 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--source-root", default=None)
     p.add_argument("--memory-limit", default="1GB", help="DuckDB memory budget; disk spill is used as needed.")
     p.add_argument("--threads", type=int, default=2)
+    p.add_argument("--concurrency", type=int, default=1,
+                   help="Files downloaded at once. Requests stay spaced by --min-interval either way.")
+    p.add_argument("--min-interval", type=float, default=0.5,
+                   help="Seconds between any two requests to BLS.")
+    p.add_argument("--max-throttled", type=int, default=8,
+                   help="Stop after this many throttled catalogs in a row (0 = never stop).")
     return p
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    cfg = AppConfig(memory_limit=args.memory_limit, threads=args.threads)
+    cfg = AppConfig(memory_limit=args.memory_limit, threads=args.threads,
+                    concurrency=args.concurrency, min_interval_s=args.min_interval,
+                    max_consecutive_throttled=args.max_throttled)
     if args.threads < 1:
         print("--threads must be positive", file=sys.stderr)
+        return 2
+    if args.concurrency < 1:
+        print("--concurrency must be positive", file=sys.stderr)
+        return 2
+    if args.min_interval < 0 or args.max_throttled < 0:
+        print("--min-interval and --max-throttled cannot be negative", file=sys.stderr)
         return 2
     if args.data_dir:
         cfg.data_dir = Path(args.data_dir)

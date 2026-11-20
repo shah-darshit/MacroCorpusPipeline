@@ -1,9 +1,11 @@
 import hashlib
+import threading
+import time
 
 import httpx
 import pytest
 
-from bls_corpus.pipeline import AppConfig, Downloader, FileRecord
+from bls_corpus.pipeline import AppConfig, Downloader, FileRecord, Manifest, RequestPacer
 
 
 def cfg() -> AppConfig:
@@ -46,7 +48,7 @@ def test_429_retry_after_then_success(tmp_path):
     sleeps: list[float] = []
     r = dl(httpx.MockTransport(handler), sleeps).download_one(rec(), tmp_path)
     assert r.download_status == "downloaded" and r.attempts == 2
-    assert 7.0 in sleeps
+    assert any(s == pytest.approx(7.0, abs=0.1) for s in sleeps)
 
 
 def test_500_and_permanent_404(tmp_path):
@@ -134,3 +136,96 @@ def test_range_ignored_restarts_file(tmp_path):
     r = dl(t).download_one(rec(), tmp_path)
     assert r.download_status == "downloaded"
     assert (tmp_path / "bd.series").read_bytes() == b"full-body"
+
+
+class FakeClock:
+    def __init__(self):
+        self.t = 0.0
+
+    def now(self):
+        return self.t
+
+    def sleep(self, s):
+        self.t += s
+
+
+def test_pacer_spaces_requests_and_backs_off_on_throttle():
+    clock = FakeClock()
+    p = RequestPacer(0.5, 4.0, sleep=clock.sleep, clock=clock.now)
+    starts = []
+    for _ in range(3):
+        p.wait()
+        starts.append(clock.t)
+    assert starts == [0.0, 0.5, 1.0]
+    p.throttled(20.0)
+    p.wait()
+    assert clock.t == pytest.approx(21.0) and p.interval == 1.0
+    for _ in range(3):
+        p.throttled(0.0)
+    assert p.interval == 4.0  # capped at max_interval_s
+    for _ in range(50):
+        p.succeeded()
+    assert p.interval == 0.5  # eases back to the base, never below it
+
+
+def test_pacer_is_shared_safely_across_threads():
+    p = RequestPacer(0.05)
+    times = []
+    lock = threading.Lock()
+
+    def worker():
+        for _ in range(4):
+            p.wait()
+            with lock:
+                times.append(time.monotonic())
+
+    threads = [threading.Thread(target=worker) for _ in range(3)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+    times.sort()
+    gaps = [b - a for a, b in zip(times, times[1:])]
+    assert len(times) == 12 and min(gaps) >= 0.04
+
+
+def test_one_throttled_file_holds_back_every_downloader(tmp_path):
+    clock = FakeClock()
+    c = cfg()
+    c.max_retries = 0
+    c.pacer = RequestPacer(0.5, 10.0, sleep=clock.sleep, clock=clock.now)
+    sent = {}
+
+    def handler(request):
+        sent[request.url.path] = clock.t
+        if request.url.path.endswith("bd.series"):
+            return httpx.Response(429, headers={"Retry-After": "60"})
+        return httpx.Response(200, content=b"ok")
+
+    t = httpx.MockTransport(handler)
+    first = Downloader(c, transport=t, sleep=clock.sleep).download_one(rec(), tmp_path)
+    second = Downloader(c, transport=t, sleep=clock.sleep).download_one(
+        rec("bd.footnote"), tmp_path)
+    assert first.download_status == "failed" and second.download_status == "downloaded"
+    assert sent["/bd/bd.footnote"] >= 60.0
+
+
+def test_download_all_with_concurrency_keeps_spacing(tmp_path):
+    c = cfg()
+    c.concurrency = 3
+    c.pacer = RequestPacer(0.05)
+    times = []
+    lock = threading.Lock()
+
+    def handler(request):
+        with lock:
+            times.append(time.monotonic())
+        return httpx.Response(200, content=b"ok")
+
+    names = [f"bd.map{i}" for i in range(6)]
+    m = Manifest(program_id="BD", source_url="https://x/bd/", created_utc="now",
+                 files=[rec(n) for n in names])
+    Downloader(c, transport=httpx.MockTransport(handler)).download_all(m, tmp_path)
+    times.sort()
+    assert len(times) == 6
+    assert min(b - a for a, b in zip(times, times[1:])) >= 0.04

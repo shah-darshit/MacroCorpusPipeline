@@ -54,11 +54,12 @@ def test_run_all_stops_after_consecutive_throttles(tmp_path, monkeypatch):
     _fake_results(monkeypatch, {"bb", "cc", "dd", "ee"})
     cfg = AppConfig()
     cfg.data_dir = tmp_path / "data"
+    cfg.max_consecutive_throttled = 3
     waits = []
     log = run_all(cfg, prefixes=["aa", "bb", "cc", "dd", "ee", "ff"], sleep=waits.append)
     assert [c["status"] for c in log["catalogs"]] == [
         "ok", "failed", "failed", "failed", "not_reached", "not_reached"]
-    assert waits == [cfg.throttle_cooldown_s] * 2
+    assert waits == [300.0, 600.0]
     assert log["not_reached"] == 2 and "stopped_early" in log
 
 
@@ -69,4 +70,57 @@ def test_run_all_cooldown_resets_after_a_success(tmp_path, monkeypatch):
     waits = []
     log = run_all(cfg, prefixes=["aa", "bb", "cc", "dd", "ee"], sleep=waits.append)
     assert "stopped_early" not in log and log["not_reached"] == 0
-    assert len(waits) == 3  # no pause after the final catalog
+    assert waits == [300.0, 600.0, 300.0]  # no pause after the final catalog
+
+
+def test_unattended_defaults_wait_out_a_long_block(tmp_path, monkeypatch):
+    prefixes = ["aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh"]
+    _fake_results(monkeypatch, set(prefixes[:7]))
+    cfg = AppConfig()
+    cfg.data_dir = tmp_path / "data"
+    waits = []
+    log = run_all(cfg, prefixes=prefixes, sleep=waits.append)
+    assert "stopped_early" not in log and log["catalogs"][-1]["status"] == "ok"
+    assert waits == [300.0, 600.0, 1200.0, 1800.0, 1800.0, 1800.0, 1800.0]
+
+
+def test_zero_throttle_limit_never_stops(tmp_path, monkeypatch):
+    prefixes = [f"a{c}" for c in "abcdefghijkl"]
+    _fake_results(monkeypatch, set(prefixes))
+    cfg = AppConfig()
+    cfg.data_dir = tmp_path / "data"
+    cfg.max_consecutive_throttled = 0
+    waits = []
+    log = run_all(cfg, prefixes=prefixes, sleep=waits.append)
+    assert "stopped_early" not in log and log["not_reached"] == 0
+    assert len(waits) == len(prefixes) - 1 and max(waits) == cfg.throttle_cooldown_max_s
+
+
+def test_run_all_shares_one_pacer_across_catalogs(tmp_path, monkeypatch):
+    import bls_corpus.pipeline as pl
+    seen = []
+
+    def fake(cfg, force=False, offline=False):
+        seen.append(cfg.pacer)
+        return {"program": cfg.program, "status": "ok", "series": 0, "observations": 0}
+    monkeypatch.setattr(pl, "process_program", fake)
+    cfg = AppConfig()
+    cfg.data_dir = tmp_path / "data"
+    run_all(cfg, prefixes=["aa", "bb", "cc"])
+    assert seen[0] is not None and all(p is seen[0] for p in seen)
+
+
+def test_cli_pacing_flags(tmp_path, monkeypatch):
+    import bls_corpus.pipeline as pl
+    captured = {}
+
+    def fake_run_all(cfg, **kwargs):
+        captured["cfg"] = cfg
+        return {"prefixes": [], "failed": 0}
+    monkeypatch.setattr(pl, "run_all", fake_run_all)
+    assert pl.main(["--only", "bd", "--data-dir", str(tmp_path), "--concurrency", "2",
+                    "--min-interval", "1.5", "--max-throttled", "0"]) == 0
+    cfg = captured["cfg"]
+    assert (cfg.concurrency, cfg.min_interval_s, cfg.max_consecutive_throttled) == (2, 1.5, 0)
+    assert pl.main(["--concurrency", "0"]) == 2
+    assert pl.main(["--min-interval", "-1"]) == 2

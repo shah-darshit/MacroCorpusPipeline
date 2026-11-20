@@ -72,7 +72,7 @@ def test_listing_retries_429_and_honors_retry_after():
     html = fetch_listing("https://x/bd/", "test-agent", transport=httpx.MockTransport(handler),
                          sleep=waits.append)
     assert html == "<pre>ok</pre>"
-    assert len(calls) == 3 and waits == [7.0, 7.0]
+    assert len(calls) == 3 and waits == pytest.approx([7.0, 7.0], abs=0.1)
 
 
 def test_listing_gives_up_with_throttled_error():
@@ -94,3 +94,26 @@ def test_listing_404_is_not_retried():
     with pytest.raises(httpx.HTTPStatusError):
         fetch_listing("https://x/zz/", "test-agent", transport=transport, sleep=waits.append)
     assert waits == []
+
+
+def test_listing_throttle_holds_back_the_shared_pacer():
+    import httpx
+    from bls_corpus.pipeline import RequestPacer, fetch_listing
+    clock = {"t": 0.0}
+    sent = []
+
+    def sleep(s):
+        clock["t"] += s
+
+    def handler(request):
+        sent.append(clock["t"])
+        if len(sent) == 1:
+            return httpx.Response(429, headers={"Retry-After": "30"})
+        return httpx.Response(200, text="<pre>ok</pre>")
+
+    pacer = RequestPacer(0.5, 10.0, sleep=sleep, clock=lambda: clock["t"])
+    fetch_listing("https://x/bd/", "test-agent", transport=httpx.MockTransport(handler),
+                  pacer=pacer)
+    assert sent == [0.0, 30.0]
+    pacer.wait()  # the next request anywhere in the run is spaced by the raised interval
+    assert clock["t"] >= 30.0 + 0.5
