@@ -49,13 +49,17 @@ class AppConfig:
     # tries so a server-side throttle has time to clear.
     listing_backoff_base_s: float = 5.0
     listing_backoff_max_s: float = 120.0
-    # After a catalog is lost to throttling, pause before the next one. The pause
-    # doubles for each throttled catalog in a row, up to throttle_cooldown_max_s,
-    # so an unattended run waits out a long block (about 2.5 hours at the
-    # defaults) before stopping. 0 means never stop.
+    # After a catalog attempt is lost to throttling, pause before the next attempt.
+    # The pause doubles for each throttled attempt in a row, up to
+    # throttle_cooldown_max_s, so an unattended run waits out a long block (about
+    # 2.5 hours at the defaults) before stopping. 0 means never stop.
     throttle_cooldown_s: float = 300.0
     throttle_cooldown_max_s: float = 1800.0
     max_consecutive_throttled: int = 8
+    # A throttled catalog is tried again after the pause instead of being dropped;
+    # files that already downloaded are verified and skipped. Catalogs still
+    # throttled after that get one more try at the end of the run. 0 disables both.
+    throttled_catalog_retries: int = 1
     pacer: RequestPacer | None = field(default=None, repr=False, compare=False)
 
     @property
@@ -1555,9 +1559,26 @@ def run_all(cfg: AppConfig, only: list[str] | None = None, force: bool = False,
     log["prefixes"] = prefixes
     log["catalogs"] = [{"program": p.upper(), "status": "not_reached"} for p in prefixes]
     _write_json(log_path, log)
-    throttled_in_a_row = 0
-    for i, prefix in enumerate(prefixes):
-        print(f"[{prefix}] start", flush=True)
+    streak = 0  # throttled attempts in a row, across catalogs and retries
+
+    def ready(prefix: str) -> bool:
+        """Cool down before an attempt that follows a throttled one. False means stop."""
+        if not streak:
+            return True
+        if cfg.max_consecutive_throttled and streak >= cfg.max_consecutive_throttled:
+            return False
+        cooldown = min(cfg.throttle_cooldown_s * 2 ** (streak - 1), cfg.throttle_cooldown_max_s)
+        print(f"[{prefix}] waiting {cooldown:.0f}s after {streak} throttled attempt(s) in a row",
+              flush=True)
+        sleep(cooldown)
+        return True
+
+    def attempt(i: int, attempts: int) -> bool:
+        """Run one catalog once and record it. True when the server throttled it."""
+        nonlocal streak
+        prefix = prefixes[i]
+        print(f"[{prefix}] start" if attempts == 1 else
+              f"[{prefix}] retry after throttle (attempt {attempts})", flush=True)
         log["catalogs"][i] = {"program": prefix.upper(), "status": "running"}
         _write_json(log_path, log)
         try:
@@ -1567,28 +1588,39 @@ def run_all(cfg: AppConfig, only: list[str] | None = None, force: bool = False,
             log["catalogs"][i].update(status="interrupted")
             _write_json(log_path, log)
             raise
+        one["attempts"] = attempts
         log["catalogs"][i] = one
         print(f"[{prefix}] {one['status']} series={one['series']} "
               f"obs={one['observations']} {one.get('error') or ''}", flush=True)
         _write_json(log_path, log)
-        if not one.get("throttled"):
-            throttled_in_a_row = 0
-            continue
-        throttled_in_a_row += 1
-        remaining = len(prefixes) - i - 1
-        if not remaining:
-            continue
-        if cfg.max_consecutive_throttled and throttled_in_a_row >= cfg.max_consecutive_throttled:
-            # Later catalogs stay "not_reached"; a rerun picks them up.
-            log["stopped_early"] = (f"{throttled_in_a_row} catalogs in a row were throttled by "
-                                    f"the server; {remaining} not attempted. Rerun later.")
-            print(f"stopping: {log['stopped_early']}", flush=True)
+        streak = streak + 1 if one.get("throttled") else 0
+        return bool(one.get("throttled"))
+
+    retries = max(0, cfg.throttled_catalog_retries)
+    stopped = False
+    for i, prefix in enumerate(prefixes):
+        for tries in range(retries + 1):
+            if not ready(prefix):
+                stopped = True
+                break
+            # A retry resumes the catalog: verified files are not downloaded again.
+            if not attempt(i, tries + 1):
+                break
+        if stopped:
             break
-        cooldown = min(cfg.throttle_cooldown_s * 2 ** (throttled_in_a_row - 1),
-                       cfg.throttle_cooldown_max_s)
-        print(f"[{prefix}] throttled ({throttled_in_a_row} in a row); "
-              f"cooling down {cooldown:.0f}s", flush=True)
-        sleep(cooldown)
+    if retries and not stopped:
+        # Last chance for catalogs the server was still refusing when we moved on.
+        for i in [i for i, c in enumerate(log["catalogs"]) if c.get("throttled")]:
+            if not ready(prefixes[i]):
+                stopped = True
+                break
+            attempt(i, log["catalogs"][i]["attempts"] + 1)
+    if stopped:
+        # Unfinished catalogs keep their status; a rerun picks them up.
+        unreached = sum(1 for c in log["catalogs"] if c["status"] == "not_reached")
+        log["stopped_early"] = (f"{streak} catalog attempts in a row were throttled by "
+                                f"the server; {unreached} catalogs not attempted. Rerun later.")
+        print(f"stopping: {log['stopped_early']}", flush=True)
     log["finished_utc"] = datetime.now(timezone.utc).isoformat()
     log["failed"] = sum(1 for c in log["catalogs"] if c["status"] == "failed")
     log["not_reached"] = sum(1 for c in log["catalogs"] if c["status"] == "not_reached")
@@ -1612,7 +1644,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--min-interval", type=float, default=0.5,
                    help="Seconds between any two requests to BLS.")
     p.add_argument("--max-throttled", type=int, default=8,
-                   help="Stop after this many throttled catalogs in a row (0 = never stop).")
+                   help="Stop after this many throttled catalog attempts in a row (0 = never stop).")
+    p.add_argument("--catalog-retries", type=int, default=1,
+                   help="Times a throttled catalog is tried again after cooling down (0 = move on).")
     return p
 
 
@@ -1620,15 +1654,17 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     cfg = AppConfig(memory_limit=args.memory_limit, threads=args.threads,
                     concurrency=args.concurrency, min_interval_s=args.min_interval,
-                    max_consecutive_throttled=args.max_throttled)
+                    max_consecutive_throttled=args.max_throttled,
+                    throttled_catalog_retries=args.catalog_retries)
     if args.threads < 1:
         print("--threads must be positive", file=sys.stderr)
         return 2
     if args.concurrency < 1:
         print("--concurrency must be positive", file=sys.stderr)
         return 2
-    if args.min_interval < 0 or args.max_throttled < 0:
-        print("--min-interval and --max-throttled cannot be negative", file=sys.stderr)
+    if args.min_interval < 0 or args.max_throttled < 0 or args.catalog_retries < 0:
+        print("--min-interval, --max-throttled and --catalog-retries cannot be negative",
+              file=sys.stderr)
         return 2
     if args.data_dir:
         cfg.data_dir = Path(args.data_dir)

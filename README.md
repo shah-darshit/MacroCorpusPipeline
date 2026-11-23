@@ -37,6 +37,8 @@ python run.py
 
 That is the only command a new user needs. It lists the LABSTAT root, then for each two-letter survey folder downloads the files, joins code names, and writes the series files. One catalog failing is recorded and the next catalog still runs. A later `python run.py` skips a catalog whose remote listing has not changed. Pass `--force` to rebuild anyway.
 
+If BLS throttles a catalog (HTTP 429), the run waits, then tries that catalog again; files that already downloaded are not fetched twice. Catalogs still blocked get one more try at the end of the run. `--catalog-retries 0` turns this off.
+
 `--only WS,CU` is for tests and debugging. It is not required to process a catalog.
 
 When it finishes, look here:
