@@ -1,7 +1,9 @@
 import json
 from pathlib import Path
 
-from bls_corpus.pipeline import process_catalog
+from bls_corpus.pipeline import (
+    load_series, process_catalog, read_observations, read_series, resolve_memory_limit,
+)
 
 FIX = Path(__file__).parent / "fixtures" / "bd"
 
@@ -13,17 +15,17 @@ def test_engine_on_bd_fixtures(tmp_path):
     assert stats.observations > 0
     assert stats.malformed_rows == 0
     first_id = "BDS0000000000000000110001LQ5"
-    row = json.loads((tmp_path / "series" / f"{first_id}.json").read_text())
+    row = load_series(tmp_path, first_id)
     assert row["series_id"] == first_id
     assert row["seasonal"] == "S"
-    assert "observations" in row
     assert row["observations"]
     card = json.loads((tmp_path / "catalog.json").read_text())
     assert card["program"] == "BD"
+    assert card["pipeline_version"] == 3
+    assert card["series_shards"] and card["observation_shards"]
     assert any(j["catalog_column"] == "industry_code" for j in card["joins"])
-    index = json.loads((tmp_path / "index.json").read_text())
-    assert first_id in index
-    assert index[first_id]["observation_count"] > 0
+    assert (tmp_path / "labels").is_dir()
+    assert not (tmp_path / "index.json").exists()
     assert "snapshot_id" not in row
 
 
@@ -44,7 +46,7 @@ def test_engine_on_other_program_layout(tmp_path):
     assert stats.series == 1
     assert stats.observations == 2
     assert stats.missing_values == 1
-    row = json.loads((out / "series" / "APU0000701111.json").read_text())
+    row = load_series(out, "APU0000701111")
     assert row["series_title"] == "Flour, per lb"
     assert row["area_name"] == "U.S. city average"
     assert row["item_name"] == "Flour, white"
@@ -52,6 +54,9 @@ def test_engine_on_other_program_layout(tmp_path):
     assert row["observations"][0]["value"] == "0.238"
     assert row["observations"][1]["value"] == "-"
     assert "snapshot_id" not in row
+    meta = read_series(out, "APU0000701111")
+    assert "area_name" not in meta and meta["observation_count"] == 2
+    assert len(read_observations(out, "APU0000701111")) == 2
 
 
 def test_cu_style_labels_match_sample_shape(tmp_path):
@@ -71,7 +76,7 @@ def test_cu_style_labels_match_sample_shape(tmp_path):
     (raw / "cu.base").write_text("base_code\tbase_name\nS\tCurrent\n")
     out = tmp_path / "out"
     process_catalog(raw, out, "CU")
-    row = json.loads((out / "series" / "CUSR0000SA0.json").read_text())
+    row = load_series(out, "CUSR0000SA0")
     assert row["area_name"] == "U.S. city average"
     assert row["item_name"] == "All items"
     assert row["base_period"] == "1982-84=100"
@@ -91,7 +96,7 @@ def test_ws_series_file(tmp_path):
     (raw / "ws.seasonal").write_text("seasonal_code\tseasonal_text\nU\tNot Seasonally Adjusted\n")
     out = tmp_path / "out"
     process_catalog(raw, out, "WS")
-    row = json.loads((out / "series" / "WSU001.json").read_text())
+    row = load_series(out, "WSU001")
     assert row["measure_text"] == "Days of idleness"
     assert row["observations"][0]["value"] == "25720"
 
@@ -115,8 +120,7 @@ def test_pc_product_names_use_industry_and_product(tmp_path):
         "PCU003A\t2026\tM01\t300\t\n")
     out = tmp_path / "out"
     process_catalog(raw, out, "PC")
-    rows = [json.loads((out / "series" / f"PCU00{i}A.json").read_text())
-            for i in (1, 2, 3)]
+    rows = [load_series(out, f"PCU00{i}A") for i in (1, 2, 3)]
     assert [r["product_name"] for r in rows] == [
         "First industry product", "Second industry product", None]
     assert all(r["product_code"] == "01" for r in rows)
@@ -126,3 +130,90 @@ def test_pc_product_names_use_industry_and_product(tmp_path):
     assert join["context_column"] == "industry_code"
     assert join["matched"] == 2
     assert join["unmatched"] == 1
+    labels = json.loads((out / "labels" / "product.json").read_text())
+    assert labels["lookup_columns"] == ["industry_code", "product_code"]
+    assert len(labels["rows"]) == 2
+
+
+def test_identical_data_files_are_loaded_once(tmp_path):
+    raw = tmp_path / "raw"
+    raw.mkdir()
+    (raw / "bd.series").write_text(
+        "series_id\tseasonal\tbegin_year\tbegin_period\tend_year\tend_period\n"
+        "BDS1\tU\t2020\tQ01\t2020\tQ01\n")
+    body = ("series_id\tyear\tperiod\tvalue\tfootnote_codes\n"
+            "BDS1\t2020\tQ01\t10\t\n")
+    (raw / "bd.data.0.Current").write_text(body)
+    (raw / "bd.data.1.AllData").write_text(body)
+    out = tmp_path / "out"
+    stats, _ = process_catalog(raw, out, "BD", extra={
+        "files": [
+            {"name": "bd.data.0.Current", "sha256": "same", "size": len(body),
+             "role": "observations", "download_status": "downloaded"},
+            {"name": "bd.data.1.AllData", "sha256": "same", "size": len(body),
+             "role": "observations", "download_status": "downloaded"},
+        ]})
+    assert stats.series == 1 and stats.observations == 1
+    # AllData outranks Current, so the duplicate Current file is the one skipped.
+    assert stats.identical_data_files == ["bd.data.0.Current"]
+    assert stats.duplicate_identical >= 1
+    assert load_series(out, "BDS1")["observations"][0]["value"] == "10"
+
+
+def test_shards_roll_without_splitting_a_series(tmp_path, monkeypatch):
+    import bls_corpus.pipeline as pl
+    monkeypatch.setattr(pl, "SHARD_MAX_BYTES", 400)
+    monkeypatch.setattr(pl, "SHARD_MAX_ROWS", 2)
+    raw = tmp_path / "raw"
+    raw.mkdir()
+    series = ["S%03d" % i for i in range(5)]
+    (raw / "xx.series").write_text(
+        "series_id\tbegin_year\tbegin_period\tend_year\tend_period\n"
+        + "".join(f"{sid}\t2020\tM01\t2020\tM02\n" for sid in series))
+    (raw / "xx.data.0.Current").write_text(
+        "series_id\tyear\tperiod\tvalue\tfootnote_codes\n"
+        + "".join(f"{sid}\t2020\tM01\t{i}\t\n{sid}\t2020\tM02\t{i+1}\t\n"
+                  for i, sid in enumerate(series)))
+    out = tmp_path / "out"
+    stats, _ = process_catalog(raw, out, "XX")
+    card = json.loads((out / "catalog.json").read_text())
+    assert stats.series == 5 and len(card["series_shards"]) >= 2
+    assert len(card["observation_shards"]) >= 2
+    # No series_id appears in two observation shards.
+    seen = {}
+    for shard in card["observation_shards"]:
+        with (out / shard["path"]).open() as handle:
+            for line in handle:
+                sid = json.loads(line)["series_id"]
+                assert sid not in seen or seen[sid] == shard["path"]
+                seen[sid] = shard["path"]
+    assert load_series(out, "S003")["observations"][0]["value"] == "3"
+
+
+def test_low_memory_limit_on_many_short_series(tmp_path):
+    raw = tmp_path / "raw"
+    raw.mkdir()
+    n = 5000
+    with (raw / "zz.series").open("w") as series, (raw / "zz.data.0.Current").open("w") as data:
+        series.write("series_id\tbegin_year\tbegin_period\tend_year\tend_period\n")
+        data.write("series_id\tyear\tperiod\tvalue\tfootnote_codes\n")
+        for i in range(n):
+            sid = f"Z{i:05d}"
+            series.write(f"{sid}\t2020\tA01\t2020\tA01\n")
+            data.write(f"{sid}\t2020\tA01\t{i}\t\n")
+    out = tmp_path / "out"
+    stats, _ = process_catalog(raw, out, "ZZ", memory_limit="64MB")
+    assert stats.series == n and stats.observations == n
+    assert load_series(out, "Z00042")["observations"][0]["value"] == "42"
+
+
+def test_resolve_memory_limit_auto_and_explicit(monkeypatch):
+    monkeypatch.setenv("SLURM_MEM_PER_NODE", "8192")  # MB
+    monkeypatch.setattr("bls_corpus.pipeline.os.sysconf",
+                        lambda name: 4096 if name == "SC_PAGE_SIZE" else 10**9)
+    # Force cgroup reads to miss so Slurm wins.
+    monkeypatch.setattr("bls_corpus.pipeline.Path.read_text",
+                        lambda self: (_ for _ in ()).throw(OSError()))
+    assert resolve_memory_limit("16GB") == "16GB"
+    # 60% of 8192 MB ≈ 4.8GB -> 4GB after integer division of bytes to GB.
+    assert resolve_memory_limit("auto") == "4GB"

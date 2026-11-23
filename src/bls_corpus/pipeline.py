@@ -40,7 +40,7 @@ class AppConfig:
     max_interval_s: float = 10.0
     connect_timeout_s: float = 15.0
     read_timeout_s: float = 120.0
-    memory_limit: str = "1GB"
+    memory_limit: str = "auto"
     threads: int = 2
     max_retries: int = 5
     backoff_base_s: float = 1.0
@@ -636,7 +636,44 @@ class Downloader:
 # -- layout and write ------------------------------------------------------
 
 INSPECTION_BYTES = 64 * 1024
-PIPELINE_VERSION = 2
+PIPELINE_VERSION = 3
+SHARD_MAX_BYTES = 128 * 1024 * 1024
+SHARD_MAX_ROWS = 100_000
+
+
+def _default_memory_limit() -> str:
+    """Pick a DuckDB budget from the job's memory allocation, not the laptop default."""
+    candidates: list[int] = []
+    for path in (Path("/sys/fs/cgroup/memory.max"),
+                 Path("/sys/fs/cgroup/memory/memory.limit_in_bytes")):
+        try:
+            raw = path.read_text().strip()
+            if raw and raw != "max":
+                candidates.append(int(raw))
+        except (OSError, ValueError):
+            pass
+    slurm = os.environ.get("SLURM_MEM_PER_NODE") or os.environ.get("SLURM_MEM_PER_CPU")
+    if slurm:
+        try:
+            candidates.append(int(float(slurm) * 1024 * 1024))
+        except ValueError:
+            pass
+    try:
+        candidates.append(os.sysconf("SC_PAGE_SIZE") * os.sysconf("SC_PHYS_PAGES"))
+    except (AttributeError, ValueError, OSError):
+        pass
+    bytes_ = min(candidates) if candidates else 1024 * 1024 * 1024
+    budget = max(1024 * 1024 * 1024, int(bytes_ * 0.6))
+    if budget >= 1024 ** 3:
+        return f"{max(1, budget // (1024 ** 3))}GB"
+    return f"{max(1, budget // (1024 ** 2))}MB"
+
+
+def resolve_memory_limit(value: str | None) -> str:
+    text = (value or "auto").strip()
+    if not text or text.lower() == "auto":
+        return _default_memory_limit()
+    return text
 
 
 def sample_file(path: Path, budget: int = INSPECTION_BYTES, windows: int = 4) -> list[bytes]:
@@ -951,6 +988,7 @@ class ProcessResult:
     unknown_periods: int = 0
     duplicate_rows_removed: int = 0
     orphan_observations: int = 0
+    identical_data_files: list[str] = field(default_factory=list)
     exported_series: int = 0
     exported_observations: int = 0
     elapsed_s: float = 0.0
@@ -966,55 +1004,96 @@ class ProcessResult:
             "duplicate_conflicts": self.duplicate_conflicts,
             "duplicate_rows_removed": self.duplicate_rows_removed,
             "orphan_observations": self.orphan_observations,
+            "identical_data_files": self.identical_data_files,
             "exported_series": self.exported_series,
             "exported_observations": self.exported_observations,
         }
 
 
+class _ShardWriter:
+    """Append JSON lines into size-bounded shards; never split one series_id."""
+
+    def __init__(self, root: Path, kind: str, max_bytes: int | None = None,
+                 max_rows: int | None = None):
+        self.root = root
+        self.kind = kind
+        self.max_bytes = SHARD_MAX_BYTES if max_bytes is None else max_bytes
+        self.max_rows = SHARD_MAX_ROWS if max_rows is None else max_rows
+        self.root.mkdir(parents=True, exist_ok=True)
+        self.shards: list[dict] = []
+        self._index = -1
+        self._handle = None
+        self._hasher = None
+        self._bytes = 0
+        self._rows = 0
+        self._first = None
+        self._last = None
+        self._current_series = None
+        self._path = None
+
+    def write(self, series_id: str, line: str) -> None:
+        payload = line if line.endswith("\n") else line + "\n"
+        encoded = payload.encode("utf-8")
+        rollover = (self._handle is None
+                    or ((self._bytes + len(encoded) > self.max_bytes
+                         or self._rows >= self.max_rows)
+                        and series_id != self._current_series))
+        if rollover:
+            self._rotate()
+        self._handle.write(encoded)
+        self._hasher.update(encoded)
+        self._bytes += len(encoded)
+        self._rows += 1
+        self._current_series = series_id
+        if self._first is None:
+            self._first = series_id
+        self._last = series_id
+
+    def close(self) -> list[dict]:
+        self._rotate(final=True)
+        return self.shards
+
+    def _rotate(self, final: bool = False) -> None:
+        if self._handle is not None:
+            self._handle.close()
+            self.shards.append({
+                "path": f"{self.kind}/{self._path.name}",
+                "first_series_id": self._first,
+                "last_series_id": self._last,
+                "rows": self._rows,
+                "sha256": self._hasher.hexdigest(),
+                "size": self._bytes,
+            })
+            self._handle = None
+        if final:
+            return
+        self._index += 1
+        self._path = self.root / f"part-{self._index:05d}.jsonl"
+        self._handle = self._path.open("wb")
+        self._hasher = hashlib.sha256()
+        self._bytes = self._rows = 0
+        self._first = self._last = self._current_series = None
+
+
 class Engine:
     def __init__(self, raw_dir: Path, out_dir: Path, program: str,
-                 memory_limit: str = "1GB", threads: int = 2):
+                 memory_limit: str = "auto", threads: int = 2):
         self.raw_dir = Path(raw_dir)
         self.out_dir = Path(out_dir)
         self.program = program.upper()
+        self.memory_limit = resolve_memory_limit(memory_limit)
         self.out_dir.mkdir(parents=True, exist_ok=True)
         self.db_path = self.out_dir / "work.duckdb"
         if self.db_path.exists():
             self.db_path.unlink()
         self.con = duckdb.connect(str(self.db_path))
-        self.con.execute(f"SET memory_limit={_sql_str(memory_limit)}")
+        self.con.execute(f"SET memory_limit={_sql_str(self.memory_limit)}")
         self.con.execute(f"SET threads={int(threads)}")
-        self.con.execute("SET preserve_insertion_order=true")
+        self.con.execute("SET preserve_insertion_order=false")
         spill = self.out_dir / "spill"
         spill.mkdir(exist_ok=True)
         self.con.execute(f"SET temp_directory={_sql_str(str(spill))}")
         self.con.execute("""
-            CREATE MACRO period_start(y, p) AS (
-              CASE
-                WHEN p IS NULL OR y IS NULL THEN NULL
-                WHEN regexp_matches(p, '^M(0[1-9]|1[0-2])$')
-                  THEN make_date(y, CAST(substr(p, 2, 2) AS INTEGER), 1)
-                WHEN p IN ('M13', 'Q05', 'S03', 'A01', 'ANN', 'A') THEN make_date(y, 1, 1)
-                WHEN regexp_matches(p, '^Q0[1-4]$')
-                  THEN make_date(y, (CAST(substr(p, 3, 1) AS INTEGER) - 1) * 3 + 1, 1)
-                WHEN p = 'S01' THEN make_date(y, 1, 1)
-                WHEN p = 'S02' THEN make_date(y, 7, 1)
-                ELSE NULL
-              END
-            );
-            CREATE MACRO period_finish(y, p) AS (
-              CASE
-                WHEN p IS NULL OR y IS NULL THEN NULL
-                WHEN regexp_matches(p, '^M(0[1-9]|1[0-2])$')
-                  THEN last_day(make_date(y, CAST(substr(p, 2, 2) AS INTEGER), 1))
-                WHEN p IN ('M13', 'Q05', 'S03', 'A01', 'ANN', 'A') THEN make_date(y, 12, 31)
-                WHEN regexp_matches(p, '^Q0[1-4]$')
-                  THEN last_day(make_date(y, CAST(substr(p, 3, 1) AS INTEGER) * 3, 1))
-                WHEN p = 'S01' THEN make_date(y, 6, 30)
-                WHEN p = 'S02' THEN make_date(y, 12, 31)
-                ELSE NULL
-              END
-            );
             CREATE MACRO period_kind(p) AS (
               CASE
                 WHEN p IS NULL THEN 'unknown_period'
@@ -1027,11 +1106,16 @@ class Engine:
               END
             );
         """)
+        self.map_tables: dict[str, MappingSpec] = {}
+        self.observation_fields: list[str] = []
+        self.identical_data_files: list[str] = []
+        self.skipped_identical_rows = 0
 
     def close(self) -> None:
         self.con.close()
 
-    def process(self, schema: ProgramSchema | None = None) -> ProcessResult:
+    def process(self, schema: ProgramSchema | None = None,
+                file_receipts: list[dict] | None = None) -> ProcessResult:
         started = time.perf_counter()
         schema = schema or infer_schema(self.raw_dir, self.program)
         missing = required_missing(schema)
@@ -1041,8 +1125,7 @@ class Engine:
         self._load_catalog(schema)
         self._load_mappings(schema)
         self._load_footnotes(schema)
-        self._load_observations(schema)
-        self._enrich_catalog(schema)
+        self._load_observations(schema, file_receipts or [])
         stats = self._stats()
         self.stats = stats
         if stats.orphan_observations or stats.malformed_rows or stats.duplicate_conflicts:
@@ -1062,259 +1145,320 @@ class Engine:
             for i, col in enumerate(schema.catalog_columns, start=1)
         )
         self.con.execute(f"""
-            CREATE TABLE catalog_raw AS
-            SELECT rec, {selects}, len(f) AS n_fields,
-                   len(list_filter(f[{n}+1:], lambda x: trim(x) <> '')) AS extra
+            CREATE TABLE catalog AS
+            SELECT {selects},
+                   (series_id IS NOT NULL AND series_id <> ''
+                    AND len(f) >= {n}
+                    AND len(list_filter(f[{n}+1:], lambda x: trim(x) <> '')) = 0
+                    AND regexp_full_match(series_id, '[A-Za-z0-9_-][A-Za-z0-9_.-]*')
+                    AND series_id NOT IN ('.', '..')) AS ok
             FROM ({_split_sql(path, read_header(path)[1])})
         """)
-        bad = self.con.execute(f"SELECT count(*) FROM catalog_raw WHERE series_id IS NULL "
-                               f"OR series_id = '' OR n_fields < {n} OR extra > 0").fetchone()[0]
-        duplicates = self.con.execute("SELECT count(*) FROM (SELECT series_id FROM catalog_raw "
-                                      "GROUP BY 1 HAVING count(*) > 1)").fetchone()[0]
-        unsafe = self.con.execute("SELECT count(*) FROM catalog_raw WHERE "
-                                  "NOT regexp_full_match(series_id, '[A-Za-z0-9_-][A-Za-z0-9_.-]*') "
-                                  "OR series_id IN ('.', '..')").fetchone()[0]
-        if bad or duplicates or unsafe:
-            raise RuntimeError(f"invalid catalog: {bad} malformed rows, {duplicates} duplicate IDs, "
-                               f"{unsafe} unsafe IDs")
+        bad = self.con.execute("SELECT count(*) FROM catalog WHERE NOT ok").fetchone()[0]
+        duplicates = self.con.execute(
+            "SELECT count(*) FROM (SELECT series_id FROM catalog WHERE ok "
+            "GROUP BY 1 HAVING count(*) > 1)").fetchone()[0]
+        if bad or duplicates:
+            raise RuntimeError(f"invalid catalog: {bad} malformed rows, "
+                               f"{duplicates} duplicate IDs")
+        self.con.execute("DELETE FROM catalog WHERE NOT ok")
+        self.con.execute("ALTER TABLE catalog DROP COLUMN ok")
+
+    def _map_table_name(self, mapping: MappingSpec) -> str:
+        return f"map_{_ident(mapping.table)}"
 
     def _load_mappings(self, schema: ProgramSchema) -> None:
-        self.con.execute("CREATE TABLE mappings (table_name VARCHAR, key VARCHAR, label VARCHAR)")
+        self.map_tables = {}
         for m in schema.mappings:
             if not m.key_columns or not m.label_col:
                 continue
+            table = self._map_table_name(m)
+            key_defs = ", ".join(f"{_ident(c)} VARCHAR" for c in m.key_columns)
+            self.con.execute(
+                f"CREATE TABLE {table} ({key_defs}, {_ident(m.label_col)} VARCHAR)")
             path = self.raw_dir / m.path
             if m.layout == "legacy":
                 batch = []
                 for row in legacy_mapping_rows(path, m.encoding):
                     keys = [row[m.columns.index(k)] for k in m.key_columns]
-                    batch.append((m.table, json.dumps(keys, separators=(",", ":")),
-                                  row[m.columns.index(m.label_col)] or None))
+                    label = row[m.columns.index(m.label_col)] or None
+                    batch.append(tuple(keys + [label]))
                     if len(batch) == 1000:
-                        self.con.executemany("INSERT INTO mappings VALUES (?, ?, ?)", batch)
+                        self.con.executemany(
+                            f"INSERT INTO {table} VALUES ({', '.join('?' for _ in batch[0])})",
+                            batch)
                         batch.clear()
                 if batch:
-                    self.con.executemany("INSERT INTO mappings VALUES (?, ?, ?)", batch)
+                    self.con.executemany(
+                        f"INSERT INTO {table} VALUES ({', '.join('?' for _ in batch[0])})",
+                        batch)
             else:
                 key_expr = ", ".join(f"trim(f[{m.columns.index(k)+1}])" for k in m.key_columns)
                 label_i = m.columns.index(m.label_col) + 1
                 self.con.execute(f"""
-                    INSERT INTO mappings
-                    SELECT {_sql_str(m.table)}, CAST(to_json(list_value({key_expr})) AS VARCHAR),
-                           nullif(trim(f[{label_i}]), '')
+                    INSERT INTO {table}
+                    SELECT {key_expr}, nullif(trim(f[{label_i}]), '')
                     FROM ({_split_sql(path, m.encoding)})
                 """)
+            key_cols = ", ".join(_ident(c) for c in m.key_columns)
             ambiguous = self.con.execute(
-                "SELECT count(*) FROM (SELECT key FROM mappings WHERE table_name = ? "
-                "GROUP BY key HAVING count(*) > 1)", [m.table]).fetchone()[0]
+                f"SELECT count(*) FROM (SELECT {key_cols} FROM {table} "
+                f"GROUP BY {key_cols} HAVING count(*) > 1)").fetchone()[0]
             if ambiguous:
-                raise RuntimeError(f"{m.path}: {ambiguous} duplicate lookup keys for {m.key_columns}")
-
-    @staticmethod
-    def _catalog_key(mapping: MappingSpec, alias: str = "c") -> str:
-        cols = ", ".join(f"{alias}.{_ident(c)}" for c in mapping.catalog_keys)
-        return f"CAST(to_json(list_value({cols})) AS VARCHAR)"
-
+                raise RuntimeError(f"{m.path}: {ambiguous} duplicate lookup keys "
+                                   f"for {m.key_columns}")
+            self.map_tables[m.table] = m
 
     def _load_footnotes(self, schema: ProgramSchema) -> None:
         self.con.execute(
-            "CREATE TABLE footnotes (footnote_code VARCHAR, footnote_text VARCHAR, source_file VARCHAR)")
+            "CREATE TABLE footnotes (footnote_code VARCHAR, footnote_text VARCHAR, "
+            "source_file VARCHAR)")
         if not schema.footnote_path:
             return
         path = self.raw_dir / schema.footnote_path
-        header, _ = read_header(path)
+        header, encoding = read_header(path)
         text_i = 2 if len(header) > 1 else 1
         self.con.execute(f"""
             INSERT INTO footnotes
             SELECT trim(f[1]), trim(f[{text_i}]), {_sql_str(schema.footnote_path)}
-            FROM ({_split_sql(path, read_header(path)[1])})
+            FROM ({_split_sql(path, encoding)})
         """)
 
-    def _load_observations(self, schema: ProgramSchema) -> None:
-        parts = []
-        self.observation_fields = sorted({c for item in schema.data_files for c in item["columns"]
-                                          if c.lower() not in {"series_id", "year", "period", "value", "footnote_codes"}})
+    def _digest_for(self, name: str, receipts: list[dict]) -> str | None:
+        for receipt in receipts:
+            if receipt.get("name") == name and receipt.get("sha256"):
+                return receipt["sha256"]
+        path = self.raw_dir / name
+        return sha256_file(path) if path.exists() else None
+
+    def _load_observations(self, schema: ProgramSchema, receipts: list[dict]) -> None:
+        self.observation_fields = sorted({
+            c for item in schema.data_files for c in item["columns"]
+            if c.lower() not in {"series_id", "year", "period", "value", "footnote_codes"}
+        })
+        seen: dict[str, str] = {}
+        active: list[dict] = []
+        self.identical_data_files = []
+        self.skipped_identical_rows = 0
         for item in schema.data_files:
+            digest = self._digest_for(item["path"], receipts)
+            if digest and digest in seen:
+                self.identical_data_files.append(item["path"])
+                # Count rows without loading values so stats stay honest.
+                path = self.raw_dir / item["path"]
+                n = self.con.execute(
+                    f"SELECT count(*) FROM ({_split_sql(path, item['encoding'])})"
+                ).fetchone()[0]
+                self.skipped_identical_rows += int(n)
+                continue
+            if digest:
+                seen[digest] = item["path"]
+            active.append(item)
+        if not active:
+            raise RuntimeError(f"{self.program}: no observation files left after "
+                               f"skipping identical copies")
+
+        parts = []
+        for order, item in enumerate(active):
             cols = {c.lower(): i + 1 for i, c in enumerate(item["columns"])}
-            get = lambda name: f"trim(f[{cols[name]}])"
+            get = lambda name, cols=cols: f"trim(f[{cols[name]}])"
             fn_expr = get("footnote_codes") if "footnote_codes" in cols else "''"
-            extras = ", ".join(f"{_sql_str(c)}, trim(f[{i+1}])" for i, c in sorted(enumerate(item["columns"]), key=lambda item: item[1])
-                               if c.lower() not in {"series_id", "year", "period", "value", "footnote_codes"})
+            extra_cols = [(c, i + 1) for i, c in enumerate(item["columns"])
+                          if c.lower() not in {"series_id", "year", "period", "value",
+                                               "footnote_codes"}]
+            if extra_cols:
+                extras = ", ".join(f"{_sql_str(c)}, trim(f[{i}])" for c, i in extra_cols)
+                fields_expr = f"CAST(json_object({extras}) AS VARCHAR)"
+            else:
+                fields_expr = "CAST(NULL AS VARCHAR)"
             n = len(item["columns"])
             parts.append(f"""
                 SELECT {get('series_id')} AS series_id,
                        TRY_CAST({get('year')} AS INTEGER) AS year,
-                       {get('period')} AS period, {get('value')} AS value_raw,
+                       {get('period')} AS period,
+                       {get('value')} AS value_raw,
                        {fn_expr} AS footnote_codes,
-                       CAST(json_object({extras}) AS VARCHAR) AS source_fields,
-                       {int(item['rank'])} AS file_rank,
-                       {_sql_str(item['path'])} AS source_file, rec AS source_row,
+                       {fields_expr} AS source_fields,
+                       ({order}::BIGINT * 1099511627776 + rec) AS ord,
                        len(f) AS n_fields,
                        len(list_filter(f[{n}+1:], lambda x: trim(x) <> '')) AS extra,
                        {n} AS expected_fields
                 FROM ({_split_sql(self.raw_dir / item['path'], item['encoding'])})
             """)
-        self.con.execute("CREATE TABLE obs_raw AS " + " UNION ALL ".join(parts))
-        self.con.execute("""
+        union_sql = " UNION ALL ".join(parts)
+        active_rows = self.con.execute(f"SELECT count(*) FROM ({union_sql})").fetchone()[0]
+        self.con.execute(f"""
             CREATE TABLE observations AS
             SELECT series_id, year, period,
-                   period_kind(period) AS period_kind,
-                   value_raw,
-                   CASE
-                     WHEN value_raw IS NULL OR trim(value_raw) IN ('', '-', '--', '.', 'NA', 'N/A', '(NA)', 'null')
-                       THEN 'missing_token'
-                     WHEN TRY_CAST(replace(value_raw, ',', '') AS DOUBLE) IS NULL
-                       OR NOT isfinite(TRY_CAST(replace(value_raw, ',', '') AS DOUBLE)) THEN 'non_numeric'
-                     ELSE 'numeric'
-                   END AS value_status,
-                   footnote_codes, source_fields, source_file, source_row
-            FROM obs_raw
+                   arg_min(value_raw, ord) AS value_raw,
+                   arg_min(footnote_codes, ord) AS footnote_codes,
+                   arg_min(source_fields, ord) AS source_fields,
+                   count(*)::BIGINT AS n,
+                   (count(DISTINCT struct_pack(
+                        v := coalesce(value_raw, chr(0)),
+                        f := coalesce(footnote_codes, chr(0)))) = 1) AS same
+            FROM ({union_sql})
             WHERE year BETWEEN 1 AND 9999 AND series_id <> '' AND period <> ''
               AND n_fields >= expected_fields AND extra = 0
-            QUALIFY row_number() OVER (
-                PARTITION BY series_id, year, period
-                ORDER BY file_rank, source_file, source_row
-            ) = 1
+            GROUP BY series_id, year, period
         """)
-
-
-    def _enrich_catalog(self, schema: ProgramSchema) -> None:
-        sid = _ident("series_id")
-        self.con.execute(f"""
-            CREATE TABLE series_stats AS
-            SELECT series_id,
-                   count(*)::BIGINT AS observation_count
-            FROM observations GROUP BY 1
-        """)
-        self.con.execute(f"""
-            CREATE TABLE catalog AS
-            SELECT c.{sid} AS series_id,
-                   coalesce(s.observation_count, 0) AS observation_count
-            FROM catalog_raw c
-            LEFT JOIN series_stats s ON s.series_id = c.{sid}
-            WHERE c.{sid} IS NOT NULL AND c.{sid} <> ''
-              AND c.n_fields >= {len(schema.catalog_columns)} AND c.extra = 0
-        """)
+        self._obs_rows_in = int(active_rows) + self.skipped_identical_rows
+        self._obs_valid = int(self.con.execute(
+            "SELECT coalesce(sum(n), 0) FROM observations").fetchone()[0])
+        self._obs_active_rows = int(active_rows)
 
     def _stats(self) -> ProcessResult:
-        rows_in = self.con.execute("SELECT count(*) FROM obs_raw").fetchone()[0]
         kept = self.con.execute("SELECT count(*) FROM observations").fetchone()[0]
-        valid = ("year BETWEEN 1 AND 9999 AND series_id IS NOT NULL AND series_id <> '' "
-                 "AND period IS NOT NULL AND period <> '' AND n_fields >= expected_fields AND extra = 0")
-        malformed = rows_in - self.con.execute(f"SELECT count(*) FROM obs_raw WHERE {valid}").fetchone()[0]
-        keys = self.con.execute(f"""
-            SELECT coalesce(sum(n - nd), 0), count(*) FILTER (WHERE nd > 1), coalesce(sum(n-1), 0)
-            FROM (
-              SELECT series_id, year, period, count(*) n,
-                     count(DISTINCT struct_pack(value := value_raw, footnotes := footnote_codes,
-                                                fields := source_fields)) nd
-              FROM obs_raw WHERE {valid}
-              GROUP BY 1,2,3
-            )
+        identical, conflicts, removed = self.con.execute("""
+            SELECT coalesce(sum(n - 1) FILTER (WHERE same), 0),
+                   count(*) FILTER (WHERE NOT same),
+                   coalesce(sum(n - 1), 0)
+            FROM observations
         """).fetchone()
+        identical = int(identical) + self.skipped_identical_rows
+        removed = int(removed) + self.skipped_identical_rows
         missing, nonnum, unknown = self.con.execute("""
-            SELECT count(*) FILTER (WHERE value_status = 'missing_token'),
-                   count(*) FILTER (WHERE value_status = 'non_numeric'),
-                   count(*) FILTER (WHERE period_kind = 'unknown_period')
+            SELECT count(*) FILTER (
+                     WHERE value_raw IS NULL OR trim(value_raw) IN
+                       ('', '-', '--', '.', 'NA', 'N/A', '(NA)', 'null')),
+                   count(*) FILTER (
+                     WHERE value_raw IS NOT NULL
+                       AND trim(value_raw) NOT IN
+                         ('', '-', '--', '.', 'NA', 'N/A', '(NA)', 'null')
+                       AND (TRY_CAST(replace(value_raw, ',', '') AS DOUBLE) IS NULL
+                            OR NOT isfinite(TRY_CAST(replace(value_raw, ',', '') AS DOUBLE)))),
+                   count(*) FILTER (WHERE period_kind(period) = 'unknown_period')
             FROM observations
         """).fetchone()
         series = self.con.execute("SELECT count(*) FROM catalog").fetchone()[0]
-        orphans = self.con.execute("SELECT count(*) FROM observations o ANTI JOIN catalog c "
-                                   "ON c.series_id = o.series_id").fetchone()[0]
+        orphans = self.con.execute(
+            "SELECT count(*) FROM observations o ANTI JOIN catalog c "
+            "ON c.series_id = o.series_id").fetchone()[0]
+        malformed = self._obs_active_rows - self._obs_valid
         return ProcessResult(
-            program=self.program, series=series, observations=kept, rows_in=rows_in,
-            duplicate_identical=int(keys[0]), duplicate_conflicts=int(keys[1]),
-            duplicate_rows_removed=int(keys[2]), orphan_observations=orphans,
-            malformed_rows=malformed, missing_values=missing,
+            program=self.program, series=series, observations=kept,
+            rows_in=int(self._obs_rows_in),
+            duplicate_identical=identical, duplicate_conflicts=int(conflicts),
+            duplicate_rows_removed=removed, orphan_observations=orphans,
+            malformed_rows=max(0, malformed), missing_values=missing,
             non_numeric_values=nonnum, unknown_periods=unknown,
+            identical_data_files=list(self.identical_data_files),
         )
 
-
-    def export_series(self, schema: ProgramSchema,
-                      extra: dict | None = None) -> tuple[Path, Path]:
-        extra = extra or {}
-        series_dir = self.out_dir / "series"
-        series_dir.mkdir(parents=True, exist_ok=True)
-        label_selects, joins = [], []
+    def _join_stats(self, schema: ProgramSchema) -> list[dict]:
+        joins = []
         used = {_ident(c) for c in schema.catalog_columns}
-        for m in sorted(schema.mappings, key=lambda m: -len(m.key_columns)):
-            if not m.key_columns or not m.label_col:
-                continue
-            key = self._catalog_key(m)
-            blank = " OR ".join(f"c.{_ident(c)} IS NULL OR c.{_ident(c)} = ''" for c in m.catalog_keys)
+        for m in sorted(self.map_tables.values(), key=lambda m: -len(m.key_columns)):
+            table = self._map_table_name(m)
+            blank = " OR ".join(
+                f"c.{_ident(c)} IS NULL OR c.{_ident(c)} = ''" for c in m.catalog_keys)
+            on = " AND ".join(
+                f"c.{_ident(a)} = mp.{_ident(b)}"
+                for a, b in zip(m.catalog_keys, m.key_columns))
             matched, blanks, unmatched = self.con.execute(f"""
-                SELECT count(*) FILTER (WHERE NOT ({blank}) AND mp.label IS NOT NULL),
+                SELECT count(*) FILTER (WHERE NOT ({blank}) AND mp.{_ident(m.label_col)} IS NOT NULL),
                        count(*) FILTER (WHERE {blank}),
-                       count(*) FILTER (WHERE NOT ({blank}) AND mp.label IS NULL)
-                FROM catalog_raw c LEFT JOIN mappings mp
-                  ON mp.table_name = {_sql_str(m.table)} AND mp.key = {key}
+                       count(*) FILTER (WHERE NOT ({blank}) AND mp.{_ident(m.label_col)} IS NULL)
+                FROM catalog c LEFT JOIN {table} mp ON {on}
             """).fetchone()
             alias = _ident(m.label_col)
-            exported = alias not in used
-            if exported:
-                used.add(alias)
-                label_selects.append(
-                    f"CASE WHEN {blank} THEN NULL ELSE "
-                    f"(SELECT label FROM mappings WHERE table_name = {_sql_str(m.table)} "
-                    f"AND key = {key}) END AS {alias}"
-                )
             joins.append({
                 "file": m.path, "catalog_column": m.links_to[0],
                 "catalog_columns": m.catalog_keys, "lookup_columns": m.key_columns,
                 **({"context_column": m.context_column} if m.context_column else {}),
-                "label_column": m.label_col, "exported": exported,
+                "label_column": m.label_col, "exported": alias not in used,
                 "matched": matched, "blank": blanks, "unmatched": unmatched,
+                "label_path": f"labels/{m.table}.json",
             })
-        catalog_selects = [f"c.{_ident(c)} AS {_ident(c)}" for c in schema.catalog_columns]
-        self.con.execute("CREATE TABLE catalog_flat AS SELECT " +
-                         ", ".join(catalog_selects + label_selects) + " FROM catalog_raw c")
-        self.con.execute("""
-            CREATE TABLE obs_grouped AS
+            if alias not in used:
+                used.add(alias)
+        return joins
+
+    def _write_labels(self, schema: ProgramSchema) -> list[dict]:
+        labels_dir = self.out_dir / "labels"
+        labels_dir.mkdir(parents=True, exist_ok=True)
+        receipts = []
+        for m in self.map_tables.values():
+            table = self._map_table_name(m)
+            cols = list(m.key_columns) + [m.label_col]
+            rows = self.con.execute(
+                f"SELECT {', '.join(_ident(c) for c in cols)} FROM {table}").fetchall()
+            payload = {
+                "file": m.path,
+                "catalog_columns": m.catalog_keys,
+                "lookup_columns": m.key_columns,
+                "label_column": m.label_col,
+                "rows": [dict(zip(cols, row)) for row in rows],
+            }
+            path = labels_dir / f"{m.table}.json"
+            _write_json(path, payload)
+            receipts.append({
+                "path": f"labels/{m.table}.json",
+                "table": m.table,
+                "sha256": sha256_file(path),
+                "size": path.stat().st_size,
+                "rows": len(rows),
+            })
+        return receipts
+
+    def _stream_shards(self, sql: str, kind: str) -> list[dict]:
+        writer = _ShardWriter(self.out_dir / kind, kind)
+        result = self.con.execute(sql)
+        while True:
+            batch = result.fetchmany(50_000)
+            if not batch:
+                break
+            for series_id, line in batch:
+                writer.write(series_id, line)
+        return writer.close()
+
+    def export_series(self, schema: ProgramSchema,
+                      extra: dict | None = None) -> Path:
+        extra = extra or {}
+        joins = self._join_stats(schema)
+        label_receipts = self._write_labels(schema)
+
+        catalog_fields = ", ".join(
+            f"{_ident(c)} := c.{_ident(c)}" for c in schema.catalog_columns)
+        series_sql = f"""
+            SELECT c.series_id,
+                   CAST(to_json(struct_pack(
+                       {catalog_fields},
+                       observation_count := coalesce(o.n, 0)
+                   )) AS VARCHAR) AS line
+            FROM catalog c
+            LEFT JOIN (SELECT series_id, count(*)::BIGINT AS n
+                       FROM observations GROUP BY 1) o USING (series_id)
+            ORDER BY c.series_id
+        """
+        base_obs = ("struct_pack(series_id := series_id, year := CAST(year AS VARCHAR), "
+                    "period := period, value := value_raw, "
+                    "footnote_codes := coalesce(footnote_codes, ''))")
+        obs_sql = f"""
             SELECT series_id,
-                   to_json(list(json_merge_patch(json_object(
-                       'year', CAST(year AS VARCHAR), 'period', period, 'value', value_raw,
-                       'footnote_codes', coalesce(footnote_codes, '')
-                   ), CAST(source_fields AS JSON)) ORDER BY year, period)) AS observations
-            FROM observations GROUP BY 1
-        """)
-        tmp = self.out_dir / "_series.jsonl"
-        self.con.execute(f"""
-            COPY (
-              SELECT f.*, coalesce(o.observations, '[]'::JSON) AS observations
-              FROM catalog_flat f LEFT JOIN obs_grouped o ON o.series_id = f.series_id
-            ) TO {_sql_str(str(tmp))} (FORMAT JSON)
-        """)
-        index_path = self.out_dir / "index.json"
-        ledger_path = self.out_dir / "outputs.jsonl"
-        exported_series = exported_observations = 0
-        with tmp.open(encoding="utf-8") as handle, index_path.open("w", encoding="utf-8") as index, \
-                ledger_path.open("w", encoding="utf-8") as ledger:
-            index.write("{\n")
-            for line in handle:
-                rec = json.loads(line)
-                sid = rec["series_id"]
-                dest = series_dir / f"{sid}.json"
-                _write_json(dest, rec)
-                count = len(rec["observations"])
-                entry = {"path": f"series/{sid}.json",
-                         "series_title": rec.get("series_title") or rec.get("series_name") or "",
-                         "observation_count": count}
-                if exported_series:
-                    index.write(",\n")
-                index.write("  " + json.dumps(sid) + ": " + json.dumps(entry))
-                ledger.write(json.dumps({"path": entry["path"], "sha256": sha256_file(dest),
-                                         "size": dest.stat().st_size, "observations": count}) + "\n")
-                exported_series += 1
-                exported_observations += count
-            index.write("\n}\n")
-        tmp.unlink()
+                   CASE WHEN source_fields IS NULL
+                        THEN CAST(to_json({base_obs}) AS VARCHAR)
+                        ELSE CAST(json_merge_patch(to_json({base_obs}),
+                                                   CAST(source_fields AS JSON)) AS VARCHAR)
+                   END AS line
+            FROM observations
+            ORDER BY series_id, year, period
+        """
+        series_shards = self._stream_shards(series_sql, "series")
+        obs_shards = self._stream_shards(obs_sql, "observations")
+
+        exported_series = sum(s["rows"] for s in series_shards)
+        exported_observations = sum(s["rows"] for s in obs_shards)
         self.stats.exported_series = exported_series
         self.stats.exported_observations = exported_observations
         if (exported_series, exported_observations) != (self.stats.series, self.stats.observations):
             raise RuntimeError("export counts do not reconcile with processed series/observations")
-        coverage = self.con.execute("""
-            SELECT (SELECT count(*) FROM catalog WHERE observation_count = 0),
-                   (SELECT min(year) FROM observations), (SELECT max(year) FROM observations)
+        empty, year_min, year_max = self.con.execute("""
+            SELECT (SELECT count(*) FROM catalog c
+                    ANTI JOIN (SELECT DISTINCT series_id FROM observations) o
+                      ON o.series_id = c.series_id),
+                   (SELECT min(year) FROM observations),
+                   (SELECT max(year) FROM observations)
         """).fetchone()
         card = {
             "program": self.program, "pipeline_version": PIPELINE_VERSION,
@@ -1323,9 +1467,13 @@ class Engine:
             "observation_fields": self.observation_fields,
             "unlinked_mappings": [m.path for m in schema.mappings if not m.key_columns],
             "auxiliary_files": schema.auxiliary, "unclassified_files": schema.unclassified,
+            "memory_limit": self.memory_limit,
+            "series_shards": series_shards,
+            "observation_shards": obs_shards,
+            "labels": label_receipts,
             "coverage": {"series": exported_series, "observations": exported_observations,
-                         "catalog_without_observations": coverage[0],
-                         "year_min": coverage[1], "year_max": coverage[2]},
+                         "catalog_without_observations": empty,
+                         "year_min": year_min, "year_max": year_max},
             "validation": self.stats.parse_stats(),
         }
         card_path = self.out_dir / "catalog.json"
@@ -1333,26 +1481,98 @@ class Engine:
         _write_json(self.out_dir / "complete.json", {
             "pipeline_version": PIPELINE_VERSION, "listing_sha256": extra.get("listing_sha256"),
             "series": exported_series, "observations": exported_observations,
-            "files": {name: {"sha256": sha256_file(self.out_dir / name),
-                             "size": (self.out_dir / name).stat().st_size}
-                      for name in ("catalog.json", "index.json", "outputs.jsonl")},
+            "files": {
+                "catalog.json": {"sha256": sha256_file(card_path),
+                                 "size": card_path.stat().st_size},
+                **{s["path"]: {"sha256": s["sha256"], "size": s["size"]}
+                   for s in series_shards + obs_shards},
+                **{r["path"]: {"sha256": r["sha256"], "size": r["size"]}
+                   for r in label_receipts},
+            },
         })
-        return card_path, index_path
+        return card_path
+
+
+def _shard_for(shards: list[dict], series_id: str) -> dict | None:
+    for shard in shards:
+        if shard["first_series_id"] <= series_id <= shard["last_series_id"]:
+            return shard
+    return None
+
+
+def read_series(catalog_dir: Path, series_id: str) -> dict | None:
+    """Return the series metadata row (codes only) for series_id."""
+    card = json.loads((Path(catalog_dir) / "catalog.json").read_text())
+    shard = _shard_for(card.get("series_shards", []), series_id)
+    if shard is None:
+        return None
+    path = Path(catalog_dir) / shard["path"]
+    with path.open(encoding="utf-8") as handle:
+        for line in handle:
+            row = json.loads(line)
+            if row.get("series_id") == series_id:
+                return row
+    return None
+
+
+def read_observations(catalog_dir: Path, series_id: str) -> list[dict]:
+    """Return the observation rows for series_id."""
+    card = json.loads((Path(catalog_dir) / "catalog.json").read_text())
+    shard = _shard_for(card.get("observation_shards", []), series_id)
+    if shard is None:
+        return []
+    path = Path(catalog_dir) / shard["path"]
+    out = []
+    with path.open(encoding="utf-8") as handle:
+        for line in handle:
+            row = json.loads(line)
+            if row.get("series_id") == series_id:
+                out.append({k: v for k, v in row.items() if k != "series_id"})
+            elif out:
+                break
+    return out
+
+
+def load_series(catalog_dir: Path, series_id: str) -> dict | None:
+    """Rebuild the old one-record view: codes + names + observations."""
+    catalog_dir = Path(catalog_dir)
+    row = read_series(catalog_dir, series_id)
+    if row is None:
+        return None
+    card = json.loads((catalog_dir / "catalog.json").read_text())
+    for label in card.get("labels", []):
+        payload = json.loads((catalog_dir / label["path"]).read_text())
+        keys = payload["lookup_columns"]
+        catalog_keys = payload["catalog_columns"]
+        label_col = payload["label_column"]
+        want = tuple(row.get(c) for c in catalog_keys)
+        if any(v is None or v == "" for v in want):
+            row[label_col] = None
+            continue
+        match = None
+        for entry in payload["rows"]:
+            if tuple(entry.get(k) for k in keys) == want:
+                match = entry.get(label_col)
+                break
+        row[label_col] = match
+    row["observations"] = read_observations(catalog_dir, series_id)
+    return row
 
 
 def process_catalog(raw_dir: Path, out_dir: Path, program: str,
-                    extra: dict | None = None, memory_limit: str = "1GB", threads: int = 2,
+                    extra: dict | None = None, memory_limit: str = "auto", threads: int = 2,
                     names: list[str] | None = None) -> tuple[ProcessResult, ProgramSchema]:
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     # Any interrupted rebuild must invalidate the old completion marker.
     (out_dir / "complete.json").unlink(missing_ok=True)
     schema = infer_schema(raw_dir, program, names=names)
+    limit = resolve_memory_limit(memory_limit)
     with tempfile.TemporaryDirectory(prefix=".export-", dir=out_dir) as temporary:
         stage = Path(temporary)
-        engine = Engine(raw_dir, stage, program, memory_limit=memory_limit, threads=threads)
+        engine = Engine(raw_dir, stage, program, memory_limit=limit, threads=threads)
         try:
-            stats = engine.process(schema)
+            stats = engine.process(schema, file_receipts=(extra or {}).get("files") or [])
             engine.export_series(schema, extra=extra)
         except Exception:
             if (stage / "validation.json").exists():
@@ -1360,19 +1580,24 @@ def process_catalog(raw_dir: Path, out_dir: Path, program: str,
             raise
         finally:
             engine.close()
-        previous = out_dir / ".series.previous"
-        if previous.exists():
-            shutil.rmtree(previous)
-        if (out_dir / "series").exists():
-            (out_dir / "series").rename(previous)
-        (stage / "series").rename(out_dir / "series")
-        for name in ("index.json", "outputs.jsonl", "catalog.json", "complete.json"):
+        for name in ("series", "observations", "labels"):
+            previous = out_dir / f".{name}.previous"
+            if previous.exists():
+                shutil.rmtree(previous)
+            current = out_dir / name
+            if current.exists():
+                current.rename(previous)
+            staged = stage / name
+            if staged.exists():
+                staged.rename(current)
+            if previous.exists():
+                shutil.rmtree(previous)
+        for name in ("catalog.json", "complete.json"):
             os.replace(stage / name, out_dir / name)
-        if previous.exists():
-            shutil.rmtree(previous)
+        for stale in ("index.json", "outputs.jsonl"):
+            (out_dir / stale).unlink(missing_ok=True)
         (out_dir / "validation.json").unlink(missing_ok=True)
     return stats, schema
-
 
 # -- one run ---------------------------------------------------------------
 
@@ -1398,7 +1623,7 @@ def _file_receipt(raw_dir: Path, manifest: Manifest) -> list[dict]:
 
 
 def _unchanged(catalog_json: Path, listing_sha256: str) -> bool:
-    """Skip only a completed, version-compatible export with verified files."""
+    """Skip only a completed, version-compatible export with verified shards."""
     root = catalog_json.parent
     try:
         complete = json.loads((root / "complete.json").read_text())
@@ -1407,32 +1632,20 @@ def _unchanged(catalog_json: Path, listing_sha256: str) -> bool:
                 or (root / "state.json").exists() and
                 json.loads((root / "state.json").read_text()).get("status") not in {"ok", "skipped"}):
             return False
-        for name in ("catalog.json", "index.json", "outputs.jsonl"):
-            receipt = complete["files"][name]
-            path = root / name
-            if path.stat().st_size != receipt["size"] or sha256_file(path) != receipt["sha256"]:
-                return False
-        count = observations = 0
-        with (root / "outputs.jsonl").open() as ledger:
-            for line in ledger:
-                entry = json.loads(line)
-                relative = Path(entry["path"])
-                if (relative.is_absolute() or len(relative.parts) != 2
-                        or relative.parts[0] != "series" or relative.parts[1] in {".", ".."}):
-                    return False
-                path = root / relative
-                if path.stat().st_size != entry["size"] or sha256_file(path) != entry["sha256"]:
-                    return False
-                count += 1
-                observations += entry["observations"]
-        if (count, observations) != (complete["series"], complete["observations"]):
-            return False
-        # A hash of index.json alone doesn't establish the physical series inventory.
-        physical_count = sum(1 for path in (root / "series").iterdir() if path.suffix == ".json")
-        if physical_count != count:
-            return False
         card = json.loads(catalog_json.read_text())
-        for receipt in card["files"]:
+        if card.get("pipeline_version") != PIPELINE_VERSION:
+            return False
+        files = complete.get("files") or {}
+        for name, receipt in files.items():
+            path = root / name
+            if (not path.exists() or path.stat().st_size != receipt["size"]
+                    or sha256_file(path) != receipt["sha256"]):
+                return False
+        series_rows = sum(s["rows"] for s in card.get("series_shards", []))
+        obs_rows = sum(s["rows"] for s in card.get("observation_shards", []))
+        if (series_rows, obs_rows) != (complete["series"], complete["observations"]):
+            return False
+        for receipt in card.get("files", []):
             if receipt["download_status"] == "failed":
                 if receipt.get("required"):
                     return False
@@ -1630,14 +1843,15 @@ def run_all(cfg: AppConfig, only: list[str] | None = None, force: bool = False,
 
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        description="Download every BLS LABSTAT catalog and write one JSON file per series.")
+        description="Download every BLS LABSTAT catalog and write sharded series/observation JSONL.")
     p.add_argument("--only", default=None,
                    help="Comma-separated prefixes for tests (WS,CU). Default: all catalogs.")
     p.add_argument("--force", action="store_true")
     p.add_argument("--offline", action="store_true")
     p.add_argument("--data-dir", default=None)
     p.add_argument("--source-root", default=None)
-    p.add_argument("--memory-limit", default="1GB", help="DuckDB memory budget; disk spill is used as needed.")
+    p.add_argument("--memory-limit", default="auto",
+                   help="DuckDB memory budget (e.g. 16GB) or 'auto' from the job/VM allocation.")
     p.add_argument("--threads", type=int, default=2)
     p.add_argument("--concurrency", type=int, default=1,
                    help="Files downloaded at once. Requests stay spaced by --min-interval either way.")
@@ -1652,7 +1866,8 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    cfg = AppConfig(memory_limit=args.memory_limit, threads=args.threads,
+    memory_limit = resolve_memory_limit(args.memory_limit)
+    cfg = AppConfig(memory_limit=memory_limit, threads=args.threads,
                     concurrency=args.concurrency, min_interval_s=args.min_interval,
                     max_consecutive_throttled=args.max_throttled,
                     throttled_catalog_retries=args.catalog_retries)
@@ -1674,6 +1889,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.offline and not only:
         print("--offline requires --only", file=sys.stderr)
         return 2
+    print(f"duckdb memory_limit={cfg.memory_limit}", flush=True)
     log = run_all(cfg, only=only, force=args.force, offline=args.offline)
     print(json.dumps({k: log[k] for k in ("prefixes", "failed", "not_reached", "stopped_early",
                                           "finished_utc") if k in log}, indent=2))

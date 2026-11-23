@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from bls_corpus.pipeline import AppConfig, process_program, run_all
+from bls_corpus.pipeline import AppConfig, load_series, process_program, run_all
 
 FIX = Path(__file__).parent / "fixtures" / "bd"
 
@@ -17,9 +17,9 @@ def test_offline_process_program_writes_series_files(tmp_path):
     result = process_program(cfg, offline=True)
     assert result["status"] == "ok"
     assert result["series"] == 40
-    first = tmp_path / "data" / "bd" / "series" / "BDS0000000000000000110001LQ5.json"
-    assert first.exists()
-    row = json.loads(first.read_text())
+    out = tmp_path / "data" / "bd"
+    assert list((out / "series").glob("part-*.jsonl"))
+    row = load_series(out, "BDS0000000000000000110001LQ5")
     assert row["series_id"].startswith("BD")
     assert "snapshot_id" not in row
 

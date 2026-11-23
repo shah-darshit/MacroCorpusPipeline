@@ -1,6 +1,6 @@
 # MacroCorpus pipeline
 
-Downloads every survey from the official [BLS LABSTAT](https://download.bls.gov/pub/time.series/) flat files and writes one JSON file per series. The public BLS API is not required.
+Downloads every survey from the official [BLS LABSTAT](https://download.bls.gov/pub/time.series/) flat files and writes sharded JSONL for series info and observations, plus small name-lookup files. The public BLS API is not required.
 
 The repository does not contain downloaded surveys. `python run.py` creates `data/` on your machine.
 
@@ -35,9 +35,11 @@ Leave the virtualenv active. In a new terminal, run `source .venv/bin/activate` 
 python run.py
 ```
 
-That is the only command a new user needs. It lists the LABSTAT root, then for each two-letter survey folder downloads the files, joins code names, and writes the series files. One catalog failing is recorded and the next catalog still runs. A later `python run.py` skips a catalog whose remote listing has not changed. Pass `--force` to rebuild anyway.
+That is the only command a new user needs. It lists the LABSTAT root, then for each two-letter survey folder downloads the files and writes the output. One catalog failing is recorded and the next catalog still runs. A later `python run.py` skips a catalog whose remote listing has not changed. Pass `--force` to rebuild anyway.
 
 If BLS throttles a catalog (HTTP 429), the run waits, then tries that catalog again; files that already downloaded are not fetched twice. Catalogs still blocked get one more try at the end of the run. `--catalog-retries 0` turns this off.
+
+DuckDB memory defaults to `auto` (about 60% of the job or VM allocation, at least 1GB). On a large VM use an explicit budget, for example `python run.py --memory-limit 16GB`.
 
 `--only WS,CU` is for tests and debugging. It is not required to process a catalog.
 
@@ -47,24 +49,17 @@ When it finishes, look here:
 |---|---|
 | `data/run.json` | Which prefixes were found, which finished, which failed |
 | `data/cu/raw/` | Original BLS files for that catalog |
-| `data/cu/catalog.json` | Joins, coverage, file checksums, listing fingerprint |
-| `data/cu/index.json` | `series_id` → file path, title, observation count |
-| `data/cu/series/CUSR0000SA0.json` | One series: codes, names, and the full history of values |
+| `data/cu/catalog.json` | Joins, coverage, shard list, file checksums |
+| `data/cu/series/part-00000.jsonl` | One JSON line per series (codes and observation count) |
+| `data/cu/observations/part-00000.jsonl` | One JSON line per observation |
+| `data/cu/labels/area.json` | Name lookup for one mapping file (codes → label) |
 
-Each series file looks like this:
+Series info and observations stay in separate files, sorted by `series_id`. Name tables are written once under `labels/` instead of repeating on every series. To rebuild the old one-record view in Python:
 
-```json
-{
-  "series_id": "CUSR0000SA0",
-  "area_code": "0000",
-  "area_name": "U.S. city average",
-  "item_code": "SA0",
-  "item_name": "All items",
-  "series_title": "All items in U.S. city average...",
-  "observations": [
-    {"year": "1997", "period": "M01", "value": "159.40", "footnote_codes": ""}
-  ]
-}
+```python
+from bls_corpus.pipeline import load_series
+row = load_series("data/cu", "CUSR0000SA0")
+# row has codes, names (area_name, ...), and observations
 ```
 
 There is no snapshot id in the path or in the series body. A rerun overwrites `data/<prefix>/`.
