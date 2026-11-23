@@ -54,6 +54,7 @@ def test_run_all_stops_after_consecutive_throttles(tmp_path, monkeypatch):
     _fake_results(monkeypatch, {"bb", "cc", "dd", "ee"})
     cfg = AppConfig()
     cfg.data_dir = tmp_path / "data"
+    cfg.throttled_catalog_retries = 0
     cfg.max_consecutive_throttled = 3
     waits = []
     log = run_all(cfg, prefixes=["aa", "bb", "cc", "dd", "ee", "ff"], sleep=waits.append)
@@ -67,6 +68,7 @@ def test_run_all_cooldown_resets_after_a_success(tmp_path, monkeypatch):
     _fake_results(monkeypatch, {"aa", "bb", "dd", "ee"})
     cfg = AppConfig()
     cfg.data_dir = tmp_path / "data"
+    cfg.throttled_catalog_retries = 0
     waits = []
     log = run_all(cfg, prefixes=["aa", "bb", "cc", "dd", "ee"], sleep=waits.append)
     assert "stopped_early" not in log and log["not_reached"] == 0
@@ -78,6 +80,7 @@ def test_unattended_defaults_wait_out_a_long_block(tmp_path, monkeypatch):
     _fake_results(monkeypatch, set(prefixes[:7]))
     cfg = AppConfig()
     cfg.data_dir = tmp_path / "data"
+    cfg.throttled_catalog_retries = 0
     waits = []
     log = run_all(cfg, prefixes=prefixes, sleep=waits.append)
     assert "stopped_early" not in log and log["catalogs"][-1]["status"] == "ok"
@@ -89,6 +92,7 @@ def test_zero_throttle_limit_never_stops(tmp_path, monkeypatch):
     _fake_results(monkeypatch, set(prefixes))
     cfg = AppConfig()
     cfg.data_dir = tmp_path / "data"
+    cfg.throttled_catalog_retries = 0
     cfg.max_consecutive_throttled = 0
     waits = []
     log = run_all(cfg, prefixes=prefixes, sleep=waits.append)
@@ -124,3 +128,111 @@ def test_cli_pacing_flags(tmp_path, monkeypatch):
     assert (cfg.concurrency, cfg.min_interval_s, cfg.max_consecutive_throttled) == (2, 1.5, 0)
     assert pl.main(["--concurrency", "0"]) == 2
     assert pl.main(["--min-interval", "-1"]) == 2
+
+
+def _scripted(monkeypatch, script: dict[str, list[bool]]):
+    """script maps a prefix to whether each successive attempt is throttled."""
+    import bls_corpus.pipeline as pl
+    calls = []
+
+    def fake(cfg, force=False, offline=False):
+        name = cfg.program.lower()
+        calls.append(name)
+        plan = script.get(name, [])
+        n = calls.count(name) - 1
+        bad = plan[n] if n < len(plan) else (plan[-1] if plan else False)
+        return {"program": cfg.program, "status": "failed" if bad else "ok", "series": 0,
+                "observations": 0, "error": "HTTP 429" if bad else None,
+                **({"throttled": True} if bad else {})}
+    monkeypatch.setattr(pl, "process_program", fake)
+    return calls
+
+
+def test_throttled_catalog_is_retried_before_the_next_one(tmp_path, monkeypatch):
+    calls = _scripted(monkeypatch, {"bb": [True, False]})
+    cfg = AppConfig()
+    cfg.data_dir = tmp_path / "data"
+    waits = []
+    log = run_all(cfg, prefixes=["aa", "bb", "cc"], sleep=waits.append)
+    assert calls == ["aa", "bb", "bb", "cc"]
+    assert [c["status"] for c in log["catalogs"]] == ["ok", "ok", "ok"]
+    assert log["catalogs"][1]["attempts"] == 2 and log["failed"] == 0
+    assert waits == [300.0]
+
+
+def test_still_throttled_catalog_gets_a_last_try_at_the_end(tmp_path, monkeypatch):
+    calls = _scripted(monkeypatch, {"bb": [True, True, False]})
+    cfg = AppConfig()
+    cfg.data_dir = tmp_path / "data"
+    waits = []
+    log = run_all(cfg, prefixes=["aa", "bb", "cc"], sleep=waits.append)
+    assert calls == ["aa", "bb", "bb", "cc", "bb"]
+    assert log["catalogs"][1]["status"] == "ok" and log["catalogs"][1]["attempts"] == 3
+    assert waits == [300.0, 600.0]  # cc succeeded, so no pause before the last try
+
+
+def test_stop_limit_counts_retries(tmp_path, monkeypatch):
+    calls = _scripted(monkeypatch, {"aa": [True], "bb": [True], "cc": [True]})
+    cfg = AppConfig()
+    cfg.data_dir = tmp_path / "data"
+    cfg.max_consecutive_throttled = 3
+    waits = []
+    log = run_all(cfg, prefixes=["aa", "bb", "cc"], sleep=waits.append)
+    assert calls == ["aa", "aa", "bb"]
+    assert [c["status"] for c in log["catalogs"]] == ["failed", "failed", "not_reached"]
+    assert waits == [300.0, 600.0] and "stopped_early" in log and log["not_reached"] == 1
+
+
+def test_non_throttle_failure_is_not_retried(tmp_path, monkeypatch):
+    import bls_corpus.pipeline as pl
+    calls = []
+
+    def fake(cfg, force=False, offline=False):
+        calls.append(cfg.program.lower())
+        return {"program": cfg.program, "status": "failed", "series": 0, "observations": 0,
+                "error": "RuntimeError: validation failed"}
+    monkeypatch.setattr(pl, "process_program", fake)
+    cfg = AppConfig()
+    cfg.data_dir = tmp_path / "data"
+    waits = []
+    run_all(cfg, prefixes=["aa", "bb"], sleep=waits.append)
+    assert calls == ["aa", "bb"] and waits == []
+
+
+def test_retry_resumes_catalog_and_refetches_only_blocked_file(tmp_path, monkeypatch):
+    """End to end: one mapping file is refused on the first pass; the retry completes BD."""
+    import httpx
+    import bls_corpus.pipeline as pl
+    files = {p.name: p.read_bytes() for p in FIX.iterdir()}
+    listing = "<pre>" + "".join(
+        f' 7/29/2026 10:00 AM {len(body):>12} <A HREF="/pub/time.series/bd/{name}">{name}</A><br>\n'
+        for name, body in files.items()) + "</pre>"
+    full_bodies = []
+    blocked = {"bd.industry": 1}  # refuse this file once
+
+    def handler(request):
+        name = request.url.path.rsplit("/", 1)[-1]
+        if not name:
+            return httpx.Response(200, text=listing)
+        if blocked.get(name):
+            blocked[name] -= 1
+            return httpx.Response(429)
+        if "If-Modified-Since" in request.headers or "If-None-Match" in request.headers:
+            return httpx.Response(304)
+        full_bodies.append(name)
+        return httpx.Response(200, content=files[name],
+                              headers={"Last-Modified": "Wed, 29 Jul 2026 10:00:00 GMT"})
+
+    real_client = httpx.Client
+    monkeypatch.setattr(pl.httpx, "Client", lambda **kw: real_client(
+        **{**kw, "transport": httpx.MockTransport(handler)}))
+    cfg = AppConfig(max_retries=0, backoff_base_s=0.0,
+                    pacer=pl.RequestPacer(0.0, sleep=lambda s: None))
+    cfg.data_dir = tmp_path / "data"
+    waits = []
+    log = run_all(cfg, prefixes=["bd"], sleep=waits.append)
+    one = log["catalogs"][0]
+    assert (one["status"], one["attempts"], one["series"]) == ("ok", 2, 40)
+    assert waits == [300.0] and log["failed"] == 0
+    # Every file body crossed the wire exactly once; the retry only fetched the blocked one.
+    assert sorted(full_bodies) == sorted(files)
